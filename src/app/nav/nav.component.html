@@ -32,7 +32,12 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <div class="input-group mb-3" id="searchBlock">
-                <input id="searchInput" type="text" class="form-control" placeholder="Search an anime" aria-label="Search an anime" aria-describedby="basic-addon2">
+                <input (change)="onSearchChange($event)"  id="searchInput" type="text" class="form-control" placeholder="Search an anime" aria-label="Search an anime" aria-describedby="basic-addon2">
+                <div>
+                    <ul>
+                        <li *ngFor=""></li>
+                    </ul>
+                </div>
                 <div class="input-group-append">
                     <button class="btn btn-outline-primary btn-primary" type="button"><i style="color: #e4e4e4" class="fa fa-search"></i></button>
                 </div>
