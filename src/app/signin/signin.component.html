@@ -1,0 +1,22 @@
+<body id="body">
+    <div class="container fill">
+        <div class="row testA">
+            <div class="col-lg-2 col-md-1 col-sm-1 testB">
+                    <img class="logo"
+                         src="https://cdn.discordapp.com/attachments/773832860674686976/779291384980570112/logo_OW.png"
+                         alt="alt"/>
+                    <img class="text"
+                         src="https://media.discordapp.net/attachments/773832860674686976/779298986909237258/OW-LOGO-L.png"
+                         alt="alt"/>
+            </div>
+            <div class="col-lg-2 col-md-1 col-sm-1 test">
+                <h1>Login to OnlyWeebs</h1>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <input owinput class="owinput" type="text" formControlName="username" placeholder="Username">
+                    <input owinput class="owinput" type="password" formControlName="password" placeholder="Password">
+                    <button class="btn btn-primary btn-block" [disabled]="!loginForm.valid">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

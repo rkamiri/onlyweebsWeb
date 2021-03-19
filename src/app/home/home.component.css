@@ -1,0 +1,44 @@
+#body {
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+#myCarousel {
+    min-width: 65vw;
+    max-width: 65vw;
+    margin: auto;
+    outline: none;
+}
+
+#myCarousel h3 {
+    color: gray;
+}
+
+#myCarousel p {
+    color: gray;
+}
+
+.carousel-img {
+    max-width: 65vw;
+    min-width: 65vw;
+    display: block;
+    margin: auto;
+}
+
+#car {
+    display: block;
+    margin: auto;
+    width: 59vw;
+}
+
+#market {
+    max-width: 65vw;
+    min-width: 65vw;
+    color: white;
+    background-color: rgba(40, 43, 48, .75);
+}
+
+#firstRow {
+    padding-top: 1.5vh;
+}

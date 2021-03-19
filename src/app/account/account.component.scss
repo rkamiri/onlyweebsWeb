@@ -1,0 +1,53 @@
+*{
+    color: white;
+}
+.account-settings .user-profile {
+    margin:auto;
+    padding-bottom: 1vh;
+    text-align: center;
+}
+.account-settings .user-profile .user-avatar {
+    margin: 0 0 1rem 0;
+}
+.account-settings .user-profile .user-avatar img {
+    width: 7vw;
+    height: 7vw;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+.account-settings .user-profile h5.user-name {
+    margin: 0 0 0.5rem 0;
+}
+.account-settings .user-profile h6.user-email {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+.account-settings .about {
+    margin: 1rem 0 0 0;
+    font-size: 0.8rem;
+    text-align: center;
+}
+.card {
+    background-color: rgba(40, 43, 48, .75);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 0;
+    margin-bottom: 1rem;
+}
+.form-control {
+    background: transparent;
+    border: none;
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+    padding: 15px 0;
+    box-sizing: border-box;
+    color: #fff;
+    width: 100%;
+    transition: 0.2s ease;
+    margin-bottom: 2vh;
+}
+textarea{
+    min-width: 38.5vw
+}

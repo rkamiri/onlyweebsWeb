@@ -1,0 +1,5 @@
+<ul>
+    <li *ngFor="let anime of animeList">
+        <a [routerLink]="['/animes', anime.id]">{{ anime.internationalTitle }}</a>
+    </li>
+</ul>

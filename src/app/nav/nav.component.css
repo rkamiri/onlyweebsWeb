@@ -1,0 +1,53 @@
+.navbar{
+  background-color: #212223;
+}
+
+.nav-item {
+  margin-right: 25px;
+}
+
+#searchBlock{
+    margin-top:1vh;
+    margin-right: 5vw;
+}
+
+#searchInput {
+    background-color: dimgrey;
+    color: white;
+    box-shadow: none !important;
+    border-color: dimgrey;
+    width: 25vw;
+}
+
+#imgLoop {
+  display: block;
+  margin: auto;
+  height: 1vw;
+  -webkit-filter: invert(100%);
+}
+
+::placeholder {
+  color: white;
+  opacity: 1;
+}
+
+#homeImage{
+    height: 6vh;
+}
+
+@media screen and (max-width: 576px) {
+    #imgLoop {
+        height: 4vw;
+    }
+    .btn-primary{
+        width: 13vw;
+    }
+
+    #searchBlock{
+        margin-top:0;
+        margin-right: 0;
+    }
+}
+
+
+

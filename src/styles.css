@@ -1,0 +1,9 @@
+/* global styles */
+* {
+    font-family: 'Karla', sans-serif;
+}
+
+body {
+    background: transparent;
+    background-size: cover;
+}

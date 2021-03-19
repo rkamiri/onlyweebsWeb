@@ -1,0 +1,6 @@
+<ul>
+    <li *ngFor="let list of lists">
+        <a [routerLink]="['/lists', list.id]">{{ list.name }}</a>
+        <p>{{ list.description }}</p>
+    </li>
+</ul>
