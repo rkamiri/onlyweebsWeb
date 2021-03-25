@@ -11,23 +11,20 @@
     <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="animes">ANIMES</a>
+                <a class="nav-link" [routerLink]="['/animes']">ANIMES</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="lists">LISTS</a>
+                <a class="nav-link" [routerLink]="['/lists']">LISTS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="login" *ngIf="!isUserAuthenticated">LOGIN</a>
+                <a class="nav-link" [routerLink]="['/login']" *ngIf="!isUserAuthenticated">LOGIN</a>
                 <a class="nav-link" (click)="logoutUser()" *ngIf="isUserAuthenticated">LOGOUT</a>
             </li>
             <li class="nav-item" *ngIf="!isUserAuthenticated">
-                <a class="nav-link" routerLink="register" >SIGN UP</a>
+                <a class="nav-link" [routerLink]="['/register']">SIGN UP</a>
             </li>
-            <!--<li class="nav-item">
-                <a class="nav-link" href="help">HELP</a>
-            </li>-->
             <li class="nav-item" *ngIf="isUserAuthenticated">
-                <a class="nav-link" href="account" >MY ACCOUNT</a>
+                <a class="nav-link" [routerLink]="['/account']">MY ACCOUNT</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
