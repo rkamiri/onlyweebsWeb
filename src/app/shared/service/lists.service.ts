@@ -12,14 +12,14 @@ export class ListsService {
     constructor(private httpclient: HttpClient) {}
 
     getAllLists(): Observable<Lists[]> {
-        return this.httpclient.get<Lists[]>('http://localhost:8080/lists');
+        return this.httpclient.get<Lists[]>('http://localhost:6671/lists');
     }
 
     getOneListById(id): Observable<Lists> {
-        return this.httpclient.get<Lists>('http://localhost:8080/lists/' + id);
+        return this.httpclient.get<Lists>('http://localhost:6671/lists/' + id);
     }
 
     getOneListContentByID(id): Observable<Anime[]> {
-        return this.httpclient.get<Anime[]>('http://localhost:8080/lists/' + id + '/content');
+        return this.httpclient.get<Anime[]>('http://localhost:6671/lists/' + id + '/content');
     }
 }
