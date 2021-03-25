@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+    production: true,
+    backend: 'http://api.onlyweebs.csid.agilitejoviale.fr'
 };
