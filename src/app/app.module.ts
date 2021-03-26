@@ -22,7 +22,8 @@ import { AnimeListComponent } from './anime-list/anime-list.component';
 import {SharedModule} from './shared/shared.module';
 import { OnelistComponent } from './onelist/onelist.component';
 import { CreateListComponent } from './create-list/create-list.component';
-
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,9 @@ import { CreateListComponent } from './create-list/create-list.component';
         ReactiveFormsModule,
         FormsModule,
         HttpClientModule,
-        SharedModule
+        SharedModule,
+        TypeaheadModule.forRoot(),
+        BrowserAnimationsModule
     ],
   providers: [
       [

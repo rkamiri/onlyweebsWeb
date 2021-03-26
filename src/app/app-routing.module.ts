@@ -17,6 +17,7 @@ import {ListsResolver} from './lists/lists.resolver';
 import {OnelistComponent} from './onelist/onelist.component';
 import {OneListResolver} from './onelist/onelist.resolver';
 import {ListContentResolver} from './onelist/listcontent.resolver';
+import {CreateListComponent} from './create-list/create-list.component';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -57,7 +58,8 @@ const routes: Routes = [
         resolve: {
             currentUser: AccountResolver
         }
-    }
+    },
+    {path: 'create-list', component: CreateListComponent}
 ];
 
 @NgModule({

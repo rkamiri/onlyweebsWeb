@@ -1,3 +1,19 @@
 .card {
     background-color: rgba(40, 43, 48, .75);
 }
+
+.delete {
+    color: red;
+}
+
+.btn-group-xs > .btn, .btn-xs {
+    padding: .25rem .4rem;
+    font-size: .875rem;
+    line-height: .5;
+    border-radius: .2rem;
+    margin-left: .25rem;
+}
+
+#cancelNewList {
+    margin-right:1px;
+}
