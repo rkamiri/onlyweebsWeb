@@ -15,7 +15,7 @@ export class UserService {
         return this.httpclient.post<string>(environment.backend + '/login', value);
     }
     register(value: object): Observable<any> {
-        return this.httpclient.post( '/register', value);
+        return this.httpclient.post(environment.backend + '/register', value);
     }
     getCurrentUser(): Observable<User> {
         return this.httpclient.get<User>( environment.backend + '/users/current');
