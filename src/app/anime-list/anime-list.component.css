@@ -1,0 +1,58 @@
+a {
+    text-decoration: none;
+    color: #e4e4e4;
+}
+
+.card-title{
+    color: white;
+    padding: 2px;
+    border-radius: 5px;
+}
+.container{
+    min-width: 80vw;
+}
+.card{
+    margin-top: 2vh;
+    width: 15vw;
+    background-color: rgba(40, 43, 48, .75);
+}
+
+.card:hover{
+    background-color: rgba(9, 124, 231, 0.75);
+}
+.card-img-top{
+    height: 30vh!important;
+    object-fit: cover;
+    opacity: 0.6;
+}
+.col-sm-4{
+    margin-top: 2vh;
+}
+
+@media screen and (max-width: 1400px) {
+    .card {
+        width: 18vw;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .card {
+        width: 40vw;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .card {
+        width: 40vw;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .card{
+        margin: auto;
+        margin-top: 4vh;
+    }
+    .card {
+        width: 80vw;
+    }
+}
