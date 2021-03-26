@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../model/user';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -11,16 +12,16 @@ export class UserService {
     constructor(private httpclient: HttpClient) {
     }
     login(value: object): Observable<string> {
-        return this.httpclient.post<string>('http://localhost:8080/login', value);
+        return this.httpclient.post<string>(environment.backend + '/login', value);
     }
     register(value: object): Observable<any> {
-        return this.httpclient.post('http://localhost:8080/register', value);
+        return this.httpclient.post( '/register', value);
     }
     getCurrentUser(): Observable<User> {
-        return this.httpclient.get<User>('http://localhost:8080/users/current');
+        return this.httpclient.get<User>( environment.backend + '/users/current');
     }
     updateCurrentUser(value: object): Observable<User> {
-        return this.httpclient.put<User>('http://localhost:8080/users/update', value);
+        return this.httpclient.put<User>( environment.backend + '/users/update', value);
     }
     emitAuthStatus(state: boolean): void{
         this.authEvent.next(state);
@@ -30,7 +31,7 @@ export class UserService {
         return this.authEvent.asObservable();
     }
     logout(): void {
-        this.httpclient.post<any>('http://localhost:8080/logout', '').subscribe(
+        this.httpclient.post<any>( environment.backend + '/logout', '').subscribe(
             () => {
                 sessionStorage.setItem('isConnected', 'false');
                 this.emitAuthStatus(false);
