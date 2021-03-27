@@ -1,4 +1,5 @@
 export interface SearchResult {
     id: number;
-    title: string;
+    internationalTitle: string;
+    cover: string;
 }
