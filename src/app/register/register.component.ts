@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
     registerUser(): void {
         this.userService.register(this.registerForm.value).subscribe(
             () => {
-                return this.router.navigate(['lists']);
+                return this.router.navigate(['home']);
             } ,
             (error) => {
                 error.log(error);
