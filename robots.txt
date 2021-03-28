@@ -1,3 +1,5 @@
 User-agent: *
-Disallow:
-Disallow: /cgi-bin/
+Disallow: /login
+Disallow: /register
+Disallow: /admin
+Sitemap: https://onlyweebs.csid.agilitejoviale.fr/sitemap.xml
