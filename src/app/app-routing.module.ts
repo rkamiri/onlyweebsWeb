@@ -18,6 +18,8 @@ import {OnelistComponent} from './onelist/onelist.component';
 import {OneListResolver} from './onelist/onelist.resolver';
 import {ListContentResolver} from './onelist/listcontent.resolver';
 import {AnimeListResearchResolver} from './anime-list/anime.list.research.resolver';
+import {CurrentUserRatingResolver} from './anime/current.user.rating.resolver';
+import {GlobalRatingResolver} from './anime/global.rating.resolver';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -39,9 +41,13 @@ const routes: Routes = [
         path: 'animes/:id',
         component: AnimeComponent,
         resolve: {
-            anime: AnimeResolver
+            anime: AnimeResolver,
+            currentUserRating: CurrentUserRatingResolver,
+            globalRating: GlobalRatingResolver,
+            currentUser: AccountResolver
         },
         runGuardsAndResolvers: 'always'
+        }
     },
     {
         path: 'lists', component: ListsComponent,

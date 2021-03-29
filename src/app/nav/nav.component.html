@@ -23,9 +23,6 @@
             <li class="nav-item" *ngIf="!isUserAuthenticated">
                 <a class="nav-link" [routerLink]="['/register']">SIGN UP</a>
             </li>
-            <!--<li class="nav-item">
-                <a class="nav-link" href="help">HELP</a>
-            </li>-->
             <li class="nav-item" *ngIf="isUserAuthenticated">
                 <a class="nav-link" [routerLink]="['/account']">MY ACCOUNT</a>
             </li>
