@@ -47,7 +47,6 @@ const routes: Routes = [
             currentUser: AccountResolver
         },
         runGuardsAndResolvers: 'always'
-        }
     },
     {
         path: 'lists', component: ListsComponent,
