@@ -18,4 +18,7 @@ export class AnimeService {
     getOneAnime(id): Observable<Anime> {
         return this.httpclient.get<Anime>(environment.backend + '/animes/' + id);
     }
+    getAllAnimeByName(term: string): Observable<Anime[]> {
+        return this.httpclient.get<Anime[]>(environment.backend + '/animes/research/' + term);
+    }
 }
