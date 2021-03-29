@@ -35,18 +35,10 @@
                     <img [src]="r.cover" class="mr-1" style="width: 16px">
                     <ngb-highlight [result]="r.internationalTitle" [term]="t"></ngb-highlight>
                 </ng-template>
-
-                <label id="textboxLabel" for="typeahead-template"></label><input id="typeahead-template" type="text"
-                                                                                 class="form-control"
-                                                                                 [(ngModel)]="searchInputValue"
-                                                                                 [ngbTypeahead]="search"
-                                                                                 [resultTemplate]="rt"
-                                                                                 [inputFormatter]="formatter"
-                                                                                 (selectItem)="onSearchItemSelected($event)"
-                                                                                 name="searchInputValue" role="textbox"
-                                                                                 contenteditable="true"
-                                                                                 aria-placeholder="an anime name"
-                                                                                 aria-labelledby="textboxLabel"/>
+                <input id="typeahead-template" type="text" class="form-control" [(ngModel)]="searchInputValue"
+                       [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter"
+                       (selectItem)="onSearchItemSelected($event)" name="searchInputValue" role="textbox"
+                       contenteditable="true" aria-placeholder="an anime name" aria-label="textbox"/>
                 <div class="input-group-append">
                     <button class="btn btn-outline-primary btn-primary" type="submit" aria-label="search button"><i
                         style="color: #e4e4e4" class="fa fa-search"></i></button>
