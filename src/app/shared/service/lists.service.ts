@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Anime} from '../model/anime';
 import {Lists} from '../model/lists';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -12,14 +13,14 @@ export class ListsService {
     constructor(private httpclient: HttpClient) {}
 
     getAllLists(): Observable<Lists[]> {
-        return this.httpclient.get<Lists[]>('http://localhost:8080/lists');
+        return this.httpclient.get<Lists[]>(environment.backend + '/lists');
     }
 
     getOneListById(id): Observable<Lists> {
-        return this.httpclient.get<Lists>('http://localhost:8080/lists/' + id);
+        return this.httpclient.get<Lists>(environment.backend + '/lists/' + id);
     }
 
     getOneListContentByID(id): Observable<Anime[]> {
-        return this.httpclient.get<Anime[]>('http://localhost:8080/lists/' + id + '/content');
+        return this.httpclient.get<Anime[]>(environment.backend + '/lists/' + id + '/content');
     }
 }

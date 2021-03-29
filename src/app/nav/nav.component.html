@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-md navbar-dark ">
     <a class="navbar-brand" routerLink="home">
         <img id="homeImage"
-             src="https://media.discordapp.net/attachments/773832860674686976/819561691070201906/ow-smol.png"
+             src="assets/ow-smol-text.webp"
              alt="alt"/>
     </a>
     <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,30 +11,27 @@
     <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="animes">ANIMES</a>
+                <a class="nav-link" [routerLink]="['/animes']">ANIMES</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="lists">LISTS</a>
+                <a class="nav-link" [routerLink]="['/lists']">LISTS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="login" *ngIf="!isUserAuthenticated">LOGIN</a>
+                <a class="nav-link" [routerLink]="['/login']" *ngIf="!isUserAuthenticated">LOGIN</a>
                 <a class="nav-link" (click)="logoutUser()" *ngIf="isUserAuthenticated">LOGOUT</a>
             </li>
             <li class="nav-item" *ngIf="!isUserAuthenticated">
-                <a class="nav-link" routerLink="register" >SIGN UP</a>
+                <a class="nav-link" [routerLink]="['/register']">SIGN UP</a>
             </li>
-            <!--<li class="nav-item">
-                <a class="nav-link" href="help">HELP</a>
-            </li>-->
             <li class="nav-item" *ngIf="isUserAuthenticated">
-                <a class="nav-link" href="account" >MY ACCOUNT</a>
+                <a class="nav-link" [routerLink]="['/account']">MY ACCOUNT</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <div class="input-group mb-3" id="searchBlock">
                 <input id="searchInput" type="text" class="form-control" placeholder="Search an anime" aria-label="Search an anime" aria-describedby="basic-addon2">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-primary btn-primary" type="button"><i style="color: #e4e4e4" class="fa fa-search"></i></button>
+                    <button class="btn btn-outline-primary btn-primary" type="button" aria-label="Search Button"><i style="color: #e4e4e4" class="fa fa-search"></i></button>
                 </div>
             </div>
         </form>
