@@ -35,8 +35,8 @@
                     <ngb-highlight [result]="r.internationalTitle" [term]="t"></ngb-highlight>
                 </ng-template>
 
-                <input aria-label="search an anime" id="typeahead-template" type="text" class="form-control" [(ngModel)]="searchInputValue" [ngbTypeahead]="search" [resultTemplate]="rt"
-                       [inputFormatter]="formatter" (selectItem)="onSearchItemSelected($event)" name="searchInputValue"/>
+                <input id="typeahead-template" type="text" class="form-control" [(ngModel)]="searchInputValue" [ngbTypeahead]="search" [resultTemplate]="rt"
+                       [inputFormatter]="formatter" (selectItem)="onSearchItemSelected($event)" name="searchInputValue" role="textbox" aria-label="search for an anime"/>
                 <div class="input-group-append">
                     <button class="btn btn-outline-primary btn-primary" type="submit" aria-label="search button"><i style="color: #e4e4e4" class="fa fa-search" ></i></button>
                 </div>r
