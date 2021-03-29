@@ -2,8 +2,8 @@
 
 <div id="page_container">
 
-    <ngb-carousel id="myCarousel">
-        <ng-template ngbSlide>
+    <ngb-carousel id="myCarousel" role="complementary" aria-label="News Carousel">
+        <ng-template ngbSlide aria-label="News Carousel page 1">
             <img class="carousel-img"
                  src="../../assets/placeholder-image-sasuke.webp"
                  alt="Random first slide">
@@ -12,7 +12,7 @@
                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </div>
         </ng-template>
-        <ng-template ngbSlide>
+        <ng-template ngbSlide aria-label="News Carousel page 2">
             <img class="carousel-img"
                  src="../../assets/placeholder-image-sasuke.webp"
                  alt="Random second slide">
@@ -21,7 +21,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
         </ng-template>
-        <ng-template ngbSlide>
+        <ng-template ngbSlide aria-label="News Carousel page 3">
             <img class="carousel-img"
                  src="../../assets/placeholder-image-sasuke.webp"
                  alt="Random third slide">
