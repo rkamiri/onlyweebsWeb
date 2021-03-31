@@ -32,9 +32,9 @@ const routes: Routes = [
     },
     {
         path: 'animes/research/:research', component: AnimeListComponent,
-         resolve: {
-             animeList: AnimeListResearchResolver
-         },
+        resolve: {
+            animeList: AnimeListResearchResolver
+        },
         runGuardsAndResolvers: 'always'
     },
     {
@@ -42,8 +42,8 @@ const routes: Routes = [
         component: AnimeComponent,
         resolve: {
             anime: AnimeResolver,
-            currentUserRating: CurrentUserRatingResolver,
             globalRating: GlobalRatingResolver,
+            currentUserRating: CurrentUserRatingResolver,
             currentUser: AccountResolver
         },
         runGuardsAndResolvers: 'always'

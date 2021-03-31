@@ -9,6 +9,6 @@ export class CurrentUserRatingResolver implements Resolve<number> {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<number> | Promise<number> | number {
-        return this.service.getCurrentUserRatingRatingForThisAnime(route.paramMap.get('id'));
+        return this.service.getCurrentUserRatingForThisAnime(route.paramMap.get('id'));
     }
 }
