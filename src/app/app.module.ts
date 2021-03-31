@@ -22,6 +22,7 @@ import { AnimeListComponent } from './anime-list/anime-list.component';
 import {SharedModule} from './shared/shared.module';
 import { OnelistComponent } from './onelist/onelist.component';
 import { CreateListComponent } from './create-list/create-list.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { CreateListComponent } from './create-list/create-list.component';
     ],
   providers: [
       [
-          { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
+          { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
+          { provide: LocationStrategy, useClass: HashLocationStrategy }
       ],
   ],
   bootstrap: [AppComponent]
