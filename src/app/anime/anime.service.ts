@@ -9,7 +9,8 @@ import {environment} from '../../environments/environment';
 })
 export class AnimeService {
 
-    constructor(private httpclient: HttpClient) {}
+    constructor(private httpclient: HttpClient) {
+    }
 
     getAllAnime(): Observable<Anime[]> {
         return this.httpclient.get<Anime[]>(environment.backend + '/animes');
@@ -18,6 +19,7 @@ export class AnimeService {
     getOneAnime(id): Observable<Anime> {
         return this.httpclient.get<Anime>(environment.backend + '/animes/' + id);
     }
+
     getAllAnimeByName(term: string): Observable<Anime[]> {
         return this.httpclient.get<Anime[]>(environment.backend + '/animes/research/' + term);
     }

@@ -18,14 +18,10 @@ export class AnimeComponent implements OnDestroy, OnInit {
     public globalRate: number;
     rateForm: FormGroup;
     isUserAuthenticated: boolean;
-
     navigationSubscription;
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private ratingService: RatingService) {
-        // subscribe to the router events - storing the subscription so
-        // we can unsubscribe later.
         this.navigationSubscription = this.router.events.subscribe((e: any) => {
-            // If it is a NavigationEnd event re-initalise the component
             if (e instanceof NavigationEnd) {
                 this.initialiseAnime();
             }
@@ -35,15 +31,11 @@ export class AnimeComponent implements OnDestroy, OnInit {
         });
     }
 
-    initialiseAnime(): void {
-        // Set default values and re-fetch any data you need.
+    initialiseAnime() {
         this.anime = this.activatedRoute.snapshot.data.anime;
     }
 
-    ngOnDestroy(): void {
-        // avoid memory leaks here by cleaning up after ourselves. If we
-        // don't then we will continue to run our initialiseInvites()
-        // method on every navigationEnd event.
+    ngOnDestroy() {
         if (this.navigationSubscription) {
             this.navigationSubscription.unsubscribe();
         }
@@ -51,12 +43,13 @@ export class AnimeComponent implements OnDestroy, OnInit {
 
     ngOnInit(): void {
         this.anime = this.activatedRoute.snapshot.data.anime;
+        this.currentUser = this.activatedRoute.snapshot.data.currentUser;
         this.globalRate = this.activatedRoute.snapshot.data.globalRating;
-        this.isUserAuthenticated = sessionStorage.getItem('isConnected') === 'true';
+        this.isUserAuthenticated = !!this.currentUser;
+
         if (this.isUserAuthenticated) {
-            this.currentUser = this.activatedRoute.snapshot.data.currentUser;
-            this.currentRate = this.activatedRoute.snapshot.data.currentUserRating;
             if (!(this.currentRate == null)) {
+                this.currentRate = this.activatedRoute.snapshot.data.currentUserRating;
                 if (!(this.currentRate === 666)) {
                     this.rateForm.controls.rate.setValue(this.currentRate);
                 }

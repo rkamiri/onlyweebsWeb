@@ -2,8 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
-import {Rating} from '../model/rating';
-import {User} from '../model/user';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +11,7 @@ export class RatingService {
     constructor(private httpclient: HttpClient) {
     }
 
-    getCurrentUserRatingRatingForThisAnime(id): Observable<number> {
+    getCurrentUserRatingForThisAnime(id): Observable<number> {
         return this.httpclient.get<number>(environment.backend + '/rating/user/' + id);
     }
 
