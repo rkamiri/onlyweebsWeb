@@ -23,7 +23,8 @@ export class AccountComponent implements OnInit {
             username: new FormControl(''),
             firstname: new FormControl(''),
             lastname: new FormControl(''),
-            email: new FormControl('')
+            email: new FormControl(''),
+            bio: new FormControl('')
         });
         this.bioForm = new FormGroup({
             id: new FormControl(''),
@@ -49,6 +50,7 @@ export class AccountComponent implements OnInit {
         this.personalInfoForm.controls.firstname.setValue( this.currentUser.firstname);
         this.personalInfoForm.controls.lastname.setValue( this.currentUser.lastname);
         this.personalInfoForm.controls.email.setValue( this.currentUser.email);
+        this.personalInfoForm.controls.bio.setValue( this.currentUser.bio);
         this.bioForm.controls.id.setValue( this.currentUser.id);
         this.bioForm.controls.bio.setValue( this.currentUser.bio);
         this.bioForm.controls.username.setValue( this.currentUser.username);
