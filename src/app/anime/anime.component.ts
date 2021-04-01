@@ -44,7 +44,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
     ngOnInit(): void {
         this.anime = this.activatedRoute.snapshot.data.anime;
         this.currentUser = this.activatedRoute.snapshot.data.currentUser;
-        this.globalRate = this.activatedRoute.snapshot.data.globalRating.toFixed(1);
+        this.globalRate = this.activatedRoute.snapshot.data.globalRating;
         this.isUserAuthenticated = !!this.currentUser;
 
         if (this.isUserAuthenticated) {
