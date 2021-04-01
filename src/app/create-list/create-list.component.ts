@@ -4,9 +4,7 @@ import {Anime} from '../shared/model/anime';
 import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
-import {Lists} from '../shared/model/lists';
 import {ListsService} from '../shared/service/lists.service';
-import {UserService} from '../shared/service/user.service';
 
 @Component({
     selector: 'app-create-list',
@@ -60,8 +58,6 @@ export class CreateListComponent implements OnInit {
             }
         );
     }
-
-
 }
 
 
