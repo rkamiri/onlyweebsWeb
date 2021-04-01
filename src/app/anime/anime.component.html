@@ -1,10 +1,10 @@
 <div id="container">
     <div class="row box" id="page">
-        <div class="col-lg-3 col-md-3 col-sm-1 col-12" id="imgPlace">
+        <div class="col-lg-3 col-md-2 col-sm-2 col-12" id="imgPlace">
             <img src="{{anime.cover}}" class="img-fluid" id="cover" alt="">
         </div>
 
-        <div class="col-lg-6  col-md-6 col-sm-6 col-12" id="center">
+        <div class="col-lg-6  col-md-6 col-sm-8 col-12" id="center">
             <div>
                 <div>
                     <h1 id="animeTitle">{{ anime.internationalTitle }}</h1>
@@ -23,8 +23,7 @@
                         <button class="btn btn-outline-secondary" type="button" id="addToList"><i
                             class="fa fa-list"></i></button>
                     </div>
-                    <label for="optionSelect"></label><select name="basicList" class="custom-select custom-select-sm"
-                                                              size="1" id="optionSelect">
+                    <label for="optionSelect"></label><select name="basicList" class="custom-select custom-select-sm" size="1" id="optionSelect">
                     <option value="">selection</option>
                     <option value="Watched">Watched</option>
                     <option value="CurrentlyWatching">Currently Watching</option>
@@ -52,7 +51,7 @@
             </div>
         </div>
 
-        <div class="col-lg-2 col-md-2 col-sm-1 col-12" id="divDetails">
+        <div class="col-lg-2 col-md-3 col-sm-1 col-12" id="divDetails">
             <div class="row">
                 <h1 class="detailsContent">Details</h1>
                 <p class="detailsContent">Studio: StudioName</p>
