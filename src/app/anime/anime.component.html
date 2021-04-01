@@ -35,8 +35,7 @@
             <div *ngIf="isUserAuthenticated">
                 <form [formGroup]="rateForm" (ngSubmit)="updateRating()">
                     <label for="rate">Rate /100 :</label>
-                    <input type="number" class="form-control" id="rate" formControlName="rate"
-                           placeholder="Enter your rate">
+                    <input type="number" min="0" max="100" class="form-control" id="rate" formControlName="rate" placeholder="Enter your rate">
                     <button class="btn btn-primary">Update Personal Rate</button>
                 </form>
             </div>
