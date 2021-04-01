@@ -25,6 +25,6 @@ export class ListsService {
     }
 
     createList(value: object): Observable<any> {
-        return this.httpclient.post('http://localhost:8080/create-list', value);
+        return this.httpclient.post(environment.backend + '/lists', value);
     }
 }
