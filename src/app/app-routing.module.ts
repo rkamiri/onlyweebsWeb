@@ -18,6 +18,9 @@ import {OnelistComponent} from './onelist/onelist.component';
 import {OneListResolver} from './onelist/onelist.resolver';
 import {ListContentResolver} from './onelist/listcontent.resolver';
 import {CreateListComponent} from './create-list/create-list.component';
+import {AnimeListResearchResolver} from './anime-list/anime.list.research.resolver';
+import {CurrentUserRatingResolver} from './anime/current.user.rating.resolver';
+import {GlobalRatingResolver} from './anime/global.rating.resolver';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -29,11 +32,22 @@ const routes: Routes = [
         }
     },
     {
+        path: 'animes/research/:research', component: AnimeListComponent,
+        resolve: {
+            animeList: AnimeListResearchResolver
+        },
+        runGuardsAndResolvers: 'always'
+    },
+    {
         path: 'animes/:id',
         component: AnimeComponent,
         resolve: {
-            anime: AnimeResolver
-        }
+            anime: AnimeResolver,
+            globalRating: GlobalRatingResolver,
+            currentUserRating: CurrentUserRatingResolver,
+            currentUser: AccountResolver
+        },
+        runGuardsAndResolvers: 'always'
     },
     {
         path: 'lists', component: ListsComponent,
@@ -66,7 +80,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
     exports: [RouterModule]
 })
 export class AppRoutingModule {

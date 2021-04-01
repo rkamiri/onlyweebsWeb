@@ -1,7 +1,7 @@
 <div id="container">
     <div class="row box" id="page">
         <div class="col-lg-3 col-md-3 col-sm-1 col-12" id="imgPlace">
-            <img src="{{anime.cover}}" class="img-fluid" id="cover">
+            <img src="{{anime.cover}}" class="img-fluid" id="cover" alt="">
         </div>
 
         <div class="col-lg-6  col-md-6 col-sm-6 col-12" id="center">
@@ -9,26 +9,37 @@
                 <div>
                     <h1 id="animeTitle">{{ anime.internationalTitle }}</h1>
                 </div>
-<!--                <div>
-                    <button id="imgAddToList" class="btn-xs btn-primary">☰</button>
-                    <select name="basicList"  class="custom-select custom-select-sm" size="1" id="optionSelect">
-                        <option value="">selection</option>
-                        <option value="Watched">Watched</option>
-                        <option value="CurrentlyWatching">Currently Watching</option>
-                        <option value="PlanToWatch">Plan to watch</option>
-                    </select>
-                </div>-->
+                <!--                <div>
+                                    <button id="imgAddToList" class="btn-xs btn-primary">☰</button>
+                                    <select name="basicList"  class="custom-select custom-select-sm" size="1" id="optionSelect">
+                                        <option value="">selection</option>
+                                        <option value="Watched">Watched</option>
+                                        <option value="CurrentlyWatching">Currently Watching</option>
+                                        <option value="PlanToWatch">Plan to watch</option>
+                                    </select>
+                                </div>-->
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary" type="button" id="addToList"><i class="fa fa-list"></i></button>
+                        <button class="btn btn-outline-secondary" type="button" id="addToList"><i
+                            class="fa fa-list"></i></button>
                     </div>
-                    <select name="basicList"  class="custom-select custom-select-sm" size="1" id="optionSelect">
-                        <option value="" >selection</option>
-                        <option value="Watched">Watched</option>
-                        <option value="CurrentlyWatching">Currently Watching</option>
-                        <option value="PlanToWatch">Plan to watch</option>
-                    </select>
+                    <label for="optionSelect"></label><select name="basicList" class="custom-select custom-select-sm"
+                                                              size="1" id="optionSelect">
+                    <option value="">selection</option>
+                    <option value="Watched">Watched</option>
+                    <option value="CurrentlyWatching">Currently Watching</option>
+                    <option value="PlanToWatch">Plan to watch</option>
+                </select>
                 </div>
+            </div>
+
+            <div *ngIf="isUserAuthenticated">
+                <form [formGroup]="rateForm" (ngSubmit)="updateRating()">
+                    <label for="rate">Rate /100 :</label>
+                    <input type="number" class="form-control" id="rate" formControlName="rate"
+                           placeholder="Enter your rate">
+                    <button class="btn btn-primary">Update Personal Rate</button>
+                </form>
             </div>
 
             <div class="row">
@@ -50,7 +61,7 @@
                 <p class="detailsContent">Japanese Name: {{ anime.title }}</p>
             </div>
             <div class="row">
-                <h1 class="detailsContent">Ranking : {{ anime.ranking }} </h1>
+                <h1 class="detailsContent">Global Rate /100 : {{ globalRate }} </h1>
                 <h1 class="detailsContent">Rating : X/5 </h1>
             </div>
         </div>
