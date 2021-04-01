@@ -4,8 +4,8 @@
     border-radius: 0.3em;
 }
 #cover{
-    width: 13vw;
-    height: 20vh;
+    width: 16vw;
+    padding-bottom: 2.5vh;
     border-radius: 0.3em;
     margin-top: 2.5vh;
 }
@@ -29,8 +29,7 @@
 }
 
 #addToList {
-    height: 4vh;
-
+    height: 40px;
 }
 
 /*#select{
@@ -49,7 +48,7 @@
 
 #optionSelect{
     width: 10vw;
-    height: 4vh;
+    height: 40px;
 }
 
 option {
@@ -83,9 +82,16 @@ h1{
         font-size: 3vw;
     }
 
+    #cover{
+        width: 23vw;
+        height: 20vh;
+        margin-left: 35vw;
+    }
+
     #animeTitle{
         font-size: 6vw;
         margin: 0;
+        padding-left: 1vw;
     }
 
     h1{
@@ -106,7 +112,13 @@ h1{
     }
 
     #animeTitle{
-        margin-left: -4vw;
+
+    }
+}
+
+@media (max-width:768px) {
+    #cover{
+        min-width: 10vw;
     }
 }
 
@@ -118,9 +130,6 @@ h1{
         margin-left: 5vw;
     }
 
-    #imgPlace{
-        border: solid 1px white;
-    }
 
     #center{
         border: solid 1px white ;

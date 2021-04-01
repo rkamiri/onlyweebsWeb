@@ -21,6 +21,7 @@ import {CreateListComponent} from './create-list/create-list.component';
 import {AnimeListResearchResolver} from './anime-list/anime.list.research.resolver';
 import {CurrentUserRatingResolver} from './anime/current.user.rating.resolver';
 import {GlobalRatingResolver} from './anime/global.rating.resolver';
+import {LastListsResolver} from './create-list/last.list.resolver';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -52,7 +53,8 @@ const routes: Routes = [
     {
         path: 'lists', component: ListsComponent,
         resolve: {
-            allLists: ListsResolver
+            allLists: ListsResolver,
+            lastList: LastListsResolver
         }
     },
     {
@@ -75,7 +77,9 @@ const routes: Routes = [
     },
     {path: 'create-list', component: CreateListComponent,
         resolve: {
-            getAnimeList: AnimeListResolver
+            getAnimeList: AnimeListResolver,
+            getCurrentList: ListsResolver,
+            lastList: LastListsResolver
         }}
 ];
 

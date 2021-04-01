@@ -24,8 +24,6 @@ import { OnelistComponent } from './onelist/onelist.component';
 import { CreateListComponent } from './create-list/create-list.component';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-
 
 @NgModule({
   declarations: [
@@ -58,8 +56,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     ],
   providers: [
       [
-          { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
-          { provide: LocationStrategy, useClass: HashLocationStrategy }
+          { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
       ],
   ],
   bootstrap: [AppComponent]
