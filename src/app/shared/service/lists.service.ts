@@ -27,4 +27,12 @@ export class ListsService {
     createList(value: object): Observable<any> {
         return this.httpclient.post(environment.backend + '/lists', value);
     }
+
+    putAnimeInList(value: object): Observable<any> {
+        return this.httpclient.put(environment.backend + '/lists', value);
+    }
+
+    getLastList(): Observable<Lists> {
+        return this.httpclient.get<Lists>(environment.backend + '/lists/getlastlist');
+    }
 }
