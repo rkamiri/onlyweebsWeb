@@ -2,62 +2,44 @@
     <h4> Create a new list </h4>
 </div>
 
-<div class="container w-75 text-light">
-    <div class="card">
-        <div class="col-7">
-            <div class="form-group row">
-                <label for="listName">Name</label>
-                <input required="true" placeholder="Enter name" type="text" id="listName" class="form-control">
-            </div>
+<div>
+<form class="container w-75 text-light" [formGroup]="createListForm" (ngSubmit)="onSubmit()">
 
-            <div class="form-group row">
-                <label for="listDescription">Description</label>
-                <textarea required="true" placeholder="Enter description" type="text" id="listDescription" class="form-control"></textarea>
-            </div>
+    <label for="listName">Name</label>
+    <input required="true" formControlName="name" placeholder="Enter name" type="text" id="listName" class="form-control">
 
-            <div class="row">
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="privateChoice">
-                    <label class="custom-control-label" for="privateChoice">Private</label>
-                </div>
-            </div>
-        </div>
+    <label for="listDescription">Description</label>
+    <textarea formControlName="description" required="true" placeholder="Enter description" type="text" id="listDescription" class="form-control"></textarea>
+
+    <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="privateChoice">
+        <label class="custom-control-label" for="privateChoice">Private</label>
     </div>
 
     <p></p>
 
+    <label for="addAnime">Add anime to your list</label>
+    <input placeholder="Search an anime"
+           id="addAnime"
+           [(ngModel)]="selectedValue"
+           [ngModelOptions]="{standalone: true}"
+           [typeahead]="animeList"
+           typeaheadOptionField="internationalTitle"
+           [typeaheadScrollable]="true"
+           (typeaheadOnSelect)="onSelect($event)" class="form-control">
+    <table class="table text-light">
+        <tbody>
+        <tr *ngFor="let l of newList; let i=index">
+            <th id="{{i+1}}" scope="row">{{l['internationalTitle']}}</th>
+            <th id="{{l}}" class="text-right delete">
+                <button (click)="onDelete($event)"  class="btn btn-xs btn-danger">X</button>
+            </th>
+        </tr>
+        </tbody>
+    </table>
 
+    <button id="sendNewList" class="btn btn-sm btn-success float-right" [disabled]="!createListForm.valid">Create</button>
+    <button id="cancelNewList" class="btn btn-sm btn-danger float-right">Cancel</button>
 
-</div>
-<div class="container w-75 text-light">
-    <div class="card">
-        <div class="col-7">
-            <label for="addAnime">Add anime to your list</label>
-            <input placeholder="Search an anime"
-                   id="addAnime"
-                   [(ngModel)]="selectedValue"
-                   [typeahead]="states"
-                   [typeaheadScrollable]="true"
-                   (typeaheadOnSelect)="onSelect($event)" class="form-control">
-            <table class="table text-light">
-                <tbody>
-                <tr *ngFor="let l of newList; let i=index">
-                    <th id="{{i+1}}" scope="row">{{l}}</th>
-                    <th id="{{l}}" class="text-right delete">
-                        <button (click)="onDelete($event)"  class="btn btn-xs btn-danger">X</button>
-                    </th>
-                </tr>
-                </tbody>
-            </table>
-
-        </div>
-    </div>
-</div>
-<div class="container w-75 text-light">
-    <div class="card">
-        <div class="col-7">
-            <button id="sendNewList" class="btn btn-sm btn-success float-right">Create</button>
-            <button id="cancelNewList" class="btn btn-sm btn-danger float-right">Cancel</button>
-        </div>
-    </div>
+</form>
 </div>

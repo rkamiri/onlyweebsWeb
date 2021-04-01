@@ -14,5 +14,6 @@ export class AnimeListComponent implements OnInit {
 
   ngOnInit(): void {
       this.animeList = this.route.snapshot.data.animeList;
+      console.log(this.animeList);
   }
 }

@@ -22,4 +22,8 @@ export class ListsService {
     getOneListContentByID(id): Observable<Anime[]> {
         return this.httpclient.get<Anime[]>('http://localhost:8080/lists/' + id + '/content');
     }
+
+    createList(value: object): Observable<any> {
+        return this.httpclient.post('http://localhost:8080/create-list', value);
+    }
 }

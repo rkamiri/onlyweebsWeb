@@ -59,7 +59,10 @@ const routes: Routes = [
             currentUser: AccountResolver
         }
     },
-    {path: 'create-list', component: CreateListComponent}
+    {path: 'create-list', component: CreateListComponent,
+        resolve: {
+            getAnimeList: AnimeListResolver
+        }}
 ];
 
 @NgModule({
