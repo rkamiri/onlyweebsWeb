@@ -7,6 +7,8 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {Lists} from '../shared/model/lists';
 import {ListsService} from '../shared/service/lists.service';
 import {UserService} from '../shared/service/user.service';
+import {Rating} from '../shared/model/rating';
+import {IsListedIn} from '../shared/model/is.listed.in';
 
 @Component({
     selector: 'app-create-list',
@@ -15,6 +17,7 @@ import {UserService} from '../shared/service/user.service';
 })
 export class CreateListComponent implements OnInit {
     animeList: Anime[];
+    thisList: Lists;
     selectedValue: string;
     selectedOption: any;
     newList = [];
@@ -29,21 +32,17 @@ export class CreateListComponent implements OnInit {
 
     ngOnInit(): void {
         this.animeList = this.route.snapshot.data.getAnimeList;
-        console.log(this.animeList);
     }
 
     onSelect(event: TypeaheadMatch): void {
         this.selectedOption = event.item;
         this.newList.push(event.item);
-        console.log(this.newList);
     }
 
     onDelete(event): void {
         const key = event.target.parentElement.id;
-        console.log(key);
         const index = this.newList.indexOf(key, 0);
         this.newList.splice(index, 1);
-        console.log(this.newList);
     }
 
     onSubmit(): void {
@@ -53,15 +52,22 @@ export class CreateListComponent implements OnInit {
     createList(): void {
         this.listService.createList(this.createListForm.value).subscribe(
             () => {
-                return this.router.navigate(['lists']);
-            } ,
-            (error) => {
-                return;
+                this.fillList();
+                return this.router.navigate(['/lists']);
             }
         );
     }
 
-
+    fillList(): void {
+        this.thisList = this.route.snapshot.data.lastList;
+        for (const i of this.newList) {
+            const ili: IsListedIn = {id: 666, list_id: this.thisList.id + 1, anime_id: i.id};
+            console.log('on est la');
+            this.listService.putAnimeInList(ili).subscribe(
+                () => {}
+            );
+        }
+    }
 }
 
 
