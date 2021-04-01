@@ -23,4 +23,8 @@ export class ListsService {
     getOneListContentByID(id): Observable<Anime[]> {
         return this.httpclient.get<Anime[]>(environment.backend + '/lists/' + id + '/content');
     }
+
+    createList(value: object): Observable<any> {
+        return this.httpclient.post(environment.backend + '/lists', value);
+    }
 }

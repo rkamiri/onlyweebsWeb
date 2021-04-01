@@ -17,6 +17,7 @@ import {ListsResolver} from './lists/lists.resolver';
 import {OnelistComponent} from './onelist/onelist.component';
 import {OneListResolver} from './onelist/onelist.resolver';
 import {ListContentResolver} from './onelist/listcontent.resolver';
+import {CreateListComponent} from './create-list/create-list.component';
 import {AnimeListResearchResolver} from './anime-list/anime.list.research.resolver';
 import {CurrentUserRatingResolver} from './anime/current.user.rating.resolver';
 import {GlobalRatingResolver} from './anime/global.rating.resolver';
@@ -71,7 +72,11 @@ const routes: Routes = [
         resolve: {
             currentUser: AccountResolver
         }
-    }
+    },
+    {path: 'create-list', component: CreateListComponent,
+        resolve: {
+            getAnimeList: AnimeListResolver
+        }}
 ];
 
 @NgModule({
