@@ -61,11 +61,6 @@ export class AnimeComponent implements OnDestroy, OnInit {
         const rating: Rating = {userId: this.currentUser.id, animeId: this.anime.id, rate: this.rateForm.controls.rate.value};
         console.log(rating);
         this.ratingService.putCurrentUserRatingOfAnAnime(rating).subscribe(
-            (n) => {
-                console.log(n);
-            }, (error => {
-                console.log(error);
-            })
-        );
+            () => { location.reload(); });
     }
 }
