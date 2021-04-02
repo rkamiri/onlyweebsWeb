@@ -6,10 +6,17 @@
   margin-right: 25px;
 }
 
-#searchBlock{
-    margin-top:1vh;
-    margin-right: 5vw;
+.navbar-dark .navbar-nav .is-active {
+    color: #097ce7;
 }
+
+#searchBlock{
+    margin-top:1.5vh;
+    margin-right: 5vw;
+    width: 20vw;
+}
+
+
 
 #searchInput {
     background-color: dimgrey;
@@ -33,6 +40,28 @@
 
 #homeImage{
     height: 6vh;
+}
+
+#dropdownBasic1{
+    margin-right: 2vw;
+    color: rgba(255, 255, 255, 0.5);
+    border: none;
+}
+
+.btn-nav-link:hover{
+    background-color: #3e4042;
+}
+
+.dropdown-menu{
+    background-color: #3e4042;
+}
+
+.dropdown-nav-link{
+    color: #e4e4e4;
+}
+
+.dropdown-nav-link:hover {
+    color: #097ce7;
 }
 
 @media screen and (max-width: 576px) {
