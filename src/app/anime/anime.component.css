@@ -76,6 +76,18 @@ p{
 h1{
     font-size: 2vw;
 }
+#ratingBtn{
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+}
+#rate{
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+#ratingGroup{
+    padding-bottom: 2vh;
+}
+
 
 @media screen and (max-width: 576px) {
     p{
