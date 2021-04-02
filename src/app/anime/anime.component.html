@@ -32,14 +32,6 @@
                 </div>
             </div>
 
-            <div *ngIf="isUserAuthenticated">
-                <form [formGroup]="rateForm" (ngSubmit)="updateRating()">
-                    <label for="rate">Rate /100 :</label>
-                    <input type="number" min="0" max="100" class="form-control" id="rate" formControlName="rate" placeholder="Enter your rate">
-                    <button class="btn btn-primary">Update Personal Rate</button>
-                </form>
-            </div>
-
             <div class="row">
                 <p class="genreTag">Genre: genre1, genre2, genre3</p>
                 <p>tag: tag1, tag2, tag3</p>
@@ -59,8 +51,16 @@
                 <p class="detailsContent">Japanese Name: {{ anime.title }}</p>
             </div>
             <div class="row">
-                <h1 class="detailsContent">Global Rate /100 : {{ globalRate }} </h1>
-                <h1 class="detailsContent">Rating : X/5 </h1>
+                <h1 class="detailsContent">Global Rate : {{ globalRate }}/10</h1>
+                <h1 *ngIf="isUserAuthenticated" class="detailsContent">My Rating: {{currentRate}}/10 </h1>
+            </div>
+            <div *ngIf="isUserAuthenticated">
+                <form [formGroup]="rateForm" (ngSubmit)="updateRating()">
+                    <div class="input-group-prepend" id="ratingGroup">
+                        <button id="ratingBtn" class="btn btn-primary">{{currentRate ? 'Update' : 'Add'}}</button>
+                        <input type="number" class="form-control" id="rate" formControlName="rate" min="0" max="10" placeholder="Enter your rate" (ngModelChange)="validateValue($event)">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
