@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable, Subscription} from 'rxjs';
+import {interval, Observable, Subscription} from 'rxjs';
 import {UserService} from '../shared/service/user.service';
 import {Router} from '@angular/router';
 import {SearchService} from '../shared/service/search.service';
@@ -9,9 +9,9 @@ import {NgbTypeaheadSelectItemEvent} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
-  selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+    selector: 'app-nav',
+    templateUrl: './nav.component.html',
+    styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
     isNavbarCollapsed = true;
@@ -35,6 +35,9 @@ export class NavComponent implements OnInit {
     constructor(  private router: Router, private userService: UserService, private searchService: SearchService) { }
 
     ngOnInit(): void {
+        const source = interval(10000);
+        source.subscribe(val => this.userService.authListener());
+
         this.authSubscription = this.userService.authListener().subscribe(state => {
             this.isUserAuthenticated = state;
         });
