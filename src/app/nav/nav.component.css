@@ -6,6 +6,10 @@
   margin-right: 25px;
 }
 
+.navbar-dark .navbar-nav .is-active {
+    color: #097ce7;
+}
+
 #searchBlock{
     margin-top:1.5vh;
     margin-right: 5vw;

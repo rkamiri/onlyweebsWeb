@@ -38,6 +38,7 @@ export class NavComponent implements OnInit {
     ngOnInit(): void {
         const source = interval(10000);
         source.subscribe(val => this.userService.authListener());
+
         this.authSubscription = this.userService.authListener().subscribe(state => {
             this.isUserAuthenticated = state;
             this.userService.getCurrentUser().subscribe((user) => {
