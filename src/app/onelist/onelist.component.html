@@ -17,19 +17,9 @@
         <tbody class="table-dark">
         <tr *ngFor="let l of animeList; let i=index">
             <td id="{{i+1}}">{{i + 1}}</td>
-            <td>{{l.internationalTitle}}</td>
-            <td>0/98
-                <!--<button (click)="l.seen=+l.seen-1" id="removeView" class="btn btn-xs btn-secondary">
-                    -
-                </button>
-                <button (click)="l.seen=+l.seen+1" id="addView" class="btn btn-xs btn-secondary">
-                    +
-                </button>-->
-            </td>
-
-            <td>
-                <button id="removeAnime" class="btn btn-xs btn-danger">X</button>
-            </td>
+            <td><a [routerLink]="['/animes', l.id]">{{l.internationalTitle}}</a></td>
+            <td>0/98</td>
+            <td><button id="removeAnime" class="btn btn-xs btn-danger">X</button></td>
         </tr>
         <tr class="">
             <td>

@@ -7,7 +7,8 @@
 }
 
 a {
-    color: red;
+    color: white;
+    text-decoration: none;
 }
 
 .btn-group-xs > .btn, .btn-xs {
