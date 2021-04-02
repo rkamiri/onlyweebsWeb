@@ -27,7 +27,20 @@ export class UserService {
         this.authEvent.next(state);
     }
     authListener(): Observable<any>{
-        this.emitAuthStatus(sessionStorage.getItem('isConnected') === 'true');
+        let isConnected = false;
+        this.getCurrentUser().subscribe(
+            (n) => {
+                if (n){
+                    if (n.id){
+                        isConnected = true;
+                    }
+                }
+                this.emitAuthStatus(isConnected);
+            },
+            (error) => {
+                this.emitAuthStatus(isConnected);
+            }
+        );
         return this.authEvent.asObservable();
     }
     logout(): void {
