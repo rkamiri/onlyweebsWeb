@@ -53,6 +53,7 @@
 
 option {
     background-color: rgba(40, 43, 48, 0.75);
+    color: white;
 }
 #animeTitle{
     font-size: 2vw;
