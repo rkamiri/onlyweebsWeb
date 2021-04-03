@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
 import {User} from '../shared/model/user';
 import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../shared/service/user.service';
+import {environment} from '../../environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
     selector: 'app-account',
@@ -17,7 +19,7 @@ export class AccountComponent implements OnInit {
     passwordForm: FormGroup;
     private newPassWordUser: User;
 
-    constructor(private route: ActivatedRoute, private router: Router,  private userService: UserService) {
+    constructor(private route: ActivatedRoute, private router: Router,  private userService: UserService, private http: HttpClient) {
         this.personalInfoForm = new FormGroup({
             id: new FormControl(''),
             username: new FormControl(''),
@@ -103,6 +105,18 @@ export class AccountComponent implements OnInit {
                     console.log(error);
                 }
             );
+        }
+    }
+
+    fileChange(event): void {
+        const fileList: FileList = event.target.files;
+        if (fileList.length > 0) {
+            const file: File = fileList[0];
+            const formData: FormData = new FormData();
+            formData.append('uploadFile', file, file.name);
+            const headers = new HttpHeaders({Accept : 'application/json'});
+            const options =  { headers };
+            this.http.post(`${environment.backend + '/upload/image'}`, formData, options).subscribe(data => console.log('success'));
         }
     }
 }

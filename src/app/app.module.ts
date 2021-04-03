@@ -25,6 +25,7 @@ import { CreateListComponent } from './create-list/create-list.component';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
         HttpClientModule,
         SharedModule,
         TypeaheadModule.forRoot(),
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        FileUploadModule
     ],
   providers: [
       [
