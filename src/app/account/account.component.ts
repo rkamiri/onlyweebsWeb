@@ -5,7 +5,9 @@ import {ActivatedRoute} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../shared/service/user.service';
 import {environment} from '../../environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Image} from '../shared/model/image';
+import {ImageService} from '../shared/service/image.service';
 
 @Component({
     selector: 'app-account',
@@ -18,8 +20,14 @@ export class AccountComponent implements OnInit {
     bioForm: FormGroup;
     passwordForm: FormGroup;
     private newPassWordUser: User;
+    public profilePicture: Image;
 
-    constructor(private route: ActivatedRoute, private router: Router,  private userService: UserService, private http: HttpClient) {
+    constructor(private route: ActivatedRoute,
+                private router: Router,
+                private userService: UserService,
+                private http: HttpClient,
+                private imageService: ImageService) {
+
         this.personalInfoForm = new FormGroup({
             id: new FormControl(''),
             username: new FormControl(''),
@@ -47,28 +55,33 @@ export class AccountComponent implements OnInit {
 
     ngOnInit(): void {
         this.currentUser = this.route.snapshot.data.currentUser;
-        this.personalInfoForm.controls.id.setValue( this.currentUser.id);
-        this.personalInfoForm.controls.username.setValue( this.currentUser.username);
-        this.personalInfoForm.controls.firstname.setValue( this.currentUser.firstname);
-        this.personalInfoForm.controls.lastname.setValue( this.currentUser.lastname);
-        this.personalInfoForm.controls.email.setValue( this.currentUser.email);
-        this.personalInfoForm.controls.bio.setValue( this.currentUser.bio);
-        this.bioForm.controls.id.setValue( this.currentUser.id);
-        this.bioForm.controls.bio.setValue( this.currentUser.bio);
-        this.bioForm.controls.username.setValue( this.currentUser.username);
-        this.bioForm.controls.firstname.setValue( this.currentUser.firstname);
-        this.bioForm.controls.lastname.setValue( this.currentUser.lastname);
-        this.bioForm.controls.email.setValue( this.currentUser.email);
+        this.getProfileImage();
+        this.personalInfoForm.controls.id.setValue(this.currentUser.id);
+        this.personalInfoForm.controls.username.setValue(this.currentUser.username);
+        this.personalInfoForm.controls.firstname.setValue(this.currentUser.firstname);
+        this.personalInfoForm.controls.lastname.setValue(this.currentUser.lastname);
+        this.personalInfoForm.controls.email.setValue(this.currentUser.email);
+        this.personalInfoForm.controls.bio.setValue(this.currentUser.bio);
+        this.bioForm.controls.id.setValue(this.currentUser.id);
+        this.bioForm.controls.bio.setValue(this.currentUser.bio);
+        this.bioForm.controls.username.setValue(this.currentUser.username);
+        this.bioForm.controls.firstname.setValue(this.currentUser.firstname);
+        this.bioForm.controls.lastname.setValue(this.currentUser.lastname);
+        this.bioForm.controls.email.setValue(this.currentUser.email);
 
-        this.passwordForm.controls.id.setValue( this.currentUser.id);
+        this.passwordForm.controls.id.setValue(this.currentUser.id);
         this.newPassWordUser = this.currentUser;
+        // this.profilePicture = this.route.snapshot.data.profilePicture;
+    }
 
+    getProfileImage(): void {
+        this.imageService.getImageById(this.currentUser.id).subscribe((n) => this.profilePicture = n);
     }
 
     updatePersonalInfos(): void {
         this.userService.updateCurrentUser(this.personalInfoForm.value).subscribe(
             (data) => {
-                if (data.username !== this.currentUser.username){
+                if (data.username !== this.currentUser.username) {
                     this.userService.logout();
                     return this.router.navigate(['login']);
                 }
@@ -114,9 +127,11 @@ export class AccountComponent implements OnInit {
             const file: File = fileList[0];
             const formData: FormData = new FormData();
             formData.append('uploadFile', file, file.name);
-            const headers = new HttpHeaders({Accept : 'application/json'});
-            const options =  { headers };
-            this.http.post(`${environment.backend + '/upload/image'}`, formData, options).subscribe(data => console.log('success'));
+            const headers = new HttpHeaders({Accept: 'application/json'});
+            const options = {headers};
+            this.http.post(`${environment.backend + '/upload/image/' + this.currentUser.id}`, formData, options)
+                .subscribe(data => console.log('success'));
+            location.reload();
         }
     }
 }

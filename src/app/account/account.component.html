@@ -6,8 +6,7 @@
                     <div class="account-settings">
                         <div class="user-profile">
                             <div class="user-avatar">
-                                <img src="https://cdn.pixabay.com/photo/2015/12/22/20/42/face-1104763_960_720.jpg"
-                                     alt="Maxwell Admin">
+                                <img *ngIf="profilePicture !== undefined" src="data:image/png;base64,{{profilePicture.content}}" alt="profile image"/>
                             </div>
                             <h5 class="user-name">{{ currentUser.username}}</h5>
                             <h6 class="user-email">{{ currentUser.email }}</h6>
