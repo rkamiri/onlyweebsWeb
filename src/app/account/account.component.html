@@ -6,7 +6,7 @@
                     <div class="account-settings">
                         <div class="user-profile">
                             <div class="user-avatar">
-                                <img src="https://cdn.pixabay.com/photo/2015/12/22/20/42/face-1104763_960_720.jpg" alt="Maxwell Admin">
+                                <img *ngIf="profilePicture !== undefined" src="data:image/png;base64,{{profilePicture.content}}" alt="profile image"/>
                             </div>
                             <h5 class="user-name">{{ currentUser.username}}</h5>
                             <h6 class="user-email">{{ currentUser.email }}</h6>
@@ -15,6 +15,7 @@
                             <h5 class="mb-2 text-primary">About</h5>
                             <p>{{currentUser.bio}}</p>
                         </div>
+                        <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept="image/*">
                     </div>
                 </div>
             </div>
@@ -30,32 +31,36 @@
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="fullName">Username</label>
-                                    <input type="text" class="form-control" id="fullName" formControlName="username" placeholder="Enter username">
+                                    <input type="text" class="form-control" id="fullName" formControlName="username"
+                                           placeholder="Enter username">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="eMail">Email</label>
-                                    <input type="email" class="form-control" id="eMail" formControlName="email" placeholder="Enter email ID">
+                                    <input type="email" class="form-control" id="eMail" formControlName="email"
+                                           placeholder="Enter email ID">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="firstname">First Name</label>
-                                    <input type="text" class="form-control" id="firstname" formControlName="firstname" placeholder="Enter First Name">
+                                    <input type="text" class="form-control" id="firstname" formControlName="firstname"
+                                           placeholder="Enter First Name">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="lastname">Last Name</label>
-                                    <input type="url" class="form-control" id="lastname" formControlName="lastname" placeholder="Enter Last Name">
+                                    <input type="url" class="form-control" id="lastname" formControlName="lastname"
+                                           placeholder="Enter Last Name">
                                 </div>
                             </div>
                         </div>
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="text-right">
-                                    <button  class="btn btn-primary">Update Personal Info</button>
+                                    <button class="btn btn-primary">Update Personal Info</button>
                                 </div>
                             </div>
                         </div>
@@ -63,24 +68,25 @@
                 </div>
                 <div class="card-body">
                     <form [formGroup]="bioForm" (ngSubmit)="updateBio()">
-                    <div class="row gutters">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <h6 class="mb-3 text-primary">Update Bio</h6>
-                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mb-3 text-primary">Update Bio</h6>
+                            </div>
 
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label for="bio"></label><textarea class="form-control" id="bio" formControlName="bio" ></textarea>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="bio"></label><textarea class="form-control" id="bio"
+                                                                       formControlName="bio"></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row gutters">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="text-right">
-                                <button class="btn btn-primary">Update Bio</button>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+                                    <button class="btn btn-primary">Update Bio</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </form>
                 </div>
                 <div class="card-body">
@@ -98,13 +104,15 @@
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="newpwd">PassWord</label>
-                                    <input type="password" class="form-control" id="newpwd" formControlName="newPasswordA" placeholder="Enter New PassWord">
+                                    <input type="password" class="form-control" id="newpwd"
+                                           formControlName="newPasswordA" placeholder="Enter New PassWord">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="confirmNewpwd">Confirm PassWord</label>
-                                    <input type="password" class="form-control" id="confirmNewpwd" formControlName="newPasswordB" placeholder="Confirm New PassWord">
+                                    <input type="password" class="form-control" id="confirmNewpwd"
+                                           formControlName="newPasswordB" placeholder="Confirm New PassWord">
                                 </div>
                             </div>
                         </div>
