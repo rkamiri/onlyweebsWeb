@@ -62,7 +62,6 @@ export class CreateListComponent implements OnInit {
         this.thisList = this.route.snapshot.data.lastList;
         for (const i of this.newList) {
             const ili: IsListedIn = {id: 666, list_id: this.thisList.id + 1, anime_id: i.id};
-            console.log('on est la');
             this.listService.putAnimeInList(ili).subscribe(
                 () => {}
             );

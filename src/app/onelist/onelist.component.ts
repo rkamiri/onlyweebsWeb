@@ -32,8 +32,6 @@ export class OnelistComponent implements OnInit {
     ngOnInit(): void {
         this.listInfo = this.route.snapshot.data.list;
         this.animeList = this.route.snapshot.data.listContent;
-        console.log(this.listInfo);
-        console.log(this.animeList);
     }
 
     open(content: any): void {

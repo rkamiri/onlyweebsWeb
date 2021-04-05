@@ -22,9 +22,7 @@ export class RegisterComponent implements OnInit {
         });
     }
 
-    ngOnInit(): void {
-        console.log(navigator.language);
-    }
+    ngOnInit(): void {}
 
     onSubmit(): void {
         this.registerUser();

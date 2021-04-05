@@ -86,10 +86,6 @@ export class AccountComponent implements OnInit {
                     return this.router.navigate(['login']);
                 }
                 location.reload();
-
-            },
-            (error) => {
-                console.log(error);
             }
         );
     }
@@ -98,9 +94,6 @@ export class AccountComponent implements OnInit {
         this.userService.updateCurrentUser(this.bioForm.value).subscribe(
             (data) => {
                 location.reload();
-            },
-            (error) => {
-                console.log(error);
             }
         );
     }
@@ -113,9 +106,6 @@ export class AccountComponent implements OnInit {
                 (data) => {
                     this.userService.logout();
                     return this.router.navigate(['login']);
-                },
-                (error) => {
-                    console.log(error);
                 }
             );
         }
@@ -129,8 +119,7 @@ export class AccountComponent implements OnInit {
             formData.append('uploadFile', file, file.name);
             const headers = new HttpHeaders({Accept: 'application/json'});
             const options = {headers};
-            this.http.post(`${environment.backend + '/upload/image/' + this.currentUser.id}`, formData, options)
-                .subscribe(data => console.log('success'));
+            this.http.post(`${environment.backend + '/upload/image/' + this.currentUser.id}`, formData, options).subscribe();
             location.reload();
         }
     }

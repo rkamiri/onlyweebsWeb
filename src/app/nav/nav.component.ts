@@ -25,7 +25,7 @@ export class NavComponent implements OnInit {
             debounceTime(200),
             switchMap((term: string) => {
                 const searchArray = this.searchService.search(term);
-                searchArray.subscribe(result => {this.searchArray = result, console.log(result); }, (error) => {this.searchArray = []; });
+                searchArray.subscribe(result => {this.searchArray = result; });
                 return term === '' ? []
                     : searchArray;
             })
