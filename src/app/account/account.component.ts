@@ -68,14 +68,12 @@ export class AccountComponent implements OnInit {
         this.bioForm.controls.firstname.setValue(this.currentUser.firstname);
         this.bioForm.controls.lastname.setValue(this.currentUser.lastname);
         this.bioForm.controls.email.setValue(this.currentUser.email);
-
         this.passwordForm.controls.id.setValue(this.currentUser.id);
         this.newPassWordUser = this.currentUser;
-        // this.profilePicture = this.route.snapshot.data.profilePicture;
     }
 
     getProfileImage(): void {
-        this.imageService.getImageById(this.currentUser.id).subscribe((n) => this.profilePicture = n);
+        this.imageService.getProfilePicture(this.currentUser.id).subscribe((n) => this.profilePicture = n);
     }
 
     updatePersonalInfos(): void {

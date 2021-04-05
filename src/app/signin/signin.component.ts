@@ -34,9 +34,6 @@ export class SigninComponent implements OnInit {
                 sessionStorage.setItem('isConnected', 'true');
                 this.userService.emitAuthStatus(true);
                 return this.router.navigate(['account']);
-            },
-            (error) => {
-                return error;
             }
         );
     }
