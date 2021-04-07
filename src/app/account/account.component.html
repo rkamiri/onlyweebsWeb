@@ -7,6 +7,8 @@
                         <div class="user-profile">
                             <div class="user-avatar">
                                 <img *ngIf="profilePicture !== undefined" src="data:image/png;base64,{{profilePicture.content}}" alt="profile image"/>
+                                <input id="uploadImage" type="file" (change)="fileChange($event)" placeholder="Upload file" accept="image/*">
+                                <input id="uploadImageButton" class="btn btn-warning" type="button" value="Browse..." onclick="document.getElementById('uploadImage').click();" />
                             </div>
                             <h5 class="user-name">{{ currentUser.username}}</h5>
                             <h6 class="user-email">{{ currentUser.email }}</h6>
@@ -15,7 +17,6 @@
                             <h5 class="mb-2 text-primary">About</h5>
                             <p>{{currentUser.bio}}</p>
                         </div>
-                        <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept="image/*">
                     </div>
                 </div>
             </div>
