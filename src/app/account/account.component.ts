@@ -117,6 +117,6 @@ export class AccountComponent implements OnInit {
         const headers = new HttpHeaders({Accept: 'application/json'});
         const options = {headers};
         this.http.post(`${environment.backend + '/upload/image/' + this.currentUser.id}`, formData, options).subscribe();
-        window.location.reload();
+        setTimeout(location.reload.bind(location), 500);
     }
 }
