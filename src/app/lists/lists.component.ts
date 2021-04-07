@@ -14,8 +14,5 @@ export class ListsComponent implements OnInit {
 
     ngOnInit(): void {
         this.lists = this.route.snapshot.data.allLists;
-        console.log(this.lists);
     }
-
-
 }

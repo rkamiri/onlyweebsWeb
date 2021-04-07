@@ -25,7 +25,6 @@ export class SigninComponent implements OnInit {
     }
 
     onSubmit(): void {
-        console.warn(this.loginForm.value);
         this.loginUser();
     }
 
@@ -34,11 +33,7 @@ export class SigninComponent implements OnInit {
             () => {
                 sessionStorage.setItem('isConnected', 'true');
                 this.userService.emitAuthStatus(true);
-                console.log('je suis login');
                 return this.router.navigate(['account']);
-            },
-            (error) => {
-                return error;
             }
         );
     }

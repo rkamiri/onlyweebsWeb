@@ -64,21 +64,15 @@ export class AnimeComponent implements OnDestroy, OnInit {
 
     updateRating(): void {
         const rating: Rating = {userId: this.currentUser.id, animeId: this.anime.id, rate: this.rateForm.controls.rate.value};
-        console.log(rating);
-        this.ratingService.putCurrentUserRatingOfAnAnime(rating).subscribe(
-            () => { location.reload(); });
+        this.ratingService.putCurrentUserRatingOfAnAnime(rating).subscribe(() => { location.reload(); });
     }
 
     validateValue(event: number): void {
         if (event > 10) {
-            if (event >= 100 && event < 200){
+            if (event >= 100 && event < 200) {
                 event = Number(event.toString().slice(0, 2));
-                console.log('here ' + event);
-
             }
-            else{
-                event = Number(event.toString().slice(0, 1));
-            }
+            else { event = Number(event.toString().slice(0, 1)); }
             this.rateForm.setValue({rate: event});
         }
         if (event < 0) {
