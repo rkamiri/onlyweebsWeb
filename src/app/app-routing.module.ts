@@ -14,7 +14,7 @@ import {AnimeListComponent} from './anime-list/anime-list.component';
 import {AnimeListResolver} from './anime-list/anime.list.resolver';
 import {AccountResolver} from './account/account.resolver';
 import {ListsResolver} from './lists/lists.resolver';
-import {OnelistComponent} from './onelist/onelist.component';
+import {OneListComponent} from './onelist/one-list.component';
 import {OneListResolver} from './onelist/onelist.resolver';
 import {ListContentResolver} from './onelist/listcontent.resolver';
 import {CreateListComponent} from './create-list/create-list.component';
@@ -58,10 +58,11 @@ const routes: Routes = [
         }
     },
     {
-        path: 'lists/:id', component: OnelistComponent,
+        path: 'lists/:id', component: OneListComponent,
         resolve: {
             list: OneListResolver,
-            listContent: ListContentResolver
+            listContent: ListContentResolver,
+            getAnimeList: AnimeListResolver
         }
     },
     {path: 'login', component: SigninComponent},

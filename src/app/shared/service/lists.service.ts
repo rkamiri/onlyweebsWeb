@@ -32,6 +32,10 @@ export class ListsService {
         return this.httpclient.put(environment.backend + '/lists', value);
     }
 
+    deleteAnimeInList(listId: number, animeId: number): Observable<any> {
+        return this.httpclient.delete(environment.backend + '/lists/' + listId + '/' + animeId);
+    }
+
     getLastList(): Observable<Lists> {
         return this.httpclient.get<Lists>(environment.backend + '/lists/getlastlist');
     }

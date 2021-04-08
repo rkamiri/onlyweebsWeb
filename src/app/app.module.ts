@@ -20,7 +20,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpRequestInterceptor} from './HttpRequestInterceptor';
 import { AnimeListComponent } from './anime-list/anime-list.component';
 import {SharedModule} from './shared/shared.module';
-import { OnelistComponent } from './onelist/onelist.component';
+import { OneListComponent } from './onelist/one-list.component';
 import { CreateListComponent } from './create-list/create-list.component';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,7 +43,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     RegisterComponent,
     AccountComponent,
     AnimeListComponent,
-    OnelistComponent,
+    OneListComponent,
     CreateListComponent
   ],
     imports: [

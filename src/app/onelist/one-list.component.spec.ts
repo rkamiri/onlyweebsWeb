@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OnelistComponent } from './onelist.component';
+import { OneListComponent } from './one-list.component';
 
 describe('OnelistComponent', () => {
-  let component: OnelistComponent;
-  let fixture: ComponentFixture<OnelistComponent>;
+  let component: OneListComponent;
+  let fixture: ComponentFixture<OneListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OnelistComponent ]
+      declarations: [ OneListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OnelistComponent);
+    fixture = TestBed.createComponent(OneListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

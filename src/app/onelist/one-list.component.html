@@ -19,30 +19,42 @@
             <td id="{{i+1}}">{{i + 1}}</td>
             <td><a [routerLink]="['/animes', l.id]">{{l.internationalTitle}}</a></td>
             <td>0/98</td>
-            <td><button id="removeAnime" class="btn btn-xs btn-danger">X</button></td>
-        </tr>
-        <tr class="">
             <td>
-                <button class="btn btn-sm btn-light" (click)="open(content)">+</button>
+                <button (click)="onDelete(l.id)" id="removeAnime" class="btn btn-xs btn-danger">X</button>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
         </tr>
+        <!-- <tr class="">
+             <td>
+                 <button class="btn btn-sm btn-light" (click)="open(content)">+</button>
+             </td>
+             <td></td>
+             <td></td>
+             <td></td>
+         </tr>-->
         </tbody>
     </table>
+    <form class="container w-75 text-light" [formGroup]="addAnimeForm" (ngSubmit)="onSubmit()">
+        <label for="addAnime">Add anime to your list</label>
+        <input placeholder="Add an anime" id="addAnime" [(ngModel)]="selectedValue"
+               [ngModelOptions]="{standalone: true}" [typeahead]="fullAnimeList"
+               typeaheadOptionField="internationalTitle" [typeaheadScrollable]="true"
+               (typeaheadOnSelect)="onSelect($event)" class="form-control">
+        <button id="sendNewList" class="btn btn-sm btn-success float-right">
+            Create
+        </button>
+    </form>
 </div>
 
-<div class="container w-50" id="reviews">
+<!--<div class="container w-50" id="reviews">
     <div id="review_title" class="container text-center"><h6>Reviews</h6></div>
     <ul class="list-group">
         <li class="list-group-item">Cras justo odio</li>
         <li class="list-group-item">Dapibus ac facilisis in</li>
     </ul>
 </div>
-<br>
+<br>-->
 
-<ng-template #content let-modal>
+<!--<ng-template #content let-modal>
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Add an anime</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -65,4 +77,4 @@
     <div class="modal-footer">
         <button type="button" class="btn btn-success" (click)="modal.close('Save click')">Add</button>
     </div>
-</ng-template>
+</ng-template>-->

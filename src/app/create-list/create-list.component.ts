@@ -6,8 +6,6 @@ import {Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Lists} from '../shared/model/lists';
 import {ListsService} from '../shared/service/lists.service';
-import {UserService} from '../shared/service/user.service';
-import {Rating} from '../shared/model/rating';
 import {IsListedIn} from '../shared/model/is.listed.in';
 
 @Component({
