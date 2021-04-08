@@ -112,14 +112,13 @@ export class AccountComponent implements OnInit {
     fileChange(event): void {
         const fileList: FileList = event.target.files;
         const file: File = fileList[0];
-        if (file.size > 250000) {
-        } else {
-            const formData: FormData = new FormData();
-            formData.append('uploadFile', file, file.name);
-            const headers = new HttpHeaders({Accept: 'application/json'});
-            const options = {headers};
-            this.http.post(environment.backend + '/upload/image/' + this.currentUser.id, formData, options).subscribe();
-            setTimeout(location.reload.bind(location), 500);
-        }
+        const formData: FormData = new FormData();
+        formData.append('uploadFile', file, file.name);
+        const headers = new HttpHeaders({Accept: 'application/json'});
+        const options = {headers};
+        this.http.post(environment.backend + '/upload/image/' + this.currentUser.id, formData, options)
+            .subscribe(() => {
+                setTimeout(location.reload.bind(location), 1);
+            });
     }
 }
