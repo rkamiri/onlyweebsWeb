@@ -6,7 +6,7 @@
                     <div class="account-settings">
                         <div class="user-profile">
                             <div class="user-avatar">
-                                <img *ngIf="profilePicture !== undefined" src="data:image/jpg;base64,{{profilePicture.content}}" alt="profile image" onclick="document.getElementById('uploadImage').click()" />
+                                <img *ngIf="profilePicture !== undefined" src="data:image/webp;base64,{{profilePicture.content}}" alt="profile image" onclick="document.getElementById('uploadImage').click()" />
                                 <input id="uploadImage" type="file" (change)="fileChange($event)" placeholder="Upload file" accept="image/*">
                             </div>
                             <h5 class="user-name">{{ currentUser.username}}</h5>
