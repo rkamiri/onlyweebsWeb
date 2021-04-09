@@ -5,6 +5,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../shared/model/user';
 import {RatingService} from '../shared/service/rating.service';
 import {Rating} from '../shared/model/rating';
+import {CommentService} from "../shared/service/comment.service";
 
 @Component({
     selector: 'app-anime',
@@ -17,18 +18,28 @@ export class AnimeComponent implements OnDestroy, OnInit {
     public currentRate: number;
     public globalRate: number;
     rateForm: FormGroup;
+    commentForm: FormGroup;
     isUserAuthenticated: boolean;
     userHasRated: string;
     navigationSubscription;
+    comments;
 
-    constructor(private router: Router, private activatedRoute: ActivatedRoute, private ratingService: RatingService) {
+    constructor(private router: Router, private activatedRoute: ActivatedRoute, private ratingService: RatingService,
+                private commentsService: CommentService) {
         this.navigationSubscription = this.router.events.subscribe((e: any) => {
             if (e instanceof NavigationEnd) {
                 this.initialiseAnime();
+                this.commentsService.getCommentsForAnime(this.anime.id).subscribe((comments) => {
+                    this.comments = comments;
+                    console.log(this.comments);
+                });
             }
         });
         this.rateForm = new FormGroup({
             rate: new FormControl('')
+        });
+        this.commentForm = new FormGroup({
+            comment: new FormControl('')
         });
         this.userHasRated = 'Add Personal Rate';
     }
@@ -78,5 +89,12 @@ export class AnimeComponent implements OnDestroy, OnInit {
         if (event < 0) {
             this.rateForm.setValue({rate: 0});
         }
+    }
+
+    sendComment(): void {
+        this.commentsService.putCommentForAnime({animeId: this.anime.id, userId: 19,
+            comment: this.commentForm.get('comment').value.toString()}).subscribe((n) => {
+                location.reload();
+        });
     }
 }

@@ -89,6 +89,31 @@ h1{
     padding-bottom: 2vh;
 }
 
+.darker {
+    background-color: #3e4042;
+    float: right;
+    border-radius: 5px;
+    padding-left: 40px;
+    padding-right: 30px;
+    padding-top: 10px
+}
+
+.comment {
+    background-color: rgb(5, 35, 76);
+    float: left;
+    border-radius: 5px;
+    padding-left: 40px;
+    padding-right: 30px;
+    padding-top: 10px
+}
+
+.comment h4,
+.comment span,
+.darker h4,
+.darker span {
+    display: inline
+}
+
 
 @media screen and (max-width: 576px) {
     p{
@@ -135,29 +160,6 @@ h1{
     }
 }
 
-/*@media screen and (max-width: 768px) {
 
 
-    #divDetails{
-        border: solid 1px white;
-        margin-left: 5vw;
-    }
 
-
-    #center{
-        border: solid 1px white ;
-    }
-
-    #select{
-        width: 10vw;
-
-        font-size: 0.8vw;
-    }
-
-    #addToList{
-        width: 5vw;
-        font-size: 1vw;
-    }
-
-}
- */
