@@ -20,13 +20,13 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpRequestInterceptor} from './HttpRequestInterceptor';
 import {AnimeListComponent} from './anime-list/anime-list.component';
 import {SharedModule} from './shared/shared.module';
-import {CreateListComponent} from './create-list/create-list.component';
 import {TypeaheadModule} from 'ngx-bootstrap/typeahead';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {FileUploadModule} from 'ng2-file-upload';
 import {OnelistComponent} from './onelist/onelist.component';
 import { MylistsComponent } from './mylists/mylists.component';
+import { ListCreateComponent } from './list-create/list-create.component';
 
 
 @NgModule({
@@ -44,9 +44,9 @@ import { MylistsComponent } from './mylists/mylists.component';
         RegisterComponent,
         AccountComponent,
         AnimeListComponent,
-        CreateListComponent,
         OnelistComponent,
-        MylistsComponent
+        MylistsComponent,
+        ListCreateComponent
     ],
     imports: [
         BrowserModule,

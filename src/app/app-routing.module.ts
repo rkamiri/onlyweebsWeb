@@ -17,13 +17,13 @@ import {ListsResolver} from './lists/lists.resolver';
 import {OnelistComponent} from './onelist/onelist.component';
 import {OneListResolver} from './onelist/onelist.resolver';
 import {ListContentResolver} from './onelist/listcontent.resolver';
-import {CreateListComponent} from './create-list/create-list.component';
 import {AnimeListResearchResolver} from './anime-list/anime.list.research.resolver';
 import {CurrentUserRatingResolver} from './anime/current.user.rating.resolver';
 import {GlobalRatingResolver} from './anime/global.rating.resolver';
-import {LastListsResolver} from './create-list/last.list.resolver';
+import {LastListsResolver} from './list-create/last.list.resolver';
 import {MylistsComponent} from './mylists/mylists.component';
 import {MylistsResolver} from './mylists/mylists.resolver';
+import {ListCreateComponent} from './list-create/list-create.component';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -78,7 +78,7 @@ const routes: Routes = [
             currentUser: AccountResolver
         }
     },
-    {path: 'create-list', component: CreateListComponent,
+    {path: 'list-create', component: ListCreateComponent,
         resolve: {
             getAnimeList: AnimeListResolver,
             getCurrentList: ListsResolver,

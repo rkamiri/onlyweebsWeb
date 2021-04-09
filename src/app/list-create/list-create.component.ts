@@ -1,19 +1,18 @@
 import {Component, OnInit} from '@angular/core';
-import {TypeaheadMatch} from 'ngx-bootstrap/typeahead/typeahead-match.class';
 import {Anime} from '../shared/model/anime';
-import {ActivatedRoute} from '@angular/router';
-import {Router} from '@angular/router';
-import {FormControl, FormGroup} from '@angular/forms';
 import {Lists} from '../shared/model/lists';
+import {FormControl, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ListsService} from '../shared/service/lists.service';
+import {TypeaheadMatch} from 'ngx-bootstrap/typeahead/typeahead-match.class';
 import {IsListedIn} from '../shared/model/is.listed.in';
 
 @Component({
-    selector: 'app-create-list',
-    templateUrl: './create-list.component.html',
-    styleUrls: ['./create-list.component.css']
+    selector: 'app-list-create',
+    templateUrl: './list-create.component.html',
+    styleUrls: ['./list-create.component.css']
 })
-export class CreateListComponent implements OnInit {
+export class ListCreateComponent implements OnInit {
     animeList: Anime[];
     thisList: Lists;
     selectedValue: string;
@@ -74,7 +73,3 @@ export class CreateListComponent implements OnInit {
         }
     }
 }
-
-
-
-
