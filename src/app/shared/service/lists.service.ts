@@ -16,6 +16,10 @@ export class ListsService {
         return this.httpclient.get<Lists[]>(environment.backend + '/lists');
     }
 
+    getMyLists(): Observable<Lists[]> {
+        return this.httpclient.get<Lists[]>(environment.backend + '/lists/user/' + sessionStorage.getItem('userid'));
+    }
+
     getOneListById(id): Observable<Lists> {
         return this.httpclient.get<Lists>(environment.backend + '/lists/' + id);
     }
@@ -30,6 +34,10 @@ export class ListsService {
 
     putAnimeInList(value: object): Observable<any> {
         return this.httpclient.put(environment.backend + '/lists', value);
+    }
+
+    deleteAnimeInList(listId: number, animeId: number): Observable<any> {
+        return this.httpclient.delete(environment.backend + '/lists/' + listId + '/' + animeId);
     }
 
     getLastList(): Observable<Lists> {
