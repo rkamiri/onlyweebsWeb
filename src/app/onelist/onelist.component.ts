@@ -1,37 +1,69 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {Lists} from '../shared/model/lists';
 import {Anime} from '../shared/model/anime';
 import {ActivatedRoute} from '@angular/router';
+import {TypeaheadMatch} from 'ngx-bootstrap/typeahead/typeahead-match.class';
+import {ListsService} from '../shared/service/lists.service';
+import {IsListedIn} from '../shared/model/is.listed.in';
+import {FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'app-onelist',
     templateUrl: './onelist.component.html',
     styleUrls: ['./onelist.component.css']
 })
-
 export class OnelistComponent implements OnInit {
-
     public listInfo: Lists;
     public animeList: Anime[];
-
-    list = [
-        {name: 'One Piece', seen: '1', total: '10'},
-        {name: 'Death Note', seen: '2', total: '10'},
-        {name: 'Naruto', seen: '4', total: '10'},
-        {name: 'Tokyo Ghoul', seen: '10', total: '10'},
-        {name: 'SNK', seen: '2', total: '10'}
-    ];
+    public fullAnimeList: Anime[];
+    public newList: Anime[];
+    selectedValue: string;
+    selectedOption: any;
+    addAnimeForm: FormGroup;
+    private closeResult: string;
     index: 1;
-    closeResult = '';
-    str: object;
+    public owned: boolean;
 
-    constructor(private modalService: NgbModal, private route: ActivatedRoute) {
+    constructor(private modalService: NgbModal,
+                private route: ActivatedRoute,
+                private listService: ListsService) {
+        this.addAnimeForm = new FormGroup({});
+        this.closeResult = '';
     }
 
     ngOnInit(): void {
         this.listInfo = this.route.snapshot.data.list;
+        this.owned = +sessionStorage.getItem('userid') === this.listInfo.isOwnedBy;
         this.animeList = this.route.snapshot.data.listContent;
+        this.fullAnimeList = this.route.snapshot.data.getAnimeList;
+        this.newList = [];
+    }
+
+    onSelect(event: TypeaheadMatch): void {
+        this.selectedOption = event.item;
+        this.newList.push(event.item);
+    }
+
+    onSubmit(): void {
+        this.addAnime();
+    }
+
+    private addAnime(): void {
+        const ili: IsListedIn = {id: 666, list_id: this.listInfo.id, anime_id: this.newList.pop().id};
+        this.listService.putAnimeInList(ili).subscribe(
+            () => {
+                setTimeout(location.reload.bind(location), 1);
+            }
+        );
+    }
+
+    onDelete(animeId: number): void {
+        this.listService.deleteAnimeInList(this.listInfo.id, animeId).subscribe(
+            () => {
+                setTimeout(location.reload.bind(location), 1);
+            }
+        );
     }
 
     open(content: any): void {
@@ -42,7 +74,7 @@ export class OnelistComponent implements OnInit {
         });
     }
 
-    private getDismissReason(reason: any): string {
+    getDismissReason(reason: any): string {
         if (reason === ModalDismissReasons.ESC) {
             return 'by pressing ESC';
         } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {

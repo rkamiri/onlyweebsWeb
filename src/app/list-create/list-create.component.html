@@ -4,16 +4,20 @@
 <div>
     <form class="container w-75 text-light" [formGroup]="createListForm" (ngSubmit)="onSubmit()">
         <label for="listName">Name</label>
-        <input required="true" formControlName="name" placeholder="Enter name" type="text" id="listName" class="form-control">
+        <input required="true" formControlName="name" placeholder="Enter name" type="text" id="listName"
+               class="form-control">
         <label for="listDescription">Description</label>
-        <textarea formControlName="description" required="true" placeholder="Enter description" type="text" id="listDescription" class="form-control"></textarea>
+        <textarea id="listDescription" formControlName="description" required="true" placeholder="Enter description"
+                  type="text"></textarea>
         <div class="custom-control custom-switch">
             <input type="checkbox" class="custom-control-input" id="privateChoice">
             <label class="custom-control-label" for="privateChoice">Private</label>
         </div>
         <p></p>
         <label for="addAnime">Add anime to your list</label>
-        <input placeholder="Search an anime" id="addAnime" [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" [typeahead]="animeList" typeaheadOptionField="internationalTitle" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelect($event)" class="form-control">
+        <input placeholder="Search an anime" id="addAnime" [(ngModel)]="selectedValue"
+               [ngModelOptions]="{standalone: true}" [typeahead]="animeList" typeaheadOptionField="internationalTitle"
+               [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelect($event)" class="form-control">
         <table class="table text-light">
             <tbody>
             <tr *ngFor="let l of newList; let i=index">
