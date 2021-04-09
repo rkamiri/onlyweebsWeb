@@ -10,11 +10,10 @@ import {FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'app-onelist',
-    templateUrl: './one-list.component.html',
-    styleUrls: ['./one-list.component.css']
+    templateUrl: './onelist.component.html',
+    styleUrls: ['./onelist.component.css']
 })
-
-export class OneListComponent implements OnInit {
+export class OnelistComponent implements OnInit {
     public listInfo: Lists;
     public animeList: Anime[];
     public fullAnimeList: Anime[];
@@ -22,15 +21,20 @@ export class OneListComponent implements OnInit {
     selectedValue: string;
     selectedOption: any;
     addAnimeForm: FormGroup;
+    private closeResult: string;
+    index: 1;
+    public owned: boolean;
 
     constructor(private modalService: NgbModal,
                 private route: ActivatedRoute,
                 private listService: ListsService) {
         this.addAnimeForm = new FormGroup({});
+        this.closeResult = '';
     }
 
     ngOnInit(): void {
         this.listInfo = this.route.snapshot.data.list;
+        this.owned = +sessionStorage.getItem('userid') === this.listInfo.isOwnedBy;
         this.animeList = this.route.snapshot.data.listContent;
         this.fullAnimeList = this.route.snapshot.data.getAnimeList;
         this.newList = [];
@@ -61,22 +65,22 @@ export class OneListComponent implements OnInit {
             }
         );
     }
+
+    open(content: any): void {
+        this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+            this.closeResult = `Closed with: ${result}`;
+        }, (reason) => {
+            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
+    }
+
+    getDismissReason(reason: any): string {
+        if (reason === ModalDismissReasons.ESC) {
+            return 'by pressing ESC';
+        } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        } else {
+            return `with: ${reason}`;
+        }
+    }
 }
-
-/*open(content: any): void {
-       this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-           this.closeResult = `Closed with: ${result}`;
-       }, (reason) => {
-           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-       });
-   }
-
-   private getDismissReason(reason: any): string {
-       if (reason === ModalDismissReasons.ESC) {
-           return 'by pressing ESC';
-       } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-           return 'by clicking on a backdrop';
-       } else {
-           return `with: ${reason}`;
-       }
-   }*/

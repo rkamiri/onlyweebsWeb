@@ -16,6 +16,10 @@ export class ListsService {
         return this.httpclient.get<Lists[]>(environment.backend + '/lists');
     }
 
+    getMyLists(): Observable<Lists[]> {
+        return this.httpclient.get<Lists[]>(environment.backend + '/lists/user/' + sessionStorage.getItem('userid'));
+    }
+
     getOneListById(id): Observable<Lists> {
         return this.httpclient.get<Lists>(environment.backend + '/lists/' + id);
     }

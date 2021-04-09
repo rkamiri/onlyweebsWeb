@@ -14,7 +14,7 @@ import {AnimeListComponent} from './anime-list/anime-list.component';
 import {AnimeListResolver} from './anime-list/anime.list.resolver';
 import {AccountResolver} from './account/account.resolver';
 import {ListsResolver} from './lists/lists.resolver';
-import {OneListComponent} from './onelist/one-list.component';
+import {OnelistComponent} from './onelist/onelist.component';
 import {OneListResolver} from './onelist/onelist.resolver';
 import {ListContentResolver} from './onelist/listcontent.resolver';
 import {CreateListComponent} from './create-list/create-list.component';
@@ -22,6 +22,8 @@ import {AnimeListResearchResolver} from './anime-list/anime.list.research.resolv
 import {CurrentUserRatingResolver} from './anime/current.user.rating.resolver';
 import {GlobalRatingResolver} from './anime/global.rating.resolver';
 import {LastListsResolver} from './create-list/last.list.resolver';
+import {MylistsComponent} from './mylists/mylists.component';
+import {MylistsResolver} from './mylists/mylists.resolver';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -58,7 +60,7 @@ const routes: Routes = [
         }
     },
     {
-        path: 'lists/:id', component: OneListComponent,
+        path: 'lists/:id', component: OnelistComponent,
         resolve: {
             list: OneListResolver,
             listContent: ListContentResolver,
@@ -76,12 +78,19 @@ const routes: Routes = [
             currentUser: AccountResolver
         }
     },
-    {path: 'create-list', component: CreateListComponent,
+    {
+        path: 'create-list', component: CreateListComponent,
         resolve: {
             getAnimeList: AnimeListResolver,
             getCurrentList: ListsResolver,
             lastList: LastListsResolver
-        }}
+        }
+    },
+    {path: 'my-lists', component: MylistsComponent,
+        resolve: {
+            myLists: MylistsResolver
+        }
+    },
 ];
 
 @NgModule({

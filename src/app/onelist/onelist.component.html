@@ -1,0 +1,84 @@
+<div class="container text-center" id="list_title">
+    <h3>{{listInfo.name}}</h3>
+    <p>{{listInfo.description}}</p>
+</div>
+
+<div class="container w-75" style="font-size: large">
+    <table class="table">
+        <thead class="thead-light">
+        <tr class="table-dark">
+            <th>Rang</th>
+            <th>Animé</th>
+            <th>Nombre d'épisodes vus</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody class="table-dark">
+        <tr *ngFor="let l of animeList; let i=index">
+            <td id="{{i+1}}">{{i + 1}}</td>
+            <td><a [routerLink]="['/animes', l.id]">{{l.internationalTitle}}</a></td>
+            <td>0/98</td>
+            <td>
+                <button *ngIf=owned (click)="onDelete(l.id)" id="removeAnime" class="btn btn-xs btn-danger">X</button>
+            </td>
+        </tr>
+        <tr *ngIf=owned class="">
+            <td>
+                <button (click)="open(content)">
+                    <span>
+                        <i class="fa fa-plus-square"></i>
+                    </span>
+                </button>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- <form class="container w-75 text-light" [formGroup]="addAnimeForm" (ngSubmit)="onSubmit()">
+         <label for="addAnime">Add anime to your list</label>
+         <input placeholder="Add an anime" id="addAnime" [(ngModel)]="selectedValue"
+                [ngModelOptions]="{standalone: true}" [typeahead]="fullAnimeList"
+                typeaheadOptionField="internationalTitle" [typeaheadScrollable]="true"
+                (typeaheadOnSelect)="onSelect($event)" class="form-control">
+         <button id="sendNewList" class="btn btn-sm btn-success float-right">
+             Create
+         </button>
+     </form>-->
+</div>
+
+<!--<div class="container w-50" id="reviews">
+    <div id="review_title" class="container text-center"><h6>Reviews</h6></div>
+    <ul class="list-group">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+    </ul>
+</div>
+<br>-->
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add an anime</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form class="container w-75 text-light" [formGroup]="addAnimeForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="addAnime">Add anime to your list</label>
+                <div class="input-group">
+                    <input placeholder="Add an anime" id="addAnime" [(ngModel)]="selectedValue"
+                           [ngModelOptions]="{standalone: true}" [typeahead]="fullAnimeList"
+                           typeaheadOptionField="internationalTitle" [typeaheadScrollable]="true"
+                           (typeaheadOnSelect)="onSelect($event)" class="form-control">
+                    <button id="sendNewList" class="btn btn-sm btn-success float-right">
+                        Create
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>

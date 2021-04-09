@@ -48,6 +48,7 @@
             <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><i class="fa fa-user"></i> {{  username}}</button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu dropdown-menu-right">
                 <button ngbDropdownItem class="btn-nav-link"><a class="nav-link dropdown-nav-link" [routerLink]="['/account']">MY ACCOUNT</a></button>
+                <button ngbDropdownItem class="btn-nav-link"><a class="nav-link dropdown-nav-link" *ngIf="isUserAuthenticated" [routerLink]="['/my-lists']">MY LISTS</a></button>
                 <button ngbDropdownItem class="btn-nav-link"><a class="nav-link dropdown-nav-link"  (click)="logoutUser()" *ngIf="isUserAuthenticated" [routerLink]="['/home']">LOGOUT</a></button>
             </div>
         </div>
