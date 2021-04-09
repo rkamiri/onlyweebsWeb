@@ -3,4 +3,5 @@ export interface Lists {
     name: string;
     creationDate: string;
     description: string;
+    isOwnedBy: number;
 }

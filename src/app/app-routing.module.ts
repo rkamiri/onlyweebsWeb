@@ -22,6 +22,8 @@ import {AnimeListResearchResolver} from './anime-list/anime.list.research.resolv
 import {CurrentUserRatingResolver} from './anime/current.user.rating.resolver';
 import {GlobalRatingResolver} from './anime/global.rating.resolver';
 import {LastListsResolver} from './create-list/last.list.resolver';
+import {MylistsComponent} from './mylists/mylists.component';
+import {MylistsResolver} from './mylists/mylists.resolver';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -61,7 +63,8 @@ const routes: Routes = [
         path: 'lists/:id', component: OnelistComponent,
         resolve: {
             list: OneListResolver,
-            listContent: ListContentResolver
+            listContent: ListContentResolver,
+            getAnimeList: AnimeListResolver
         }
     },
     {path: 'login', component: SigninComponent},
@@ -75,12 +78,19 @@ const routes: Routes = [
             currentUser: AccountResolver
         }
     },
-    {path: 'create-list', component: CreateListComponent,
+    {
+        path: 'create-list', component: CreateListComponent,
         resolve: {
             getAnimeList: AnimeListResolver,
             getCurrentList: ListsResolver,
             lastList: LastListsResolver
-        }}
+        }
+    },
+    {path: 'my-lists', component: MylistsComponent,
+        resolve: {
+            myLists: MylistsResolver
+        }
+    },
 ];
 
 @NgModule({
