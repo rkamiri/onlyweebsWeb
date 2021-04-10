@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -16,18 +15,18 @@ import {FooterComponent} from './footer/footer.component';
 import {RegisterComponent} from './register/register.component';
 import {AccountComponent} from './account/account.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HttpRequestInterceptor} from './HttpRequestInterceptor';
 import {AnimeListComponent} from './anime-list/anime-list.component';
 import {SharedModule} from './shared/shared.module';
 import {TypeaheadModule} from 'ngx-bootstrap/typeahead';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {FileUploadModule} from 'ng2-file-upload';
 import {OnelistComponent} from './onelist/onelist.component';
 import { MylistsComponent } from './mylists/mylists.component';
 import { ListCreateComponent } from './list-create/list-create.component';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgxSpinnerModule} from '@hardpool/ngx-spinner';
 
 @NgModule({
     declarations: [
@@ -46,7 +45,7 @@ import { ListCreateComponent } from './list-create/list-create.component';
         AnimeListComponent,
         OnelistComponent,
         MylistsComponent,
-        ListCreateComponent
+        ListCreateComponent,
     ],
     imports: [
         BrowserModule,
@@ -54,11 +53,12 @@ import { ListCreateComponent } from './list-create/list-create.component';
         NgbModule,
         ReactiveFormsModule,
         FormsModule,
-        HttpClientModule,
         SharedModule,
         TypeaheadModule.forRoot(),
+        FileUploadModule,
+        HttpClientModule,
         BrowserAnimationsModule,
-        FileUploadModule
+        NgxSpinnerModule
     ],
     providers: [
         [
@@ -66,6 +66,7 @@ import { ListCreateComponent } from './list-create/list-create.component';
             {provide: LocationStrategy, useClass: HashLocationStrategy}
         ],
     ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     bootstrap: [AppComponent]
 })
 export class AppModule {
