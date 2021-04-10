@@ -45,7 +45,7 @@ import {NgxSpinnerModule} from '@hardpool/ngx-spinner';
         AnimeListComponent,
         OnelistComponent,
         MylistsComponent,
-        ListCreateComponent,
+        ListCreateComponent
     ],
     imports: [
         BrowserModule,
