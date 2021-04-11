@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {SigninComponent} from './signin/signin.component';
-import {ChoiceComponent} from './choice/choice.component';
 import {PlaybackComponent} from './playback/playback.component';
 import {HomeComponent} from './home/home.component';
 import {AnimeComponent} from './anime/anime.component';
@@ -9,21 +8,21 @@ import {HelpComponent} from './help/help.component';
 import {ListsComponent} from './lists/lists.component';
 import {RegisterComponent} from './register/register.component';
 import {AccountComponent} from './account/account.component';
-import {AnimeResolver} from './anime/anime.resolver';
 import {AnimeListComponent} from './anime-list/anime-list.component';
-import {AnimeListResolver} from './anime-list/anime.list.resolver';
-import {AccountResolver} from './account/account.resolver';
-import {ListsResolver} from './lists/lists.resolver';
 import {OnelistComponent} from './onelist/onelist.component';
-import {OneListResolver} from './onelist/onelist.resolver';
-import {ListContentResolver} from './onelist/listcontent.resolver';
-import {AnimeListResearchResolver} from './anime-list/anime.list.research.resolver';
-import {CurrentUserRatingResolver} from './anime/current.user.rating.resolver';
-import {GlobalRatingResolver} from './anime/global.rating.resolver';
-import {LastListsResolver} from './list-create/last.list.resolver';
 import {MylistsComponent} from './mylists/mylists.component';
-import {MylistsResolver} from './mylists/mylists.resolver';
 import {ListCreateComponent} from './list-create/list-create.component';
+import {AnimeListResolver} from './shared/resolver/anime.list.resolver';
+import {AnimeListResearchResolver} from './shared/resolver/anime.list.research.resolver';
+import {AnimeResolver} from './shared/resolver/anime.resolver';
+import {GlobalRatingResolver} from './shared/resolver/global.rating.resolver';
+import {CurrentUserRatingResolver} from './shared/resolver/current.user.rating.resolver';
+import {AccountResolver} from './shared/resolver/account.resolver';
+import {ListsResolver} from './shared/resolver/lists.resolver';
+import {LastListsResolver} from './shared/resolver/last.list.resolver';
+import {OneListResolver} from './shared/resolver/onelist.resolver';
+import {ListContentResolver} from './shared/resolver/listcontent.resolver';
+import {MylistsResolver} from './shared/resolver/mylists.resolver';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -48,7 +47,8 @@ const routes: Routes = [
             anime: AnimeResolver,
             globalRating: GlobalRatingResolver,
             currentUserRating: CurrentUserRatingResolver,
-            currentUser: AccountResolver
+            currentUser: AccountResolver,
+            userLists: MylistsResolver
         },
         runGuardsAndResolvers: 'always'
     },
@@ -69,7 +69,6 @@ const routes: Routes = [
     },
     {path: 'login', component: SigninComponent},
     {path: 'help', component: HelpComponent},
-    {path: 'choice', component: ChoiceComponent},
     {path: 'playback', component: PlaybackComponent},
     {path: 'register', component: RegisterComponent},
     {

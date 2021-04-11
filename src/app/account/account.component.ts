@@ -15,14 +15,14 @@ import {ISpinnerConfig, SPINNER_ANIMATIONS, SPINNER_PLACEMENT} from '@hardpool/n
     styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
-    public currentUser: User;
-    personalInfoForm: FormGroup;
-    bioForm: FormGroup;
-    passwordForm: FormGroup;
     private newPassWordUser: User;
+    public personalInfoForm: FormGroup;
+    public bioForm: FormGroup;
+    public passwordForm: FormGroup;
     public profilePicture: Image;
     public spinner: boolean;
     public spinnerConfig: ISpinnerConfig;
+    public currentUser: User;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -128,15 +128,15 @@ export class AccountComponent implements OnInit {
         const options = {headers};
         this.http.post(environment.backend + '/upload/image/' + this.currentUser.id, formData, options)
             .subscribe(() => {
-                setTimeout( location.reload.bind(location), 1);
+                setTimeout(location.reload.bind(location), 1);
             });
     }
 
-    showSpinner(): void{
+    showSpinner(): void {
         this.spinner = true;
     }
 
-    hideSpinner(): void{
+    hideSpinner(): void {
         this.spinner = false;
     }
 }

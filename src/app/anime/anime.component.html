@@ -5,30 +5,36 @@
         </div>
 
         <div class="col-lg-6  col-md-6 col-sm-8 col-12" id="center">
-            <div>
-                <div>
-                    <h1 id="animeTitle">{{ anime.internationalTitle }}</h1>
-                </div>
-                <!--                <div>
-                                    <button id="imgAddToList" class="btn-xs btn-primary">☰</button>
-                                    <select name="basicList"  class="custom-select custom-select-sm" size="1" id="optionSelect">
-                                        <option value="">selection</option>
-                                        <option value="Watched">Watched</option>
-                                        <option value="CurrentlyWatching">Currently Watching</option>
-                                        <option value="PlanToWatch">Plan to watch</option>
-                                    </select>
-                                </div>-->
-                <div class="input-group mb-3">
+            <h1 id="animeTitle">{{ anime.internationalTitle }}</h1>
+            <div id="parentLists" *ngIf="isUserAuthenticated">
+                <div class="input-group mb-3" id="default">
+                    <label for="optionSelectDefault"></label>
+                    <select name="basicList"
+                            class="custom-select custom-select-sm optionSelect"
+                            size="1" id="optionSelectDefault">
+                        <option value="Watched">Watched</option>
+                        <option value="CurrentlyWatching">Currently Watching</option>
+                        <option value="PlanToWatch">Plan to watch</option>
+                    </select>
                     <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary" type="button" id="addToList"><i
-                            class="fa fa-list"></i></button>
+                        <button class="btn btn-outline-secondary addToList" type="button"><i
+                            class="fa fa-list"></i> Add to this default list
+                        </button>
                     </div>
-                    <label for="optionSelect"></label><select name="basicList" class="custom-select custom-select-sm" size="1" id="optionSelect">
-                    <option value="">selection</option>
-                    <option value="Watched">Watched</option>
-                    <option value="CurrentlyWatching">Currently Watching</option>
-                    <option value="PlanToWatch">Plan to watch</option>
-                </select>
+                </div>
+
+                <div class="input-group mb-3" id="custom">
+                    <label for="optionSelectCustom"></label>
+                    <select name="basicList"
+                            class="custom-select custom-select-sm optionSelect"
+                            size="1" id="optionSelectCustom" [(ngModel)]="selectedList">
+                        <option *ngFor="let list of userLists" [value]="list.name">{{list.name}}</option>
+                    </select>
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary addToList" type="button" (click)="addAnimeToList()"><i
+                            class="fa fa-list"></i> Add to this custom list
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -58,7 +64,8 @@
                 <form [formGroup]="rateForm" (ngSubmit)="updateRating()">
                     <div class="input-group-prepend" id="ratingGroup">
                         <button id="ratingBtn" class="btn btn-primary">{{currentRate ? 'Update' : 'Add'}}</button>
-                        <input type="number" class="form-control" id="rate" formControlName="rate" min="0" max="10" placeholder="Enter your rate" (ngModelChange)="validateValue($event)">
+                        <input type="number" class="form-control" id="rate" formControlName="rate" min="0" max="10"
+                               placeholder="Enter your rate" (ngModelChange)="validateValue($event)">
                     </div>
                 </form>
             </div>

@@ -43,4 +43,8 @@ export class ListsService {
     getLastList(): Observable<Lists> {
         return this.httpclient.get<Lists>(environment.backend + '/lists/getlastlist');
     }
+
+    getListByUserIdAndName(listName: string): Observable<Lists> {
+        return this.httpclient.get<Lists>(environment.backend + '/lists/' + sessionStorage.getItem('userid') + '/' + listName);
+    }
 }
