@@ -22,7 +22,8 @@ import {ListsResolver} from './shared/resolver/lists.resolver';
 import {LastListsResolver} from './shared/resolver/last.list.resolver';
 import {OneListResolver} from './shared/resolver/onelist.resolver';
 import {ListContentResolver} from './shared/resolver/listcontent.resolver';
-import {MylistsResolver} from './shared/resolver/mylists.resolver';
+import {MyCustomListsResolver} from './shared/resolver/my.custom.lists.resolver';
+import {MyDefaultListsResolver} from './shared/resolver/my.default.lists.resolver';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -48,7 +49,8 @@ const routes: Routes = [
             globalRating: GlobalRatingResolver,
             currentUserRating: CurrentUserRatingResolver,
             currentUser: AccountResolver,
-            userLists: MylistsResolver
+            userCustomLists: MyCustomListsResolver,
+            userDefaultLists: MyDefaultListsResolver
         },
         runGuardsAndResolvers: 'always'
     },
@@ -77,16 +79,19 @@ const routes: Routes = [
             currentUser: AccountResolver
         }
     },
-    {path: 'list-create', component: ListCreateComponent,
+    {
+        path: 'list-create', component: ListCreateComponent,
         resolve: {
             getAnimeList: AnimeListResolver,
             getCurrentList: ListsResolver,
             lastList: LastListsResolver
         }
     },
-    {path: 'my-lists', component: MylistsComponent,
+    {
+        path: 'my-lists', component: MylistsComponent,
         resolve: {
-            myLists: MylistsResolver
+            myCustomLists: MyCustomListsResolver,
+            myDefaultLists: MyDefaultListsResolver
         }
     },
 ];

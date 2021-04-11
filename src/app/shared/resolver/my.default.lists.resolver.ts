@@ -5,11 +5,11 @@ import {Observable} from 'rxjs';
 import {Lists} from '../model/lists';
 
 @Injectable({ providedIn: 'root' })
-export class MylistsResolver implements Resolve<Lists[]> {
+export class MyDefaultListsResolver implements Resolve<Lists[]> {
     constructor(private service: ListsService) {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Lists[]> | Promise<Lists[]> | Lists[] {
-        return this.service.getMyLists();
+        return this.service.getMyDefaultLists();
     }
 }

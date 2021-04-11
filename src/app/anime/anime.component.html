@@ -11,13 +11,11 @@
                     <label for="optionSelectDefault"></label>
                     <select name="basicList"
                             class="custom-select custom-select-sm optionSelect"
-                            size="1" id="optionSelectDefault">
-                        <option value="Watched">Watched</option>
-                        <option value="CurrentlyWatching">Currently Watching</option>
-                        <option value="PlanToWatch">Plan to watch</option>
+                            size="1" id="optionSelectDefault" [(ngModel)]="selectedList">
+                        <option *ngFor="let list of userDefaultLists" [value]="list.name">{{list.name}}</option>
                     </select>
                     <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary addToList" type="button"><i
+                        <button class="btn btn-outline-secondary addToList" type="button" (click)="addAnimeToList()"><i
                             class="fa fa-list"></i> Add to this default list
                         </button>
                     </div>
@@ -28,7 +26,7 @@
                     <select name="basicList"
                             class="custom-select custom-select-sm optionSelect"
                             size="1" id="optionSelectCustom" [(ngModel)]="selectedList">
-                        <option *ngFor="let list of userLists" [value]="list.name">{{list.name}}</option>
+                        <option *ngFor="let list of userCustomLists" [value]="list.name">{{list.name}}</option>
                     </select>
                     <div class="input-group-prepend">
                         <button class="btn btn-outline-secondary addToList" type="button" (click)="addAnimeToList()"><i

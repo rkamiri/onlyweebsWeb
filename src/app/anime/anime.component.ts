@@ -16,7 +16,8 @@ import {ListsService} from '../shared/service/lists.service';
 })
 export class AnimeComponent implements OnDestroy, OnInit {
     public currentUser: User;
-    public userLists: Lists[];
+    public userCustomLists: Lists[];
+    public userDefaultLists: Lists[];
     public anime: Anime;
     public currentRate: number;
     public globalRate: number;
@@ -49,7 +50,8 @@ export class AnimeComponent implements OnDestroy, OnInit {
 
     ngOnInit(): void {
         this.anime = this.activatedRoute.snapshot.data.anime;
-        this.userLists = this.activatedRoute.snapshot.data.userLists;
+        this.userCustomLists = this.activatedRoute.snapshot.data.userCustomLists;
+        this.userDefaultLists = this.activatedRoute.snapshot.data.userDefaultLists;
         this.currentUser = this.activatedRoute.snapshot.data.currentUser;
         this.globalRate = this.activatedRoute.snapshot.data.globalRating;
         this.isUserAuthenticated = !!this.currentUser;

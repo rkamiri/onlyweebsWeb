@@ -8,13 +8,14 @@ import {ActivatedRoute} from '@angular/router';
     styleUrls: ['./mylists.component.css']
 })
 export class MylistsComponent implements OnInit {
-    public lists: Lists[];
+    public defaultLists: Lists[];
+    public customLists: Lists[];
 
     constructor(private route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
-        this.lists = this.route.snapshot.data.myLists;
+        this.defaultLists = this.route.snapshot.data.myDefaultLists;
+        this.customLists = this.route.snapshot.data.myCustomLists;
     }
-
 }

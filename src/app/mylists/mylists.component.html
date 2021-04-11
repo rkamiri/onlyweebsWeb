@@ -2,7 +2,11 @@
     <button class="btn btn-light" [routerLink]="['/list-create']">Create a new list</button>
 </div>
 <ul>
-    <li *ngFor="let list of lists">
+    <li *ngFor="let list of defaultLists">
+        <a [routerLink]="['/lists', list.id]">{{ list.name }}</a>
+        <p>{{ list.description }}</p>
+    </li>
+    <li *ngFor="let list of customLists">
         <a [routerLink]="['/lists', list.id]">{{ list.name }}</a>
         <p>{{ list.description }}</p>
     </li>
