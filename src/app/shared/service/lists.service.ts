@@ -17,6 +17,10 @@ export class ListsService {
         return this.httpclient.get<Lists[]>(environment.backend + '/lists');
     }
 
+    getCustomLists(): Observable<Lists[]> {
+        return this.httpclient.get<Lists[]>(environment.backend + '/lists/custom');
+    }
+
     getMyDefaultLists(): Observable<Lists[]> {
         return this.httpclient.get<Lists[]>(environment.backend + '/lists/user/default/' + sessionStorage.getItem('userid'));
     }

@@ -24,6 +24,7 @@ import {OneListResolver} from './shared/resolver/onelist.resolver';
 import {ListContentResolver} from './shared/resolver/listcontent.resolver';
 import {MyCustomListsResolver} from './shared/resolver/my.custom.lists.resolver';
 import {MyDefaultListsResolver} from './shared/resolver/my.default.lists.resolver';
+import {CustomListsResolver} from "./shared/resolver/custom.lists.resolver";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -58,7 +59,8 @@ const routes: Routes = [
         path: 'lists', component: ListsComponent,
         resolve: {
             allLists: ListsResolver,
-            lastList: LastListsResolver
+            lastList: LastListsResolver,
+            customLists: CustomListsResolver
         }
     },
     {

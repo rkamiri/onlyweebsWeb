@@ -21,7 +21,7 @@
                     </div>
                 </div>
 
-                <div class="input-group mb-3" id="custom">
+                <div class="input-group mb-3" id="custom" *ngIf="userCustomLists.length!==0">
                     <label for="optionSelectCustom"></label>
                     <select name="basicList"
                             class="custom-select custom-select-sm optionSelect"
