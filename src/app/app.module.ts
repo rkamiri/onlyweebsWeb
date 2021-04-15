@@ -4,7 +4,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {SigninComponent} from './signin/signin.component';
-import {ChoiceComponent} from './choice/choice.component';
 import {PlaybackComponent} from './playback/playback.component';
 import {HomeComponent} from './home/home.component';
 import {NavComponent} from './nav/nav.component';
@@ -32,7 +31,6 @@ import {NgxSpinnerModule} from '@hardpool/ngx-spinner';
     declarations: [
         AppComponent,
         SigninComponent,
-        ChoiceComponent,
         PlaybackComponent,
         HomeComponent,
         NavComponent,
