@@ -5,6 +5,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {User} from '../shared/model/user';
 import {RatingService} from '../shared/service/rating.service';
 import {Rating} from '../shared/model/rating';
+import {CommentService} from '../shared/service/comment.service';
 import {Lists} from '../shared/model/lists';
 import {IsListedIn} from '../shared/model/is.listed.in';
 import {ListsService} from '../shared/service/lists.service';
@@ -23,21 +24,37 @@ export class AnimeComponent implements OnDestroy, OnInit {
     public globalRate: number;
     public selectedList: string;
     rateForm: FormGroup;
+    commentForm: FormGroup;
     isUserAuthenticated: boolean;
     userHasRated: string;
     navigationSubscription;
+    comments;
+    userHasComment: boolean;
 
     constructor(private router: Router,
                 private activatedRoute: ActivatedRoute,
                 private ratingService: RatingService,
-                private listService: ListsService) {
+                private listService: ListsService,
+                private commentsService: CommentService) {
+        this.userHasComment = false;
         this.navigationSubscription = this.router.events.subscribe((e: any) => {
             if (e instanceof NavigationEnd) {
                 this.initialiseAnime();
+                this.commentsService.getCommentsForAnime(this.anime.id).subscribe((comments) => {
+                    this.comments = comments;
+                    comments.forEach(comment => {
+                        if (comment.user_id === +sessionStorage.getItem('userid')) {
+                            this.userHasComment = true;
+                        }
+                    });
+                });
             }
         });
         this.rateForm = new FormGroup({
             rate: new FormControl('')
+        });
+        this.commentForm = new FormGroup({
+            comment: new FormControl('')
         });
         this.userHasRated = 'Add Personal Rate';
     }
@@ -55,6 +72,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
         this.currentUser = this.activatedRoute.snapshot.data.currentUser;
         this.globalRate = this.activatedRoute.snapshot.data.globalRating;
         this.isUserAuthenticated = !!this.currentUser;
+
         if (this.isUserAuthenticated) {
             if (this.currentRate === null || this.currentRate === undefined) {
                 this.currentRate = this.activatedRoute.snapshot.data.currentUserRating;
@@ -72,7 +90,11 @@ export class AnimeComponent implements OnDestroy, OnInit {
     }
 
     updateRating(): void {
-        const rating: Rating = {userId: this.currentUser.id, animeId: this.anime.id, rate: this.rateForm.controls.rate.value};
+        const rating: Rating = {
+            userId: this.currentUser.id,
+            animeId: this.anime.id,
+            rate: this.rateForm.controls.rate.value
+        };
         this.ratingService.putCurrentUserRatingOfAnAnime(rating).subscribe(() => {
             location.reload();
         });
@@ -90,6 +112,16 @@ export class AnimeComponent implements OnDestroy, OnInit {
         if (event < 0) {
             this.rateForm.setValue({rate: 0});
         }
+    }
+
+    sendComment(): void {
+        console.log(sessionStorage.getItem('userid'));
+        this.commentsService.putCommentForAnime({
+            anime_id: this.anime.id, user_id: +sessionStorage.getItem('userid'),
+            comment: this.commentForm.get('comment').value.toString(), date: null
+        }).subscribe((n) => {
+            location.reload();
+        });
     }
 
     addAnimeToList(): void {

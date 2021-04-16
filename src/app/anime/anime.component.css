@@ -93,6 +93,24 @@ h1 {
     padding-bottom: 2vh;
 }
 
+.comment {
+    background-color: rgb(5, 35, 76);
+    float: left;
+    border-radius: 5px;
+    padding-left: 40px;
+    padding-right: 30px;
+    padding-top: 10px;
+    width:100%;
+}
+
+.comment h4,
+.comment span,
+.darker h4,
+.darker span {
+    display: inline
+}
+
+
 @media screen and (max-width: 576px) {
     p {
         font-size: 3vw;
@@ -137,3 +155,7 @@ h1 {
         min-width: 10vw;
     }
 }
+
+
+
+
