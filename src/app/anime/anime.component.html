@@ -34,6 +34,11 @@
                         </button>
                     </div>
                 </div>
+                <div *ngIf="userCustomLists.length===0">
+                    <a [routerLink]="['/list-create']">
+                        <button type="button" class="btn btn-primary btn-lg">Create a custom list</button>
+                    </a>
+                </div>
             </div>
 
             <div class="row">
