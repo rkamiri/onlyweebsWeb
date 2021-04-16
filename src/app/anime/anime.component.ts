@@ -16,16 +16,16 @@ import {ListsService} from '../shared/service/lists.service';
     styleUrls: ['./anime.component.css']
 })
 export class AnimeComponent implements OnDestroy, OnInit {
-    public currentUser: User;
     public userCustomLists: Lists[];
     public userDefaultLists: Lists[];
     public anime: Anime;
     public currentRate: number;
     public globalRate: number;
     public selectedList: string;
+    public isConnected = sessionStorage.getItem('isConnected') === 'true';
+    public hasCustom: boolean;
     rateForm: FormGroup;
     commentForm: FormGroup;
-    isUserAuthenticated: boolean;
     userHasRated: string;
     navigationSubscription;
     comments;
@@ -67,13 +67,15 @@ export class AnimeComponent implements OnDestroy, OnInit {
 
     ngOnInit(): void {
         this.anime = this.activatedRoute.snapshot.data.anime;
-        this.userCustomLists = this.activatedRoute.snapshot.data.userCustomLists;
-        this.userDefaultLists = this.activatedRoute.snapshot.data.userDefaultLists;
-        this.currentUser = this.activatedRoute.snapshot.data.currentUser;
         this.globalRate = this.activatedRoute.snapshot.data.globalRating;
-        this.isUserAuthenticated = !!this.currentUser;
-
-        if (this.isUserAuthenticated) {
+        if (sessionStorage.getItem('isConnected') === 'true') {
+            this.listService.getMyCustomLists().subscribe((customLists) => {
+                this.userCustomLists = customLists;
+                this.hasCustom = this.userCustomLists.length !== 0;
+            });
+            this.listService.getMyDefaultLists().subscribe((defaultLists) => {
+                this.userDefaultLists = defaultLists;
+            });
             if (this.currentRate === null || this.currentRate === undefined) {
                 this.currentRate = this.activatedRoute.snapshot.data.currentUserRating;
                 if (!(this.currentRate === 666)) {
@@ -91,7 +93,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
 
     updateRating(): void {
         const rating: Rating = {
-            userId: this.currentUser.id,
+            userId: +sessionStorage.getItem('userid'),
             animeId: this.anime.id,
             rate: this.rateForm.controls.rate.value
         };
@@ -115,7 +117,6 @@ export class AnimeComponent implements OnDestroy, OnInit {
     }
 
     sendComment(): void {
-        console.log(sessionStorage.getItem('userid'));
         this.commentsService.putCommentForAnime({
             anime_id: this.anime.id, user_id: +sessionStorage.getItem('userid'),
             comment: this.commentForm.get('comment').value.toString(), date: null

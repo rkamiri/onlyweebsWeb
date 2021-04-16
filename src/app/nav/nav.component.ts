@@ -42,7 +42,9 @@ export class NavComponent implements OnInit {
         this.authSubscription = this.userService.authListener().subscribe(state => {
             this.isUserAuthenticated = state;
             this.userService.getCurrentUser().subscribe((user) => {
-                this.username = user.username;
+                if (user != null) {
+                    this.username = user.username;
+                }
             });
         });
         this.searchArray = [];

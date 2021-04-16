@@ -20,7 +20,9 @@ export class UserService {
     getCurrentUser(): Observable<User> {
         const user = this.httpclient.get<User>( environment.backend + '/users/current');
         user.subscribe((us) => {
-            sessionStorage.setItem('userid', String(us.id));
+            if (us != null) {
+                sessionStorage.setItem('userid', String(us.id));
+            }
         });
         return user;
     }

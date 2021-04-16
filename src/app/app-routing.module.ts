@@ -22,9 +22,9 @@ import {ListsResolver} from './shared/resolver/lists.resolver';
 import {LastListsResolver} from './shared/resolver/last.list.resolver';
 import {OneListResolver} from './shared/resolver/onelist.resolver';
 import {ListContentResolver} from './shared/resolver/listcontent.resolver';
-import {MyCustomListsResolver} from './shared/resolver/my.custom.lists.resolver';
-import {MyDefaultListsResolver} from './shared/resolver/my.default.lists.resolver';
 import {CustomListsResolver} from './shared/resolver/custom.lists.resolver';
+import {MyDefaultListsResolver} from "./shared/resolver/my.default.lists.resolver";
+import {MyCustomListsResolver} from "./shared/resolver/my.custom.lists.resolver";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -49,9 +49,7 @@ const routes: Routes = [
             anime: AnimeResolver,
             globalRating: GlobalRatingResolver,
             currentUserRating: CurrentUserRatingResolver,
-            currentUser: AccountResolver,
-            userCustomLists: MyCustomListsResolver,
-            userDefaultLists: MyDefaultListsResolver
+            currentUser: AccountResolver
         },
         runGuardsAndResolvers: 'always'
     },
