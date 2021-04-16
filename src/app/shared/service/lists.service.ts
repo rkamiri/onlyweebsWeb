@@ -10,14 +10,23 @@ import {environment} from '../../../environments/environment';
 })
 export class ListsService {
 
-    constructor(private httpclient: HttpClient) {}
+    constructor(private httpclient: HttpClient) {
+    }
 
     getAllLists(): Observable<Lists[]> {
         return this.httpclient.get<Lists[]>(environment.backend + '/lists');
     }
 
-    getMyLists(): Observable<Lists[]> {
-        return this.httpclient.get<Lists[]>(environment.backend + '/lists/user/' + sessionStorage.getItem('userid'));
+    getCustomLists(): Observable<Lists[]> {
+        return this.httpclient.get<Lists[]>(environment.backend + '/lists/custom');
+    }
+
+    getMyDefaultLists(): Observable<Lists[]> {
+        return this.httpclient.get<Lists[]>(environment.backend + '/lists/user/default/' + sessionStorage.getItem('userid'));
+    }
+
+    getMyCustomLists(): Observable<Lists[]> {
+        return this.httpclient.get<Lists[]>(environment.backend + '/lists/user/custom/' + sessionStorage.getItem('userid'));
     }
 
     getOneListById(id): Observable<Lists> {
@@ -42,5 +51,9 @@ export class ListsService {
 
     getLastList(): Observable<Lists> {
         return this.httpclient.get<Lists>(environment.backend + '/lists/getlastlist');
+    }
+
+    getListByUserIdAndName(listName: string): Observable<Lists> {
+        return this.httpclient.get<Lists>(environment.backend + '/lists/' + sessionStorage.getItem('userid') + '/' + listName);
     }
 }
