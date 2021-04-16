@@ -5,7 +5,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {User} from '../shared/model/user';
 import {RatingService} from '../shared/service/rating.service';
 import {Rating} from '../shared/model/rating';
-import {CommentService} from "../shared/service/comment.service";
+import {CommentService} from '../shared/service/comment.service';
 import {Lists} from '../shared/model/lists';
 import {IsListedIn} from '../shared/model/is.listed.in';
 import {ListsService} from '../shared/service/lists.service';
@@ -34,8 +34,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
     constructor(private router: Router,
                 private activatedRoute: ActivatedRoute,
                 private ratingService: RatingService,
-                private listService: ListsService) {
-    constructor(private router: Router, private activatedRoute: ActivatedRoute, private ratingService: RatingService,
+                private listService: ListsService,
                 private commentsService: CommentService) {
         this.userHasComment = false;
         this.navigationSubscription = this.router.events.subscribe((e: any) => {
@@ -44,9 +43,9 @@ export class AnimeComponent implements OnDestroy, OnInit {
                 this.commentsService.getCommentsForAnime(this.anime.id).subscribe((comments) => {
                     this.comments = comments;
                     comments.forEach(comment => {
-                       if (comment.user_id === +sessionStorage.getItem('userid')){
-                           this.userHasComment = true;
-                       }
+                        if (comment.user_id === +sessionStorage.getItem('userid')) {
+                            this.userHasComment = true;
+                        }
                     });
                 });
             }
@@ -91,7 +90,11 @@ export class AnimeComponent implements OnDestroy, OnInit {
     }
 
     updateRating(): void {
-        const rating: Rating = {userId: this.currentUser.id, animeId: this.anime.id, rate: this.rateForm.controls.rate.value};
+        const rating: Rating = {
+            userId: this.currentUser.id,
+            animeId: this.anime.id,
+            rate: this.rateForm.controls.rate.value
+        };
         this.ratingService.putCurrentUserRatingOfAnAnime(rating).subscribe(() => {
             location.reload();
         });
@@ -112,10 +115,12 @@ export class AnimeComponent implements OnDestroy, OnInit {
     }
 
     sendComment(): void {
-        console.log( sessionStorage.getItem('userid'));
-        this.commentsService.putCommentForAnime({anime_id: this.anime.id, user_id: + sessionStorage.getItem('userid'),
-            comment: this.commentForm.get('comment').value.toString(), date: null}).subscribe((n) => {
-                location.reload();
+        console.log(sessionStorage.getItem('userid'));
+        this.commentsService.putCommentForAnime({
+            anime_id: this.anime.id, user_id: +sessionStorage.getItem('userid'),
+            comment: this.commentForm.get('comment').value.toString(), date: null
+        }).subscribe((n) => {
+            location.reload();
         });
     }
 
