@@ -29,6 +29,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
     userHasRated: string;
     navigationSubscription;
     comments;
+    userHasComment: boolean;
 
     constructor(private router: Router,
                 private activatedRoute: ActivatedRoute,
@@ -36,12 +37,17 @@ export class AnimeComponent implements OnDestroy, OnInit {
                 private listService: ListsService) {
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private ratingService: RatingService,
                 private commentsService: CommentService) {
+        this.userHasComment = false;
         this.navigationSubscription = this.router.events.subscribe((e: any) => {
             if (e instanceof NavigationEnd) {
                 this.initialiseAnime();
                 this.commentsService.getCommentsForAnime(this.anime.id).subscribe((comments) => {
                     this.comments = comments;
-                    console.log(this.comments);
+                    comments.forEach(comment => {
+                       if (comment.user_id === +sessionStorage.getItem('userid')){
+                           this.userHasComment = true;
+                       }
+                    });
                 });
             }
         });
@@ -106,8 +112,9 @@ export class AnimeComponent implements OnDestroy, OnInit {
     }
 
     sendComment(): void {
-        this.commentsService.putCommentForAnime({animeId: this.anime.id, userId: 19,
-            comment: this.commentForm.get('comment').value.toString()}).subscribe((n) => {
+        console.log( sessionStorage.getItem('userid'));
+        this.commentsService.putCommentForAnime({anime_id: this.anime.id, user_id: + sessionStorage.getItem('userid'),
+            comment: this.commentForm.get('comment').value.toString(), date: null}).subscribe((n) => {
                 location.reload();
         });
     }

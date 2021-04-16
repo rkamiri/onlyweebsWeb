@@ -93,22 +93,14 @@ h1 {
     padding-bottom: 2vh;
 }
 
-.darker {
-    background-color: #3e4042;
-    float: right;
-    border-radius: 5px;
-    padding-left: 40px;
-    padding-right: 30px;
-    padding-top: 10px
-}
-
 .comment {
     background-color: rgb(5, 35, 76);
     float: left;
     border-radius: 5px;
     padding-left: 40px;
     padding-right: 30px;
-    padding-top: 10px
+    padding-top: 10px;
+    width:100%;
 }
 
 .comment h4,

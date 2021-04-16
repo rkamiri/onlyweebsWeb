@@ -1,5 +1,6 @@
 export interface Comment {
-    userId: number;
-    animeId: number;
+    user_id: number;
+    anime_id: number;
     comment: string;
+    date: string;
 }
