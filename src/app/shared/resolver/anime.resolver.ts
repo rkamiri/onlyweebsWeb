@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
-import {Anime} from '../shared/model/anime';
-import {AnimeService} from './anime.service';
+import {Anime} from '../model/anime';
 import {Observable} from 'rxjs';
+import {AnimeService} from '../service/anime.service';
 
 @Injectable({ providedIn: 'root' })
 export class AnimeResolver implements Resolve<Anime> {

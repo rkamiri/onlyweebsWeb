@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
-import {User} from '../shared/model/user';
-import {UserService} from '../shared/service/user.service';
+import {User} from '../model/user';
+import {UserService} from '../service/user.service';
 
 @Injectable({providedIn: 'root'})
 export class AccountResolver implements Resolve<User> {

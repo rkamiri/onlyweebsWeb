@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
-import {ListsService} from '../shared/service/lists.service';
+import {ListsService} from '../service/lists.service';
 import {Observable} from 'rxjs';
-import {Lists} from '../shared/model/lists';
+import {Lists} from '../model/lists';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class ListsResolver implements Resolve<Lists[]> {
     constructor(private service: ListsService) {
     }

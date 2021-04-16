@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../shared/model/user';
-import {Router} from '@angular/router';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../shared/service/user.service';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Image} from '../shared/model/image';
 import {ImageService} from '../shared/service/image.service';
+import {ISpinnerConfig, SPINNER_ANIMATIONS, SPINNER_PLACEMENT} from '@hardpool/ngx-spinner';
 
 @Component({
     selector: 'app-account',
@@ -15,12 +15,14 @@ import {ImageService} from '../shared/service/image.service';
     styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
-    public currentUser: User;
-    personalInfoForm: FormGroup;
-    bioForm: FormGroup;
-    passwordForm: FormGroup;
     private newPassWordUser: User;
+    public personalInfoForm: FormGroup;
+    public bioForm: FormGroup;
+    public passwordForm: FormGroup;
     public profilePicture: Image;
+    public spinner: boolean;
+    public spinnerConfig: ISpinnerConfig;
+    public currentUser: User;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -70,6 +72,14 @@ export class AccountComponent implements OnInit {
         this.bioForm.controls.email.setValue(this.currentUser.email);
         this.passwordForm.controls.id.setValue(this.currentUser.id);
         this.newPassWordUser = this.currentUser;
+        this.spinnerConfig = {
+            placement: SPINNER_PLACEMENT.block_window,
+            animation: SPINNER_ANIMATIONS.spin_3,
+            size: '20rem',
+            bgColor: 'rgba(40, 43, 48, 0.6)',
+            color: '#097ce7'
+        };
+        this.spinner = false;
     }
 
     getProfileImage(): void {
@@ -97,7 +107,6 @@ export class AccountComponent implements OnInit {
     }
 
     updatePassword(): void {
-
         if (this.passwordForm.get('newPasswordA').value === this.passwordForm.get('newPasswordB').value && this.passwordForm.get('newPasswordA').value !== '' && this.passwordForm.get('newPasswordB').value !== '') {
             this.currentUser.password = this.passwordForm.get('newPasswordA').value;
             this.userService.updateCurrentUser(this.newPassWordUser).subscribe(
@@ -110,6 +119,7 @@ export class AccountComponent implements OnInit {
     }
 
     fileChange(event): void {
+        this.showSpinner();
         const fileList: FileList = event.target.files;
         const file: File = fileList[0];
         const formData: FormData = new FormData();
@@ -120,5 +130,13 @@ export class AccountComponent implements OnInit {
             .subscribe(() => {
                 setTimeout(location.reload.bind(location), 1);
             });
+    }
+
+    showSpinner(): void {
+        this.spinner = true;
+    }
+
+    hideSpinner(): void {
+        this.spinner = false;
     }
 }

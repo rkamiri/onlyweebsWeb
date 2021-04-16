@@ -19,24 +19,19 @@
     color: black;
 }
 
-.carousel-img {
-    display: block;
-    margin: auto;
-}
-
-#car {
-    display: block;
-    margin: auto;
-    width: 59vw;
-}
-
 #market {
     min-width: 60%;
     max-width: 60%;
+    margin: auto;
     color: white;
     background-color: rgba(40, 43, 48, .75);
 }
 
 #firstRow {
     padding-top: 1.5vh;
+}
+
+.carousel-img {
+    display: block;
+    margin: auto;
 }

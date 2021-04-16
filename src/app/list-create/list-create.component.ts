@@ -1,21 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
+import {Component, OnInit} from '@angular/core';
 import {Anime} from '../shared/model/anime';
-import {ActivatedRoute} from '@angular/router';
-import {Router} from '@angular/router';
-import {FormControl, FormGroup} from '@angular/forms';
 import {Lists} from '../shared/model/lists';
+import {FormControl, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ListsService} from '../shared/service/lists.service';
-import {UserService} from '../shared/service/user.service';
-import {Rating} from '../shared/model/rating';
+import {TypeaheadMatch} from 'ngx-bootstrap/typeahead/typeahead-match.class';
 import {IsListedIn} from '../shared/model/is.listed.in';
 
 @Component({
-    selector: 'app-create-list',
-    templateUrl: './create-list.component.html',
-    styleUrls: ['./create-list.component.css']
+    selector: 'app-list-create',
+    templateUrl: './list-create.component.html',
+    styleUrls: ['./list-create.component.css']
 })
-export class CreateListComponent implements OnInit {
+export class ListCreateComponent implements OnInit {
     animeList: Anime[];
     thisList: Lists;
     selectedValue: string;
@@ -50,7 +47,14 @@ export class CreateListComponent implements OnInit {
     }
 
     createList(): void {
-        this.listService.createList(this.createListForm.value).subscribe(
+        const list: Lists = {
+            id: 666,
+            name: this.createListForm.get('name').value,
+            creationDate: 'string',
+            description: this.createListForm.get('description').value,
+            isOwnedBy: +sessionStorage.getItem('userid')
+        };
+        this.listService.createList(list).subscribe(
             () => {
                 this.fillList();
                 return this.router.navigate(['/lists']);
@@ -63,12 +67,9 @@ export class CreateListComponent implements OnInit {
         for (const i of this.newList) {
             const ili: IsListedIn = {id: 666, list_id: this.thisList.id + 1, anime_id: i.id};
             this.listService.putAnimeInList(ili).subscribe(
-                () => {}
+                () => {
+                }
             );
         }
     }
 }
-
-
-
-

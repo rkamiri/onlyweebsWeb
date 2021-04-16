@@ -13,6 +13,6 @@ export class ListsComponent implements OnInit {
     constructor(private route: ActivatedRoute) {}
 
     ngOnInit(): void {
-        this.lists = this.route.snapshot.data.allLists;
+        this.lists = this.route.snapshot.data.customLists;
     }
 }

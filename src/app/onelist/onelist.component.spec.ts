@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OnelistComponent } from './onelist.component';
+import { OnelistComponent } from './one-list.component';
 
 describe('OnelistComponent', () => {
   let component: OnelistComponent;

@@ -18,7 +18,11 @@ export class UserService {
         return this.httpclient.post(environment.backend + '/register', value);
     }
     getCurrentUser(): Observable<User> {
-        return this.httpclient.get<User>( environment.backend + '/users/current');
+        const user = this.httpclient.get<User>( environment.backend + '/users/current');
+        user.subscribe((us) => {
+            sessionStorage.setItem('userid', String(us.id));
+        });
+        return user;
     }
     updateCurrentUser(value: object): Observable<User> {
         return this.httpclient.put<User>( environment.backend + '/users/update', value);
