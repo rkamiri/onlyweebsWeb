@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Anime} from '../shared/model/anime';
 import {FormControl, FormGroup} from '@angular/forms';
-import {User} from '../shared/model/user';
 import {RatingService} from '../shared/service/rating.service';
 import {Rating} from '../shared/model/rating';
 import {CommentService} from '../shared/service/comment.service';
@@ -71,7 +70,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
         if (sessionStorage.getItem('isConnected') === 'true') {
             this.listService.getMyCustomLists().subscribe((customLists) => {
                 this.userCustomLists = customLists;
-                this.hasCustom = this.userCustomLists.length !== 0;
+                this.hasCustom = customLists.length !== 0;
             });
             this.listService.getMyDefaultLists().subscribe((defaultLists) => {
                 this.userDefaultLists = defaultLists;
