@@ -115,7 +115,6 @@ export class AnimeComponent implements OnDestroy, OnInit {
     }
 
     sendComment(): void {
-        console.log(sessionStorage.getItem('userid'));
         this.commentsService.putCommentForAnime({
             anime_id: this.anime.id, user_id: +sessionStorage.getItem('userid'),
             comment: this.commentForm.get('comment').value.toString(), date: null
