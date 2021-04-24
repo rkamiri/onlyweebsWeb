@@ -51,6 +51,7 @@ export class UserService {
         this.httpclient.post<any>( environment.backend + '/logout', '').subscribe(
             () => {
                 sessionStorage.setItem('isConnected', 'false');
+                sessionStorage.removeItem('userid');
                 this.emitAuthStatus(false);
             }
         );
