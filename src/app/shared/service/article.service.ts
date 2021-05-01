@@ -10,4 +10,8 @@ export class ArticleService {
     getAllArticles(): Observable<any> {
         return this.httpclient.get<string>(environment.backend + '/articles');
     }
+
+    getArticle(id: number): Observable<any> {
+        return this.httpclient.get<string>(environment.backend + '/articles/' + id);
+    }
 }
