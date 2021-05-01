@@ -118,7 +118,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
         this.commentsService.putCommentForAnime({
             anime_id: this.anime.id, user_id: +sessionStorage.getItem('userid'),
             comment: this.commentForm.get('comment').value.toString(), date: null
-        }).subscribe((n) => {
+        }).subscribe(() => {
             location.reload();
         });
     }
