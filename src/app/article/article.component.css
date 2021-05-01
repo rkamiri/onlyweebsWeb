@@ -51,14 +51,12 @@ h1{
 
 
 @media screen and (max-width: 576px) {
-    body{
-        margin: -10px;
-    }
 
     .container{
-        margin: 0;
-        padding: 0;
-        background-color: rgba(40, 43, 48, .75);
+        border-radius: 0;
+        min-width: 100%;
+        padding: 5vw;
     }
 
 }
+

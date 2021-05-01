@@ -5,7 +5,7 @@ export interface Article {
     id: number;
     title: string;
     body: string;
-    created_at: string;
+    created_at: Date;
     author: User;
     cover: Image;
 }
