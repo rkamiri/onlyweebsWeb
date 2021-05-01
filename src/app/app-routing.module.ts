@@ -27,6 +27,7 @@ import {MyDefaultListsResolver} from './shared/resolver/my.default.lists.resolve
 import {CustomListsResolver} from './shared/resolver/custom.lists.resolver';
 import {ArticleComponent} from './article/article.component';
 import {ArticleResolver} from "./shared/resolver/article.resolver";
+import {ArticleListComponent} from "./article-list/article-list.component";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -103,6 +104,9 @@ const routes: Routes = [
         resolve: {
             article: ArticleResolver,
         }
+    },
+    {
+      path: 'articles', component: ArticleListComponent,
     },
 ];
 
