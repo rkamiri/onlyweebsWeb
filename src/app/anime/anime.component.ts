@@ -46,7 +46,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
                     this.comments = comments;
                     console.log(comments);
                     comments.forEach(comment => {
-                        if (comment.userEntity === this.currentUser) {
+                        if (comment.usersEntity.id === this.currentUser.id) {
                             this.userHasComment = true;
                         }
                     });
@@ -118,7 +118,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
 
     sendComment(): void {
         this.commentsService.putCommentForAnime({
-            userEntity: null,
+            usersEntity: null,
             anime_id: this.anime.id,
             comment: this.commentForm.get('comment').value.toString(),
             date: null
