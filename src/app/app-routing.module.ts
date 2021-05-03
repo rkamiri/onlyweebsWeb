@@ -25,7 +25,7 @@ import {ListContentResolver} from './shared/resolver/listcontent.resolver';
 import {MyCustomListsResolver} from './shared/resolver/my.custom.lists.resolver';
 import {MyDefaultListsResolver} from './shared/resolver/my.default.lists.resolver';
 import {CustomListsResolver} from './shared/resolver/custom.lists.resolver';
-import {ArticleComponent} from './article/article.component';
+import {ArticleListComponent} from './article-list/article-list.component';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -97,7 +97,7 @@ const routes: Routes = [
             myDefaultLists: MyDefaultListsResolver
         }
     },
-    {path: 'article', component: ArticleComponent},
+    {path: 'article-list', component: ArticleListComponent},
 ];
 
 @NgModule({
