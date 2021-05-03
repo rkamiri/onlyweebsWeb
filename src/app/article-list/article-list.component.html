@@ -1,36 +1,32 @@
 <div class="text-light">
-<div id="titre_page" class="text-center">
-<h1>Actualité</h1>
-</div>
-
+    <div id="titre_page" class="text-center">
+        <h1>Actualités</h1>
+    </div>
     <div class="container">
-    <div class="row" style="background-color: #3e4042">
-        <div *ngFor="let article of listArticles" class="col-md-6" >
-<div id="article" class="">
-    <div id="tags">
-        SORTIE, NETFLIX
+        <div class="row">
+            <div id="articleList" *ngFor="let article of listArticles" class="col-md-6">
+                <div id="article" class="" routerLink="/articles/{{article.id}}">
+                    <div class="text-center">
+                        <img id="photo" src="data:image/webp;base64,{{article.cover.content}}" alt="article image"/>
+                    </div>
+                    <div id="titre_article">
+                        <h5>{{article.title}} </h5>
+                    </div>
+                    <div id="body" class="text-secondary">
+                        {{article.body}}
+                    </div>
+                    <div id="parent">
+                        <div id="tags">Tags: SORTIE, NETFLIX</div>
+                        <div id="infos" class="text-right">
+                            <div id="auteur"> by {{article.author.firstname}} "{{article.author.username}}" {{article.author.lastname}}</div>
+                            <div id="date"> Le {{article.created_at}}</div>
+                        </div>
+                    </div>
+                    <div id="voir_plus" class="text-right">
+                        <a routerLink="/articles">Voir plus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="text-center">
-        <img id="photo" class="" src="https://views.fr/wp-content/uploads/2021/01/snk-pfa.jpg">
-    </div>
-    <div id="titre_article">
-        <h5>L’Attaque des Titans saison 3 partie 2 est enfin disponible sur Netflix, que nous réserve cette fin de saison de SNK ? </h5>
-    </div>
-    <div id="résumé" class="text-secondary">
-        La saison 3 partie 2 de L’Attaque des Titans est enfin disponible sur Netflix depuis ce samedi 1er mai. Que va-t-il se passer ? La première partie de la saison 3 de L’Attaque des Titans s’est terminée sur un énorme cliffhanger et il est fort probable que nous apprenions ce qui se cache exactement dans le sous-sol d’Eren Jäger.
-    </div>
-    <div id="infos" class="text-right">
-        <div id="auteur"> by Tojo </div>
-        <div id="date"> il y a 23 heures </div>
-    </div>
-    <div id="voir_plus" class="text-right">
-        <a href="https://www.urban-fusions.fr/2021/05/01/lattaque-des-titans-saison-3-partie-2-est-enfin-disponible-sur-netflix-que-nous-reserve-cette-fin-de-saison-de-snk/"> Voir plus </a>
-        <p></p>
-    </div>
-
-
-</div>
-</div>
-    </div>
-</div>
 </div>

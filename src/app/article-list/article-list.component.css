@@ -1,3 +1,22 @@
+.container {
+    background-color: #3e4042;
+    border-radius: 5px;
+}
+#articleList {
+    margin-top: 2vh;
+}
+#article {
+    margin-bottom: 1vh;
+}
 #photo {
-    width: 500px;
+    width: 28vw;
+    height: 17.5vh;
+}
+#parent {
+    display: flex;
+}
+#tags {
+}
+#infos {
+    flex-grow: 1;
 }
