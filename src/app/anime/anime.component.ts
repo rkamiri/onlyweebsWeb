@@ -9,6 +9,7 @@ import {CommentService} from '../shared/service/comment.service';
 import {Lists} from '../shared/model/lists';
 import {IsListedIn} from '../shared/model/is.listed.in';
 import {ListsService} from '../shared/service/lists.service';
+import {Comment} from '../shared/model/comment';
 
 @Component({
     selector: 'app-anime',
@@ -23,12 +24,12 @@ export class AnimeComponent implements OnDestroy, OnInit {
     public currentRate: number;
     public globalRate: number;
     public selectedList: string;
+    public comments: Comment[];
     rateForm: FormGroup;
     commentForm: FormGroup;
     isUserAuthenticated: boolean;
     userHasRated: string;
     navigationSubscription;
-    comments;
     userHasComment: boolean;
 
     constructor(private router: Router,
@@ -40,10 +41,12 @@ export class AnimeComponent implements OnDestroy, OnInit {
         this.navigationSubscription = this.router.events.subscribe((e: any) => {
             if (e instanceof NavigationEnd) {
                 this.initialiseAnime();
+                this.currentUser = this.activatedRoute.snapshot.data.currentUser;
                 this.commentsService.getCommentsForAnime(this.anime.id).subscribe((comments) => {
                     this.comments = comments;
+                    console.log(comments);
                     comments.forEach(comment => {
-                        if (comment.user_id === +sessionStorage.getItem('userid')) {
+                        if (comment.userEntity === this.currentUser) {
                             this.userHasComment = true;
                         }
                     });
@@ -69,7 +72,6 @@ export class AnimeComponent implements OnDestroy, OnInit {
         this.anime = this.activatedRoute.snapshot.data.anime;
         this.userCustomLists = this.activatedRoute.snapshot.data.userCustomLists;
         this.userDefaultLists = this.activatedRoute.snapshot.data.userDefaultLists;
-        this.currentUser = this.activatedRoute.snapshot.data.currentUser;
         this.globalRate = this.activatedRoute.snapshot.data.globalRating;
         this.isUserAuthenticated = !!this.currentUser;
 
@@ -116,9 +118,11 @@ export class AnimeComponent implements OnDestroy, OnInit {
 
     sendComment(): void {
         this.commentsService.putCommentForAnime({
-            anime_id: this.anime.id, user_id: +sessionStorage.getItem('userid'),
-            comment: this.commentForm.get('comment').value.toString(), date: null
-        }).subscribe((n) => {
+            userEntity: null,
+            anime_id: this.anime.id,
+            comment: this.commentForm.get('comment').value.toString(),
+            date: null
+        }).subscribe(() => {
             location.reload();
         });
     }

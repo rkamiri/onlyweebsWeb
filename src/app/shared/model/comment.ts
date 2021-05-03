@@ -1,5 +1,7 @@
+import {User} from './user';
+
 export interface Comment {
-    user_id: number;
+    userEntity: User;
     anime_id: number;
     comment: string;
     date: string;
