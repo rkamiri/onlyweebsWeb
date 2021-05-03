@@ -83,7 +83,9 @@ export class AccountComponent implements OnInit {
     }
 
     getProfileImage(): void {
-        this.imageService.getProfilePicture(this.currentUser.id).subscribe((n) => this.profilePicture = n);
+        this.imageService.getProfilePicture().subscribe((image) => {
+            this.profilePicture = image;
+        });
     }
 
     updatePersonalInfos(): void {
