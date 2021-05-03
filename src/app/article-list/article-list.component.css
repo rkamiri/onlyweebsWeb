@@ -1,6 +1,13 @@
 body{
     background-color: rgba(40, 43, 48, .75);
 }
+.img-fluid {
+    width: 262px;
+    height: 226px;
+}
+#image1 {
+    height: 460px;
+}
 #articles {
     border-radius: 5px;
     width: 75vw;
