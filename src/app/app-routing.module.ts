@@ -26,8 +26,7 @@ import {MyCustomListsResolver} from './shared/resolver/my.custom.lists.resolver'
 import {MyDefaultListsResolver} from './shared/resolver/my.default.lists.resolver';
 import {CustomListsResolver} from './shared/resolver/custom.lists.resolver';
 import {ArticleComponent} from './article/article.component';
-import {ArticleResolver} from "./shared/resolver/article.resolver";
-import {ArticleListComponent} from "./article-list/article-list.component";
+import {ArticleResolver} from './shared/resolver/article.resolver';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -106,7 +105,7 @@ const routes: Routes = [
         }
     },
     {
-      path: 'articles', component: ArticleListComponent,
+      path: 'articles', component: ArticleComponent,
     },
 ];
 
