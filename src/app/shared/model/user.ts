@@ -1,3 +1,5 @@
+import {Image} from './image';
+
 export interface User {
     id: number;
     username: string;
@@ -7,4 +9,5 @@ export interface User {
     email: string;
     gender: string;
     bio: string;
+    image: Image;
 }

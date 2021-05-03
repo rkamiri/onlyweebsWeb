@@ -26,7 +26,6 @@ import { MylistsComponent } from './mylists/mylists.component';
 import { ListCreateComponent } from './list-create/list-create.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxSpinnerModule} from '@hardpool/ngx-spinner';
-import { ArticleComponent } from './article/article.component';
 
 @NgModule({
     declarations: [
@@ -44,8 +43,8 @@ import { ArticleComponent } from './article/article.component';
         AnimeListComponent,
         OnelistComponent,
         MylistsComponent,
-        ListCreateComponent,
-        ArticleComponent
+        ListCreateComponent
+
     ],
     imports: [
         BrowserModule,

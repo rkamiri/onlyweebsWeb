@@ -17,11 +17,7 @@ export class ImageService {
 
     constructor(private httpclient: HttpClient) {}
 
-    getProfilePicture(id): Observable<Image> {
-        return this.httpclient.get<Image>(environment.backend + '/users/profilepicture/' + id, httpOptions);
-    }
-
-    getImage(id): Observable<Image> {
-        return this.httpclient.get<Image>(environment.backend + '/upload/image/' + id, httpOptions);
+    getProfilePicture(): Observable<Image> {
+        return this.httpclient.get<Image>(environment.backend + '/users/pp', httpOptions);
     }
 }
