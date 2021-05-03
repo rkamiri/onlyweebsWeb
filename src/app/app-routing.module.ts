@@ -99,13 +99,13 @@ const routes: Routes = [
             myDefaultLists: MyDefaultListsResolver
         }
     },
+    {path: 'articles', component: ArticleListComponent},
     {
         path: 'articles/:id', component: ArticleComponent,
         resolve: {
             article: ArticleResolver,
         }
-    },
-    {path: 'articles', component: ArticleListComponent},
+    }
 ];
 
 @NgModule({
