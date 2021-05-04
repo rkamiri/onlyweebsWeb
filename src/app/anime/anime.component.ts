@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Anime} from '../shared/model/anime';
 import {FormControl, FormGroup} from '@angular/forms';
-import {User} from '../shared/model/user';
 import {RatingService} from '../shared/service/rating.service';
 import {Rating} from '../shared/model/rating';
 import {CommentService} from '../shared/service/comment.service';
@@ -16,16 +15,16 @@ import {ListsService} from '../shared/service/lists.service';
     styleUrls: ['./anime.component.css']
 })
 export class AnimeComponent implements OnDestroy, OnInit {
-    public currentUser: User;
     public userCustomLists: Lists[];
     public userDefaultLists: Lists[];
     public anime: Anime;
     public currentRate: number;
     public globalRate: number;
     public selectedList: string;
+    public isConnected = sessionStorage.getItem('isConnected') === 'true';
+    public hasCustom: boolean;
     rateForm: FormGroup;
     commentForm: FormGroup;
-    isUserAuthenticated: boolean;
     userHasRated: string;
     navigationSubscription;
     comments;
@@ -43,7 +42,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
                 this.commentsService.getCommentsForAnime(this.anime.id).subscribe((comments) => {
                     this.comments = comments;
                     comments.forEach(comment => {
-                        if (comment.user_id === +sessionStorage.getItem('userid')) {
+                        if (comment.usersEntity.id === +sessionStorage.getItem('userid')) {
                             this.userHasComment = true;
                         }
                     });
@@ -67,13 +66,15 @@ export class AnimeComponent implements OnDestroy, OnInit {
 
     ngOnInit(): void {
         this.anime = this.activatedRoute.snapshot.data.anime;
-        this.userCustomLists = this.activatedRoute.snapshot.data.userCustomLists;
-        this.userDefaultLists = this.activatedRoute.snapshot.data.userDefaultLists;
-        this.currentUser = this.activatedRoute.snapshot.data.currentUser;
         this.globalRate = this.activatedRoute.snapshot.data.globalRating;
-        this.isUserAuthenticated = !!this.currentUser;
-
-        if (this.isUserAuthenticated) {
+        if (sessionStorage.getItem('isConnected') === 'true') {
+            this.listService.getMyCustomLists().subscribe((customLists) => {
+                this.userCustomLists = customLists;
+                this.hasCustom = customLists.length !== 0;
+            });
+            this.listService.getMyDefaultLists().subscribe((defaultLists) => {
+                this.userDefaultLists = defaultLists;
+            });
             if (this.currentRate === null || this.currentRate === undefined) {
                 this.currentRate = this.activatedRoute.snapshot.data.currentUserRating;
                 if (!(this.currentRate === 666)) {
@@ -91,7 +92,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
 
     updateRating(): void {
         const rating: Rating = {
-            userId: this.currentUser.id,
+            userId: +sessionStorage.getItem('userid'),
             animeId: this.anime.id,
             rate: this.rateForm.controls.rate.value
         };
@@ -116,8 +117,10 @@ export class AnimeComponent implements OnDestroy, OnInit {
 
     sendComment(): void {
         this.commentsService.putCommentForAnime({
-            anime_id: this.anime.id, user_id: +sessionStorage.getItem('userid'),
-            comment: this.commentForm.get('comment').value.toString(), date: null
+            usersEntity: null,
+            anime_id: this.anime.id,
+            comment: this.commentForm.get('comment').value.toString(),
+            date: null
         }).subscribe(() => {
             location.reload();
         });

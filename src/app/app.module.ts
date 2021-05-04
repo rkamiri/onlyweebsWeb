@@ -29,6 +29,7 @@ import {NgxSpinnerModule} from '@hardpool/ngx-spinner';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleComponent } from './article/article.component';
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -47,7 +48,6 @@ import { ArticleComponent } from './article/article.component';
         MylistsComponent,
         ListCreateComponent,
         ArticleListComponent,
-        ArticleComponent,
         ArticleComponent
     ],
     imports: [

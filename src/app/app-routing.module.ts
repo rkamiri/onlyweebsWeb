@@ -22,12 +22,11 @@ import {ListsResolver} from './shared/resolver/lists.resolver';
 import {LastListsResolver} from './shared/resolver/last.list.resolver';
 import {OneListResolver} from './shared/resolver/onelist.resolver';
 import {ListContentResolver} from './shared/resolver/listcontent.resolver';
-import {MyCustomListsResolver} from './shared/resolver/my.custom.lists.resolver';
-import {MyDefaultListsResolver} from './shared/resolver/my.default.lists.resolver';
 import {CustomListsResolver} from './shared/resolver/custom.lists.resolver';
 import {ArticleListComponent} from './article-list/article-list.component';
 import {ArticleComponent} from './article/article.component';
 import {ArticleResolver} from './shared/resolver/article.resolver';
+
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -52,9 +51,7 @@ const routes: Routes = [
             anime: AnimeResolver,
             globalRating: GlobalRatingResolver,
             currentUserRating: CurrentUserRatingResolver,
-            currentUser: AccountResolver,
-            userCustomLists: MyCustomListsResolver,
-            userDefaultLists: MyDefaultListsResolver
+            currentUser: AccountResolver
         },
         runGuardsAndResolvers: 'always'
     },
@@ -92,20 +89,14 @@ const routes: Routes = [
             lastList: LastListsResolver
         }
     },
-    {
-        path: 'my-lists', component: MylistsComponent,
-        resolve: {
-            myCustomLists: MyCustomListsResolver,
-            myDefaultLists: MyDefaultListsResolver
-        }
-    },
     {path: 'articles', component: ArticleListComponent},
     {
         path: 'articles/:id', component: ArticleComponent,
         resolve: {
             article: ArticleResolver,
         }
-    }
+    },
+    {path: 'my-lists', component: MylistsComponent}
 ];
 
 @NgModule({
