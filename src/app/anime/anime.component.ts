@@ -42,7 +42,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
                 this.commentsService.getCommentsForAnime(this.anime.id).subscribe((comments) => {
                     this.comments = comments;
                     comments.forEach(comment => {
-                        if (comment.user_id === +sessionStorage.getItem('userid')) {
+                        if (comment.usersEntity.id === +sessionStorage.getItem('userid')) {
                             this.userHasComment = true;
                         }
                     });
@@ -117,9 +117,11 @@ export class AnimeComponent implements OnDestroy, OnInit {
 
     sendComment(): void {
         this.commentsService.putCommentForAnime({
-            anime_id: this.anime.id, user_id: +sessionStorage.getItem('userid'),
-            comment: this.commentForm.get('comment').value.toString(), date: null
-        }).subscribe((n) => {
+            usersEntity: null,
+            anime_id: this.anime.id,
+            comment: this.commentForm.get('comment').value.toString(),
+            date: null
+        }).subscribe(() => {
             location.reload();
         });
     }

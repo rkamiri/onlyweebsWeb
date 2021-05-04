@@ -36,9 +36,6 @@ export class NavComponent implements OnInit {
     constructor(  private router: Router, private userService: UserService, private searchService: SearchService) { }
 
     ngOnInit(): void {
-        const source = interval(10000);
-        source.subscribe(val => this.userService.authListener());
-
         this.authSubscription = this.userService.authListener().subscribe(state => {
             this.isUserAuthenticated = state;
             this.userService.getCurrentUser().subscribe((user) => {
