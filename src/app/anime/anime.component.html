@@ -6,7 +6,7 @@
 
         <div class="col-lg-6  col-md-6 col-sm-8 col-12" id="center">
             <h1 id="animeTitle">{{ anime.internationalTitle }}</h1>
-            <div id="parentLists" *ngIf="isUserAuthenticated">
+            <div id="parentLists" *ngIf="isConnected">
                 <div class="input-group mb-3" id="default">
                     <label for="optionSelectDefault"></label>
                     <select name="basicList"
@@ -21,7 +21,7 @@
                     </div>
                 </div>
 
-                <div class="input-group mb-3" id="custom" *ngIf="userCustomLists.length!==0">
+                <div class="input-group mb-3" id="custom" *ngIf="hasCustom">
                     <label for="optionSelectCustom"></label>
                     <select name="basicList"
                             class="custom-select custom-select-sm optionSelect"
@@ -34,7 +34,7 @@
                         </button>
                     </div>
                 </div>
-                <div *ngIf="userCustomLists.length===0">
+                <div *ngIf="!hasCustom">
                     <a [routerLink]="['/list-create']">
                         <button type="button" class="btn btn-primary btn-lg">Create a custom list</button>
                     </a>
@@ -61,9 +61,9 @@
             </div>
             <div class="row">
                 <h1 class="detailsContent">Global Rate : {{ globalRate }}/10</h1>
-                <h1 *ngIf="isUserAuthenticated" class="detailsContent">My Rating: {{currentRate}}/10 </h1>
+                <h1 *ngIf="isConnected" class="detailsContent">My Rating: {{currentRate}}/10 </h1>
             </div>
-            <div *ngIf="isUserAuthenticated">
+            <div *ngIf="isConnected">
                 <form [formGroup]="rateForm" (ngSubmit)="updateRating()">
                     <div class="input-group-prepend" id="ratingGroup">
                         <button id="ratingBtn" class="btn btn-primary">{{currentRate ? 'Update' : 'Add'}}</button>
@@ -75,30 +75,37 @@
         </div>
     </div>
 
-    <!-- Partie affichage des commentaires -->
-        <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-center">
 
-            <div [ngClass]="currentUser ? 'col-sm-6 col-md-6 col-6 pb-6' : 'col-sm-8 col-md-8 col-8 pb-8'" >
-                <h1>Comments</h1>
-                <div *ngFor="let comment of comments ; let index = index" class="mt-4 text-justify float-left comment">
+        <div [ngClass]="isConnected ? 'col-sm-6 col-md-6 col-6 pb-6' : 'col-sm-8 col-md-8 col-8 pb-8'">
+            <h1>Comments</h1>
+            <div *ngFor="let comment of comments ; let index = index" class="mt-4 text-justify float-left comment">
 
-                    <img src="data:image/webp;base64,{{comment.usersEntity.image.content}}" alt="profile image" class="rounded-circle" width="80" height="80">
-                    <h4> {{comment.usersEntity.firstname}} "{{comment.usersEntity.username}}" {{comment.usersEntity.lastname}} </h4>
-                    <span>-{{comment.date |  date:'dd/MM/yyyy'}}</span> <br>
-                    <p>{{comment.comment}}</p>
-                </div>
-            </div>
-
-            <!-- Partie post commentaire -->
-            <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4" >
-                <form id="algin-form" (ngSubmit)="sendComment()" [formGroup]="commentForm">
-                    <div class="form-group">
-                        <h1>Leave a comment</h1> <label for="message">Message</label> <textarea name="msg" id="message" cols="30" rows="5" class="form-control" formControlName="comment" style="background-color: black;"></textarea>
-                    </div>
-                    <div class="form-group"> <button type="submit" class="btn btn-primary">{{userHasComment ? 'Edit Comment' : 'Post Comment' }}</button> </div>
-                </form>
+                <img src="data:image/webp;base64,{{comment.usersEntity.image.content}}" alt="profile image"
+                     class="rounded-circle" width="80" height="80">
+                <h4> {{comment.usersEntity.firstname}} "{{comment.usersEntity.username}}
+                    " {{comment.usersEntity.lastname}} </h4>
+                <span>-{{comment.date |  date:'dd/MM/yyyy'}}</span> <br>
+                <p>{{comment.comment}}</p>
             </div>
         </div>
+
+        <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+            <form id="algin-form" (ngSubmit)="sendComment()" [formGroup]="commentForm">
+                <div class="form-group">
+                    <h1>Leave a comment</h1> <label for="message">Message</label> <textarea name="msg" id="message"
+                                                                                            cols="30" rows="5"
+                                                                                            class="form-control"
+                                                                                            formControlName="comment"
+                                                                                            style="background-color: black;"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit"
+                            class="btn btn-primary">{{userHasComment ? 'Edit Comment' : 'Post Comment' }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 
