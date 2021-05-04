@@ -26,6 +26,7 @@ import {CustomListsResolver} from './shared/resolver/custom.lists.resolver';
 import {ArticleListComponent} from './article-list/article-list.component';
 import {ArticleComponent} from './article/article.component';
 import {ArticleResolver} from './shared/resolver/article.resolver';
+import {ArticleEditorComponent} from "./article-editor/article-editor.component";
 
 
 const routes: Routes = [
@@ -96,7 +97,9 @@ const routes: Routes = [
             article: ArticleResolver,
         }
     },
-    {path: 'my-lists', component: MylistsComponent}
+    {path: 'my-lists', component: MylistsComponent},
+    {path: 'editor', component: ArticleEditorComponent}
+
 ];
 
 @NgModule({

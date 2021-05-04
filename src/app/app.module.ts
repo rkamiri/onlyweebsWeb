@@ -28,6 +28,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxSpinnerModule} from '@hardpool/ngx-spinner';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleComponent } from './article/article.component';
+import { ArticleEditorComponent } from './article-editor/article-editor.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -48,7 +50,8 @@ import { ArticleComponent } from './article/article.component';
         MylistsComponent,
         ListCreateComponent,
         ArticleListComponent,
-        ArticleComponent
+        ArticleComponent,
+        ArticleEditorComponent
     ],
     imports: [
         BrowserModule,
@@ -61,7 +64,8 @@ import { ArticleComponent } from './article/article.component';
         FileUploadModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        NgxSpinnerModule
+        NgxSpinnerModule,
+        CKEditorModule
     ],
     providers: [
         [
