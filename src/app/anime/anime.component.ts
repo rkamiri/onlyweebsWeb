@@ -68,13 +68,11 @@ export class AnimeComponent implements OnDestroy, OnInit {
         this.anime = this.activatedRoute.snapshot.data.anime;
         this.globalRate = this.activatedRoute.snapshot.data.globalRating;
         if (sessionStorage.getItem('isConnected') === 'true') {
-            console.log('here');
             this.listService.getMyCustomLists().subscribe((customLists) => {
                 this.userCustomLists = customLists;
                 this.hasCustom = customLists.length !== 0;
             });
             this.listService.getMyDefaultLists().subscribe((defaultLists) => {
-                console.log('there');
                 this.userDefaultLists = defaultLists;
             });
             if (this.currentRate === null || this.currentRate === undefined) {
