@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Lists} from '../shared/model/lists';
-import {ActivatedRoute} from '@angular/router';
+import {ListsService} from '../shared/service/lists.service';
 
 @Component({
     selector: 'app-mylists',
@@ -11,11 +11,15 @@ export class MylistsComponent implements OnInit {
     public defaultLists: Lists[];
     public customLists: Lists[];
 
-    constructor(private route: ActivatedRoute) {
+    constructor(private listService: ListsService) {
     }
 
     ngOnInit(): void {
-        this.defaultLists = this.route.snapshot.data.myDefaultLists;
-        this.customLists = this.route.snapshot.data.myCustomLists;
+        this.listService.getMyCustomLists().subscribe((customLists) => {
+            this.customLists = customLists;
+        });
+        this.listService.getMyDefaultLists().subscribe((defaultLists) => {
+            this.defaultLists = defaultLists;
+        });
     }
 }
