@@ -5,12 +5,9 @@
             <div id="head">
                 <h1>{{data.title}}</h1>
                 <label>Publié le {{data.created_at  | date: 'dd/MM/yyyy'}}</label>
-                <p>{{data.body}}</p>
                 <img *ngIf="data.cover !== undefined" src="data:image/webp;base64,{{data.cover.content}}" alt="article image"/>
             </div>
-            <div id="mainContent">
-                {{data.body}}
-            </div>
+            <div id="mainContent" [innerHTML]="data.body | safeHtml"></div>
             <div id="author">
                 <img class="rounded-circle d-inline " src="https://image.jeuxvideo.com/avatar-sm/a/n/antistar-1570009637-130dd54464160bf26c2c6166e64f33c9.jpg">
                 <p class="d-inline p-2">Par {{data.author.firstname}} {{data.author.lastname}}, Rédacteur onlyweebs.com</p>

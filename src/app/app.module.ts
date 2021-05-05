@@ -27,7 +27,7 @@ import { ListCreateComponent } from './list-create/list-create.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxSpinnerModule} from '@hardpool/ngx-spinner';
 import { ArticleListComponent } from './article-list/article-list.component';
-import { ArticleComponent } from './article/article.component';
+import {ArticleComponent, SafeHtmlPipe} from './article/article.component';
 import { ArticleEditorComponent } from './article-editor/article-editor.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
@@ -51,7 +51,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
         ListCreateComponent,
         ArticleListComponent,
         ArticleComponent,
-        ArticleEditorComponent
+        ArticleEditorComponent,
+        SafeHtmlPipe
     ],
     imports: [
         BrowserModule,
