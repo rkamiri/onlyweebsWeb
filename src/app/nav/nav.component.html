@@ -20,6 +20,9 @@
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/lists']" routerLinkActive="is-active">LISTS</a>
             </li>
+            <li *ngIf="isUserAuthenticated" class="nav-item">
+                <a class="nav-link" [routerLink]="['/editor']" routerLinkActive="is-active">EDITOR</a>
+            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSearchSubmit()">
             <div class="input-group mb-3" id="searchBlock">
