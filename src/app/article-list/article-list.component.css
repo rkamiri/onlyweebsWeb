@@ -73,3 +73,8 @@ body{
     border-color: #868686;
     width: 50vw;
 }
+.articleImage {
+    margin-top: 1vh;
+    width: 23vw;
+    height: 23vh;
+}

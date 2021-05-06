@@ -121,7 +121,7 @@
                                             <div class="ratio_right-cover-2 image-wrapper">
                                                 <a routerLink="/articles/4">
                                                     <img class="img-fluid"
-                                                         src="data:image/webp;base64,{{listArticles[4].cover.content}}"
+                                                         src="data:image/webp;base64,{{listArticles[3].cover.content}}"
                                                          alt="blog website templates bootstrap">
                                                 </a>
                                             </div>
@@ -131,7 +131,7 @@
                                                    routerLink="/articles/4">Adventure</a>
                                                 <!--title-->
                                                 <a routerLink="/articles/4">
-                                                    <h2 class="h5 text-white my-1">{{listArticles[4].title}}</h2>
+                                                    <h2 class="h5 text-white my-1">{{listArticles[3].title}}</h2>
                                                 </a>
                                             </div>
                                         </div>
@@ -145,15 +145,15 @@
 
             <!-- block articles horizontaux -->
 
-            <hr class="featurette-divider">
             <div class="row featurette" *ngFor=" let article of listArticlesNext">
+                <hr class="featurette-divider">
                 <div class="col-md-7 order-md-2">
                     <h2 class="featurette-heading">{{article.title}} <span
                         class="text-muted">{{article.title}}</span></h2>
                     <p class="lead">{{article.body}}</p>
                 </div>
                 <div class="col-md-5 order-md-1">
-                    <img class="bottom bd-placeholder-img bd-placeholder-img-lg featurette-image mx-auto"
+                    <img class="bottom bd-placeholder-img bd-placeholder-img-lg featurette-image mx-auto articleImage"
                          src="data:image/webp;base64,{{article.cover.content}}"
                          alt="bootstrap blog wordpress theme">
                 </div>
