@@ -2,13 +2,16 @@
     outline-width: 0;
     font-family: 'Karla', sans-serif !important;
 }
+body{
+    padding-top: 10vh;
+    padding-bottom: 10vh;
 
+}
 .testA{
     background-color: rgba(40, 43, 48, .75);
     border-radius: 0.3em;
     max-width: 40vw;
     margin: auto;
-    margin-top: 15vh;
     padding: 1vw;
 }
 
@@ -86,6 +89,7 @@ select:-webkit-autofill:focus {
 
 @media screen and (max-width: 576px) {
     body{
+        padding: 0;
         margin: -10px;
     }
 
