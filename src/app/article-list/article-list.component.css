@@ -1,5 +1,6 @@
 body{
     background-color: rgba(40, 43, 48, .75);
+    padding-bottom: 2vh;
 }
 .img-fluid {
     width: 262px;
@@ -77,4 +78,9 @@ body{
     margin-top: 1vh;
     width: 23vw;
     height: 23vh;
+}
+.featurette:hover{
+    background-color: #11428D;
+    border-radius: 1vh;
+    cursor: pointer;
 }
