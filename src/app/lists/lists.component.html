@@ -5,7 +5,7 @@
     <div *ngFor="let list of lists; let i = index" class="col-lg-5 col-md-6 col-12" id="list">
         <a [routerLink]="['/lists', list.id]" id="boxLink">
             <div class=" list col-12 row">
-                <div class="col-xl-3 col-lg-3 col-md-4 col-3 row imgsDiv" id="aziz">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-3 row imgsDiv" id="imgDesc">
                         <div *ngIf="listsImages[i].length<4" class="containerImg" >
                             <div class="imgDiv">
                                 <img src="{{listsImages[i][0]}}"  alt="" class="oneImg">
