@@ -56,4 +56,12 @@ export class ListsService {
     getListByUserIdAndName(listName: string): Observable<Lists> {
         return this.httpclient.get<Lists>(environment.backend + '/lists/' + sessionStorage.getItem('userid') + '/' + listName);
     }
+
+    getImageOfList(): Observable<any> {
+        return this.httpclient.get<any>(environment.backend + '/lists/spotify/image');
+    }
+
+    getImageOfListCustom(): Observable<any> {
+        return this.httpclient.get<any>(environment.backend + '/lists/spotify/image/custom');
+    }
 }
