@@ -52,4 +52,9 @@ textarea{
     min-width: 38.5vw
 }
 
-#uploadImage {display: none;}
+#uploadImage {
+    display: none;
+}
+.user-avatar:hover {
+    cursor: pointer;
+}

@@ -143,19 +143,18 @@
                     </section>
                 </div>
             </div>
-            <a *ngFor="let article of listArticlesNext">
+            <a *ngFor="let article of listArticlesNext" id="featuretteBlock">
+                <hr class="featurette-divider">
                 <div class="row featurette" routerLink="/articles/{{article.id}}">
-                    <hr class="featurette-divider">
                     <div class="col-md-7 order-md-2">
-                        <h2 class="featurette-heading">{{article.title}} <span
-                            class="text-muted">{{article.title}}</span></h2>
+                        <h2 class="featurette-heading">{{article.title}}</h2>
                         <p class="lead">{{article.body}}</p>
                     </div>
                     <div class="col-md-5 order-md-1">
                         <img
                             class="bottom bd-placeholder-img bd-placeholder-img-lg featurette-image mx-auto articleImage"
                             src="data:image/webp;base64,{{article.cover.content}}"
-                            alt="bootstrap blog wordpress theme">
+                            alt="article image">
                     </div>
                 </div>
             </a>
