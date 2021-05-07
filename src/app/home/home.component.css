@@ -1,37 +1,34 @@
-#body {
-    min-height: 100%;
-    height: 100%;
-    width: 100%;
+#icon_like, #icon_share {
+    max-width: 28px;
+    max-height: 28px;
+    display:block;
 }
 
-#myCarousel {
-    min-width: 60%;
-    max-width: 60%;
-    margin: auto;
-    outline: none;
+#likes {
+    color: red;
+    display:block;
 }
 
-#myCarousel h3 {
-    color: black;
+#shares {
+    color: green;
+    display:block;
+}
+#image_top1 {
+    max-width: 25em;
+}
+#image_top1:hover {
+    opacity: 50%;
+    transition: 0.4s;
+}
+#image_top1:not(:hover) {
+    transition: 0.4s;
 }
 
-#myCarousel p {
-    color: black;
+#top_listes {
+    background-color: #212223;
+    padding: 2em;
 }
 
-#market {
-    min-width: 60%;
-    max-width: 60%;
-    margin: auto;
-    color: white;
-    background-color: rgba(40, 43, 48, .75);
-}
-
-#firstRow {
-    padding-top: 1.5vh;
-}
-
-.carousel-img {
-    display: block;
-    margin: auto;
+#top1 {
+    padding-right: 2em;
 }
