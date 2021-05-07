@@ -9,6 +9,7 @@ import {Article} from '../shared/model/article';
 })
 export class ArticleListComponent implements OnInit {
     public listArticles: Article[];
+    public listArticlesNext: Article[];
 
     constructor(private articleService: ArticleService) {
     }
@@ -16,6 +17,7 @@ export class ArticleListComponent implements OnInit {
     ngOnInit(): void {
         this.articleService.getAllArticles().subscribe((data) => {
             this.listArticles = data;
+            this.listArticlesNext = data;
         });
     }
 }
