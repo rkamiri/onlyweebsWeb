@@ -31,7 +31,8 @@
                                                         <span class="news-author">by <a
                                                             class="text-white font-weight-bold"
                                                             href="/#/animes">{{listArticles[0].author.username}}</a></span>
-                                                        <span class="news-date"> on {{listArticles[0].created_at}}</span>
+                                                        <span
+                                                            class="news-date"> on {{listArticles[0].created_at}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -54,8 +55,8 @@
                                             </div>
                                             <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
                                                 <a class="p-1 badge badge-primary rounded-0"
-                                                   routerLink="/articles/1">Lifestyle</a>
-                                                <a routerLink="/articles/4">
+                                                   routerLink="/articles/2">Lifestyle</a>
+                                                <a routerLink="/articles/2">
                                                     <h2 class="h5 text-white my-1">{{listArticles[1].title}}</h2>
                                                 </a>
                                             </div>
@@ -69,7 +70,7 @@
                                         <div class="position-relative">
                                             <!--thumbnail img-->
                                             <div class="ratio_right-cover-2 image-wrapper">
-                                                <a routerLink="/articles/2">
+                                                <a routerLink="/articles/3">
                                                     <img class="img-fluid"
                                                          src="data:image/webp;base64,{{listArticles[2].cover.content}}"
                                                          alt="bootstrap templates for blog">
@@ -78,9 +79,9 @@
                                             <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
                                                 <!-- category -->
                                                 <a class="p-1 badge badge-primary rounded-0"
-                                                   routerLink="/articles/2">Motocross</a>
+                                                   routerLink="/articles/3">Motocross</a>
                                                 <!--title-->
-                                                <a routerLink="/articles/2">
+                                                <a routerLink="/articles/3">
                                                     <h2 class="h5 text-white my-1">{{listArticles[2].title}}</h2>
                                                 </a>
                                             </div>
@@ -94,7 +95,7 @@
                                         <div class="position-relative">
                                             <!--thumbnail img-->
                                             <div class="ratio_right-cover-2 image-wrapper">
-                                                <a routerLink="/articles/3">
+                                                <a routerLink="/articles/4">
                                                     <img class="img-fluid"
                                                          src="data:image/webp;base64,{{listArticles[3].cover.content}}"
                                                          alt="bootstrap blog wordpress theme">
@@ -103,9 +104,9 @@
                                             <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
                                                 <!-- category -->
                                                 <a class="p-1 badge badge-primary rounded-0"
-                                                   routerLink="/articles/3">Fitness</a>
+                                                   routerLink="/articles/4">Fitness</a>
                                                 <!--title-->
-                                                <a routerLink="/articles/3">
+                                                <a routerLink="/articles/4">
                                                     <h2 class="h5 text-white my-1">{{listArticles[3].title}}</h2>
                                                 </a>
                                             </div>
@@ -119,19 +120,19 @@
                                         <div class="position-relative">
                                             <!--thumbnail img-->
                                             <div class="ratio_right-cover-2 image-wrapper">
-                                                <a routerLink="/articles/4">
+                                                <a routerLink="/articles/5">
                                                     <img class="img-fluid"
-                                                         src="data:image/webp;base64,{{listArticles[0].cover.content}}"
+                                                         src="data:image/webp;base64,{{listArticles[4].cover.content}}"
                                                          alt="blog website templates bootstrap">
                                                 </a>
                                             </div>
                                             <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
                                                 <!-- category -->
                                                 <a class="p-1 badge badge-primary rounded-0"
-                                                   routerLink="/articles/4">Adventure</a>
+                                                   routerLink="/articles/5">Adventure</a>
                                                 <!--title-->
-                                                <a routerLink="/articles/4">
-                                                    <h2 class="h5 text-white my-1">{{listArticles[0].title}}</h2>
+                                                <a routerLink="/articles/5">
+                                                    <h2 class="h5 text-white my-1">{{listArticles[4].title}}</h2>
                                                 </a>
                                             </div>
                                         </div>
@@ -142,22 +143,21 @@
                     </section>
                 </div>
             </div>
-
-            <!-- block articles horizontaux -->
-
-            <hr class="featurette-divider">
-            <div class="row featurette">
-                <div class="col-md-7 order-md-2">
-                    <h2 class="featurette-heading">{{listArticles[0].title}} <span
-                        class="text-muted">{{listArticles[0].title}}</span></h2>
-                    <p class="lead">{{listArticles[0].body}}</p>
+            <a *ngFor="let article of listArticlesNext" id="featuretteBlock">
+                <hr class="featurette-divider">
+                <div class="row featurette" routerLink="/articles/{{article.id}}">
+                    <div class="col-md-7 order-md-2">
+                        <h2 class="featurette-heading">{{article.title}}</h2>
+                        <p class="lead">{{article.body}}</p>
+                    </div>
+                    <div class="col-md-5 order-md-1">
+                        <img
+                            class="bottom bd-placeholder-img bd-placeholder-img-lg featurette-image mx-auto articleImage"
+                            src="data:image/webp;base64,{{article.cover.content}}"
+                            alt="article image">
+                    </div>
                 </div>
-                <div class="col-md-5 order-md-1">
-                    <img class="bottom bd-placeholder-img bd-placeholder-img-lg featurette-image mx-auto"
-                         src="data:image/webp;base64,{{listArticles[3].cover.content}}"
-                         alt="bootstrap blog wordpress theme">
-                </div>
-            </div>
+            </a>
             <hr>
         </div>
     </div>
