@@ -8,6 +8,6 @@
     </li>
     <li *ngFor="let list of customLists">
         <a [routerLink]="['/lists', list.id]">{{ list.name }}</a>
-        <p>{{ list.description }}</p>
+        <p>{{ list.description }} <button type="button" class="btn btn-danger" (click)="delete(list.id)">Delete</button></p>
     </li>
 </ul>
