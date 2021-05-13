@@ -24,4 +24,8 @@ export class CommentService {
     putCommentForAnime(comment: Comment): Observable<void> {
         return this.httpclient.put<void>(environment.backend + '/anime-comment/', comment, httpOptions);
     }
+
+    deleteCommentForAnime(commentId: number): any {
+        return this.httpclient.delete<any>(environment.backend + '/anime-comment/' + commentId, httpOptions);
+    }
 }
