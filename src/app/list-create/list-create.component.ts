@@ -52,7 +52,7 @@ export class ListCreateComponent implements OnInit {
             name: this.createListForm.get('name').value,
             creationDate: 'string',
             description: this.createListForm.get('description').value,
-            isOwnedBy: +sessionStorage.getItem('userid')
+            isOwnedBy: null
         };
         this.listService.createList(list).subscribe(
             () => {
