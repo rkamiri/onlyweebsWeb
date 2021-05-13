@@ -136,4 +136,12 @@ export class AnimeComponent implements OnDestroy, OnInit {
             );
         });
     }
+
+    deleteComment(): void {
+        if (confirm('Are you sure you want to delete this comment ?')) {
+            this.commentsService.deleteCommentForAnime(this.anime.id).subscribe(() => {
+                location.reload();
+            });
+        }
+    }
 }
