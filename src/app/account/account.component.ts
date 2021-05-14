@@ -23,6 +23,7 @@ export class AccountComponent implements OnInit {
     public spinner: boolean;
     public spinnerConfig: ISpinnerConfig;
     public currentUser: User;
+    public sameIp: boolean;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -57,7 +58,24 @@ export class AccountComponent implements OnInit {
 
     ngOnInit(): void {
         this.currentUser = this.route.snapshot.data.currentUser;
+        this.userService.checkSameIp().subscribe((data) => { this.sameIp = data; });
         this.getProfileImage();
+        this.fillForms();
+        this.setSpinnerConfig();
+    }
+
+    setSpinnerConfig(): void {
+        this.spinnerConfig = {
+            placement: SPINNER_PLACEMENT.block_window,
+            animation: SPINNER_ANIMATIONS.spin_3,
+            size: '20rem',
+            bgColor: 'rgba(40, 43, 48, 0.6)',
+            color: '#097ce7'
+        };
+        this.spinner = false;
+    }
+
+    fillForms(): void {
         this.personalInfoForm.controls.id.setValue(this.currentUser.id);
         this.personalInfoForm.controls.username.setValue(this.currentUser.username);
         this.personalInfoForm.controls.firstname.setValue(this.currentUser.firstname);
@@ -72,14 +90,6 @@ export class AccountComponent implements OnInit {
         this.bioForm.controls.email.setValue(this.currentUser.email);
         this.passwordForm.controls.id.setValue(this.currentUser.id);
         this.newPassWordUser = this.currentUser;
-        this.spinnerConfig = {
-            placement: SPINNER_PLACEMENT.block_window,
-            animation: SPINNER_ANIMATIONS.spin_3,
-            size: '20rem',
-            bgColor: 'rgba(40, 43, 48, 0.6)',
-            color: '#097ce7'
-        };
-        this.spinner = false;
     }
 
     getProfileImage(): void {
