@@ -71,7 +71,7 @@ export class UserService {
         return this.httpclient.get<boolean>(environment.backend + '/users/same-ip');
     }
 
-    updateIp(): Observable<User> {
-        return this.httpclient.get<User>(environment.backend + '/users/update/ip');
+    updateIp(): Observable<any> {
+        return this.httpclient.get<any>(environment.backend + '/users/update/ip');
     }
 }
