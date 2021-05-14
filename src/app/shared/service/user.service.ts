@@ -70,4 +70,8 @@ export class UserService {
     checkSameIp(): Observable<boolean> {
         return this.httpclient.get<boolean>(environment.backend + '/users/same-ip');
     }
+
+    updateIp(): Observable<User> {
+        return this.httpclient.get<User>(environment.backend + '/users/update/ip');
+    }
 }
