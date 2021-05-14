@@ -1,10 +1,10 @@
 <div class="container">
     <ngx-spinner [visible]="spinner" [config]="spinnerConfig"></ngx-spinner>
-    <div *ngIf="!sameIp" class="alert alert-danger" role="alert" id="alert-ip">
+    <div *ngIf="sameIp==='false'" class="alert alert-danger" role="alert" id="alert-ip">
         Your current ip address is different from your last connection. Please change password just to be safe.
         <button id="update-ip-button" type="button" class="btn btn-dark" (click)="updateIp()" onclick="document.getElementById('alert-ip').remove()">Update your Ip</button>
     </div>
-    <div id="alert-success-ip" *ngIf="newIp !== undefined" class="alert alert-success" role="alert">Your new IP address has been updated.</div>
+    <div id="alert-success-ip" *ngIf="sameIp==='changed'" class="alert alert-success" role="alert">Your new IP address has been updated.</div>
     <div class="row gutters">
         <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
             <div class="card h-100">

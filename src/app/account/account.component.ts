@@ -23,8 +23,7 @@ export class AccountComponent implements OnInit {
     public spinner: boolean;
     public spinnerConfig: ISpinnerConfig;
     public currentUser: User;
-    public sameIp: boolean;
-    public newIp: string;
+    public sameIp: string;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -58,9 +57,9 @@ export class AccountComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.sameIp = true;
+        this.sameIp = 'true';
         this.currentUser = this.route.snapshot.data.currentUser;
-        this.userService.checkSameIp().subscribe((data) => { this.sameIp = data; });
+        this.userService.checkSameIp().subscribe((data) => {if (!data) {this.sameIp = 'false'; }});
         this.getProfileImage();
         this.fillForms();
         this.setSpinnerConfig();
@@ -155,8 +154,8 @@ export class AccountComponent implements OnInit {
     }
 
     updateIp(): void {
-        this.userService.updateIp().subscribe((data) => {
-            this.newIp = data.ip;
+        this.userService.updateIp().subscribe(() => {
+            this.sameIp = 'changed';
         });
     }
 }
