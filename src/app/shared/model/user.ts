@@ -9,5 +9,6 @@ export interface User {
     email: string;
     gender: string;
     bio: string;
+    ip?: string;
     image: Image;
 }
