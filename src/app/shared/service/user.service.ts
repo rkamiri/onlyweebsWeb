@@ -74,4 +74,8 @@ export class UserService {
     updateIp(): Observable<any> {
         return this.httpclient.get<any>(environment.backend + '/users/update/ip');
     }
+
+    updatePasswordAction(): Observable<any> {
+        return this.httpclient.get<any>(environment.backend + '/users/mail/send');
+    }
 }

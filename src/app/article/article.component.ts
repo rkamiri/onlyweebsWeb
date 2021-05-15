@@ -2,7 +2,7 @@ import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import {ArticleService} from '../shared/service/article.service';
 import {Article} from '../shared/model/article';
 import {ActivatedRoute} from '@angular/router';
-import {DomSanitizer} from "@angular/platform-browser";
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-article',

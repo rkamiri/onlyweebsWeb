@@ -99,40 +99,7 @@
                     </form>
                 </div>
                 <div class="card-body">
-                    <form [formGroup]="passwordForm" (ngSubmit)="updatePassword()">
-                        <div class="row gutters">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <h6 class="mb-3 text-primary">Change PassWord</h6>
-                            </div>
-                            <!--<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="form-group">
-                                    <label for="pwd">Actual PassWord</label>
-                                    <input type="password" class="form-control" id="pwd" formControlName="oldPassword" placeholder="Actual PassWord">
-                                </div>
-                            </div>-->
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label for="newpwd">PassWord</label>
-                                    <input type="password" class="form-control" id="newpwd"
-                                           formControlName="newPasswordA" placeholder="Enter New PassWord">
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label for="confirmNewpwd">Confirm PassWord</label>
-                                    <input type="password" class="form-control" id="confirmNewpwd"
-                                           formControlName="newPasswordB" placeholder="Confirm New PassWord">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row gutters">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="text-right">
-                                    <button class="btn btn-danger">Change Password</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    <button class="btn btn-danger" (click)="updatePassword()">Update your password</button>
                 </div>
             </div>
         </div>
