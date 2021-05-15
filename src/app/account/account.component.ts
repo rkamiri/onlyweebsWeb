@@ -112,15 +112,13 @@ export class AccountComponent implements OnInit {
     }
 
     updateBio(): void {
-        this.userService.updateCurrentUser(this.bioForm.value).subscribe(
-            (data) => {
-                location.reload();
-            }
-        );
+        this.userService.updateCurrentUser(this.bioForm.value).subscribe(() => {location.reload(); });
     }
 
-    updatePassword(): void {
-        if (this.passwordForm.get('newPasswordA').value === this.passwordForm.get('newPasswordB').value && this.passwordForm.get('newPasswordA').value !== '' && this.passwordForm.get('newPasswordB').value !== '') {
+    /*updatePassword(): void {
+        if (this.passwordForm.get('newPasswordA').value === this.passwordForm.get('newPasswordB').value
+            && this.passwordForm.get('newPasswordA').value !== ''
+            && this.passwordForm.get('newPasswordB').value !== '') {
             this.currentUser.password = this.passwordForm.get('newPasswordA').value;
             this.userService.updateCurrentUser(this.newPassWordUser).subscribe(
                 (data) => {
@@ -129,7 +127,7 @@ export class AccountComponent implements OnInit {
                 }
             );
         }
-    }
+    }*/
 
     fileChange(event): void {
         this.showSpinner();
@@ -157,5 +155,9 @@ export class AccountComponent implements OnInit {
         this.userService.updateIp().subscribe(() => {
             this.sameIp = 'changed';
         });
+    }
+
+    updatePassword(): void {
+        this.userService.updatePasswordAction().subscribe(() => {});
     }
 }
