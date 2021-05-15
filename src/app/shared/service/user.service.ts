@@ -76,6 +76,6 @@ export class UserService {
     }
 
     updatePasswordAction(): Observable<any> {
-        return this.httpclient.get<any>(environment.backend + '/users/mail/send');
+        return this.httpclient.get<any>(environment.backend + '/security/change-password');
     }
 }
