@@ -148,7 +148,7 @@
                 <div class="row featurette" routerLink="/articles/{{article.id}}">
                     <div class="col-md-7 order-md-2">
                         <h2 class="featurette-heading">{{article.title}}</h2>
-                        <p class="lead">{{article.body}}</p>
+                        <div class="lead" id="mainContent" [innerHTML]="article.body | safeHtml"></div>
                     </div>
                     <div class="col-md-5 order-md-1">
                         <img

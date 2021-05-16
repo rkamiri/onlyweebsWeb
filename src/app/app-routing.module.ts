@@ -26,10 +26,17 @@ import {CustomListsResolver} from './shared/resolver/custom.lists.resolver';
 import {ArticleListComponent} from './article-list/article-list.component';
 import {ArticleComponent} from './article/article.component';
 import {ArticleResolver} from './shared/resolver/article.resolver';
-import {ArticleEditorComponent} from "./article-editor/article-editor.component";
-
+import {ArticleEditorComponent} from './article-editor/article-editor.component';
+import {NotFoundErrorComponent} from './errors/not-found-error/not-found-error.component';
+import {ForbiddenErrorComponent} from './errors/forbidden-error/forbidden-error.component';
+import {UnauthorizedErrorComponent} from './errors/unauthorized-error/unauthorized-error.component';
+import {ServerErrorComponent} from './errors/server-error/server-error.component';
 
 const routes: Routes = [
+    {path: 'not-found', component: NotFoundErrorComponent},
+    {path: 'forbidden', component: ForbiddenErrorComponent},
+    {path: 'unauthorized', component: UnauthorizedErrorComponent},
+    {path: 'server-error', component: ServerErrorComponent},
     {path: '', component: HomeComponent},
     {path: 'home', component: HomeComponent},
     {
@@ -98,8 +105,8 @@ const routes: Routes = [
         }
     },
     {path: 'my-lists', component: MylistsComponent},
-    {path: 'editor', component: ArticleEditorComponent}
-
+    {path: 'editor', component: ArticleEditorComponent},
+    {path: '**', redirectTo: 'not-found', pathMatch: 'full'}
 ];
 
 @NgModule({

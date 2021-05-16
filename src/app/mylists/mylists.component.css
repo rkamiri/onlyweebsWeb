@@ -1,0 +1,17 @@
+.group-list {
+}
+
+#list-def {
+}
+
+#list-cus {
+    display: flex;
+}
+
+#button-div {
+    flex: 1;
+}
+
+#delete-button {
+    size: 5vw;
+}

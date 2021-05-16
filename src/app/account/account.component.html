@@ -1,5 +1,10 @@
 <div class="container">
     <ngx-spinner [visible]="spinner" [config]="spinnerConfig"></ngx-spinner>
+    <div *ngIf="sameIp==='false'" class="alert alert-danger" role="alert" id="alert-ip">
+        Your current ip address is different from your last connection. Please change password just to be safe.
+        <button id="update-ip-button" type="button" class="btn btn-dark" (click)="updateIp()" onclick="document.getElementById('alert-ip').remove()">Update your Ip</button>
+    </div>
+    <div id="alert-success-ip" *ngIf="sameIp==='changed'" class="alert alert-success" role="alert">Your new IP address has been updated.</div>
     <div class="row gutters">
         <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
             <div class="card h-100">
@@ -94,40 +99,7 @@
                     </form>
                 </div>
                 <div class="card-body">
-                    <form [formGroup]="passwordForm" (ngSubmit)="updatePassword()">
-                        <div class="row gutters">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <h6 class="mb-3 text-primary">Change PassWord</h6>
-                            </div>
-                            <!--<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="form-group">
-                                    <label for="pwd">Actual PassWord</label>
-                                    <input type="password" class="form-control" id="pwd" formControlName="oldPassword" placeholder="Actual PassWord">
-                                </div>
-                            </div>-->
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label for="newpwd">PassWord</label>
-                                    <input type="password" class="form-control" id="newpwd"
-                                           formControlName="newPasswordA" placeholder="Enter New PassWord">
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label for="confirmNewpwd">Confirm PassWord</label>
-                                    <input type="password" class="form-control" id="confirmNewpwd"
-                                           formControlName="newPasswordB" placeholder="Confirm New PassWord">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row gutters">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="text-right">
-                                    <button class="btn btn-danger">Change Password</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    <button class="btn btn-danger" (click)="updatePassword()">Update your password</button>
                 </div>
             </div>
         </div>

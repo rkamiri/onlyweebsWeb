@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {Lists} from '../shared/model/lists';
 import {Anime} from '../shared/model/anime';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {TypeaheadMatch} from 'ngx-bootstrap/typeahead/typeahead-match.class';
 import {ListsService} from '../shared/service/lists.service';
 import {IsListedIn} from '../shared/model/is.listed.in';
@@ -27,7 +27,8 @@ export class OnelistComponent implements OnInit {
 
     constructor(private modalService: NgbModal,
                 private route: ActivatedRoute,
-                private listService: ListsService) {
+                private listService: ListsService,
+                private router: Router) {
         this.addAnimeForm = new FormGroup({});
         this.closeResult = '';
     }
@@ -81,6 +82,14 @@ export class OnelistComponent implements OnInit {
             return 'by clicking on a backdrop';
         } else {
             return `with: ${reason}`;
+        }
+    }
+
+    deleteList(): void {
+        if (confirm('Are you sure you want to delete this custom list ?')) {
+            this.listService.deleteList(this.listInfo.id).subscribe(() => {
+                this.router.navigate(['/lists']).then();
+            });
         }
     }
 }

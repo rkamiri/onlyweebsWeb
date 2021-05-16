@@ -23,6 +23,7 @@ export class AccountComponent implements OnInit {
     public spinner: boolean;
     public spinnerConfig: ISpinnerConfig;
     public currentUser: User;
+    public sameIp: string;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -56,8 +57,26 @@ export class AccountComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.sameIp = 'true';
         this.currentUser = this.route.snapshot.data.currentUser;
+        this.userService.checkSameIp().subscribe((data) => {if (!data) {this.sameIp = 'false'; }});
         this.getProfileImage();
+        this.fillForms();
+        this.setSpinnerConfig();
+    }
+
+    setSpinnerConfig(): void {
+        this.spinnerConfig = {
+            placement: SPINNER_PLACEMENT.block_window,
+            animation: SPINNER_ANIMATIONS.spin_3,
+            size: '20rem',
+            bgColor: 'rgba(40, 43, 48, 0.6)',
+            color: '#097ce7'
+        };
+        this.spinner = false;
+    }
+
+    fillForms(): void {
         this.personalInfoForm.controls.id.setValue(this.currentUser.id);
         this.personalInfoForm.controls.username.setValue(this.currentUser.username);
         this.personalInfoForm.controls.firstname.setValue(this.currentUser.firstname);
@@ -72,14 +91,6 @@ export class AccountComponent implements OnInit {
         this.bioForm.controls.email.setValue(this.currentUser.email);
         this.passwordForm.controls.id.setValue(this.currentUser.id);
         this.newPassWordUser = this.currentUser;
-        this.spinnerConfig = {
-            placement: SPINNER_PLACEMENT.block_window,
-            animation: SPINNER_ANIMATIONS.spin_3,
-            size: '20rem',
-            bgColor: 'rgba(40, 43, 48, 0.6)',
-            color: '#097ce7'
-        };
-        this.spinner = false;
     }
 
     getProfileImage(): void {
@@ -101,15 +112,13 @@ export class AccountComponent implements OnInit {
     }
 
     updateBio(): void {
-        this.userService.updateCurrentUser(this.bioForm.value).subscribe(
-            (data) => {
-                location.reload();
-            }
-        );
+        this.userService.updateCurrentUser(this.bioForm.value).subscribe(() => {location.reload(); });
     }
 
-    updatePassword(): void {
-        if (this.passwordForm.get('newPasswordA').value === this.passwordForm.get('newPasswordB').value && this.passwordForm.get('newPasswordA').value !== '' && this.passwordForm.get('newPasswordB').value !== '') {
+    /*updatePassword(): void {
+        if (this.passwordForm.get('newPasswordA').value === this.passwordForm.get('newPasswordB').value
+            && this.passwordForm.get('newPasswordA').value !== ''
+            && this.passwordForm.get('newPasswordB').value !== '') {
             this.currentUser.password = this.passwordForm.get('newPasswordA').value;
             this.userService.updateCurrentUser(this.newPassWordUser).subscribe(
                 (data) => {
@@ -118,7 +127,7 @@ export class AccountComponent implements OnInit {
                 }
             );
         }
-    }
+    }*/
 
     fileChange(event): void {
         this.showSpinner();
@@ -140,5 +149,15 @@ export class AccountComponent implements OnInit {
 
     hideSpinner(): void {
         this.spinner = false;
+    }
+
+    updateIp(): void {
+        this.userService.updateIp().subscribe(() => {
+            this.sameIp = 'changed';
+        });
+    }
+
+    updatePassword(): void {
+        this.userService.updatePasswordAction().subscribe(() => {});
     }
 }

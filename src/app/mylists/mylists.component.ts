@@ -22,4 +22,12 @@ export class MylistsComponent implements OnInit {
             this.defaultLists = defaultLists;
         });
     }
+
+    delete(id: number): void {
+        if (confirm('Are you sure you want to delete this custom list ?')) {
+            this.listService.deleteList(id).subscribe((data) => {
+                location.reload();
+            });
+        }
+    }
 }

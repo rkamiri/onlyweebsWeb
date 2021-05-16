@@ -66,4 +66,16 @@ export class UserService {
             }
         );
     }
+
+    checkSameIp(): Observable<boolean> {
+        return this.httpclient.get<boolean>(environment.backend + '/users/same-ip');
+    }
+
+    updateIp(): Observable<any> {
+        return this.httpclient.get<any>(environment.backend + '/users/update/ip');
+    }
+
+    updatePasswordAction(): Observable<any> {
+        return this.httpclient.get<any>(environment.backend + '/security/change-password');
+    }
 }
