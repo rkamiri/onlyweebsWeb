@@ -12,7 +12,7 @@ export class AnimeService {
     constructor(private httpclient: HttpClient){}
 
     getAllPages(): Observable<number> {
-        return this.httpclient.get<number>(environment.backend + '/animes/pagination/count');
+        return this.httpclient.get<number>(environment.backend + '/animes/count');
     }
     getAllAnime(page: number): Observable<Anime[]> {
         return this.httpclient.get<Anime[]>(environment.backend + '/animes/pagination/' + (page - 1));

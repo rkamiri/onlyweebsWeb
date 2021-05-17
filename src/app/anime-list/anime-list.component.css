@@ -34,6 +34,23 @@ a {
     margin-top: 2vh;
 }
 
+.page-link{
+    background-color: #3e4042!important;
+    border-color: #A5A5A5!important;
+    color: white;
+}
+
+.page-link:hover{
+    background-color: #097ce7!important;
+}
+
+.current{
+    color: #097ce7;
+}
+.current:hover{
+    background-color: #3e4042!important;
+}
+
 @media screen and (max-width: 1400px) {
     .card {
         width: 18vw;
