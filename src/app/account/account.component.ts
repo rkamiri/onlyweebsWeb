@@ -115,20 +115,6 @@ export class AccountComponent implements OnInit {
         this.userService.updateCurrentUser(this.bioForm.value).subscribe(() => {location.reload(); });
     }
 
-    /*updatePassword(): void {
-        if (this.passwordForm.get('newPasswordA').value === this.passwordForm.get('newPasswordB').value
-            && this.passwordForm.get('newPasswordA').value !== ''
-            && this.passwordForm.get('newPasswordB').value !== '') {
-            this.currentUser.password = this.passwordForm.get('newPasswordA').value;
-            this.userService.updateCurrentUser(this.newPassWordUser).subscribe(
-                (data) => {
-                    this.userService.logout();
-                    return this.router.navigate(['login']);
-                }
-            );
-        }
-    }*/
-
     fileChange(event): void {
         this.showSpinner();
         const fileList: FileList = event.target.files;
@@ -158,6 +144,6 @@ export class AccountComponent implements OnInit {
     }
 
     updatePassword(): void {
-        this.userService.updatePasswordAction().subscribe(() => {});
+        this.userService.sendMailForPasswordUpdateAnfGenerateToken().subscribe(() => {});
     }
 }
