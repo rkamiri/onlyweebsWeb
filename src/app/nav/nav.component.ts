@@ -30,7 +30,7 @@ export class NavComponent implements OnInit {
                     : searchArray;
             })
         )
-    formatter = (x: SearchResult) => x.internationalTitle;
+    formatter = (x: SearchResult) => x.title;
 
 
     constructor(  private router: Router, private userService: UserService, private searchService: SearchService) { }

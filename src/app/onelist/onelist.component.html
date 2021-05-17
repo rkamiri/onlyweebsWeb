@@ -17,7 +17,7 @@
         <tbody class="table-dark">
         <tr *ngFor="let l of animeList; let i=index">
             <td id="{{i+1}}">{{i + 1}}</td>
-            <td><a [routerLink]="['/animes', l.id]">{{l.internationalTitle}}</a></td>
+            <td><a [routerLink]="['/animes', l.id]">{{l.title}}</a></td>
             <td>0/98</td>
             <td>
                 <button *ngIf=owned (click)="onDelete(l.id)" id="removeAnime" class="btn btn-xs btn-danger">X</button>
@@ -46,7 +46,7 @@
                 <div class="input-group">
                     <input placeholder="Add an anime" id="addAnime" [(ngModel)]="selectedValue"
                            [ngModelOptions]="{standalone: true}" [typeahead]="fullAnimeList"
-                           typeaheadOptionField="internationalTitle" [typeaheadScrollable]="true"
+                           typeaheadOptionField="title" [typeaheadScrollable]="true"
                            (typeaheadOnSelect)="onSelect($event)" class="form-control">
                     <button id="sendNewList" class="btn btn-sm btn-success float-right">
                         Create

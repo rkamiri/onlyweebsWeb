@@ -5,7 +5,7 @@
         </div>
 
         <div class="col-lg-6  col-md-6 col-sm-8 col-12" id="center">
-            <h1 id="animeTitle">{{ anime.internationalTitle }}</h1>
+            <h1 id="animeTitle">{{ anime.title }}</h1>
             <div id="parentLists" *ngIf="isConnected">
                 <div class="input-group mb-3" id="default">
                     <label for="optionSelectDefault"></label>
@@ -42,7 +42,7 @@
             </div>
 
             <div class="row">
-                <p class="genreTag">Genre: genre1, genre2, genre3</p>
+                <p class="genreTag">Genres: {{genres.toString()}}</p>
                 <p>tag: tag1, tag2, tag3</p>
             </div>
             <div class="row">
@@ -56,8 +56,8 @@
                 <h1 class="detailsContent">Details</h1>
                 <p class="detailsContent">Studio: StudioName</p>
                 <p class="detailsContent">Producer: ProducerName</p>
-                <p class="detailsContent">Release Date: jj/mm/yy</p>
-                <p class="detailsContent">Japanese Name: {{ anime.title }}</p>
+                <p class="detailsContent">Airing Date: {{anime.aired}}</p>
+                <p class="detailsContent">Number of episodes: {{ anime.episodes }}</p>
             </div>
             <div class="row">
                 <h1 class="detailsContent">Global Rate : {{ globalRate }}/10</h1>

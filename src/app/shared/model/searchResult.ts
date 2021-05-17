@@ -1,5 +1,5 @@
 export interface SearchResult {
     id: number;
-    internationalTitle: string;
+    title: string;
     cover: string;
 }

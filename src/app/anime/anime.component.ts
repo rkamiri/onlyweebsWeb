@@ -8,6 +8,7 @@ import {CommentService} from '../shared/service/comment.service';
 import {Lists} from '../shared/model/lists';
 import {IsListedIn} from '../shared/model/is.listed.in';
 import {ListsService} from '../shared/service/lists.service';
+import {AnimeService} from '../shared/service/anime.service';
 
 @Component({
     selector: 'app-anime',
@@ -29,12 +30,14 @@ export class AnimeComponent implements OnDestroy, OnInit {
     navigationSubscription;
     comments;
     userHasComment: boolean;
+    public genres: string[];
 
     constructor(private router: Router,
                 private activatedRoute: ActivatedRoute,
                 private ratingService: RatingService,
                 private listService: ListsService,
-                private commentsService: CommentService) {
+                private commentsService: CommentService,
+                private animeService: AnimeService) {
         this.userHasComment = false;
         this.navigationSubscription = this.router.events.subscribe((e: any) => {
             if (e instanceof NavigationEnd) {
@@ -66,6 +69,12 @@ export class AnimeComponent implements OnDestroy, OnInit {
 
     ngOnInit(): void {
         this.anime = this.activatedRoute.snapshot.data.anime;
+        this.genres = this.anime.genre.split('\'');
+        this.genres = this.genres.filter(e => e !== ', ');
+        this.genres = this.genres.filter(e => e !== '[');
+        this.genres = this.genres.filter(e => e !== ']');
+
+        console.log(this.genres);
         this.globalRate = this.activatedRoute.snapshot.data.globalRating;
         if (sessionStorage.getItem('isConnected') === 'true') {
             this.listService.getMyCustomLists().subscribe((customLists) => {

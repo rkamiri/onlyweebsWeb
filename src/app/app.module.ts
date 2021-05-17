@@ -35,7 +35,6 @@ import { ForbiddenErrorComponent } from './errors/forbidden-error/forbidden-erro
 import { UnauthorizedErrorComponent } from './errors/unauthorized-error/unauthorized-error.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 
-
 @NgModule({
     declarations: [
         AppComponent,
@@ -74,7 +73,7 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
         HttpClientModule,
         BrowserAnimationsModule,
         NgxSpinnerModule,
-        CKEditorModule
+        CKEditorModule,
     ],
     providers: [
         [
