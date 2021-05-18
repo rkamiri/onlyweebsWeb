@@ -43,7 +43,8 @@ const routes: Routes = [
         path: 'animes', component: AnimeListComponent,
         resolve: {
             animeList: AnimeListResolver
-        }
+        },
+        runGuardsAndResolvers: 'always'
     },
     {
         path: 'animes/research/:research', component: AnimeListComponent,
