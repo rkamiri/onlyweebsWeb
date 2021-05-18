@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Anime} from '../shared/model/anime';
 import {ActivatedRoute} from '@angular/router';
 import {AnimeService} from '../shared/service/anime.service';
+import {document} from "ngx-bootstrap/utils";
 
 @Component({
     selector: 'app-anime-list',
@@ -14,6 +15,7 @@ export class AnimeListComponent implements OnInit {
     public numberOfItemPerPage: 20;
     public pages: number;
     public pagesArray: [];
+    public activatePagination: boolean;
 
     constructor(private route: ActivatedRoute,
                 private animeService: AnimeService) {
@@ -22,18 +24,37 @@ export class AnimeListComponent implements OnInit {
     ngOnInit(): void {
         this.currentPage = 1;
         this.animeList = this.route.snapshot.data.animeList;
-        this.animeService.getAllPages().subscribe((data) => {
-            this.pages = data;
-            this.pages = Math.ceil( (data) / 20);
-            console.log(Math.ceil(this.pages));
-            this.pagesArray = [].constructor(this.pages);
-        });
+        if (!document.location.href.includes('research')) {
+            this.animeService.getAllPages().subscribe((data) => {
+                this.pages = data;
+                this.pages = Math.ceil((data) / 20);
+                this.pagesArray = [].constructor(this.pages);
+            });
+            this.activatePagination = true;
+        } else {
+            this.animeService.getAllPagesSearch(document.location.href.split('research/')[1]).subscribe((data) => {
+                this.pages = data;
+                this.pages = Math.ceil((data) / 20);
+                console.log(Math.ceil(this.pages));
+                this.pagesArray = [].constructor(this.pages);
+                if (this.pages > 1){
+                    this.activatePagination = true;
+                }
+            });
+        }
     }
 
     changePage(newCurrentPage: number): void {
         this.currentPage = newCurrentPage;
-        this.animeService.getAllAnime(this.currentPage).subscribe((data) => {
-            this.animeList = data;
-        });
+        if (!document.location.href.includes('research')) {
+            this.animeService.getAllAnime(this.currentPage).subscribe((data) => {
+                this.animeList = data;
+            });
+        }
+        else{
+            this.animeService.getAllAnimeByName(document.location.href.split('research/')[1], this.currentPage).subscribe((data) => {
+                this.animeList = data;
+            });
+        }
     }
 }

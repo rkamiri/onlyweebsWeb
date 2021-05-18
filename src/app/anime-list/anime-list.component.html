@@ -27,31 +27,31 @@
     <br/>
     <br/>
 
-    <div>
+    <div *ngIf="activatePagination">
         <ul *ngIf="pages" class="pagination justify-content-center">
             <li [ngClass]="{disabled:currentPage === 1}" class="page-item">
-                <button (click)="changePage(1)" class="page-link">First</button>
+                <button (click)="changePage(1)" class="page-link test">First</button>
             </li>
             <li [ngClass]="{disabled:currentPage === 1}" class="page-item">
-                <button (click)="changePage(currentPage-1)" class="page-link">Previous</button>
+                <button (click)="changePage(currentPage-1)" class="page-link test">Previous</button>
             </li>
-            <li class="page-item" *ngIf="currentPage !==1">
-                <button routerLink [queryParams]="{ page: currentPage - 1 }" class="page-link">{{currentPage-1}}</button>
+            <li class="page-item" *ngIf="currentPage !== 1 ">
+                <button (click)="changePage(currentPage-1)" class="page-link test">{{currentPage-1}}</button>
             </li>
             <li class="page-item">
-                <button disabled (click)="changePage(currentPage)" class="page-link current">{{currentPage}}</button>
+                <button disabled (click)="changePage(currentPage)" class="page-link current test">{{currentPage}}</button>
             </li>
             <li class="page-item"[ngClass]="{disabled:currentPage === pages}">
-                <button (click)="changePage(currentPage+1)" class="page-link">{{currentPage+1}}</button>
+                <button (click)="changePage(currentPage+1)" class="page-link test">{{currentPage+1}}</button>
             </li>
             <li class="page-item" *ngIf="currentPage === 1">
-                <button (click)="changePage(currentPage+2)" class="page-link">{{currentPage+2}}</button>
+                <button (click)="changePage(currentPage+2)" class="page-link test">{{currentPage+2}}</button>
             </li>
             <li [ngClass]="{disabled:currentPage === pages}" class="page-item">
-                <button (click)="changePage(currentPage+1)" class="page-link">Next</button>
+                <button (click)="changePage(currentPage+1)" class="page-link test">Next</button>
             </li>
             <li [ngClass]="{disabled:currentPage === pages}" class="page-item">
-                <button (click)="changePage(pages)" class="page-link">Last</button>
+                <button (click)="changePage(pages)" class="page-link test">Last</button>
             </li>
         </ul>
     </div>

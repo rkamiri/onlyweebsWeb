@@ -22,7 +22,11 @@ export class AnimeService {
         return this.httpclient.get<Anime>(environment.backend + '/animes/' + id);
     }
 
-    getAllAnimeByName(term: string): Observable<Anime[]> {
-        return this.httpclient.get<Anime[]>(environment.backend + '/animes/research/' + term);
+    getAllAnimeByName(term: string, page: number): Observable<Anime[]> {
+        return this.httpclient.get<Anime[]>(environment.backend + '/animes/research/' + term + '/pagination/' + (page - 1));
+    }
+
+    getAllPagesSearch(search: string): Observable<number> {
+        return this.httpclient.get<number>(environment.backend + '/animes/research/' + search + '/count');
     }
 }

@@ -51,6 +51,12 @@ a {
     background-color: #3e4042!important;
 }
 
+*:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
 @media screen and (max-width: 1400px) {
     .card {
         width: 18vw;
