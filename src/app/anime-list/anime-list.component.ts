@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Anime} from '../shared/model/anime';
 import {ActivatedRoute} from '@angular/router';
 import {AnimeService} from '../shared/service/anime.service';
-import {document} from "ngx-bootstrap/utils";
+import {document} from 'ngx-bootstrap/utils';
 
 @Component({
     selector: 'app-anime-list',
