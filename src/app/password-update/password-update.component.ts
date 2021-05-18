@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../shared/service/user.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
 import {PasswordUpdate} from '../shared/model/password.update';
 
@@ -14,7 +14,7 @@ export class PasswordUpdateComponent implements OnInit {
     public updatePasswordForm: FormGroup;
     public notSamePassword: boolean;
 
-    constructor(private userService: UserService, private actRoute: ActivatedRoute) {
+    constructor(private userService: UserService, private actRoute: ActivatedRoute, private router: Router) {
         this.updatePasswordForm = new FormGroup({
             newPassword: new FormControl(''),
             confirmPassword: new FormControl('')
@@ -24,7 +24,6 @@ export class PasswordUpdateComponent implements OnInit {
     ngOnInit(): void {
         this.actRoute.params.subscribe(params => {
             this.token = params.token;
-            console.log(params.token);
         });
         this.notSamePassword = false;
     }
@@ -34,7 +33,6 @@ export class PasswordUpdateComponent implements OnInit {
             this.updatePassword();
         } else {
             this.notSamePassword = true;
-            console.log(this.notSamePassword);
         }
     }
 
@@ -50,6 +48,13 @@ export class PasswordUpdateComponent implements OnInit {
             newPassword: this.updatePasswordForm.get('newPassword').value
         };
         console.log(passwordUpdate);
-        // this.userService.postUpdatePasswordAction(passwordUpdate);
+        this.userService.postUpdatePasswordAction(passwordUpdate).subscribe((response) => {
+            console.log(response.status);
+            console.log(response.body);
+            if (response.status === 200) {
+                this.userService.logout();
+                this.router.navigate(['/login']).then();
+            }
+        });
     }
 }
