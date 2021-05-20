@@ -32,7 +32,7 @@ import {ForbiddenErrorComponent} from './errors/forbidden-error/forbidden-error.
 import {UnauthorizedErrorComponent} from './errors/unauthorized-error/unauthorized-error.component';
 import {ServerErrorComponent} from './errors/server-error/server-error.component';
 import {PasswordUpdateComponent} from './password-update/password-update.component';
-import {PasswordUpdateResolver} from "./shared/resolver/password.update.resolver";
+import {PasswordUpdateResolver} from './shared/resolver/password.update.resolver';
 
 const routes: Routes = [
     {path: 'not-found', component: NotFoundErrorComponent},
@@ -42,7 +42,7 @@ const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'home', component: HomeComponent},
     {
-        path: 'animes', component: AnimeListComponent,
+        path: 'animes/page/:page', component: AnimeListComponent,
         resolve: {
             animeList: AnimeListResolver
         },

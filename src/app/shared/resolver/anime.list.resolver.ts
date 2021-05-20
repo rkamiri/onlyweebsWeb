@@ -10,6 +10,6 @@ export class AnimeListResolver implements Resolve<Anime[]> {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Anime[]> | Promise<Anime[]> | Anime[] {
-        return this.service.getAllAnime(1);
+        return this.service.getAllAnime(+route.paramMap.get('page'));
     }
 }

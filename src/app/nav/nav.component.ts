@@ -53,12 +53,12 @@ export class NavComponent implements OnInit {
 
     searchItems(animeId: number): void{
         if (animeId){
-            this.router.navigate(['animes/' , animeId]);
+            this.router.navigate(['animes/page/1' , animeId]);
         }
         else{
             switch (this.searchArray.length){
                 case 0: {
-                    this.router.navigate(['animes']);
+                    this.router.navigate(['animes/page/1']);
                     break;
                 }
                 case 1: {
