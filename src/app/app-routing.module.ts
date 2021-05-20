@@ -31,6 +31,8 @@ import {NotFoundErrorComponent} from './errors/not-found-error/not-found-error.c
 import {ForbiddenErrorComponent} from './errors/forbidden-error/forbidden-error.component';
 import {UnauthorizedErrorComponent} from './errors/unauthorized-error/unauthorized-error.component';
 import {ServerErrorComponent} from './errors/server-error/server-error.component';
+import {PasswordUpdateComponent} from './password-update/password-update.component';
+import {PasswordUpdateResolver} from "./shared/resolver/password.update.resolver";
 
 const routes: Routes = [
     {path: 'not-found', component: NotFoundErrorComponent},
@@ -107,7 +109,13 @@ const routes: Routes = [
     },
     {path: 'my-lists', component: MylistsComponent},
     {path: 'editor', component: ArticleEditorComponent},
-    {path: '**', redirectTo: 'not-found', pathMatch: 'full'}
+    {
+        path: 'password-update/:token', component: PasswordUpdateComponent
+       /* , resolve: {
+            updatePassword: PasswordUpdateResolver,
+        }*/
+    },
+    {path: '**', redirectTo: 'not-found', pathMatch: 'full'},
 ];
 
 @NgModule({

@@ -1,8 +1,16 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../model/user';
 import {environment} from '../../../environments/environment';
+import {PasswordUpdate} from '../model/password.update';
+
+const httpOptions = {
+    headers: new HttpHeaders({
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+    })
+};
 
 @Injectable({
     providedIn: 'root'
@@ -75,7 +83,17 @@ export class UserService {
         return this.httpclient.get<any>(environment.backend + '/users/update/ip');
     }
 
-    updatePasswordAction(): Observable<any> {
+    sendMailForPasswordUpdateAnfGenerateToken(): Observable<any> {
         return this.httpclient.get<any>(environment.backend + '/security/change-password');
+    }
+
+    postUpdatePasswordAction(newPassword: PasswordUpdate): Observable<any> {
+        return this.httpclient.post<any>(environment.backend + '/security/change-password',
+            newPassword,
+            {
+                observe: 'response',
+                headers: new HttpHeaders({Accept: 'application/json', 'Content-Type': 'application/json'})
+            }
+        );
     }
 }
