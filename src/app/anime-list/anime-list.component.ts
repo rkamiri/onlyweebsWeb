@@ -35,6 +35,7 @@ export class AnimeListComponent implements OnInit {
         if (!document.location.href.includes('research')) {
             this.animeService.getAllPages().subscribe((data) => {
                 this.pages = data;
+                this.pages = Math.ceil((data) / 20);
                 this.pagesArray = [].constructor(this.pages);
             });
             if (!this.research){

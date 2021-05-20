@@ -20,6 +20,7 @@ a {
     margin-top: 2vh;
     width: 15vw;
     background-color: rgba(40, 43, 48, .75);
+    height: 45vh !important;
 }
 
 .card:hover{
