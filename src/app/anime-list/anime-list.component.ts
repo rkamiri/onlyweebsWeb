@@ -10,9 +10,10 @@ import {ActivatedRoute} from '@angular/router';
 export class AnimeListComponent implements OnInit {
     public animeList: Anime[];
 
-  constructor(private route: ActivatedRoute) { }
+    constructor(private route: ActivatedRoute) {
+    }
 
-  ngOnInit(): void {
-      this.animeList = this.route.snapshot.data.animeList;
-  }
+    ngOnInit(): void {
+        this.animeList = this.route.snapshot.data.animeList;
+    }
 }

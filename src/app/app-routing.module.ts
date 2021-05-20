@@ -29,8 +29,16 @@ import {ArticleResolver} from './shared/resolver/article.resolver';
 
 
 const routes: Routes = [
-    {path: '', component: HomeComponent},
-    {path: 'home', component: HomeComponent},
+    {path: '', component: HomeComponent,  resolve: {
+            animeList: AnimeListResolver,
+            allLists: ListsResolver
+        }},
+    {path: 'home', component: HomeComponent,
+        resolve: {
+            animeList: AnimeListResolver,
+            allLists: ListsResolver,
+            listArticles: ArticleResolver
+        }},
     {
         path: 'animes', component: AnimeListComponent,
         resolve: {

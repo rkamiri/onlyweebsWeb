@@ -10,6 +10,7 @@ import {Article} from '../shared/model/article';
 export class ArticleListComponent implements OnInit {
     public listArticles: Article[];
 
+
     constructor(private articleService: ArticleService) {
     }
 

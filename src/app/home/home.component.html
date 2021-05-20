@@ -1,52 +1,244 @@
-<div class="text-light">
-    <div id="titre-liste-accueil" class="text-light text-center">
-        <h1>Top listes du moment</h1>
+<!-- LISTES DU MOMENT -->
+
+<div class="container text-light">
+    <div class=" text-light text-center">
+        <h3> LES LISTES DU MOMENTS </h3>
     </div>
+    <!-- ROW -->
+    <div class="row">
+        <div class="col-5">
 
-    <div id="" class="container" style="background-color: #212223">
+            <input hidden type="radio" name="carousel-control" id="button_1" checked/>
+            <input hidden type="radio" name="carousel-control" id="button_2"/>
+            <input hidden type="radio" name="carousel-control" id="button_3"/>
+            <input hidden type="radio" name="carousel-control" id="button_4"/>
+            <input hidden type="radio" name="carousel-control" id="button_5"/>
+            <input hidden type="radio" name="carousel-control" id="button_6"/>
+
+            <!-- GRAND FORMAT -->
+            <div id="carousel" class="">
+                <div class="p-wrapper" *ngFor="let list of toplists; let index = index;">
+                    <section class="top_{{index+1}}">
+                        <div class="row justify-content-center align-content-center">
+                            <div class="col-1 text-center justify-content-center">
+                                <img id="icon_like1"
+                                     class="icon_like rounded mx-auto d-block"
+                                     src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMzkxLjgzNyAzOTEuODM3IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzOTEuODM3IDM5MS44Mzc7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiNENzQ0M0U7IiBkPSJNMjg1LjI1NywzNS41MjhjNTguNzQzLDAuMjg2LDEwNi4yOTQsNDcuODM2LDEwNi41OCwxMDYuNTgNCgkJYzAsMTA3LjYyNC0xOTUuOTE4LDIxNC4yMDQtMTk1LjkxOCwyMTQuMjA0UzAsMjQ4LjE2NSwwLDE0Mi4xMDhjMC01OC44NjIsNDcuNzE3LTEwNi41OCwxMDYuNTgtMTA2LjU4bDAsMA0KCQljMzYuMDMyLTAuMjgxLDY5LjcxOCwxNy44NDIsODkuMzM5LDQ4LjA2NUMyMTUuNjc0LDUzLjUxNywyNDkuMjczLDM1LjQ0MSwyODUuMjU3LDM1LjUyOHoiLz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K"/>
+                                <label class="text-center" for="icon_like1">1568{{""}}</label>
+                                <img id="icon_share{{index+1}}"
+                                     class="icon_share rounded mx-auto d-block"
+                                     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMS42MjYgNTExLjYyNyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgY2xhc3M9IiI+PGc+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+Cgk8cGF0aCBkPSJNNTA2LjIwNiwxNzkuMDEyTDM2MC4wMjUsMzIuODM0Yy0zLjYxNy0zLjYxNy03Ljg5OC01LjQyNi0xMi44NDctNS40MjZzLTkuMjMzLDEuODA5LTEyLjg0Nyw1LjQyNiAgIGMtMy42MTcsMy42MTktNS40MjgsNy45MDItNS40MjgsMTIuODV2NzMuMDg5aC02My45NTNjLTEzNS43MTYsMC0yMTguOTg0LDM4LjM1NC0yNDkuODIzLDExNS4wNkM1LjA0MiwyNTkuMzM1LDAsMjkxLjAzLDAsMzI4LjkwNyAgIGMwLDMxLjU5NCwxMi4wODcsNzQuNTE0LDM2LjI1OSwxMjguNzYyYzAuNTcsMS4zMzUsMS41NjYsMy42MTQsMi45OTYsNi44NDljMS40MjksMy4yMzMsMi43MTIsNi4wODgsMy44NTQsOC41NjUgICBjMS4xNDYsMi40NzEsMi4zODQsNC41NjUsMy43MTUsNi4yNzZjMi4yODIsMy4yMzcsNC45NDgsNC44NTksNy45OTQsNC44NTljMi44NTUsMCw1LjA5Mi0wLjk1MSw2LjcxMS0yLjg1NCAgIGMxLjYxNS0xLjkwMiwyLjQyNC00LjI4NCwyLjQyNC03LjEzMmMwLTEuNzE4LTAuMjM4LTQuMjM2LTAuNzE1LTcuNTY5Yy0wLjQ3Ni0zLjMzMy0wLjcxNS01LjU2NC0wLjcxNS02LjcwOCAgIGMtMC45NTMtMTIuOTM4LTEuNDI5LTI0LjY1My0xLjQyOS0zNS4xMTRjMC0xOS4yMjMsMS42NjgtMzYuNDQ5LDQuOTk2LTUxLjY3NWMzLjMzMy0xNS4yMjksNy45NDgtMjguNDA3LDEzLjg1LTM5LjU0MyAgIGM1LjkwMS0xMS4xNCwxMy41MTItMjAuNzQ1LDIyLjg0MS0yOC44MzVjOS4zMjUtOC4wOSwxOS4zNjQtMTQuNzAyLDMwLjExOC0xOS44NDJjMTAuNzU2LTUuMTQxLDIzLjQxMy05LjE4NiwzNy45NzQtMTIuMTM1ICAgYzE0LjU2LTIuOTUsMjkuMjE1LTQuOTk3LDQzLjk2OC02LjE0czMxLjQ1NS0xLjcxMSw1MC4xMDktMS43MTFoNjMuOTUzdjczLjA5MWMwLDQuOTQ4LDEuODA3LDkuMjMyLDUuNDIxLDEyLjg0NyAgIGMzLjYyLDMuNjEzLDcuOTAxLDUuNDI0LDEyLjg0Nyw1LjQyNGM0Ljk0OCwwLDkuMjMyLTEuODExLDEyLjg1NC01LjQyNGwxNDYuMTc4LTE0Ni4xODNjMy42MTctMy42MTcsNS40MjQtNy44OTgsNS40MjQtMTIuODQ3ICAgQzUxMS42MjYsMTg2LjkyLDUwOS44MiwxODIuNjM2LDUwNi4yMDYsMTc5LjAxMnoiIGZpbGw9IiMzYWE2NDUiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8L2c+PC9zdmc+"/>
+                                <label class="text-center" for="icon_share{{index+1}}">356{{""}}</label>
+                            </div>
+                            <div id="top{{index+1}}" class="col-11 ">
+                                <img id="image_top{{index+1}}" class="image_top"
+                                     src="https://i2.wp.com/www.superpouvoir.com/wp-content/uploads/2019/04/top-5-sports-anime-of-2016-bentobyte-1140x500-1.jpg?resize=800%2C400&ssl=1">
+                                <div id="infos_top{{index+1}}" class="text-left">
+                                    <h3 id="nom_top{{index+1}}"><a
+                                        [routerLink]="['/lists', toplists[index].id]">{{ toplists[index].name }}</a>
+                                    </h3>
+                                    <h5 id="user_top{{index+1}}">par {{toplists[index].isOwnedBy}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <!-- MINIATURES -->
+        <div class="col-7">
+            <div id="navigation" *ngFor="let list of toplists; let index = index;">
+                <label for="button_{{index+1}}" class="label_{{index+1}}">
+                    <div class="row" >
+                        <div class="middle"></div>
+                        <div class="col-1 my-auto ici">
+                            <h3 class="text-primary">{{index + 1}}</h3>
+                        </div>
+                        <div class="col-4">
+                            <img class=""
+                                 style="max-width: 10em"
+                                 src="https://i2.wp.com/www.superpouvoir.com/wp-content/uploads/2019/04/top-5-sports-anime-of-2016-bentobyte-1140x500-1.jpg?resize=800%2C400&ssl=1">
+                        </div>
+                        <div class="col-6 my-auto">
+                            <p class="text-left"> {{toplists[index].name}} </p>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+    <!-- FIN ROW -->
+</div>  <!-- FIN CONTAINER -->
+
+<!-- ANIMéS DU MOMENT -->
+<div class="container">
+
+<div class=" text-light text-center">
+    <h3> TOP DES SORTIES </h3>
+</div>
+
+    <ng-image-slider #nav
+                     [images]="imageObject"
+                     [infinite]="true"
+                     [autoSlide]="0"
+                     [imageSize]="{width: '25%', height: 200}"
+                     [imagePopup]="false"
+                     [animationSpeed]="0.5"
+                     [manageImageRatio]="true"
+                     (imageClick)="goToAnime($event)"
+                     slideImage="1"></ng-image-slider>
+</div>
+
+<!-- aCTUALité -->
+<div class="container">
+
+    <div class=" text-light text-center">
+        <h3> ACTUALITÉ </h3>
+    </div>
+</div>
+
+<div class="container" >
+    <div class="row">
         <div class="row">
-        <div class="col">
-            <div class="row">
-                <div id="top_1" class="col text-center justify-content-center">
-                    <h1 class="text-primary text-center">1</h1>
-                    <img id="icon_like"
-                         class="rounded mx-auto d-block"
-                         src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMzkxLjgzNyAzOTEuODM3IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzOTEuODM3IDM5MS44Mzc7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiNENzQ0M0U7IiBkPSJNMjg1LjI1NywzNS41MjhjNTguNzQzLDAuMjg2LDEwNi4yOTQsNDcuODM2LDEwNi41OCwxMDYuNTgNCgkJYzAsMTA3LjYyNC0xOTUuOTE4LDIxNC4yMDQtMTk1LjkxOCwyMTQuMjA0UzAsMjQ4LjE2NSwwLDE0Mi4xMDhjMC01OC44NjIsNDcuNzE3LTEwNi41OCwxMDYuNTgtMTA2LjU4bDAsMA0KCQljMzYuMDMyLTAuMjgxLDY5LjcxOCwxNy44NDIsODkuMzM5LDQ4LjA2NUMyMTUuNjc0LDUzLjUxNywyNDkuMjczLDM1LjQ0MSwyODUuMjU3LDM1LjUyOHoiLz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K"/>
-                    <label class="text-center" for="icon_like">1568</label>
-                    <img id="icon_share"
-                         class="rounded mx-auto d-block"
-                         src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMS42MjYgNTExLjYyNyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgY2xhc3M9IiI+PGc+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+Cgk8cGF0aCBkPSJNNTA2LjIwNiwxNzkuMDEyTDM2MC4wMjUsMzIuODM0Yy0zLjYxNy0zLjYxNy03Ljg5OC01LjQyNi0xMi44NDctNS40MjZzLTkuMjMzLDEuODA5LTEyLjg0Nyw1LjQyNiAgIGMtMy42MTcsMy42MTktNS40MjgsNy45MDItNS40MjgsMTIuODV2NzMuMDg5aC02My45NTNjLTEzNS43MTYsMC0yMTguOTg0LDM4LjM1NC0yNDkuODIzLDExNS4wNkM1LjA0MiwyNTkuMzM1LDAsMjkxLjAzLDAsMzI4LjkwNyAgIGMwLDMxLjU5NCwxMi4wODcsNzQuNTE0LDM2LjI1OSwxMjguNzYyYzAuNTcsMS4zMzUsMS41NjYsMy42MTQsMi45OTYsNi44NDljMS40MjksMy4yMzMsMi43MTIsNi4wODgsMy44NTQsOC41NjUgICBjMS4xNDYsMi40NzEsMi4zODQsNC41NjUsMy43MTUsNi4yNzZjMi4yODIsMy4yMzcsNC45NDgsNC44NTksNy45OTQsNC44NTljMi44NTUsMCw1LjA5Mi0wLjk1MSw2LjcxMS0yLjg1NCAgIGMxLjYxNS0xLjkwMiwyLjQyNC00LjI4NCwyLjQyNC03LjEzMmMwLTEuNzE4LTAuMjM4LTQuMjM2LTAuNzE1LTcuNTY5Yy0wLjQ3Ni0zLjMzMy0wLjcxNS01LjU2NC0wLjcxNS02LjcwOCAgIGMtMC45NTMtMTIuOTM4LTEuNDI5LTI0LjY1My0xLjQyOS0zNS4xMTRjMC0xOS4yMjMsMS42NjgtMzYuNDQ5LDQuOTk2LTUxLjY3NWMzLjMzMy0xNS4yMjksNy45NDgtMjguNDA3LDEzLjg1LTM5LjU0MyAgIGM1LjkwMS0xMS4xNCwxMy41MTItMjAuNzQ1LDIyLjg0MS0yOC44MzVjOS4zMjUtOC4wOSwxOS4zNjQtMTQuNzAyLDMwLjExOC0xOS44NDJjMTAuNzU2LTUuMTQxLDIzLjQxMy05LjE4NiwzNy45NzQtMTIuMTM1ICAgYzE0LjU2LTIuOTUsMjkuMjE1LTQuOTk3LDQzLjk2OC02LjE0czMxLjQ1NS0xLjcxMSw1MC4xMDktMS43MTFoNjMuOTUzdjczLjA5MWMwLDQuOTQ4LDEuODA3LDkuMjMyLDUuNDIxLDEyLjg0NyAgIGMzLjYyLDMuNjEzLDcuOTAxLDUuNDI0LDEyLjg0Nyw1LjQyNGM0Ljk0OCwwLDkuMjMyLTEuODExLDEyLjg1NC01LjQyNGwxNDYuMTc4LTE0Ni4xODNjMy42MTctMy42MTcsNS40MjQtNy44OTgsNS40MjQtMTIuODQ3ICAgQzUxMS42MjYsMTg2LjkyLDUwOS44MiwxODIuNjM2LDUwNi4yMDYsMTc5LjAxMnoiIGZpbGw9IiMzYWE2NDUiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8L2c+PC9zdmc+"/>
-                    <label class="text-center" for="icon_share">356</label>
-                </div>
-                <div id="top1" class="col-10 ">
-                    <img id="image_top1" class=""
-                         src="https://i2.wp.com/www.superpouvoir.com/wp-content/uploads/2019/04/top-5-sports-anime-of-2016-bentobyte-1140x500-1.jpg?resize=800%2C400&ssl=1">
-                    <div id="infos_top1" class="text-right">
-                        <h3 id="nom_top1">Meilleurs animés de 2020</h3>
-                        <h5 id="user_top1">par Jean</h5>
+            <div class="col-12 pb-5">
+                <section class="row">
+                    <div class="col-12 col-md-6 pb-0 pb-md-3 pt-2 pr-md-1">
+                        <div id="featured" class="carousel" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <!--Item slider-->
+                                <div class="carousel-item active">
+                                    <div class="card border-0 rounded-0 text-light overflow zoom">
+                                        <div class="position-relative">
+                                            <!--thumbnail img-->
+                                            <div class="ratio_left-cover-1 image-wrapper">
+                                                <a routerLink="/articles/1">
+                                                    <img id="image1" class="img-fluid w-100"
+                                                         src="data:image/webp;base64,{{listArticles[0].cover.content}}"
+                                                         alt="Bootstrap news template">
+                                                </a>
+                                            </div>
+                                            <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
+                                                <a routerLink="/articles/1">
+                                                    <h2 class="h3 post-title text-white my-1">{{listArticles[0].title}}</h2>
+                                                </a>
+                                                <div class="news-meta">
+                                                        <span class="news-author">by <a
+                                                            class="text-white font-weight-bold"
+                                                            href="/#/animes">{{listArticles[0].author.username}}</a></span>
+                                                    <span
+                                                        class="news-date"> on {{listArticles[0].created_at}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <div class="col-12 col-md-6 pt-2 pl-md-1 mb-3 mb-lg-4">
+                        <div class="row">
+                            <div class="col-6 pb-1 pt-0 pr-1">
+                                <div class="card border-0 rounded-0 text-white overflow zoom">
+                                    <div class="position-relative">
+                                        <div class="ratio_right-cover-2 image-wrapper">
+                                            <a routerLink="/articles/2">
+                                                <img class="img-fluid"
+                                                     src="data:image/webp;base64,{{listArticles[1].cover.content}}"
+                                                     alt="simple blog template bootstrap">
+                                            </a>
+                                        </div>
+                                        <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
+                                            <a class="p-1 badge badge-primary rounded-0"
+                                               routerLink="/articles/2">Lifestyle</a>
+                                            <a routerLink="/articles/2">
+                                                <h2 class="h5 text-white my-1">{{listArticles[1].title}}</h2>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--news box-->
+                            <div class="col-6 pb-1 pl-1 pt-0">
+                                <div class="card border-0 rounded-0 text-white overflow zoom">
+                                    <div class="position-relative">
+                                        <!--thumbnail img-->
+                                        <div class="ratio_right-cover-2 image-wrapper">
+                                            <a routerLink="/articles/3">
+                                                <img class="img-fluid"
+                                                     src="data:image/webp;base64,{{listArticles[2].cover.content}}"
+                                                     alt="bootstrap templates for blog">
+                                            </a>
+                                        </div>
+                                        <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
+                                            <!-- category -->
+                                            <a class="p-1 badge badge-primary rounded-0"
+                                               routerLink="/articles/3">Motocross</a>
+                                            <!--title-->
+                                            <a routerLink="/articles/3">
+                                                <h2 class="h5 text-white my-1">{{listArticles[2].title}}</h2>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--news box-->
+                            <div class="col-6 pb-1 pr-1 pt-1">
+                                <div class="card border-0 rounded-0 text-white overflow zoom">
+                                    <div class="position-relative">
+                                        <!--thumbnail img-->
+                                        <div class="ratio_right-cover-2 image-wrapper">
+                                            <a routerLink="/articles/4">
+                                                <img class="img-fluid"
+                                                     src="data:image/webp;base64,{{listArticles[3].cover.content}}"
+                                                     alt="bootstrap blog wordpress theme">
+                                            </a>
+                                        </div>
+                                        <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
+                                            <!-- category -->
+                                            <a class="p-1 badge badge-primary rounded-0"
+                                               routerLink="/articles/4">Fitness</a>
+                                            <!--title-->
+                                            <a routerLink="/articles/4">
+                                                <h2 class="h5 text-white my-1">{{listArticles[3].title}}</h2>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--news box-->
+                            <div class="col-6 pb-1 pl-1 pt-1">
+                                <div class="card border-0 rounded-0 text-white overflow zoom">
+                                    <div class="position-relative">
+                                        <!--thumbnail img-->
+                                        <div class="ratio_right-cover-2 image-wrapper">
+                                            <a routerLink="/articles/5">
+                                                <img class="img-fluid"
+                                                     src="data:image/webp;base64,{{listArticles[4].cover.content}}"
+                                                     alt="blog website templates bootstrap">
+                                            </a>
+                                        </div>
+                                        <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
+                                            <!-- category -->
+                                            <a class="p-1 badge badge-primary rounded-0"
+                                               routerLink="/articles/5">Adventure</a>
+                                            <!--title-->
+                                            <a routerLink="/articles/5">
+                                                <h2 class="h5 text-white my-1">{{listArticles[4].title}}</h2>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
-
-            <div id="reste_tops" class="col">
-                <div class="row">
-                    <div class="col-1 my-auto">
-                        <h3 class="text-primary">2</h3>
-                    </div>
-
-                    <div  class="col-4">
-                        <img  class=""
-                              style="max-width: 10em"
-                             src="https://i2.wp.com/www.superpouvoir.com/wp-content/uploads/2019/04/top-5-sports-anime-of-2016-bentobyte-1140x500-1.jpg?resize=800%2C400&ssl=1">
-                    </div>
-
-                    <div class="col-7 my-auto">
-                        <p class="text-center"> Top 10 des animés Made In France </p>
-                    </div>
-            </div>
-            </div>
-        </div>
+        <hr>
     </div>
 </div>
 

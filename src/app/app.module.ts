@@ -28,6 +28,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxSpinnerModule} from '@hardpool/ngx-spinner';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleComponent } from './article/article.component';
+import {NgImageSliderModule} from "ng-image-slider";
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { ArticleComponent } from './article/article.component';
         FileUploadModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        NgxSpinnerModule
+        NgxSpinnerModule,
+        NgImageSliderModule
     ],
     providers: [
         [
