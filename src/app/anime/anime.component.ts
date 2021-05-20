@@ -69,10 +69,10 @@ export class AnimeComponent implements OnDestroy, OnInit {
 
     ngOnInit(): void {
         this.anime = this.activatedRoute.snapshot.data.anime;
-        this.genres = this.anime.genre.split('\'');
-        this.genres = this.genres.filter(e => e !== ', ');
+        this.genres = /*this.anime.genre.split('\'');*/ null;
+        /*this.genres = this.genres.filter(e => e !== ', ');
         this.genres = this.genres.filter(e => e !== '[');
-        this.genres = this.genres.filter(e => e !== ']');
+        this.genres = this.genres.filter(e => e !== ']');*/
 
         console.log(this.genres);
         this.globalRate = this.activatedRoute.snapshot.data.globalRating;

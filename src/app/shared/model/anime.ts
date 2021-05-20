@@ -1,10 +1,11 @@
 export interface Anime {
     id: number;
     title: string;
+    titleEnglish: string;
     synopsis: string;
-    cover: string;
-    ranking: number;
-    aired: string;
+    imgUrl: string;
     episodes: number;
-    genre: string;
+    pegiId: [];
+    airing: string;
+    aired: boolean;
 }

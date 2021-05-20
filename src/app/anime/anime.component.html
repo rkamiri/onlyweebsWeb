@@ -1,7 +1,7 @@
 <div id="container">
     <div class="row box" id="page">
         <div class="col-lg-3 col-md-2 col-sm-2 col-12" id="imgPlace">
-            <img src="{{anime.cover}}" class="img-fluid" id="cover" alt="">
+            <img src="{{anime.imgUrl}}" class="img-fluid" id="cover" alt="">
         </div>
 
         <div class="col-lg-6  col-md-6 col-sm-8 col-12" id="center">
@@ -41,10 +41,10 @@
                 </div>
             </div>
 
-            <div class="row">
+           <!-- <div class="row">
                 <p class="genreTag">Genres: {{genres.toString()}}</p>
                 <p>tag: tag1, tag2, tag3</p>
-            </div>
+            </div>-->
             <div class="row">
                 <h1>Synopsis</h1>
                 <p>{{ anime.synopsis }}</p>
@@ -56,7 +56,7 @@
                 <h1 class="detailsContent">Details</h1>
                 <p class="detailsContent">Studio: StudioName</p>
                 <p class="detailsContent">Producer: ProducerName</p>
-                <p class="detailsContent">Airing Date: {{anime.aired}}</p>
+                <p class="detailsContent">Airing Date: {{anime.airing}}</p>
                 <p class="detailsContent">Number of episodes: {{ anime.episodes }}</p>
             </div>
             <div class="row">
