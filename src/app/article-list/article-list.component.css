@@ -84,3 +84,12 @@ body{
     border-radius: 1vh;
     cursor: pointer;
 }
+
+.img-fluid{
+    min-width: 100%;
+}
+
+#articleTitle {
+    margin-left: 2vw;
+}
+
