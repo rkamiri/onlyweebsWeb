@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Anime} from '../shared/model/anime';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Params} from '@angular/router';
 import {AnimeService} from '../shared/service/anime.service';
 import {document} from 'ngx-bootstrap/utils';
 
@@ -18,44 +18,45 @@ export class AnimeListComponent implements OnInit {
     public activatePagination: boolean;
     private research: string;
     public page: number;
+    private queryParams: Params;
 
     constructor(private route: ActivatedRoute,
                 private animeService: AnimeService) {
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
-            this.currentPage = parseInt(params.page, null);
-            this.research = params.research;
-            if (this.research){
-                this.animeService.getAllAnimeByName(this.research, 1).subscribe((data) => {
-                    this.animeList = data;
+        this.route.queryParams.subscribe(data => {
+            this.queryParams = data;
+            if (this.queryParams.page) {
+                this.currentPage = parseInt(this.queryParams.page, null);
+                this.animeService.getAllPagesSearch(this.queryParams.query).subscribe(pages => {
+                    this.pages = pages;
+                    this.pages = Math.ceil((pages) / 20);
+                    this.pagesArray = [].constructor(this.pages);
+                    if (this.pages > 1) {
+                        this.activatePagination = true;
+                    }
+                    this.animeService.getAllAnimeByName(this.queryParams.query, this.currentPage).subscribe((animes) => {
+                        this.animeList = animes;
+                    });
                 });
-            }
-            else{
-                this.animeService.getAllAnime(this.currentPage).subscribe(data => {
-                    this.animeList = data;
+            } else {
+                this.route.params.subscribe(params => {
+                    this.currentPage = parseInt(params.page, null);
+                    this.animeService.getAllPages().subscribe(pages => {
+                        this.pages = pages;
+                        this.pages = Math.ceil((pages) / 20);
+                        this.pagesArray = [].constructor(this.pages);
+                        if (this.pages > 1) {
+                            this.activatePagination = true;
+                        }
+                        this.animeService.getAllAnime(this.currentPage).subscribe(data => {
+                            this.animeList = data;
+                        });
+                    });
                 });
             }
         });
-        if (!document.location.href.includes('research')) {
-            this.animeService.getAllPages().subscribe((data) => {
-                this.pages = data;
-                this.pages = Math.ceil((data) / 20);
-                this.pagesArray = [].constructor(this.pages);
-            });
-            this.activatePagination = true;
-            this.currentPage = 1;
-        } else {
-            this.animeService.getAllPagesSearch(document.location.href.split('research/')[1]).subscribe((data) => {
-                this.pages = data;
-                this.pages = Math.ceil((data) / 20);
-                this.pagesArray = [].constructor(this.pages);
-                if (this.pages > 1){
-                    this.activatePagination = true;
-                }
-            });
-        }
     }
 
     changePage(newCurrentPage: number): void {
@@ -64,8 +65,7 @@ export class AnimeListComponent implements OnInit {
             this.animeService.getAllAnime(this.currentPage).subscribe((data) => {
                 this.animeList = data;
             });
-        }
-        else{
+        } else {
             this.animeService.getAllAnimeByName(document.location.href.split('research/')[1], this.currentPage).subscribe((data) => {
                 this.animeList = data;
             });

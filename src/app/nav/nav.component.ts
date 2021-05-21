@@ -67,7 +67,8 @@ export class NavComponent implements OnInit {
                     break;
                 }
                 default: {
-                    this.router.navigate(['animes/research/' , this.searchInputValue]);
+                    console.log('going in:  ' + this.searchInputValue);
+                    this.router.navigate(['animes/research'], { queryParams: { query: this.searchInputValue, page: 1 } });
                     break;
                 }
             }

@@ -30,42 +30,35 @@
     <div *ngIf="activatePagination">
         <ul *ngIf="pages" class="pagination justify-content-center">
             <li [ngClass]="{disabled:currentPage === 1}" class="page-item">
-                <!--<button (click)="changePage(1)" class="page-link test">First</button>-->
-                <a [routerLink]="['/animes/page', 1]" class="page-link test">First</a>
-
+                <a *ngIf="!queryParams.query" [routerLink]="['/animes/page', 1]" class="page-link test">First</a>
+                <a *ngIf="queryParams.query" [routerLink]="['/animes/research']" [queryParams]="{ query: queryParams.query, page: 1 }" class="page-link test">First</a>
             </li>
             <li [ngClass]="{disabled:currentPage === 1}" class="page-item">
-               <!-- <button (click)="changePage(currentPage-1)" class="page-link test">Previous</button>-->
-                <a [routerLink]="['/animes/page', currentPage-1]" class="page-link test">Last</a>
-
+                <a *ngIf="!queryParams.query" [routerLink]="['/animes/page', currentPage-1]" class="page-link test">Previous</a>
+                <a *ngIf="queryParams.query" [routerLink]="['/animes/research']" [queryParams]="{ query: queryParams.query, page: currentPage-2 }" class="page-link test">Previous</a>
             </li>
             <li class="page-item" *ngIf="currentPage !== 1 ">
-                <!--<button (click)="changePage(currentPage-1)" class="page-link test">{{currentPage-1}}</button>-->
-                <a [routerLink]="['/animes/page', currentPage-1]" class="page-link test">{{currentPage-1}}</a>
-
+                <a *ngIf="!queryParams.query" [routerLink]="['/animes/page', currentPage-1]" class="page-link test">{{currentPage-1}}</a>
+                <a *ngIf="queryParams.query" [routerLink]="['/animes/research']" [queryParams]="{ query: queryParams.query, page: currentPage-1 }" class="page-link test">{{currentPage-1}}</a>
             </li>
             <li class="page-item">
                 <button disabled (click)="changePage(currentPage)" class="page-link current test">{{currentPage}}</button>
-
             </li>
             <li class="page-item"[ngClass]="{disabled:currentPage === pages}">
-                <!--<button (click)="changePage(currentPage+1)" class="page-link test">{{currentPage+1}}</button>-->
-                <a [routerLink]="['/animes/page', currentPage+1]" class="page-link test">{{currentPage+1}}</a>
-
+                <a *ngIf="!queryParams.query" [routerLink]="['/animes/page', currentPage+1]" class="page-link test">{{currentPage+1}}</a>
+                <a *ngIf="queryParams.query" [routerLink]="['/animes/research']" [queryParams]="{ query: queryParams.query, page: currentPage+1 }" class="page-link test">{{currentPage+1}}</a>
             </li>
             <li class="page-item" *ngIf="currentPage === 1">
-                <!--<button (click)="changePage(currentPage+2)" class="page-link test">{{currentPage+2}}</button>-->
-                <a [routerLink]="['/animes/page', currentPage+2]" class="page-link test">{{currentPage+2}}</a>
-
+                <a *ngIf="!queryParams.query" [routerLink]="['/animes/page', currentPage+2]" class="page-link test">{{currentPage+2}}</a>
+                <a *ngIf="queryParams.query" [routerLink]="['/animes/research']" [queryParams]="{ query: queryParams.query, page: currentPage+2 }" class="page-link test">{{currentPage+2}}</a>
             </li>
             <li [ngClass]="{disabled:currentPage === pages}" class="page-item">
-                <!--<button (click)="changePage(currentPage+1)" class="page-link test">Next</button>-->
-                <a [routerLink]="['/animes/page', currentPage+1]" class="page-link test">Next</a>
+                <a *ngIf="!queryParams.query" [routerLink]="['/animes/page', currentPage+1]" class="page-link test">Next</a>
+                <a *ngIf="queryParams.query" [routerLink]="['/animes/research']" [queryParams]="{ query: queryParams.query, page: currentPage+1 }" class="page-link test">Next</a>
             </li>
             <li [ngClass]="{disabled:currentPage === pages}" class="page-item">
-                <!--<button (click)="changePage(pages)" class="page-link test">Last</button>-->
-                <a [routerLink]="['/animes/page', pages]" class="page-link test">Last</a>
-
+                <a *ngIf="!queryParams.query" [routerLink]="['/animes/page', pages]" class="page-link test">Last</a>
+                <a *ngIf="queryParams.query" [routerLink]="['/animes/research']" [queryParams]="{ query: queryParams.query, page: pages }" class="page-link test">Last</a>
             </li>
         </ul>
     </div>

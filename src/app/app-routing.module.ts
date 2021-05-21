@@ -49,10 +49,10 @@ const routes: Routes = [
         runGuardsAndResolvers: 'always'
     },
     {
-        path: 'animes/research/:research', component: AnimeListComponent,
-        resolve: {
+        path: 'animes/research', component: AnimeListComponent,
+        /*resolve: {
             animeList: AnimeListResearchResolver
-        },
+        },*/
         runGuardsAndResolvers: 'always'
     },
     {
