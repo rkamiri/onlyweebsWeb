@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
             this.listArticles = data;
             console.log(data[0]);
         });
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 6; i++) {
             this.imageObject.push({
                 id: this.route.snapshot.data.animeList[i].id,
                 content: this.route.snapshot.data.animeList[i].cover,
