@@ -1,5 +1,5 @@
 <!-- LISTES DU MOMENT -->
-<div class="container text-light">
+<div id="mainContainer" class="container text-light">
     <div class=" text-light text-center">
         <h3> LES LISTES DU MOMENTS </h3>
     </div>
@@ -70,12 +70,26 @@
     <div class=" text-light text-center">
         <h3> TOP DES SORTIES </h3>
     </div>
-    <div *ngFor="let i of imageObject">
-        <a routerLink="/animes/{{i.id}}">
-            <img src="{{i.content}}" alt="Bootstrap news tempalte">
-            <p>{{i.name}}</p>
-        </a>
-    </div>
+    <div>
+
+
+
+
+        <div class="container anime">
+            <div class="row">
+                <div *ngFor="let anime of imageObject" class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-4">
+                    <a [routerLink]="['/animes', anime.id]">
+                        <div class="card">
+                            <img  src="{{anime.content}}" class="card-img-top" alt="one piece png">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title">{{anime.name}}</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
 </div>
 <div class="container">
 
