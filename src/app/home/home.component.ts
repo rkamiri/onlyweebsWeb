@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
         });
         for (let i = 0; i < 8; i++) {
             this.imageObject.push({
+                id: this.route.snapshot.data.animeList[i].id,
                 content: this.route.snapshot.data.animeList[i].cover,
                 name: this.route.snapshot.data.animeList[i].internationalTitle
             });
@@ -36,7 +37,7 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(): void {
         console.log(this.route.snapshot.data.allLists);
-        console.log(this.imageObject);
+        console.log(this.imageObject[0].content);
     }
 
     goToAnime($event): void {

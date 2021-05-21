@@ -70,17 +70,12 @@
     <div class=" text-light text-center">
         <h3> TOP DES SORTIES </h3>
     </div>
-
-    <ng-image-slider #nav
-                     [images]="imageObject"
-                     [infinite]="true"
-                     [autoSlide]="0"
-                     [imageSize]="{width: '25%', height: 200}"
-                     [imagePopup]="false"
-                     [animationSpeed]="0.5"
-                     [manageImageRatio]="true"
-                     (imageClick)="goToAnime($event)"
-                     slideImage="1"></ng-image-slider>
+    <div *ngFor="let i of imageObject">
+        <a routerLink="/animes/{{i.id}}">
+            <img src="{{i.content}}" alt="Bootstrap news tempalte">
+            <p>{{i.name}}</p>
+        </a>
+    </div>
 </div>
 <div class="container">
 
