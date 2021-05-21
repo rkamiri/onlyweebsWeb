@@ -1,37 +1,143 @@
-#body {
-    min-height: 100%;
-    height: 100%;
-    width: 100%;
-}
-
-#myCarousel {
-    min-width: 60%;
-    max-width: 60%;
-    margin: auto;
-    outline: none;
-}
-
-#myCarousel h3 {
-    color: black;
-}
-
-#myCarousel p {
-    color: black;
-}
-
-#market {
-    min-width: 60%;
-    max-width: 60%;
-    margin: auto;
-    color: white;
-    background-color: rgba(40, 43, 48, .75);
-}
-
-#firstRow {
-    padding-top: 1.5vh;
-}
-
-.carousel-img {
+.icon_like, .icon_share {
+    max-width: 28px;
+    max-height: 28px;
     display: block;
-    margin: auto;
+}
+
+#likes {
+    color: red;
+    display: block;
+}
+
+#shares {
+    color: green;
+    display: block;
+}
+
+.image_top {
+    max-width: 25em;
+}
+
+.image_top:hover {
+    opacity: 50%;
+    transition: 0.4s;
+}
+
+.image_top:not(:hover) {
+    transition: 0.4s;
+}
+
+#top_listes {
+    background-color: #212223;
+    padding: 2em;
+}
+
+#top1 {
+    padding-right: 2em;
+}
+
+li {
+    list-style: none;
+    padding: 1%;
+
+}
+
+.middle {
+    background-color: #097ce7;
+    flex-grow: 1;
+    max-width: 2px;
+    z-index: 0;
+}
+
+
+body {
+    font-family: sans-serif;
+    font-size: 11px;
+    line-height: 1.5em;
+    color: #aaa;
+}
+
+
+.container {
+    background-color: #2e3032;
+    border-radius: 4px;
+
+    margin-top: 4%;
+}
+
+#carousel, #navigation {
+    flex: initial;
+    display: block;
+}
+
+#carousel {
+    overflow: hidden;
+    width: 30vw;
+    height: 40vh;
+    border-radius: 4px;
+}
+
+.p-wrapper {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s ease-in-out;
+}
+
+#button_1:checked ~ #carousel .p-wrapper {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+
+}
+
+#button_2:checked ~ #carousel .p-wrapper {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+
+#button_3:checked ~ #carousel .p-wrapper {
+    -webkit-transform: translateY(-200%);
+    transform: translateY(-200%);
+}
+
+#button_4:checked ~ #carousel .p-wrapper {
+    -webkit-transform: translateY(-300%);
+    transform: translateY(-300%);
+}
+
+#button_5:checked ~ #carousel .p-wrapper {
+    -webkit-transform: translateY(-400%);
+    transform: translateY(-400%);
+}
+
+[class^="top_"] {
+
+}
+
+[class^="label_"] {
+    display: block;
+    cursor: pointer;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+
+[class^="label_"]:focus-within, [class^="label_"]:focus, [class^="button_"]:focus, [class^="button_"]:focus-within, ici:focus-within {
+    background-color: ivory;
+    color: gray;
+}
+
+
+label {
+    margin: 1%;
+}
+
+.carousel-nav-icon {
+    height: 48px;
+    width: 48px;
+}
+
+.col, .col-sm, .col-md {
+
 }

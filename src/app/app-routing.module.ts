@@ -32,15 +32,25 @@ import {ForbiddenErrorComponent} from './errors/forbidden-error/forbidden-error.
 import {UnauthorizedErrorComponent} from './errors/unauthorized-error/unauthorized-error.component';
 import {ServerErrorComponent} from './errors/server-error/server-error.component';
 import {PasswordUpdateComponent} from './password-update/password-update.component';
-import {PasswordUpdateResolver} from "./shared/resolver/password.update.resolver";
 
 const routes: Routes = [
     {path: 'not-found', component: NotFoundErrorComponent},
     {path: 'forbidden', component: ForbiddenErrorComponent},
     {path: 'unauthorized', component: UnauthorizedErrorComponent},
     {path: 'server-error', component: ServerErrorComponent},
-    {path: '', component: HomeComponent},
-    {path: 'home', component: HomeComponent},
+    {path: '', component: HomeComponent,
+        resolve: {
+            animeList: AnimeListResolver,
+            allLists: ListsResolver
+        }
+    },
+    {
+        path: 'home', component: HomeComponent,
+        resolve: {
+            animeList: AnimeListResolver,
+            allLists: ListsResolver
+        }
+    },
     {
         path: 'animes', component: AnimeListComponent,
         resolve: {
@@ -110,9 +120,9 @@ const routes: Routes = [
     {path: 'editor', component: ArticleEditorComponent},
     {
         path: 'password-update/:token', component: PasswordUpdateComponent
-       /* , resolve: {
-            updatePassword: PasswordUpdateResolver,
-        }*/
+        /* , resolve: {
+             updatePassword: PasswordUpdateResolver,
+         }*/
     },
     {path: '**', redirectTo: 'not-found', pathMatch: 'full'},
 ];
