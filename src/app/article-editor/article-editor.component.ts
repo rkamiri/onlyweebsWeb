@@ -40,7 +40,6 @@ export class ArticleEditorComponent implements OnInit {
     }
 
     submit(): void {
-        console.log(this.formData.get('uploadFile'));
         const article: Article = {
             id: null,
             title: this.articleInfos.get('title').value,

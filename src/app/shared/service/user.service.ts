@@ -83,8 +83,8 @@ export class UserService {
         return this.httpclient.get<any>(environment.backend + '/users/update/ip');
     }
 
-    sendMailForPasswordUpdateAnfGenerateToken(): Observable<any> {
-        return this.httpclient.get<any>(environment.backend + '/security/change-password');
+    sendMailForPasswordUpdateAnfGenerateToken(): Observable<string> {
+        return this.httpclient.get<string>(environment.backend + '/security/change-password');
     }
 
     postUpdatePasswordAction(newPassword: PasswordUpdate): Observable<any> {

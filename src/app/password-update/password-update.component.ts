@@ -47,10 +47,7 @@ export class PasswordUpdateComponent implements OnInit {
             token: this.token,
             newPassword: this.updatePasswordForm.get('newPassword').value
         };
-        console.log(passwordUpdate);
         this.userService.postUpdatePasswordAction(passwordUpdate).subscribe((response) => {
-            console.log(response.status);
-            console.log(response.body);
             if (response.status === 200) {
                 this.userService.logout();
                 this.router.navigate(['/login']).then();

@@ -1,14 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {ArticleService} from '../shared/service/article.service';
+import {Article} from '../shared/model/article';
+import {Image} from '../shared/model/image';
+import {Lists} from '../shared/model/lists';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+    topLists: Lists[];
+    imageObject: Image[];
+    public listArticles: Article[];
 
-  constructor() { }
+    constructor(private route: ActivatedRoute, private articleService: ArticleService) {
+        this.imageObject = [];
+        this.listArticles = [];
+        this.topLists = [];
+        this.articleService.getAllArticles().subscribe((data) => {
+            this.listArticles = data;
+        });
+        for (let i = 0; i < 6; i++) {
+            this.imageObject.push({
+                id: this.route.snapshot.data.animeList[i].id,
+                content: this.route.snapshot.data.animeList[i].cover,
+                name: this.route.snapshot.data.animeList[i].internationalTitle
+            });
+        }
+        for (let i = 0; i < 5; i++) {
+            this.topLists.push(this.route.snapshot.data.allLists[i]);
+        }
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
+
+    goToAnime($event): void {
+        const id = this.route.snapshot.data.animeList[$event].id;
+        window.open('/#/animes/' + id + '/', '_self');
+    }
 }

@@ -89,7 +89,7 @@
             </div>
         </div>
 
-        <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+        <div *ngIf="isConnected" class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
             <form id="algin-form" (ngSubmit)="sendComment()" [formGroup]="commentForm">
                 <div class="form-group">
                     <h1>Leave a comment</h1> <label for="message">Message</label> <textarea name="msg" id="message"

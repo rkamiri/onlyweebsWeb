@@ -88,32 +88,8 @@ body{
 .img-fluid{
     min-width: 100%;
 }
-#category{
-    margin: auto;
-    margin-left: 0;
-}
-#category select{
-    width: 100%;
-    height: 3vh;
-}
-#titleNews{
-    margin: 0;
-    max-width: 6vw;
-    padding: 0;
-}
 
-#searchgroup input {
-    height: 3vh;
-    border-color: transparent;
-    margin: 0;
-    padding: 0;
-}
-#searchgroup button{
-    height: 2.9vh;
-    padding-top: 0;
-    border-color: transparent;
-    background-color: #097ce7;
-    border-radius: 0;
-    margin: 0;
+#articleTitle {
+    margin-left: 2vw;
 }
 

@@ -1,37 +1,39 @@
 <body>
-<div class="text-light">
+<div class="text-light" *ngIf="listArticles">
     <div id="titre_page" class="text-center">
         <h1>Actualités</h1>
     </div>
-    <div class="container" *ngIf="listArticles">
+    <div class="container">
         <div class="row">
-            <div class="col-12 pb-5">
-                <section class="row">
-                    <div class="col-12 col-md-6 pb-0 pb-md-3 pt-2 pr-md-1">
-                        <div id="featured" class="carousel" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <!--Item slider-->
-                                <div class="carousel-item active">
-                                    <div class="card border-0 rounded-0 text-light overflow zoom">
-                                        <div class="position-relative">
-                                            <!--thumbnail img-->
-                                            <div class="ratio_left-cover-1 image-wrapper">
-                                                <a routerLink="/articles/1">
-                                                    <img id="image1" class="img-fluid w-100"
-                                                         src="data:image/webp;base64,{{listArticles[0].cover.content}}"
-                                                         alt="Bootstrap news template">
-                                                </a>
-                                            </div>
-                                            <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
-                                                <a routerLink="/articles/1">
-                                                    <h2 class="h3 post-title text-white my-1">{{listArticles[0].title}}</h2>
-                                                </a>
-                                                <div class="news-meta">
+            <div class="row">
+                <div class="col-12 pb-5">
+                    <section class="row">
+                        <div class="col-12 col-md-6 pb-0 pb-md-3 pt-2 pr-md-1">
+                            <div id="featured" class="carousel" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <!--Item slider-->
+                                    <div class="carousel-item active">
+                                        <div class="card border-0 rounded-0 text-light overflow zoom">
+                                            <div class="position-relative">
+                                                <!--thumbnail img-->
+                                                <div class="ratio_left-cover-1 image-wrapper">
+                                                    <a [routerLink]="['/articles/', listArticles[0].id]">
+                                                        <img id="image1" class="img-fluid w-100"
+                                                             src="data:image/webp;base64,{{listArticles[0].cover.content}}"
+                                                             alt="Bootstrap news template">
+                                                    </a>
+                                                </div>
+                                                <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
+                                                    <a [routerLink]="['/articles/', listArticles[0].id]">
+                                                        <h2 class="h3 post-title text-white my-1">{{listArticles[0].title}}</h2>
+                                                    </a>
+                                                    <div class="news-meta">
                                                         <span class="news-author">by <a
                                                             class="text-white font-weight-bold"
                                                             href="/#/animes">{{listArticles[0].author.username}}</a></span>
-                                                    <span
-                                                        class="news-date"> on {{listArticles[0].created_at}}</span>
+                                                        <span
+                                                            class="news-date"> on {{listArticles[0].created_at}}</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -39,147 +41,125 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-6 pt-2 pl-md-1 mb-3 mb-lg-4">
-                        <div class="row">
-                            <div class="col-6 pb-1 pt-0 pr-1">
-                                <div class="card border-0 rounded-0 text-white overflow zoom">
-                                    <div class="position-relative">
-                                        <div class="ratio_right-cover-2 image-wrapper">
-                                            <a routerLink="/articles/2">
-                                                <img class="img-fluid"
-                                                     src="data:image/webp;base64,{{listArticles[1].cover.content}}"
-                                                     alt="simple blog template bootstrap">
-                                            </a>
-                                        </div>
-                                        <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
-                                            <a class="p-1 badge badge-primary rounded-0"
-                                               routerLink="/articles/2">Lifestyle</a>
-                                            <a routerLink="/articles/2">
-                                                <h2 class="h5 text-white my-1">{{listArticles[1].title}}</h2>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--news box-->
-                            <div class="col-6 pb-1 pl-1 pt-0">
-                                <div class="card border-0 rounded-0 text-white overflow zoom">
-                                    <div class="position-relative">
-                                        <!--thumbnail img-->
-                                        <div class="ratio_right-cover-2 image-wrapper">
-                                            <a routerLink="/articles/3">
-                                                <img class="img-fluid"
-                                                     src="data:image/webp;base64,{{listArticles[2].cover.content}}"
-                                                     alt="bootstrap templates for blog">
-                                            </a>
-                                        </div>
-                                        <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
-                                            <!-- category -->
-                                            <a class="p-1 badge badge-primary rounded-0"
-                                               routerLink="/articles/3">Motocross</a>
-                                            <!--title-->
-                                            <a routerLink="/articles/3">
-                                                <h2 class="h5 text-white my-1">{{listArticles[2].title}}</h2>
-                                            </a>
+                        <div class="col-12 col-md-6 pt-2 pl-md-1 mb-3 mb-lg-4">
+                            <div class="row">
+                                <div class="col-6 pb-1 pt-0 pr-1">
+                                    <div class="card border-0 rounded-0 text-white overflow zoom">
+                                        <div class="position-relative">
+                                            <div class="ratio_right-cover-2 image-wrapper">
+                                                <a [routerLink]="['/articles/', listArticles[1].id]">
+                                                    <img class="img-fluid"
+                                                         src="data:image/webp;base64,{{listArticles[1].cover.content}}"
+                                                         alt="simple blog template bootstrap">
+                                                </a>
+                                            </div>
+                                            <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
+                                                <a class="p-1 badge badge-primary rounded-0"
+                                                [routerLink]="['/articles/', listArticles[1].id]">Anime</a>
+                                                <a [routerLink]="['/articles/', listArticles[1].id]">
+                                                    <h2 class="h5 text-white my-1">{{listArticles[1].title}}</h2>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!--news box-->
-                            <div class="col-6 pb-1 pr-1 pt-1">
-                                <div class="card border-0 rounded-0 text-white overflow zoom">
-                                    <div class="position-relative">
-                                        <!--thumbnail img-->
-                                        <div class="ratio_right-cover-2 image-wrapper">
-                                            <a routerLink="/articles/4">
-                                                <img class="img-fluid"
-                                                     src="data:image/webp;base64,{{listArticles[3].cover.content}}"
-                                                     alt="bootstrap blog wordpress theme">
-                                            </a>
-                                        </div>
-                                        <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
-                                            <!-- category -->
-                                            <a class="p-1 badge badge-primary rounded-0"
-                                               routerLink="/articles/4">Fitness</a>
-                                            <!--title-->
-                                            <a routerLink="/articles/4">
-                                                <h2 class="h5 text-white my-1">{{listArticles[3].title}}</h2>
-                                            </a>
+                                <!--news box-->
+                                <div class="col-6 pb-1 pl-1 pt-0">
+                                    <div class="card border-0 rounded-0 text-white overflow zoom">
+                                        <div class="position-relative">
+                                            <!--thumbnail img-->
+                                            <div class="ratio_right-cover-2 image-wrapper">
+                                                <a [routerLink]="['/articles/', listArticles[2].id]">
+                                                    <img class="img-fluid"
+                                                         src="data:image/webp;base64,{{listArticles[2].cover.content}}"
+                                                         alt="bootstrap templates for blog">
+                                                </a>
+                                            </div>
+                                            <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
+                                                <!-- category -->
+                                                <a class="p-1 badge badge-primary rounded-0"
+                                                [routerLink]="['/articles/', listArticles[2].id]">Anime</a>
+                                                <!--title-->
+                                                <a [routerLink]="['/articles/', listArticles[2].id]">
+                                                    <h2 class="h5 text-white my-1">{{listArticles[2].title}}</h2>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!--news box-->
-                            <div class="col-6 pb-1 pl-1 pt-1">
-                                <div class="card border-0 rounded-0 text-white overflow zoom">
-                                    <div class="position-relative">
-                                        <!--thumbnail img-->
-                                        <div class="ratio_right-cover-2 image-wrapper">
-                                            <a routerLink="/articles/5">
-                                                <img class="img-fluid"
-                                                     src="data:image/webp;base64,{{listArticles[4].cover.content}}"
-                                                     alt="blog website templates bootstrap">
-                                            </a>
+                                <!--news box-->
+                                <div class="col-6 pb-1 pr-1 pt-1">
+                                    <div class="card border-0 rounded-0 text-white overflow zoom">
+                                        <div class="position-relative">
+                                            <!--thumbnail img-->
+                                            <div class="ratio_right-cover-2 image-wrapper">
+                                                <a [routerLink]="['/articles/', listArticles[3].id]">
+                                                    <img class="img-fluid"
+                                                         src="data:image/webp;base64,{{listArticles[3].cover.content}}"
+                                                         alt="bootstrap blog wordpress theme">
+                                                </a>
+                                            </div>
+                                            <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
+                                                <!-- category -->
+                                                <a class="p-1 badge badge-primary rounded-0"
+                                                [routerLink]="['/articles/', listArticles[3].id]">Anime</a>
+                                                <!--title-->
+                                                <a [routerLink]="['/articles/', listArticles[3].id]">
+                                                    <h2 class="h5 text-white my-1">{{listArticles[3].title}}</h2>
+                                                </a>
+                                            </div>
                                         </div>
-                                        <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
-                                            <!-- category -->
-                                            <a class="p-1 badge badge-primary rounded-0"
-                                               routerLink="/articles/5">Adventure</a>
-                                            <!--title-->
-                                            <a routerLink="/articles/5">
-                                                <h2 class="h5 text-white my-1">{{listArticles[4].title}}</h2>
-                                            </a>
+                                    </div>
+                                </div>
+
+                                <!--news box-->
+                                <div class="col-6 pb-1 pl-1 pt-1">
+                                    <div class="card border-0 rounded-0 text-white overflow zoom">
+                                        <div class="position-relative">
+                                            <!--thumbnail img-->
+                                            <div class="ratio_right-cover-2 image-wrapper">
+                                                <a [routerLink]="['/articles/', listArticles[4].id]">
+                                                    <img class="img-fluid"
+                                                         src="data:image/webp;base64,{{listArticles[4].cover.content}}"
+                                                         alt="blog website templates bootstrap">
+                                                </a>
+                                            </div>
+                                            <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
+                                                <!-- category -->
+                                                <a class="p-1 badge badge-primary rounded-0"
+                                                [routerLink]="['/articles/', listArticles[4].id]">Anime</a>
+                                                <!--title-->
+                                                <a [routerLink]="['/articles/', listArticles[4].id]">
+                                                    <h2 class="h5 text-white my-1">{{listArticles[4].title}}</h2>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </section>
+                </div>
+            </div>
+            <a *ngFor="let article of listArticlesNext" id="featuretteBlock">
+                <hr class="featurette-divider">
+                <div class="row featurette" routerLink="/articles/{{article.id}}">
+                    <div class="col-md-6 order-md-2">
+                        <h2 id="articleTitle" class="featurette-heading">{{article.title}}</h2>
+                        <!--<div class="lead" id="mainContent" [innerHTML]="article.body | safeHtml"></div>-->
                     </div>
-                </section>
-            </div>
+                    <div class="col-md-5 order-md-1">
+                        <img
+                            class="bottom bd-placeholder-img bd-placeholder-img-lg featurette-image mx-auto articleImage"
+                            src="data:image/webp;base64,{{article.cover.content}}"
+                            alt="article image">
+                    </div>
+                </div>
+            </a>
+            <hr>
         </div>
-        <div class="row" id="test">
-            <div class="col-2"  id="titleNews"  >
-                <h2>All News</h2>
-            </div>
-            <div class="col-4" id="category" >
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                    <option selected>Category</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-            <div class="col-4" id="search">
-                <div class="input-group mb-3" id="searchgroup">
-                    <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon1">
-                        <i class="fa fa-search" style="color: #e4e4e4;"></i>
-                    </button>
-                </div>
-            </div>
-
-        </div>
-        <a *ngFor="let article of listArticlesNext" id="featuretteBlock">
-            <hr class="featurette-divider">
-            <div class="row featurette" routerLink="/articles/{{article.id}}">
-                <div class="col-md-7 order-md-2">
-                    <h2 class="featurette-heading">{{article.title}}</h2>
-                    <div class="lead" id="mainContent" [innerHTML]="article.body | safeHtml"></div>
-                </div>
-                <div class="col-md-5 order-md-1">
-                    <img
-                        class="bottom bd-placeholder-img bd-placeholder-img-lg featurette-image mx-auto articleImage"
-                        src="data:image/webp;base64,{{article.cover.content}}"
-                        alt="article image">
-                </div>
-            </div>
-        </a>
-        <hr>
     </div>
 </div>
 </body>
