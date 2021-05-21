@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
         this.topLists = [];
         this.articleService.getAllArticles().subscribe((data) => {
             this.listArticles = data;
-            console.log(data[0]);
         });
         for (let i = 0; i < 6; i++) {
             this.imageObject.push({
@@ -36,8 +35,6 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.route.snapshot.data.allLists);
-        console.log(this.imageObject[0].content);
     }
 
     goToAnime($event): void {
