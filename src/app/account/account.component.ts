@@ -144,6 +144,8 @@ export class AccountComponent implements OnInit {
     }
 
     updatePassword(): void {
-        this.userService.sendMailForPasswordUpdateAnfGenerateToken().subscribe(() => {});
+        this.userService.sendMailForPasswordUpdateAnfGenerateToken().subscribe((data) => {
+            console.log(data);
+        });
     }
 }
