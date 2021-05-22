@@ -13,7 +13,6 @@ import {OnelistComponent} from './onelist/onelist.component';
 import {MylistsComponent} from './mylists/mylists.component';
 import {ListCreateComponent} from './list-create/list-create.component';
 import {AnimeListResolver} from './shared/resolver/anime.list.resolver';
-import {AnimeListResearchResolver} from './shared/resolver/anime.list.research.resolver';
 import {AnimeResolver} from './shared/resolver/anime.resolver';
 import {GlobalRatingResolver} from './shared/resolver/global.rating.resolver';
 import {CurrentUserRatingResolver} from './shared/resolver/current.user.rating.resolver';
@@ -44,13 +43,7 @@ const routes: Routes = [
             allLists: ListsResolver
         }
     },
-    {
-        path: 'home', component: HomeComponent,
-        resolve: {
-            animeList: AnimeListResolver,
-            allLists: ListsResolver
-        }
-    },
+    {path: 'home', component: HomeComponent},
     {
         path: 'animes/page/:page', component: AnimeListComponent,
         resolve: {

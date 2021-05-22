@@ -15,7 +15,8 @@ export class AnimeService {
         return this.httpclient.get<number>(environment.backend + '/animes/count');
     }
     getAllAnime(page: number): Observable<Anime[]> {
-        return this.httpclient.get<Anime[]>(environment.backend + '/animes/pagination/' + (page - 1));
+        const numpage = page - 1;
+        return this.httpclient.get<Anime[]>(environment.backend + '/animes/pagination/' + numpage);
     }
 
     getOneAnime(id): Observable<Anime> {

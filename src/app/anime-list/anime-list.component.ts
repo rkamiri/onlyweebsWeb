@@ -50,9 +50,7 @@ export class AnimeListComponent implements OnInit {
                         if (this.pages > 1) {
                             this.activatePagination = true;
                         }
-                        this.animeService.getAllAnime(this.currentPage).subscribe(data => {
-                            this.animeList = data;
-                        });
+                        this.animeService.getAllAnime(this.currentPage).subscribe(data => this.animeList = data);
                     });
                 });
             }
