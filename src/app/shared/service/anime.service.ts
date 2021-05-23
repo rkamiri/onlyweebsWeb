@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Anime} from '../model/anime';
 import {environment} from '../../../environments/environment';
@@ -12,15 +12,28 @@ export class AnimeService {
     constructor(private httpclient: HttpClient) {
     }
 
-    getAllAnime(): Observable<Anime[]> {
-        return this.httpclient.get<Anime[]>(environment.backend + '/animes');
+    getAllAnimes(): Observable<Anime[]> {
+        return this.httpclient.get<Anime[]>(environment.backend + '/animes/all/');
+    }
+
+    getAllPages(): Observable<number> {
+        return this.httpclient.get<number>(environment.backend + '/animes/count');
+    }
+
+    getAnimesByPage(page: number): Observable<Anime[]> {
+        const numpage = page - 1;
+        return this.httpclient.get<Anime[]>(environment.backend + '/animes/pagination/' + numpage);
     }
 
     getOneAnime(id): Observable<Anime> {
         return this.httpclient.get<Anime>(environment.backend + '/animes/' + id);
     }
 
-    getAllAnimeByName(term: string): Observable<Anime[]> {
-        return this.httpclient.get<Anime[]>(environment.backend + '/animes/research/' + term);
+    getAllAnimeByName(term: string, page: number): Observable<Anime[]> {
+        return this.httpclient.get<Anime[]>(environment.backend + '/animes/research/' + term + '/pagination/' + (page - 1));
+    }
+
+    getAllPagesSearch(search: string): Observable<number> {
+        return this.httpclient.get<number>(environment.backend + '/animes/research/' + search + '/count');
     }
 }

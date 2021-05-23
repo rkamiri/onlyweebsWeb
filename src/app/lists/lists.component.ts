@@ -10,15 +10,13 @@ import {ListsService} from '../shared/service/lists.service';
 })
 export class ListsComponent implements OnInit {
     public lists: Lists[];
-    public  listsImages: [[]];
+    public listsImages: [[]];
 
-    constructor(private route: ActivatedRoute, private listService: ListsService) {}
+    constructor(private route: ActivatedRoute, private listService: ListsService) {
+    }
 
     ngOnInit(): void {
         this.lists = this.route.snapshot.data.customLists;
-        this.listService.getImageOfListCustom().subscribe(data => {
-                this.listsImages = data;
-            }
-        );
+        this.listService.getImagesOfCustomLists().subscribe(data => this.listsImages = data);
     }
 }

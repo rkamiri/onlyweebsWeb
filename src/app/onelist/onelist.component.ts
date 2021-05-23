@@ -7,6 +7,7 @@ import {TypeaheadMatch} from 'ngx-bootstrap/typeahead/typeahead-match.class';
 import {ListsService} from '../shared/service/lists.service';
 import {IsListedIn} from '../shared/model/is.listed.in';
 import {FormGroup} from '@angular/forms';
+import {AnimeService} from '../shared/service/anime.service';
 
 @Component({
     selector: 'app-onelist',
@@ -14,36 +15,38 @@ import {FormGroup} from '@angular/forms';
     styleUrls: ['./onelist.component.css']
 })
 export class OnelistComponent implements OnInit {
-    public listInfo: Lists;
-    public animeList: Anime[];
-    public fullAnimeList: Anime[];
-    public newList: Anime[];
-    selectedValue: string;
-    selectedOption: any;
-    addAnimeForm: FormGroup;
     private closeResult: string;
-    index: 1;
+    public listInfo: Lists;
+    public animesOfThisList: Anime[];
+    public allAnimes: Anime[];
+    public animesThatWillBeAdded: Anime[];
+    public selectedValue: string;
+    public selectedOption: any;
+    public addAnimeForm: FormGroup;
+    public index: number;
     public owned: boolean;
 
     constructor(private modalService: NgbModal,
                 private route: ActivatedRoute,
                 private listService: ListsService,
-                private router: Router) {
+                private router: Router,
+                private animeService: AnimeService) {
         this.addAnimeForm = new FormGroup({});
         this.closeResult = '';
+        this.index = 0;
     }
 
     ngOnInit(): void {
         this.listInfo = this.route.snapshot.data.list;
         this.owned = +sessionStorage.getItem('userid') === this.listInfo.isOwnedBy;
-        this.animeList = this.route.snapshot.data.listContent;
-        this.fullAnimeList = this.route.snapshot.data.getAnimeList;
-        this.newList = [];
+        this.animesOfThisList = this.route.snapshot.data.listContent;
+        this.animeService.getAllAnimes().subscribe(data => this.allAnimes = data);
+        this.animesThatWillBeAdded = [];
     }
 
     onSelect(event: TypeaheadMatch): void {
         this.selectedOption = event.item;
-        this.newList.push(event.item);
+        this.animesThatWillBeAdded.push(event.item);
     }
 
     onSubmit(): void {
@@ -51,7 +54,7 @@ export class OnelistComponent implements OnInit {
     }
 
     private addAnime(): void {
-        const ili: IsListedIn = {id: 666, list_id: this.listInfo.id, anime_id: this.newList.pop().id};
+        const ili: IsListedIn = {id: 666, list_id: this.listInfo.id, anime_id: this.animesThatWillBeAdded.pop().id};
         this.listService.putAnimeInList(ili).subscribe(
             () => {
                 setTimeout(location.reload.bind(location), 1);

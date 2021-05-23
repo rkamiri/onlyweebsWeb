@@ -15,19 +15,17 @@ export class MylistsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.listService.getMyCustomLists().subscribe((customLists) => {
-            this.customLists = customLists;
-        });
-        this.listService.getMyDefaultLists().subscribe((defaultLists) => {
-            this.defaultLists = defaultLists;
-        });
+        this.fillArrayWithData();
+    }
+
+    fillArrayWithData(): void {
+        this.listService.getMyCustomLists().subscribe(customLists => this.customLists = customLists);
+        this.listService.getMyDefaultLists().subscribe(defaultLists => this.defaultLists = defaultLists);
     }
 
     delete(id: number): void {
         if (confirm('Are you sure you want to delete this custom list ?')) {
-            this.listService.deleteList(id).subscribe((data) => {
-                location.reload();
-            });
+            this.listService.deleteList(id).subscribe(() => location.reload());
         }
     }
 }

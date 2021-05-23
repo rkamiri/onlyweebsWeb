@@ -64,11 +64,11 @@ export class ListsService {
         return this.httpclient.get<Lists>(environment.backend + '/lists/' + sessionStorage.getItem('userid') + '/' + listName);
     }
 
-    getImageOfList(): Observable<any> {
+    getImagesOfAllLists(): Observable<any> {
         return this.httpclient.get<any>(environment.backend + '/lists/spotify/image');
     }
 
-    getImageOfListCustom(): Observable<any> {
+    getImagesOfCustomLists(): Observable<any> {
         return this.httpclient.get<any>(environment.backend + '/lists/spotify/image/custom');
     }
 
