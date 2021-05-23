@@ -38,12 +38,8 @@ export class AnimeComponent implements OnInit {
                 private commentsService: CommentService,
                 private animeService: AnimeService) {
         this.userHasComment = false;
-        this.rateForm = new FormGroup({
-            rate: new FormControl('')
-        });
-        this.commentForm = new FormGroup({
-            comment: new FormControl('')
-        });
+        this.rateForm = new FormGroup({rate: new FormControl('')});
+        this.commentForm = new FormGroup({comment: new FormControl('')});
         this.userHasRated = 'Add Personal Rate';
     }
 
@@ -79,7 +75,6 @@ export class AnimeComponent implements OnInit {
     initComments(animeId: number): void {
         this.commentsService.getCommentsForAnime(animeId).subscribe((comments) => {
             this.comments = comments;
-            console.log(comments);
             comments.forEach(comment => {
                 if (comment.usersEntity.id === +sessionStorage.getItem('userid')) {
                     this.userHasComment = true;

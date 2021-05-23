@@ -38,7 +38,9 @@ const routes: Routes = [
     {path: 'server-error', component: ServerErrorComponent},
     {path: '', component: HomeComponent},
     {path: 'home', component: HomeComponent},
-    {path: 'animes/:id', component: AnimeComponent, runGuardsAndResolvers: 'always'},
+    {path: 'animes/:id', component: AnimeComponent, runGuardsAndResolvers: 'always',
+        resolve: {globalRating: GlobalRatingResolver, currentUserRating: CurrentUserRatingResolver}
+    },
     {path: 'animes/page/:page', component: AnimeListComponent, runGuardsAndResolvers: 'always'},
     {path: 'animes/research', component: AnimeListComponent, runGuardsAndResolvers: 'always'},
     {
