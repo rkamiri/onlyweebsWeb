@@ -5,22 +5,20 @@
             <div id="head">
                 <h1>{{data.title}}</h1>
                 <label>Publié le {{data.created_at  | date: 'dd/MM/yyyy'}}</label>
-                <img *ngIf="data.cover !== undefined" src="data:image/webp;base64,{{data.cover.content}}" alt="article image"/>
+                <img *ngIf="data.cover !== undefined" src="{{articleCoverUrl}}" alt="article image"/>
             </div>
             <div id="mainContent" [innerHTML]="data.body | safeHtml"></div>
             <div id="author">
-                <img class="rounded-circle d-inline " src="https://image.jeuxvideo.com/avatar-sm/a/n/antistar-1570009637-130dd54464160bf26c2c6166e64f33c9.jpg">
+                <img *ngIf="userImageUrl !== undefined" class="rounded-circle d-inline " src="{{userImageUrl}}" alt="">
                 <p class="d-inline p-2">Par {{data.author.firstname}} {{data.author.lastname}}, Rédacteur onlyweebs.com</p>
             </div>
         </div>
-
-        <!-- PARTIE AUTRE ARTICLES -->
         <div class="col-md-4">
             <h2>A lire aussi</h2>
             <div class="articleBox rounded">
                 <div class="row ">
                     <div class="col-md-6">
-                        <img class="rounded-left" src="https://www.actugaming.net/wp-content/uploads/2021/02/NieR-Replicant-ver-1-22474487139_2021_02-24-21_002.jpg">
+                        <img class="rounded-left" src="https://www.actugaming.net/wp-content/uploads/2021/02/NieR-Replicant-ver-1-22474487139_2021_02-24-21_002.jpg" alt="">
                     </div>
                     <div class="col-md-6">
                         <p>NieR Replicant ver.1.22474487139, pêche et jardinage : notre guide complet</p>
@@ -30,7 +28,7 @@
             <div class="articleBox rounded">
                 <div class="row">
                     <div class="col-md-6">
-                        <img class="rounded-left" src="https://www.actugaming.net/wp-content/uploads/2021/02/NieR-Replicant-ver-1-22474487139_2021_02-24-21_002.jpg">
+                        <img class="rounded-left" src="https://www.actugaming.net/wp-content/uploads/2021/02/NieR-Replicant-ver-1-22474487139_2021_02-24-21_002.jpg" alt="">
                     </div>
                     <div class="col-md-6">
                         <p>NieR Replicant ver.1.22474487139, pêche et jardinage : notre guide complet</p>
@@ -40,7 +38,7 @@
             <div class="articleBox rounded">
                 <div class="row">
                     <div class="col-md-6">
-                        <img class="rounded-left" src="https://www.actugaming.net/wp-content/uploads/2021/02/NieR-Replicant-ver-1-22474487139_2021_02-24-21_002.jpg">
+                        <img class="rounded-left" src="https://www.actugaming.net/wp-content/uploads/2021/02/NieR-Replicant-ver-1-22474487139_2021_02-24-21_002.jpg" alt="">
                     </div>
                     <div class="col-md-6">
                         <p>NieR Replicant ver.1.22474487139, pêche et jardinage : notre guide complet</p>
@@ -50,7 +48,7 @@
             <div class="articleBox rounded">
                 <div class="row">
                     <div class="col-md-6">
-                        <img class="rounded-left" src="https://www.actugaming.net/wp-content/uploads/2021/02/NieR-Replicant-ver-1-22474487139_2021_02-24-21_002.jpg">
+                        <img class="rounded-left" src="https://www.actugaming.net/wp-content/uploads/2021/02/NieR-Replicant-ver-1-22474487139_2021_02-24-21_002.jpg" alt="">
                     </div>
                     <div class="col-md-6">
                         <p>NieR Replicant ver.1.22474487139, pêche et jardinage : notre guide complet</p>
@@ -60,7 +58,7 @@
             <div class="articleBox rounded">
                 <div class="row">
                     <div class="col-md-6">
-                        <img class="rounded-left" src="https://www.actugaming.net/wp-content/uploads/2021/02/NieR-Replicant-ver-1-22474487139_2021_02-24-21_002.jpg">
+                        <img class="rounded-left" src="https://www.actugaming.net/wp-content/uploads/2021/02/NieR-Replicant-ver-1-22474487139_2021_02-24-21_002.jpg" alt="">
                     </div>
                     <div class="col-md-6">
                         <p>NieR Replicant ver.1.22474487139, pêche et jardinage : notre guide complet</p>
