@@ -6,8 +6,7 @@ import {Comment} from '../model/comment';
 
 const httpOptions = {
     headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        responseType: 'text'
+        'Content-Type': 'application/json'
     })
 };
 

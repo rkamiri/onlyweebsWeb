@@ -75,8 +75,9 @@ export class AnimeComponent implements OnInit {
     initComments(animeId: number): void {
         this.commentsService.getCommentsForAnime(animeId).subscribe((comments) => {
             this.comments = comments;
+            console.log(comments);
             comments.forEach(comment => {
-                if (comment.usersEntity.id === +sessionStorage.getItem('userid')) {
+                if (comment.user.id === +sessionStorage.getItem('userid')) {
                     this.userHasComment = true;
                 }
             });
@@ -110,10 +111,10 @@ export class AnimeComponent implements OnInit {
 
     sendComment(): void {
         this.commentsService.putCommentForAnime({
-            usersEntity: null,
-            anime_id: this.anime.id,
-            comment: this.commentForm.get('comment').value.toString(),
-            date: null
+            user: null,
+            body: this.commentForm.get('comment').value.toString(),
+            date: null,
+            animeEntity: this.anime
         }).subscribe(() => {
             location.reload();
         });

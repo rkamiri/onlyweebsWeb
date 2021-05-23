@@ -19,8 +19,7 @@ export class AnimeListComponent implements OnInit {
     public page: number;
     public queryParams: Params;
 
-    constructor(private route: ActivatedRoute,
-                private animeService: AnimeService) {
+    constructor(private route: ActivatedRoute, private animeService: AnimeService) {
     }
 
     ngOnInit(): void {
