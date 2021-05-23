@@ -5,9 +5,8 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../shared/service/user.service';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Image} from '../shared/model/image';
-import {ImageService} from '../shared/service/image.service';
 import {ISpinnerConfig, SPINNER_ANIMATIONS, SPINNER_PLACEMENT} from '@hardpool/ngx-spinner';
+import {ImageService} from '../shared/service/image.service';
 
 @Component({
     selector: 'app-account',
@@ -19,7 +18,7 @@ export class AccountComponent implements OnInit {
     public personalInfoForm: FormGroup;
     public bioForm: FormGroup;
     public passwordForm: FormGroup;
-    public profilePicture: Image;
+    public profilePictureUrl: string;
     public spinner: boolean;
     public spinnerConfig: ISpinnerConfig;
     public currentUser: User;
@@ -60,7 +59,7 @@ export class AccountComponent implements OnInit {
         this.sameIp = 'true';
         this.currentUser = this.route.snapshot.data.currentUser;
         this.userService.checkSameIp().subscribe((data) => {if (!data) {this.sameIp = 'false'; }});
-        this.getProfileImage();
+        this.createProfilePictureUrl();
         this.fillForms();
         this.setSpinnerConfig();
     }
@@ -93,10 +92,8 @@ export class AccountComponent implements OnInit {
         this.newPassWordUser = this.currentUser;
     }
 
-    getProfileImage(): void {
-        this.imageService.getProfilePicture().subscribe((image) => {
-            this.profilePicture = image;
-        });
+    createProfilePictureUrl(): void {
+        this.profilePictureUrl = environment.backend + '/image/' + this.currentUser.image.id;
     }
 
     updatePersonalInfos(): void {
@@ -121,12 +118,7 @@ export class AccountComponent implements OnInit {
         const file: File = fileList[0];
         const formData: FormData = new FormData();
         formData.append('uploadFile', file, file.name);
-        const headers = new HttpHeaders({Accept: 'application/json'});
-        const options = {headers};
-        this.http.post(environment.backend + '/upload/image/' + this.currentUser.id, formData, options)
-            .subscribe(() => {
-                setTimeout(location.reload.bind(location), 1);
-            });
+        this.imageService.postProfilePicture(formData, this.currentUser.id).subscribe(() => setTimeout(location.reload.bind(location), 1));
     }
 
     showSpinner(): void {

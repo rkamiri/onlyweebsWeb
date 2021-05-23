@@ -3,6 +3,7 @@ import {ArticleService} from '../shared/service/article.service';
 import {Article} from '../shared/model/article';
 import {ActivatedRoute} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
+import {environment} from '../../environments/environment';
 
 @Component({
     selector: 'app-article',
@@ -10,19 +11,25 @@ import {DomSanitizer} from '@angular/platform-browser';
     styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
-    data: Article;
+    public data: Article;
+    public articleCoverUrl: string;
+    public userImageUrl: string;
 
     constructor(private articleService: ArticleService, private route: ActivatedRoute) {
+        this.data = this.route.snapshot.data.article;
     }
 
     ngOnInit(): void {
-        this.data = this.route.snapshot.data.article;
+        this.articleCoverUrl = environment.backend + '/image/' + this.data.cover.id;
+        this.userImageUrl = environment.backend + '/image/' + this.data.author.image.id;
     }
 }
 
-@Pipe({ name: 'safeHtml'})
-export class SafeHtmlPipe implements PipeTransform  {
-    constructor(private sanitized: DomSanitizer) {}
+@Pipe({name: 'safeHtml'})
+export class SafeHtmlPipe implements PipeTransform {
+    constructor(private sanitized: DomSanitizer) {
+    }
+
     transform(value): any {
         return this.sanitized.bypassSecurityTrustHtml(value);
     }

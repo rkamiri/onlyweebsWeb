@@ -2,7 +2,6 @@
     <h3>{{listInfo.name}}</h3>
     <p>{{listInfo.description}}</p>
 </div>
-
 <div class="container w-75" style="font-size: large">
     <table class="table">
         <thead class="thead-light">
@@ -15,19 +14,23 @@
         </thead>
 
         <tbody class="table-dark">
-        <tr *ngFor="let l of animeList; let i=index">
+        <tr *ngFor="let l of animesOfThisList; let i=index">
             <td id="{{i+1}}">{{i + 1}}</td>
-            <td><a [routerLink]="['/animes', l.id]">{{l.internationalTitle}}</a></td>
+            <td><a [routerLink]="['/animes', l.id]">{{l.title}}</a></td>
             <td>0/98</td>
             <td>
                 <button *ngIf=owned (click)="onDelete(l.id)" id="removeAnime" class="btn btn-xs btn-danger">X</button>
             </td>
         </tr>
         <tr *ngIf=owned class="">
-            <td><button (click)="open(content)"><span><i class="fa fa-plus-square"> add an anime</i></span></button></td>
+            <td>
+                <button (click)="open(content)"><span><i class="fa fa-plus-square"> add an anime</i></span></button>
+            </td>
             <td></td>
             <td></td>
-            <td><button (click)="deleteList()"><span><i class="fa fa-trash"></i> delete this list</span></button></td>
+            <td>
+                <button (click)="deleteList()"><span><i class="fa fa-trash"></i> delete this list</span></button>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -45,8 +48,8 @@
                 <label for="addAnime">Add anime to your list</label>
                 <div class="input-group">
                     <input placeholder="Add an anime" id="addAnime" [(ngModel)]="selectedValue"
-                           [ngModelOptions]="{standalone: true}" [typeahead]="fullAnimeList"
-                           typeaheadOptionField="internationalTitle" [typeaheadScrollable]="true"
+                           [ngModelOptions]="{standalone: true}" [typeahead]="allAnimes"
+                           typeaheadOptionField="title" [typeaheadScrollable]="true"
                            (typeaheadOnSelect)="onSelect($event)" class="form-control">
                     <button id="sendNewList" class="btn btn-sm btn-success float-right">
                         Create

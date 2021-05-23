@@ -8,13 +8,14 @@ import {CommentService} from '../shared/service/comment.service';
 import {Lists} from '../shared/model/lists';
 import {IsListedIn} from '../shared/model/is.listed.in';
 import {ListsService} from '../shared/service/lists.service';
+import {AnimeService} from '../shared/service/anime.service';
 
 @Component({
     selector: 'app-anime',
     templateUrl: './anime.component.html',
     styleUrls: ['./anime.component.css']
 })
-export class AnimeComponent implements OnDestroy, OnInit {
+export class AnimeComponent implements OnInit {
     public userCustomLists: Lists[];
     public userDefaultLists: Lists[];
     public anime: Anime;
@@ -26,29 +27,17 @@ export class AnimeComponent implements OnDestroy, OnInit {
     rateForm: FormGroup;
     commentForm: FormGroup;
     userHasRated: string;
-    navigationSubscription;
     comments;
     userHasComment: boolean;
+    public genres: string[];
 
     constructor(private router: Router,
                 private activatedRoute: ActivatedRoute,
                 private ratingService: RatingService,
                 private listService: ListsService,
-                private commentsService: CommentService) {
+                private commentsService: CommentService,
+                private animeService: AnimeService) {
         this.userHasComment = false;
-        this.navigationSubscription = this.router.events.subscribe((e: any) => {
-            if (e instanceof NavigationEnd) {
-                this.initialiseAnime();
-                this.commentsService.getCommentsForAnime(this.anime.id).subscribe((comments) => {
-                    this.comments = comments;
-                    comments.forEach(comment => {
-                        if (comment.usersEntity.id === +sessionStorage.getItem('userid')) {
-                            this.userHasComment = true;
-                        }
-                    });
-                });
-            }
-        });
         this.rateForm = new FormGroup({
             rate: new FormControl('')
         });
@@ -58,14 +47,15 @@ export class AnimeComponent implements OnDestroy, OnInit {
         this.userHasRated = 'Add Personal Rate';
     }
 
-    ngOnDestroy(): void {
-        if (this.navigationSubscription) {
-            this.navigationSubscription.unsubscribe();
-        }
-    }
-
     ngOnInit(): void {
-        this.anime = this.activatedRoute.snapshot.data.anime;
+        this.activatedRoute.params.subscribe(params => {
+            this.animeService.getOneAnime(params.id).subscribe(data => {
+                    this.anime = data;
+                    this.initComments(data.id);
+                }
+            );
+        });
+        this.genres = null;
         this.globalRate = this.activatedRoute.snapshot.data.globalRating;
         if (sessionStorage.getItem('isConnected') === 'true') {
             this.listService.getMyCustomLists().subscribe((customLists) => {
@@ -86,8 +76,16 @@ export class AnimeComponent implements OnDestroy, OnInit {
         }
     }
 
-    initialiseAnime(): void {
-        this.anime = this.activatedRoute.snapshot.data.anime;
+    initComments(animeId: number): void {
+        this.commentsService.getCommentsForAnime(animeId).subscribe((comments) => {
+            this.comments = comments;
+            console.log(comments);
+            comments.forEach(comment => {
+                if (comment.usersEntity.id === +sessionStorage.getItem('userid')) {
+                    this.userHasComment = true;
+                }
+            });
+        });
     }
 
     updateRating(): void {

@@ -36,7 +36,6 @@ import { UnauthorizedErrorComponent } from './errors/unauthorized-error/unauthor
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { PasswordUpdateComponent } from './password-update/password-update.component';
 
-
 @NgModule({
     declarations: [
         AppComponent,
@@ -76,7 +75,7 @@ import { PasswordUpdateComponent } from './password-update/password-update.compo
         HttpClientModule,
         BrowserAnimationsModule,
         NgxSpinnerModule,
-        CKEditorModule
+        CKEditorModule,
     ],
     providers: [
         [

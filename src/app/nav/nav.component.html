@@ -12,7 +12,7 @@
     <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
         <ul id="nav" class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/animes']" routerLinkActive="is-active">ANIMES</a>
+                <a class="nav-link" [routerLink]="['/animes/page/1']" routerLinkActive="is-active">ANIMES</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/articles']" routerLinkActive="is-active">NEWS</a>
@@ -28,8 +28,8 @@
             <div class="input-group mb-3" id="searchBlock">
 
                 <ng-template #rt let-r="result" let-t="term">
-                    <img [src]="r.cover" class="mr-1" style="width: 16px">
-                    <ngb-highlight [result]="r.internationalTitle" [term]="t"></ngb-highlight>
+                    <img [src]="r.imgUrl" class="mr-1" style="width: 16px">
+                    <ngb-highlight [result]="r.title" [term]="t"></ngb-highlight>
                 </ng-template>
                 <input id="typeahead-template" type="text" class="form-control" [(ngModel)]="searchInputValue"
                        [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter"

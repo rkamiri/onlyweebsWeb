@@ -12,8 +12,8 @@
                     <div class="account-settings">
                         <div class="user-profile">
                             <div class="user-avatar">
-                                <img *ngIf="profilePicture !== undefined"
-                                     src="data:image/webp;base64,{{profilePicture.content}}" alt="profile image"
+                                <img *ngIf="profilePictureUrl !== undefined"
+                                     src="{{profilePictureUrl}}" alt="profile image"
                                      onclick="document.getElementById('uploadImage').click()"/>
                                 <input id="uploadImage" type="file" (change)="fileChange($event)"
                                        placeholder="Upload file" accept="image/*">

@@ -11,15 +11,13 @@
                         <div class="col-12 col-md-6 pb-0 pb-md-3 pt-2 pr-md-1">
                             <div id="featured" class="carousel" data-ride="carousel">
                                 <div class="carousel-inner">
-                                    <!--Item slider-->
                                     <div class="carousel-item active">
                                         <div class="card border-0 rounded-0 text-light overflow zoom">
                                             <div class="position-relative">
-                                                <!--thumbnail img-->
                                                 <div class="ratio_left-cover-1 image-wrapper">
                                                     <a [routerLink]="['/articles/', listArticles[0].id]">
                                                         <img id="image1" class="img-fluid w-100"
-                                                             src="data:image/webp;base64,{{listArticles[0].cover.content}}"
+                                                             src="{{articleImageUrls[0]}}"
                                                              alt="Bootstrap news template">
                                                     </a>
                                                 </div>
@@ -49,13 +47,13 @@
                                             <div class="ratio_right-cover-2 image-wrapper">
                                                 <a [routerLink]="['/articles/', listArticles[1].id]">
                                                     <img class="img-fluid"
-                                                         src="data:image/webp;base64,{{listArticles[1].cover.content}}"
+                                                         src="{{articleImageUrls[1]}}"
                                                          alt="simple blog template bootstrap">
                                                 </a>
                                             </div>
                                             <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
                                                 <a class="p-1 badge badge-primary rounded-0"
-                                                [routerLink]="['/articles/', listArticles[1].id]">Anime</a>
+                                                   [routerLink]="['/articles/', listArticles[1].id]">Anime</a>
                                                 <a [routerLink]="['/articles/', listArticles[1].id]">
                                                     <h2 class="h5 text-white my-1">{{listArticles[1].title}}</h2>
                                                 </a>
@@ -63,24 +61,19 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <!--news box-->
                                 <div class="col-6 pb-1 pl-1 pt-0">
                                     <div class="card border-0 rounded-0 text-white overflow zoom">
                                         <div class="position-relative">
-                                            <!--thumbnail img-->
                                             <div class="ratio_right-cover-2 image-wrapper">
                                                 <a [routerLink]="['/articles/', listArticles[2].id]">
                                                     <img class="img-fluid"
-                                                         src="data:image/webp;base64,{{listArticles[2].cover.content}}"
+                                                         src="{{articleImageUrls[2]}}"
                                                          alt="bootstrap templates for blog">
                                                 </a>
                                             </div>
                                             <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
-                                                <!-- category -->
                                                 <a class="p-1 badge badge-primary rounded-0"
-                                                [routerLink]="['/articles/', listArticles[2].id]">Anime</a>
-                                                <!--title-->
+                                                   [routerLink]="['/articles/', listArticles[2].id]">Anime</a>
                                                 <a [routerLink]="['/articles/', listArticles[2].id]">
                                                     <h2 class="h5 text-white my-1">{{listArticles[2].title}}</h2>
                                                 </a>
@@ -88,24 +81,19 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <!--news box-->
                                 <div class="col-6 pb-1 pr-1 pt-1">
                                     <div class="card border-0 rounded-0 text-white overflow zoom">
                                         <div class="position-relative">
-                                            <!--thumbnail img-->
                                             <div class="ratio_right-cover-2 image-wrapper">
                                                 <a [routerLink]="['/articles/', listArticles[3].id]">
                                                     <img class="img-fluid"
-                                                         src="data:image/webp;base64,{{listArticles[3].cover.content}}"
+                                                         src="{{articleImageUrls[3]}}"
                                                          alt="bootstrap blog wordpress theme">
                                                 </a>
                                             </div>
                                             <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
-                                                <!-- category -->
                                                 <a class="p-1 badge badge-primary rounded-0"
-                                                [routerLink]="['/articles/', listArticles[3].id]">Anime</a>
-                                                <!--title-->
+                                                   [routerLink]="['/articles/', listArticles[3].id]">Anime</a>
                                                 <a [routerLink]="['/articles/', listArticles[3].id]">
                                                     <h2 class="h5 text-white my-1">{{listArticles[3].title}}</h2>
                                                 </a>
@@ -113,24 +101,19 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <!--news box-->
                                 <div class="col-6 pb-1 pl-1 pt-1">
                                     <div class="card border-0 rounded-0 text-white overflow zoom">
                                         <div class="position-relative">
-                                            <!--thumbnail img-->
                                             <div class="ratio_right-cover-2 image-wrapper">
                                                 <a [routerLink]="['/articles/', listArticles[4].id]">
                                                     <img class="img-fluid"
-                                                         src="data:image/webp;base64,{{listArticles[4].cover.content}}"
+                                                         src="{{articleImageUrls[4]}}"
                                                          alt="blog website templates bootstrap">
                                                 </a>
                                             </div>
                                             <div class="position-absolute p-2 p-lg-3 b-0 w-100 bg-shadow">
-                                                <!-- category -->
                                                 <a class="p-1 badge badge-primary rounded-0"
-                                                [routerLink]="['/articles/', listArticles[4].id]">Anime</a>
-                                                <!--title-->
+                                                   [routerLink]="['/articles/', listArticles[4].id]">Anime</a>
                                                 <a [routerLink]="['/articles/', listArticles[4].id]">
                                                     <h2 class="h5 text-white my-1">{{listArticles[4].title}}</h2>
                                                 </a>
@@ -143,17 +126,16 @@
                     </section>
                 </div>
             </div>
-            <a *ngFor="let article of listArticlesNext" id="featuretteBlock">
+            <a *ngFor="let article of listArticles; let index = index;" id="featuretteBlock">
                 <hr class="featurette-divider">
                 <div class="row featurette" routerLink="/articles/{{article.id}}">
                     <div class="col-md-6 order-md-2">
                         <h2 id="articleTitle" class="featurette-heading">{{article.title}}</h2>
-                        <!--<div class="lead" id="mainContent" [innerHTML]="article.body | safeHtml"></div>-->
                     </div>
                     <div class="col-md-5 order-md-1">
                         <img
                             class="bottom bd-placeholder-img bd-placeholder-img-lg featurette-image mx-auto articleImage"
-                            src="data:image/webp;base64,{{article.cover.content}}"
+                            src="{{articleImageUrls[index]}}"
                             alt="article image">
                     </div>
                 </div>

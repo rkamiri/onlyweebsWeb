@@ -9,15 +9,22 @@ const httpOptions = {
         'Content-Type': 'application/json'
     })
 };
+const headers = new HttpHeaders({Accept: 'application/json'});
+const options = {headers};
 
 @Injectable({
     providedIn: 'root'
 })
 export class ImageService {
 
-    constructor(private httpclient: HttpClient) {}
+    constructor(private httpclient: HttpClient) {
+    }
 
-    getProfilePicture(): Observable<Image> {
-        return this.httpclient.get<Image>(environment.backend + '/users/pp', httpOptions);
+    postProfilePicture(formData: FormData, userId: number): Observable<Image> {
+        return this.httpclient.post<Image>(environment.backend + '/image/user-image/' + userId, formData, options);
+    }
+
+    postArticleImage(formData): Observable<any> {
+        return this.httpclient.post<number>(environment.backend + '/image/article-image/', formData, options);
     }
 }
