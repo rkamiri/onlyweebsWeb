@@ -12,7 +12,7 @@
         <div *ngFor="let anime of animeList" class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
             <a [routerLink]="['/animes', anime.id]">
                 <div class="card">
-                    <img src="{{anime.imgUrl}}" class="card-img-top" alt="one piece png">
+                    <img loading="lazy" src="{{anime.imgUrl}}" class="card-img-top" alt="one piece png">
                     <div class="card-img-overlay">
                         <h5 class="card-title">{{anime.title}}</h5>
                     </div>

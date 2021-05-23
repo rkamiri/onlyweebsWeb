@@ -1,7 +1,7 @@
 <div *ngIf="anime !== undefined" id="container">
     <div class="row box" id="page">
         <div class="col-lg-3 col-md-2 col-sm-2 col-12" id="imgPlace">
-            <img src="{{anime.imgUrl}}" class="img-fluid" id="cover" alt="">
+            <img loading="lazy" src="{{anime.imgUrl}}" class="img-fluid" id="cover" alt="">
         </div>
 
         <div class="col-lg-6  col-md-6 col-sm-8 col-12" id="center">
@@ -75,7 +75,7 @@
             <h1>Comments</h1>
             <div *ngFor="let comment of comments ; let index = index" class="mt-4 text-justify float-left comment">
 
-                <img src="data:image/webp;base64,{{comment.usersEntity.image.content}}" alt="profile image"
+                <img loading="lazy" src="data:image/webp;base64,{{comment.usersEntity.image.content}}" alt="profile image"
                      class="rounded-circle" width="80" height="80">
                 <h4> {{comment.usersEntity.firstname}} "{{comment.usersEntity.username}}
                     " {{comment.usersEntity.lastname}} </h4>

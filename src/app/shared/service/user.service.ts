@@ -5,13 +5,6 @@ import {User} from '../model/user';
 import {environment} from '../../../environments/environment';
 import {PasswordUpdate} from '../model/password.update';
 
-const httpOptions = {
-    headers: new HttpHeaders({
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-    })
-};
-
 @Injectable({
     providedIn: 'root'
 })
@@ -50,15 +43,8 @@ export class UserService {
     authListener(): Observable<any> {
         let isConnected = false;
         this.getCurrentUser().subscribe(
-            (n) => {
-                if (n) {
-                    if (n.id) {
-                        isConnected = true;
-                    }
-                }
-                this.emitAuthStatus(isConnected);
-            },
-            (error) => {
+            (user) => {
+                if (user && user.id) {isConnected = true; }
                 this.emitAuthStatus(isConnected);
             }
         );
