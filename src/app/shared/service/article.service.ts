@@ -15,11 +15,7 @@ export class ArticleService {
     getArticle(id: number): Observable<any> {
         return this.httpclient.get<string>(environment.backend + '/articles/' + id);
     }
-    postImage(formData): Observable<any> {
-        const headers = new HttpHeaders({Accept: 'application/json'});
-        const options = {headers};
-        return this.httpclient.post<number>(environment.backend + '/image/article-image/', formData, options);
-    }
+
     postArticle(content: Article): Observable<any> {
         return this.httpclient.post<number>(environment.backend + '/articles', content);
     }

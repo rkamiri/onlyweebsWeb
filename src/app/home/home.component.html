@@ -93,7 +93,7 @@
         </div>
     </div>
     <div class="container" *ngIf="articles!== undefined">
-        <div class="row">
+        <div class="row" *ngIf="imagesUrls !== undefined">
             <div class="row">
                 <div class="col-12 pb-5">
                     <section class="row">
@@ -106,7 +106,7 @@
                                                 <div class="ratio_left-cover-1 image-wrapper">
                                                     <a [routerLink]="['/articles/', articles[0].id]">
                                                         <img id="image1" class="img-fluid w-100"
-                                                             src="data:image/webp;base64,{{articles[0].cover.content}}"
+                                                             src="{{imagesUrls[0]}}"
                                                              alt="Bootstrap news template">
                                                     </a>
                                                 </div>
@@ -136,7 +136,7 @@
                                             <div class="ratio_right-cover-2 image-wrapper">
                                                 <a [routerLink]="['/articles/', articles[1].id]">
                                                     <img class="img-fluid"
-                                                         src="data:image/webp;base64,{{articles[1].cover.content}}"
+                                                         src="{{imagesUrls[1]}}"
                                                          alt="simple blog template bootstrap">
                                                 </a>
                                             </div>
@@ -156,7 +156,7 @@
                                             <div class="ratio_right-cover-2 image-wrapper">
                                                 <a [routerLink]="['/articles/', articles[2].id]">
                                                     <img class="img-fluid"
-                                                         src="data:image/webp;base64,{{articles[2].cover.content}}"
+                                                         src="{{imagesUrls[2]}}"
                                                          alt="bootstrap templates for blog">
                                                 </a>
                                             </div>
@@ -177,7 +177,7 @@
                                             <div class="ratio_right-cover-2 image-wrapper">
                                                 <a [routerLink]="['/articles/', articles[3].id]">
                                                     <img class="img-fluid"
-                                                         src="data:image/webp;base64,{{articles[3].cover.content}}"
+                                                         src="{{imagesUrls[3]}}"
                                                          alt="bootstrap blog wordpress theme">
                                                 </a>
                                             </div>
@@ -197,7 +197,7 @@
                                             <div class="ratio_right-cover-2 image-wrapper">
                                                 <a [routerLink]="['/articles/', articles[4].id]">
                                                     <img class="img-fluid"
-                                                         src="data:image/webp;base64,{{articles[4].cover.content}}"
+                                                         src="{{imagesUrls[4]}}"
                                                          alt="blog website templates bootstrap">
                                                 </a>
                                             </div>

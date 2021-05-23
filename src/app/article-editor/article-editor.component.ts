@@ -4,6 +4,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {Article} from '../shared/model/article';
 import {ArticleService} from '../shared/service/article.service';
 import {Router} from '@angular/router';
+import {ImageService} from '../shared/service/image.service';
 
 @Component({
     selector: 'app-article-editor',
@@ -16,7 +17,7 @@ export class ArticleEditorComponent implements OnInit {
     public articleInfos: FormGroup;
     private formData: FormData;
 
-    constructor(private articleService: ArticleService, private route: Router) {
+    constructor(private articleService: ArticleService, private route: Router, private imageService: ImageService) {
     }
 
     ngOnInit(): void {
@@ -48,8 +49,7 @@ export class ArticleEditorComponent implements OnInit {
             author: null,
             cover: null,
         };
-        this.articleService.postImage(this.formData).subscribe(data => {
-                // setTimeout(() => {this.articleService.postArticle(article).subscribe();}, 500);
+        this.imageService.postArticleImage(this.formData).subscribe(() => {
                 this.articleService.postArticle(article).subscribe((data) => {
                     this.route.navigate(['/articles/' + data]).then();
                 });
