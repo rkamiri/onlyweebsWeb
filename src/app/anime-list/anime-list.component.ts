@@ -12,35 +12,24 @@ import {document} from 'ngx-bootstrap/utils';
 export class AnimeListComponent implements OnInit {
     public animeList: Anime[];
     public currentPage: number;
-    public numberOfItemPerPage: 20;
     public pages: number;
     public pagesArray: [];
     public activatePagination: boolean;
     private research: string;
     public page: number;
-    private queryParams: Params;
+    public queryParams: Params;
 
     constructor(private route: ActivatedRoute,
                 private animeService: AnimeService) {
     }
 
     ngOnInit(): void {
+        this.initPage();
+    }
+
+    initPage(): void {
         this.route.queryParams.subscribe(data => {
-            this.queryParams = data;
-            if (this.queryParams.page) {
-                this.currentPage = parseInt(this.queryParams.page, null);
-                this.animeService.getAllPagesSearch(this.queryParams.query).subscribe(pages => {
-                    this.pages = pages;
-                    this.pages = Math.ceil((pages) / 20);
-                    this.pagesArray = [].constructor(this.pages);
-                    if (this.pages > 1) {
-                        this.activatePagination = true;
-                    }
-                    this.animeService.getAllAnimeByName(this.queryParams.query, this.currentPage).subscribe((animes) => {
-                        this.animeList = animes;
-                    });
-                });
-            } else {
+                this.queryParams = data;
                 this.route.params.subscribe(params => {
                     this.currentPage = parseInt(params.page, null);
                     this.animeService.getAllPages().subscribe(pages => {
@@ -50,17 +39,20 @@ export class AnimeListComponent implements OnInit {
                         if (this.pages > 1) {
                             this.activatePagination = true;
                         }
-                        this.animeService.getAllAnime(this.currentPage).subscribe(data => this.animeList = data);
+                        this.animeService.getAnimesByPage(this.currentPage).subscribe(animes => {
+                            this.animeList = animes;
+                            console.log(animes);
+                        });
                     });
                 });
             }
-        });
+        );
     }
 
     changePage(newCurrentPage: number): void {
         this.currentPage = newCurrentPage;
         if (!document.location.href.includes('research')) {
-            this.animeService.getAllAnime(this.currentPage).subscribe((data) => {
+            this.animeService.getAnimesByPage(this.currentPage).subscribe((data) => {
                 this.animeList = data;
             });
         } else {

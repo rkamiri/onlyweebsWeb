@@ -12,7 +12,6 @@ import {AnimeListComponent} from './anime-list/anime-list.component';
 import {OnelistComponent} from './onelist/onelist.component';
 import {MylistsComponent} from './mylists/mylists.component';
 import {ListCreateComponent} from './list-create/list-create.component';
-import {AnimeListResolver} from './shared/resolver/anime.list.resolver';
 import {AnimeResolver} from './shared/resolver/anime.resolver';
 import {GlobalRatingResolver} from './shared/resolver/global.rating.resolver';
 import {CurrentUserRatingResolver} from './shared/resolver/current.user.rating.resolver';
@@ -37,86 +36,34 @@ const routes: Routes = [
     {path: 'forbidden', component: ForbiddenErrorComponent},
     {path: 'unauthorized', component: UnauthorizedErrorComponent},
     {path: 'server-error', component: ServerErrorComponent},
-    {path: '', component: HomeComponent,
-        resolve: {
-            animeList: AnimeListResolver,
-            allLists: ListsResolver
-        }
-    },
+    {path: '', component: HomeComponent},
     {path: 'home', component: HomeComponent},
+    {path: 'animes/:id', component: AnimeComponent, runGuardsAndResolvers: 'always'},
+    {path: 'animes/page/:page', component: AnimeListComponent, runGuardsAndResolvers: 'always'},
+    {path: 'animes/research', component: AnimeListComponent, runGuardsAndResolvers: 'always'},
     {
-        path: 'animes/page/:page', component: AnimeListComponent,
-        resolve: {
-            animeList: AnimeListResolver
-        },
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'animes/research', component: AnimeListComponent,
-        /*resolve: {
-            animeList: AnimeListResearchResolver
-        },*/
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'animes/:id',
-        component: AnimeComponent,
-        resolve: {
-            anime: AnimeResolver,
-            globalRating: GlobalRatingResolver,
-            currentUserRating: CurrentUserRatingResolver,
-            currentUser: AccountResolver
-        },
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'lists', component: ListsComponent,
-        resolve: {
-            allLists: ListsResolver,
-            lastList: LastListsResolver,
-            customLists: CustomListsResolver
-        }
-    },
-    {
-        path: 'lists/:id', component: OnelistComponent,
-        resolve: {
-            list: OneListResolver,
-            listContent: ListContentResolver,
-            getAnimeList: AnimeListResolver
-        }
+        path: 'lists/:id',
+        component: OnelistComponent,
+        resolve: {list: OneListResolver, listContent: ListContentResolver}
     },
     {path: 'login', component: SigninComponent},
     {path: 'help', component: HelpComponent},
     {path: 'playback', component: PlaybackComponent},
     {path: 'register', component: RegisterComponent},
+    {path: 'account', component: AccountComponent, resolve: {currentUser: AccountResolver}},
     {
-        path: 'account', component: AccountComponent,
-        resolve: {
-            currentUser: AccountResolver
-        }
-    },
-    {
-        path: 'list-create', component: ListCreateComponent,
-        resolve: {
-            getAnimeList: AnimeListResolver,
-            getCurrentList: ListsResolver,
-            lastList: LastListsResolver
-        }
+        path: 'list-create',
+        component: ListCreateComponent,
+        resolve: {getCurrentList: ListsResolver, lastList: LastListsResolver}
     },
     {path: 'articles', component: ArticleListComponent},
-    {
-        path: 'articles/:id', component: ArticleComponent,
-        resolve: {
-            article: ArticleResolver,
-        }
-    },
+    {path: 'articles/:id', component: ArticleComponent, resolve: {article: ArticleResolver,}},
     {path: 'my-lists', component: MylistsComponent},
     {path: 'editor', component: ArticleEditorComponent},
+    {path: 'password-update/:token', component: PasswordUpdateComponent},
     {
-        path: 'password-update/:token', component: PasswordUpdateComponent
-        /* , resolve: {
-             updatePassword: PasswordUpdateResolver,
-         }*/
+        path: 'lists', component: ListsComponent,
+        resolve: {allLists: ListsResolver, lastList: LastListsResolver, customLists: CustomListsResolver}
     },
     {path: '**', redirectTo: 'not-found', pathMatch: 'full'},
 ];

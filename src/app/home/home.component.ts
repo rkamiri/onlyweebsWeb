@@ -5,6 +5,7 @@ import {Article} from '../shared/model/article';
 import {Lists} from '../shared/model/lists';
 import {AnimeService} from '../shared/service/anime.service';
 import {Anime} from '../shared/model/anime';
+import {ListsService} from '../shared/service/lists.service';
 
 @Component({
     selector: 'app-home',
@@ -12,31 +13,23 @@ import {Anime} from '../shared/model/anime';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    topLists: Lists[];
-    public listArticles: Article[];
-    public animeList: Anime[];
+    public lists: Lists[];
+    public articles: Article[];
+    public animes: Anime[];
 
-    constructor(private route: ActivatedRoute, private articleService: ArticleService, private animeService: AnimeService) {
-        this.listArticles = [];
-        this.topLists = [];
-        this.animeList = [];
+    constructor(private route: ActivatedRoute,
+                private articleService: ArticleService,
+                private animeService: AnimeService,
+                private listsService: ListsService) {
     }
 
     ngOnInit(): void {
         this.fillArraysWithData();
-        console.log(this.topLists);
-        console.log(this.animeList);
-        console.log(this.articleService);
     }
 
     fillArraysWithData(): void {
-        this.articleService.getAllArticles().subscribe(data => this.listArticles = data);
-        this.animeService.getAllAnime(1).subscribe(data => this.animeList = data.slice(0, 6));
-        this.topLists.push(this.route.snapshot.data.allLists);
+        this.articleService.getAllArticles().subscribe(data => this.articles = data);
+        this.animeService.getAnimesByPage(1).subscribe(data => this.animes = data.slice(0, 6));
+        this.listsService.getAllLists().subscribe(data => this.lists = data.slice(0, 5));
     }
-
-    /*  goToAnime($event): void {
-          const id = this.route.snapshot.data.animeList[$event].id;
-          window.open('/#/animes/' + id + '/', '_self');
-      }*/
 }

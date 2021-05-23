@@ -9,12 +9,18 @@ import {environment} from '../../../environments/environment';
 })
 export class AnimeService {
 
-    constructor(private httpclient: HttpClient){}
+    constructor(private httpclient: HttpClient) {
+    }
+
+    getAllAnimes(): Observable<Anime[]> {
+        return this.httpclient.get<Anime[]>(environment.backend + '/animes/all/');
+    }
 
     getAllPages(): Observable<number> {
         return this.httpclient.get<number>(environment.backend + '/animes/count');
     }
-    getAllAnime(page: number): Observable<Anime[]> {
+
+    getAnimesByPage(page: number): Observable<Anime[]> {
         const numpage = page - 1;
         return this.httpclient.get<Anime[]>(environment.backend + '/animes/pagination/' + numpage);
     }

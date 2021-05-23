@@ -7,6 +7,7 @@ import {TypeaheadMatch} from 'ngx-bootstrap/typeahead/typeahead-match.class';
 import {ListsService} from '../shared/service/lists.service';
 import {IsListedIn} from '../shared/model/is.listed.in';
 import {FormGroup} from '@angular/forms';
+import {AnimeService} from '../shared/service/anime.service';
 
 @Component({
     selector: 'app-onelist',
@@ -28,7 +29,8 @@ export class OnelistComponent implements OnInit {
     constructor(private modalService: NgbModal,
                 private route: ActivatedRoute,
                 private listService: ListsService,
-                private router: Router) {
+                private router: Router,
+                private animeService: AnimeService) {
         this.addAnimeForm = new FormGroup({});
         this.closeResult = '';
     }
@@ -37,7 +39,7 @@ export class OnelistComponent implements OnInit {
         this.listInfo = this.route.snapshot.data.list;
         this.owned = +sessionStorage.getItem('userid') === this.listInfo.isOwnedBy;
         this.animeList = this.route.snapshot.data.listContent;
-        this.fullAnimeList = this.route.snapshot.data.getAnimeList;
+        this.animeService.getAllAnimes().subscribe(data => this.animeList = data);
         this.newList = [];
     }
 
