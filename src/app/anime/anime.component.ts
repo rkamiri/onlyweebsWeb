@@ -47,7 +47,7 @@ export class AnimeComponent implements OnInit {
         this.activatedRoute.params.subscribe(params => {
             this.animeService.getOneAnime(params.id).subscribe(data => {
                     this.anime = data;
-                    this.initComments(data.id);
+                    this.initAnimeComments(data.id);
                 }
             );
         });
@@ -72,11 +72,11 @@ export class AnimeComponent implements OnInit {
         }
     }
 
-    initComments(animeId: number): void {
+    initAnimeComments(animeId: number): void {
         this.commentsService.getCommentsForAnime(animeId).subscribe((comments) => {
             this.comments = comments;
             comments.forEach(comment => {
-                if (comment.usersEntity.id === +sessionStorage.getItem('userid')) {
+                if (comment.user.id === +sessionStorage.getItem('userid')) {
                     this.userHasComment = true;
                 }
             });
@@ -108,12 +108,12 @@ export class AnimeComponent implements OnInit {
         }
     }
 
-    sendComment(): void {
+    sendAnimeComment(): void {
         this.commentsService.putCommentForAnime({
-            usersEntity: null,
-            anime_id: this.anime.id,
-            comment: this.commentForm.get('comment').value.toString(),
-            date: null
+            user: null,
+            body: this.commentForm.get('comment').value.toString(),
+            date: null,
+            animeEntity: this.anime
         }).subscribe(() => {
             location.reload();
         });
@@ -130,9 +130,9 @@ export class AnimeComponent implements OnInit {
         });
     }
 
-    deleteComment(): void {
+    deleteAnimeComment(): void {
         if (confirm('Are you sure you want to delete this comment ?')) {
-            this.commentsService.deleteCommentForAnime(this.anime.id).subscribe(() => {
+            this.commentsService.deleteAnimeComment(this.anime.id).subscribe(() => {
                 location.reload();
             });
         }

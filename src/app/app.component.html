@@ -8,5 +8,6 @@
 <div id="router">
     <router-outlet></router-outlet>
 </div>
-
-<app-footer id="footer"></app-footer>
+<div *ngIf="showFooter">
+    <app-footer id="footer"></app-footer>
+</div>
