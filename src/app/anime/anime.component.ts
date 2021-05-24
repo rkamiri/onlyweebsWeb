@@ -47,7 +47,7 @@ export class AnimeComponent implements OnInit {
         this.activatedRoute.params.subscribe(params => {
             this.animeService.getOneAnime(params.id).subscribe(data => {
                     this.anime = data;
-                    this.initComments(data.id);
+                    this.initAnimeComments(data.id);
                 }
             );
         });
@@ -72,10 +72,9 @@ export class AnimeComponent implements OnInit {
         }
     }
 
-    initComments(animeId: number): void {
+    initAnimeComments(animeId: number): void {
         this.commentsService.getCommentsForAnime(animeId).subscribe((comments) => {
             this.comments = comments;
-            console.log(comments);
             comments.forEach(comment => {
                 if (comment.user.id === +sessionStorage.getItem('userid')) {
                     this.userHasComment = true;
@@ -109,7 +108,7 @@ export class AnimeComponent implements OnInit {
         }
     }
 
-    sendComment(): void {
+    sendAnimeComment(): void {
         this.commentsService.putCommentForAnime({
             user: null,
             body: this.commentForm.get('comment').value.toString(),
@@ -131,9 +130,9 @@ export class AnimeComponent implements OnInit {
         });
     }
 
-    deleteComment(): void {
+    deleteAnimeComment(): void {
         if (confirm('Are you sure you want to delete this comment ?')) {
-            this.commentsService.deleteCommentForAnime(this.anime.id).subscribe(() => {
+            this.commentsService.deleteAnimeComment(this.anime.id).subscribe(() => {
                 location.reload();
             });
         }
