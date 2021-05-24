@@ -26,6 +26,7 @@ export class AnimeService {
     }
 
     getOneAnime(id): Observable<Anime> {
+        console.log('i am here');
         return this.httpclient.get<Anime>(environment.backend + '/animes/' + id);
     }
 
