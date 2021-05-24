@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../shared/service/user.service';
 import {environment} from '../../environments/environment';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {ISpinnerConfig, SPINNER_ANIMATIONS, SPINNER_PLACEMENT} from '@hardpool/ngx-spinner';
 import {ImageService} from '../shared/service/image.service';
 
