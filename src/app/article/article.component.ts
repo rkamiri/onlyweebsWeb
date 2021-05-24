@@ -36,7 +36,6 @@ export class ArticleComponent implements OnInit {
     initArticleComments(): void {
         this.commentsService.getCommentsForArticle(this.article.id).subscribe((comments) => {
             this.comments = comments;
-            console.log(comments);
             comments.forEach(comment => {
                 if (comment.user.id === +sessionStorage.getItem('userid')) {
                     this.userHasComment = true;
