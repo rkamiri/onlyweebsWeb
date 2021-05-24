@@ -84,7 +84,7 @@
         </div>
 
         <div *ngIf="isConnected" class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
-            <form id="algin-form" (ngSubmit)="sendComment()" [formGroup]="commentForm">
+            <form id="align-form" (ngSubmit)="sendAnimeComment()" [formGroup]="commentForm">
                 <div class="form-group">
                     <h1>Leave a comment</h1> <label for="message">Message</label> <textarea name="msg" id="message"
                                                                                             cols="30" rows="5"
@@ -94,7 +94,7 @@
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">{{userHasComment ? 'Edit Comment' : 'Post Comment' }}</button>
-                    <button *ngIf="userHasComment" id="delete-button" type="button" class="btn btn-danger" (click)="deleteComment()">Delete your comment</button>
+                    <button *ngIf="userHasComment" id="delete-button" type="button" class="btn btn-danger" (click)="deleteAnimeComment()">Delete your comment</button>
                 </div>
             </form>
         </div>
