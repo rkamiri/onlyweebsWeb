@@ -1,5 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Anime} from '../shared/model/anime';
 import {FormControl, FormGroup} from '@angular/forms';
 import {RatingService} from '../shared/service/rating.service';
