@@ -1,7 +1,7 @@
 <div *ngIf="anime !== undefined" id="container">
     <div class="row box" id="page">
         <div class="col-lg-3 col-md-2 col-sm-2 col-12" id="imgPlace">
-            <img src="{{anime.imgUrl}}" class="img-fluid" id="cover" alt="">
+            <img loading="lazy" src="{{anime.imgUrl}}" class="img-fluid" id="cover" alt="">
         </div>
 
         <div class="col-lg-6  col-md-6 col-sm-8 col-12" id="center">
@@ -69,20 +69,17 @@
             </div>
         </div>
     </div>
-
     <div class="row d-flex justify-content-center">
         <div [ngClass]="isConnected ? 'col-sm-6 col-md-6 col-6 pb-6' : 'col-sm-8 col-md-8 col-8 pb-8'">
             <h1>Comments</h1>
             <div *ngFor="let comment of comments ; let index = index" class="mt-4 text-justify float-left comment">
-
-                <img src="data:image/webp;base64,{{comment.user.image.content}}" alt="profile image"
+                <img loading="lazy" src="data:image/webp;base64,{{comment.usersEntity.image.content}}" alt="profile image"
                      class="rounded-circle" width="80" height="80">
                 <h4>{{comment.user.username}}</h4>
                 <span>-{{comment.date |  date:'dd/MM/yyyy'}}</span> <br>
                 <p>{{comment.body}}</p>
             </div>
         </div>
-
         <div *ngIf="isConnected" class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
             <form id="align-form" (ngSubmit)="sendAnimeComment()" [formGroup]="commentForm">
                 <div class="form-group">

@@ -12,7 +12,7 @@
                     <div class="account-settings">
                         <div class="user-profile">
                             <div class="user-avatar">
-                                <img *ngIf="profilePictureUrl !== undefined"
+                                <img loading="lazy" *ngIf="profilePictureUrl !== undefined"
                                      src="{{profilePictureUrl}}" alt="profile image"
                                      onclick="document.getElementById('uploadImage').click()"/>
                                 <input id="uploadImage" type="file" (change)="fileChange($event)"

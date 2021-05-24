@@ -16,7 +16,7 @@
                                             <div class="position-relative">
                                                 <div class="ratio_left-cover-1 image-wrapper">
                                                     <a [routerLink]="['/articles/', listArticles[0].id]">
-                                                        <img id="image1" class="img-fluid w-100"
+                                                        <img loading="lazy" id="image1" class="img-fluid w-100"
                                                              src="{{articleImageUrls[0]}}"
                                                              alt="Bootstrap news template">
                                                     </a>
@@ -46,7 +46,7 @@
                                         <div class="position-relative">
                                             <div class="ratio_right-cover-2 image-wrapper">
                                                 <a [routerLink]="['/articles/', listArticles[1].id]">
-                                                    <img class="img-fluid"
+                                                    <img loading="lazy" class="img-fluid"
                                                          src="{{articleImageUrls[1]}}"
                                                          alt="simple blog template bootstrap">
                                                 </a>
@@ -66,7 +66,7 @@
                                         <div class="position-relative">
                                             <div class="ratio_right-cover-2 image-wrapper">
                                                 <a [routerLink]="['/articles/', listArticles[2].id]">
-                                                    <img class="img-fluid"
+                                                    <img loading="lazy" class="img-fluid"
                                                          src="{{articleImageUrls[2]}}"
                                                          alt="bootstrap templates for blog">
                                                 </a>
@@ -86,7 +86,7 @@
                                         <div class="position-relative">
                                             <div class="ratio_right-cover-2 image-wrapper">
                                                 <a [routerLink]="['/articles/', listArticles[3].id]">
-                                                    <img class="img-fluid"
+                                                    <img loading="lazy" class="img-fluid"
                                                          src="{{articleImageUrls[3]}}"
                                                          alt="bootstrap blog wordpress theme">
                                                 </a>
@@ -106,7 +106,7 @@
                                         <div class="position-relative">
                                             <div class="ratio_right-cover-2 image-wrapper">
                                                 <a [routerLink]="['/articles/', listArticles[4].id]">
-                                                    <img class="img-fluid"
+                                                    <img loading="lazy" class="img-fluid"
                                                          src="{{articleImageUrls[4]}}"
                                                          alt="blog website templates bootstrap">
                                                 </a>
@@ -133,7 +133,7 @@
                         <h2 id="articleTitle" class="featurette-heading">{{article.title}}</h2>
                     </div>
                     <div class="col-md-5 order-md-1">
-                        <img
+                        <img loading="lazy"
                             class="bottom bd-placeholder-img bd-placeholder-img-lg featurette-image mx-auto articleImage"
                             src="{{articleImageUrls[index]}}"
                             alt="article image">
