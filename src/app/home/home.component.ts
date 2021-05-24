@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
     fillArraysWithData(): void {
         this.listsService.getAllLists().subscribe(data => this.lists = data.slice(0, 5));
-        this.animeService.getOneAnime(1).subscribe(data => {
+        this.animeService.getOneAnime(3).subscribe(data => {
             this.anime = data;
             // this.animes = data.slice(0, 6);
             console.log(data);
