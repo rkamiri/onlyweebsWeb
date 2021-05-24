@@ -4,6 +4,12 @@ import {Observable} from 'rxjs';
 import {Anime} from '../model/anime';
 import {environment} from '../../../environments/environment';
 
+const httpOptions = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+    })
+};
+
 @Injectable({
     providedIn: 'root'
 })
@@ -27,7 +33,7 @@ export class AnimeService {
 
     getOneAnime(id): Observable<Anime> {
         console.log('i am here');
-        return this.httpclient.get<Anime>(environment.backend + '/animes/' + id);
+        return this.httpclient.get<Anime>(environment.backend + '/animes/' + id, httpOptions);
     }
 
     getAllAnimeByName(term: string, page: number): Observable<Anime[]> {
