@@ -92,8 +92,8 @@
         </div>
     </div>
     <div class="container" *ngIf="articles!== undefined">
-        <div class="row" *ngIf="imagesUrls !== undefined">
-            <div class="row">
+        <div class="row" *ngIf="articlesLoaded">
+            <div class="row" *ngIf="imagesUrls !== undefined">
                 <div class="col-12 pb-5">
                     <section class="row">
                         <div class="col-12 col-md-6 pb-0 pb-md-3 pt-2 pr-md-1">

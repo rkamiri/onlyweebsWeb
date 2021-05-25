@@ -18,16 +18,19 @@ export class HomeComponent implements OnInit {
     public articles: Article[];
     public animes: Anime[];
     public imagesUrls: string[];
+    articlesLoaded: boolean;
 
     constructor(private route: ActivatedRoute,
                 private articleService: ArticleService,
                 private animeService: AnimeService,
                 private listsService: ListsService) {
+        this.articlesLoaded = false;
         this.imagesUrls = [];
     }
 
     ngOnInit(): void {
         this.fillArraysWithData();
+        this.setTimeOutForArticles();
     }
 
     fillArraysWithData(): void {
@@ -39,5 +42,9 @@ export class HomeComponent implements OnInit {
             this.articles = data.slice(0, 5);
             data.forEach(article => this.imagesUrls.push(environment.backend + '/image/' + article.cover.id));
         });
+    }
+
+    setTimeOutForArticles(): void {
+        setTimeout(() => this.articlesLoaded = true, 150);
     }
 }
