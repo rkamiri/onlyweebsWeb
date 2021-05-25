@@ -18,23 +18,19 @@ export class HomeComponent implements OnInit {
     public articles: Article[];
     public animes: Anime[];
     public imagesUrls: string[];
-    articlesLoaded: boolean;
-    animesLoaded: boolean;
-    listsLoaded: boolean;
+    loaded: boolean;
 
     constructor(private route: ActivatedRoute,
                 private articleService: ArticleService,
                 private animeService: AnimeService,
                 private listsService: ListsService) {
-        this.articlesLoaded = false;
-        this.animesLoaded = false;
-        this.listsLoaded = false;
+        this.loaded = false;
         this.imagesUrls = [];
     }
 
     ngOnInit(): void {
         this.fillArraysWithData();
-        this.setTimeOuts();
+        this.setTimeOut();
     }
 
     fillArraysWithData(): void {
@@ -48,15 +44,9 @@ export class HomeComponent implements OnInit {
         });
     }
 
-    setTimeOuts(): void {
+    setTimeOut(): void {
         setTimeout(() => {
-            this.listsLoaded = true;
-            setTimeout(() => {
-                this.animesLoaded = true;
-                setTimeout(() => {
-                    this.articlesLoaded = true;
-                }, 20);
-            }, 20);
-        }, 20);
+            this.loaded = true;
+        }, 50);
     }
 }
