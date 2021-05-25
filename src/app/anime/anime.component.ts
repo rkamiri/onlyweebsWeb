@@ -47,7 +47,7 @@ export class AnimeComponent implements OnInit {
         this.activatedRoute.params.subscribe(params => {
             this.animeService.getOneAnime(params.id).subscribe(data => {
                     this.anime = data;
-                    this.initAnimeComments(data.id);
+                    // this.initAnimeComments(data.id);
                 }
             );
         });
@@ -108,7 +108,7 @@ export class AnimeComponent implements OnInit {
         }
     }
 
-    sendAnimeComment(): void {
+/*    sendAnimeComment(): void {
         this.commentsService.putCommentForAnime({
             user: null,
             body: this.commentForm.get('comment').value.toString(),
@@ -117,7 +117,7 @@ export class AnimeComponent implements OnInit {
         }).subscribe(() => {
             location.reload();
         });
-    }
+    }*/
 
     addAnimeToList(): void {
         this.listService.getListByUserIdAndName(this.selectedList).subscribe((data) => {
@@ -130,11 +130,11 @@ export class AnimeComponent implements OnInit {
         });
     }
 
-    deleteAnimeComment(): void {
+   /* deleteAnimeComment(): void {
         if (confirm('Are you sure you want to delete this comment ?')) {
             this.commentsService.deleteAnimeComment(this.anime.id).subscribe(() => {
                 location.reload();
             });
         }
-    }
+    }*/
 }
