@@ -33,10 +33,10 @@ export class HomeComponent implements OnInit {
 
     fillArraysWithData(): void {
         this.listsService.getAllLists().subscribe(data => this.lists = data.slice(0, 5));
-        this.animeService.getAnimeSynopsis(3).subscribe(data => {
+        this.animeService.getAnimesByPage(1).subscribe(data => {
             console.log(data);
-            this.anime = data;
-            // this.animes = data.slice(0, 6);
+            // this.anime = data;
+            this.animes = data.slice(0, 6);
         });
         this.articleService.getAllArticles().subscribe(data => {
             this.articles = data.slice(0, 5);
