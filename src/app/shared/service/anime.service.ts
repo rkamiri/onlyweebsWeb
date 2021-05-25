@@ -35,6 +35,10 @@ export class AnimeService {
         return this.httpclient.get<any>(environment.backend + '/animes/' + id, httpOptions);
     }
 
+    getAnimeSynopsis(id): Observable<any> {
+        return this.httpclient.get<any>(environment.backend + '/animes/' + id + '/synopsis', httpOptions);
+    }
+
     getAllAnimeByName(term: string, page: number): Observable<Anime[]> {
         return this.httpclient.get<Anime[]>(environment.backend + '/animes/research/' + term + '/pagination/' + (page - 1));
     }

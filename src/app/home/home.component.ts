@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     public lists: Lists[];
     public articles: Article[];
     public animes: Anime[];
-    public anime: Anime;
+    public anime: string;
     public imagesUrls: string[];
 
     constructor(private route: ActivatedRoute,
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
     fillArraysWithData(): void {
         this.listsService.getAllLists().subscribe(data => this.lists = data.slice(0, 5));
-        this.animeService.getOneAnime(3).subscribe(data => {
+        this.animeService.getAnimeSynopsis(3).subscribe(data => {
             console.log(data);
             this.anime = data;
             // this.animes = data.slice(0, 6);
