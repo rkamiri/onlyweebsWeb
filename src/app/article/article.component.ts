@@ -47,7 +47,6 @@ export class ArticleComponent implements OnInit {
     sendArticleComment(): void {
         const comment: Comment = {body: this.commentForm.get('comment').value.toString(), articleEntity: this.article};
         this.commentsService.putCommentForAnime(comment).subscribe(() => {
-            console.log(comment);
             location.reload();
         });
     }
