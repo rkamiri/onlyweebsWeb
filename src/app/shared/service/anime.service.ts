@@ -31,9 +31,8 @@ export class AnimeService {
         return this.httpclient.get<Anime[]>(environment.backend + '/animes/pagination/' + numpage);
     }
 
-    getOneAnime(id): Observable<Anime> {
-        console.log('i am here');
-        return this.httpclient.get<Anime>(environment.backend + '/animes/' + id, httpOptions);
+    getOneAnime(id): Observable<any> {
+        return this.httpclient.get<any>(environment.backend + '/animes/' + id, httpOptions);
     }
 
     getAllAnimeByName(term: string, page: number): Observable<Anime[]> {
