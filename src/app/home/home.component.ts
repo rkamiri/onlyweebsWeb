@@ -18,24 +18,35 @@ export class HomeComponent implements OnInit {
     public articles: Article[];
     public animes: Anime[];
     public imagesUrls: string[];
+    loaded: boolean;
 
     constructor(private route: ActivatedRoute,
                 private articleService: ArticleService,
                 private animeService: AnimeService,
                 private listsService: ListsService) {
+        this.loaded = false;
         this.imagesUrls = [];
     }
 
     ngOnInit(): void {
         this.fillArraysWithData();
+        this.setTimeOut();
     }
 
     fillArraysWithData(): void {
         this.listsService.getAllLists().subscribe(data => this.lists = data.slice(0, 5));
-        this.animeService.getAnimesByPage(1).subscribe(data => this.animes = data.slice(0, 6));
+        this.animeService.getAnimesByPage(1).subscribe(data => {
+            this.animes = data.slice(0, 6);
+        });
         this.articleService.getAllArticles().subscribe(data => {
             this.articles = data.slice(0, 5);
             data.forEach(article => this.imagesUrls.push(environment.backend + '/image/' + article.cover.id));
         });
+    }
+
+    setTimeOut(): void {
+        setTimeout(() => {
+            this.loaded = true;
+        }, 100);
     }
 }

@@ -1,4 +1,4 @@
-<div id="mainContainer" class="container text-light">
+<div *ngIf="loaded" id="mainContainer" class="container text-light">
     <div class=" text-light text-center">
         <h3> LES LISTES DU MOMENTS </h3>
     </div>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-7">
+        <div class="col-7" *ngIf="loaded">
             <div id="navigation" *ngFor="let list of lists; let index = index;">
                 <a routerLink="/lists/{{list.id}}">
                     <label class="label_{{index+1}}"></label>
@@ -83,7 +83,6 @@
                         </div>
                     </a>
                 </div>
-
             </div>
         </div>
     </div>
@@ -93,8 +92,8 @@
         </div>
     </div>
     <div class="container" *ngIf="articles!== undefined">
-        <div class="row" *ngIf="imagesUrls !== undefined">
-            <div class="row">
+        <div class="row">
+            <div class="row" *ngIf="imagesUrls !== undefined">
                 <div class="col-12 pb-5">
                     <section class="row">
                         <div class="col-12 col-md-6 pb-0 pb-md-3 pt-2 pr-md-1">

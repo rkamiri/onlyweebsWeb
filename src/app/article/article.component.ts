@@ -36,7 +36,6 @@ export class ArticleComponent implements OnInit {
     initArticleComments(): void {
         this.commentsService.getCommentsForArticle(this.article.id).subscribe((comments) => {
             this.comments = comments;
-            console.log(comments);
             comments.forEach(comment => {
                 if (comment.user.id === +sessionStorage.getItem('userid')) {
                     this.userHasComment = true;
@@ -48,7 +47,6 @@ export class ArticleComponent implements OnInit {
     sendArticleComment(): void {
         const comment: Comment = {body: this.commentForm.get('comment').value.toString(), articleEntity: this.article};
         this.commentsService.putCommentForAnime(comment).subscribe(() => {
-            console.log(comment);
             location.reload();
         });
     }

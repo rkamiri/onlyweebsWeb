@@ -4,6 +4,12 @@ import {Observable} from 'rxjs';
 import {Anime} from '../model/anime';
 import {environment} from '../../../environments/environment';
 
+const httpOptions = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+    })
+};
+
 @Injectable({
     providedIn: 'root'
 })
@@ -25,8 +31,12 @@ export class AnimeService {
         return this.httpclient.get<Anime[]>(environment.backend + '/animes/pagination/' + numpage);
     }
 
-    getOneAnime(id): Observable<Anime> {
-        return this.httpclient.get<Anime>(environment.backend + '/animes/' + id);
+    getOneAnime(id): Observable<any> {
+        return this.httpclient.get<any>(environment.backend + '/animes/' + id, httpOptions);
+    }
+
+    getAnimeSynopsis(id): Observable<any> {
+        return this.httpclient.get<any>(environment.backend + '/animes/' + id + '/synopsis', httpOptions);
     }
 
     getAllAnimeByName(term: string, page: number): Observable<Anime[]> {
