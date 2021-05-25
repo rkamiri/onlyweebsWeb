@@ -69,11 +69,9 @@
             </div>
         </div>
     </div>
-
-<!--
-
     <div class="row d-flex justify-content-center">
-        <div *ngIf="comments !== undefined" [ngClass]="isConnected ? 'col-sm-6 col-md-6 col-6 pb-6' : 'col-sm-8 col-md-8 col-8 pb-8'">
+        <div *ngIf="comments !== undefined"
+             [ngClass]="isConnected ? 'col-sm-6 col-md-6 col-6 pb-6' : 'col-sm-8 col-md-8 col-8 pb-8'">
             <h1>Comments</h1>
             <div *ngFor="let comment of comments ; let index = index" class="mt-4 text-justify float-left comment">
                 <img loading="lazy" src="data:image/webp;base64,{{comment.user.image.content}}" alt="profile image"
@@ -93,13 +91,13 @@
                                                                                             style="background-color: black;"></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">{{userHasComment ? 'Edit Comment' : 'Post Comment' }}</button>
-                    <button *ngIf="userHasComment" id="delete-button" type="button" class="btn btn-danger" (click)="deleteAnimeComment()">Delete your comment</button>
+                    <button type="submit"
+                            class="btn btn-primary">{{userHasComment ? 'Edit Comment' : 'Post Comment' }}</button>
+                    <button *ngIf="userHasComment" id="delete-button" type="button" class="btn btn-danger"
+                            (click)="deleteAnimeComment()">Delete your comment
+                    </button>
                 </div>
             </form>
         </div>
     </div>
--->
-
-
 </div>
