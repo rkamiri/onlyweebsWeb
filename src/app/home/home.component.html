@@ -3,7 +3,7 @@
         <h3> LES LISTES DU MOMENTS </h3>
     </div>
     <div class="row" *ngIf="lists!== undefined">
-        <div class="col-5">
+        <div class="col-5" *ngIf="listsLoaded">
             <input hidden type="radio" name="carousel-control" id="button_1" checked/>
             <input hidden type="radio" name="carousel-control" id="button_2"/>
             <input hidden type="radio" name="carousel-control" id="button_3"/>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-7">
+        <div class="col-7" *ngIf="listsLoaded">
             <div id="navigation" *ngFor="let list of lists; let index = index;">
                 <a routerLink="/lists/{{list.id}}">
                     <label class="label_{{index+1}}"></label>
@@ -70,7 +70,7 @@
     <div class=" text-light text-center">
         <h3> TOP DES SORTIES </h3>
     </div>
-    <div>
+    <div *ngIf="animesLoaded">
         <div class="container anime" *ngIf="animes!== undefined">
             <div class="row">
                 <div *ngFor="let anime of animes" class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-4">
