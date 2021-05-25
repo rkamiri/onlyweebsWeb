@@ -34,9 +34,7 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(): void {
         this.fillArraysWithData();
-        this.setTimeOutForLists();
-        this.setTimeOutForAnimes();
-        this.setTimeOutForArticles();
+        this.setTimeOuts();
     }
 
     fillArraysWithData(): void {
@@ -50,15 +48,15 @@ export class HomeComponent implements OnInit {
         });
     }
 
-    setTimeOutForLists(): void {
-        setTimeout(() => this.listsLoaded = true, 50);
-    }
-
-    setTimeOutForAnimes(): void {
-        setTimeout(() => this.animesLoaded = true, 100);
-    }
-
-    setTimeOutForArticles(): void {
-        setTimeout(() => this.articlesLoaded = true, 150);
+    setTimeOuts(): void {
+        setTimeout(() => {
+            this.listsLoaded = true;
+            setTimeout(() => {
+                this.animesLoaded = true;
+                setTimeout(() => {
+                    this.articlesLoaded = true;
+                }, 20);
+            }, 20);
+        }, 20);
     }
 }
