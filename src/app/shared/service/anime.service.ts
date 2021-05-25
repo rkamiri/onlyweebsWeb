@@ -6,7 +6,7 @@ import {environment} from '../../../environments/environment';
 
 const httpOptions = {
     headers: new HttpHeaders({
-        'Content-Type': 'text/plain; charset=utf-8'
+        'Content-Type': 'application/json'
     })
 };
 
