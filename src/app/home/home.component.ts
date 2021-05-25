@@ -47,6 +47,6 @@ export class HomeComponent implements OnInit {
     setTimeOut(): void {
         setTimeout(() => {
             this.loaded = true;
-        }, 50);
+        }, 100);
     }
 }

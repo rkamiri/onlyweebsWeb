@@ -19,6 +19,6 @@ export class AppComponent implements OnInit{
     }
 
     setTimeOutForFooter(): void {
-        setTimeout(() => this.showFooter = true, 250);
+        setTimeout(() => this.showFooter = true, 500);
     }
 }
