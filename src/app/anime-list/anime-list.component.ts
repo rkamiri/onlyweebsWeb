@@ -28,7 +28,21 @@ export class AnimeListComponent implements OnInit {
 
     initPage(): void {
         this.route.queryParams.subscribe(data => {
-                this.queryParams = data;
+            this.queryParams = data;
+            if (this.queryParams.page) {
+                this.currentPage = parseInt(this.queryParams.page, null);
+                this.animeService.getAllPagesSearch(this.queryParams.query).subscribe(pages => {
+                    this.pages = pages;
+                    this.pages = Math.ceil((pages) / 20);
+                    this.pagesArray = [].constructor(this.pages);
+                    if (this.pages > 1) {
+                        this.activatePagination = true;
+                    }
+                    this.animeService.getAllAnimeByName(this.queryParams.query, this.currentPage).subscribe((animes) => {
+                        this.animeList = animes;
+                    });
+                });
+            } else {
                 this.route.params.subscribe(params => {
                     this.currentPage = parseInt(params.page, null);
                     this.animeService.getAllPages().subscribe(pages => {
@@ -38,11 +52,13 @@ export class AnimeListComponent implements OnInit {
                         if (this.pages > 1) {
                             this.activatePagination = true;
                         }
-                        this.animeService.getAnimesByPage(this.currentPage).subscribe(animes => this.animeList = animes);
+                        this.animeService.getAnimesByPage(this.currentPage).subscribe(animes => {
+                            this.animeList = animes;
+                        });
                     });
                 });
             }
-        );
+        });
     }
 
     changePage(newCurrentPage: number): void {

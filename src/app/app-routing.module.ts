@@ -12,8 +12,6 @@ import {AnimeListComponent} from './anime-list/anime-list.component';
 import {OnelistComponent} from './onelist/onelist.component';
 import {MylistsComponent} from './mylists/mylists.component';
 import {ListCreateComponent} from './list-create/list-create.component';
-import {GlobalRatingResolver} from './shared/resolver/global.rating.resolver';
-import {CurrentUserRatingResolver} from './shared/resolver/current.user.rating.resolver';
 import {AccountResolver} from './shared/resolver/account.resolver';
 import {ListsResolver} from './shared/resolver/lists.resolver';
 import {LastListsResolver} from './shared/resolver/last.list.resolver';
@@ -29,6 +27,7 @@ import {ForbiddenErrorComponent} from './errors/forbidden-error/forbidden-error.
 import {UnauthorizedErrorComponent} from './errors/unauthorized-error/unauthorized-error.component';
 import {ServerErrorComponent} from './errors/server-error/server-error.component';
 import {PasswordUpdateComponent} from './password-update/password-update.component';
+import {AnimeResolver} from './shared/resolver/anime.resolver';
 
 const routes: Routes = [
     {path: 'not-found', component: NotFoundErrorComponent},
@@ -37,11 +36,9 @@ const routes: Routes = [
     {path: 'server-error', component: ServerErrorComponent},
     {path: '', component: HomeComponent},
     {path: 'home', component: HomeComponent},
-    {path: 'animes/:id', component: AnimeComponent, runGuardsAndResolvers: 'always',
-        resolve: {globalRating: GlobalRatingResolver, currentUserRating: CurrentUserRatingResolver}
-    },
-    {path: 'animes/page/:page', component: AnimeListComponent, runGuardsAndResolvers: 'always'},
     {path: 'animes/research', component: AnimeListComponent, runGuardsAndResolvers: 'always'},
+    {path: 'animes/:id', component: AnimeComponent, runGuardsAndResolvers: 'always', resolve: {anime: AnimeResolver}},
+    {path: 'animes/page/:page', component: AnimeListComponent, runGuardsAndResolvers: 'always'},
     {
         path: 'lists/:id',
         component: OnelistComponent,

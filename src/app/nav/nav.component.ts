@@ -32,7 +32,6 @@ export class NavComponent implements OnInit {
         )
     formatter = (x: SearchResult) => x.title;
 
-
     constructor(  private router: Router, private userService: UserService, private searchService: SearchService) { }
 
     ngOnInit(): void {
