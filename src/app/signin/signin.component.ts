@@ -1,15 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {FormControl, FormGroup} from '@angular/forms';
-import {UserService} from '../shared/service/user.service';
-import {Subscription} from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+import { UserService } from '../shared/service/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-signin',
     templateUrl: './signin.component.html',
-    styleUrls: ['./signin.component.css']
+    styleUrls: ['./signin.component.css'],
 })
-
 export class SigninComponent implements OnInit {
     loginForm: FormGroup;
     id: Subscription;
@@ -17,24 +16,21 @@ export class SigninComponent implements OnInit {
     constructor(private router: Router, private userService: UserService) {
         this.loginForm = new FormGroup({
             username: new FormControl(''),
-            password: new FormControl('')
+            password: new FormControl(''),
         });
     }
 
-    ngOnInit(): void {
-    }
+    ngOnInit(): void {}
 
     onSubmit(): void {
         this.loginUser();
     }
 
     loginUser(): void {
-        this.userService.login(this.loginForm.value).subscribe(
-            () => {
-                sessionStorage.setItem('isConnected', 'true');
-                this.userService.emitAuthStatus(true);
-                return this.router.navigate(['account']);
-            }
-        );
+        this.userService.login(this.loginForm.value).subscribe(() => {
+            sessionStorage.setItem('isConnected', 'true');
+            this.userService.emitAuthStatus(true);
+            return this.router.navigate(['account']);
+        });
     }
 }

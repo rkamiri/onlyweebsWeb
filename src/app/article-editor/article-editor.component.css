@@ -1,18 +1,17 @@
-
-.container{
+.container {
     min-width: 100vw;
     background-color: #f1f1f1;
 }
-#editorContainer{
+#editorContainer {
     padding-bottom: 2vh;
     padding-top: 2vh;
     margin-left: 8vw;
 }
 
-#editorContainer button{
+#editorContainer button {
     margin-top: 2vh;
 }
-#editor{
+#editor {
     background-color: white;
     margin-top: 2vh;
 }
@@ -21,31 +20,31 @@
     height: 60vh;
 }
 
-.form-group{
+.form-group {
     margin: auto;
 }
 
-#details{
+#details {
     margin-left: 4vw;
     margin-top: 5.5vh;
 }
 
-.detailsBox{
+.detailsBox {
     margin-top: 2vh;
     background-color: white;
     border: #e6e6e6 1px solid;
 }
 
-.detailsBox h2{
+.detailsBox h2 {
     padding: 5px;
     margin: 0;
     width: 100%;
     background-color: #e6e6e6;
 }
 
-.detailsBoxContent{
-    padding: .3vw;
+.detailsBoxContent {
+    padding: 0.3vw;
 }
-.detailsBox label{
-    padding-left: .2vw;
+.detailsBox label {
+    padding-left: 0.2vw;
 }

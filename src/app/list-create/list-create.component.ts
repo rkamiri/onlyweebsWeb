@@ -1,17 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {Anime} from '../shared/model/anime';
-import {Lists} from '../shared/model/lists';
-import {FormControl, FormGroup} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ListsService} from '../shared/service/lists.service';
-import {TypeaheadMatch} from 'ngx-bootstrap/typeahead/typeahead-match.class';
-import {IsListedIn} from '../shared/model/is.listed.in';
-import {AnimeService} from '../shared/service/anime.service';
+import { Component, OnInit } from '@angular/core';
+import { Anime } from '../shared/model/anime';
+import { Lists } from '../shared/model/lists';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ListsService } from '../shared/service/lists.service';
+import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
+import { IsListedIn } from '../shared/model/is.listed.in';
+import { AnimeService } from '../shared/service/anime.service';
 
 @Component({
     selector: 'app-list-create',
     templateUrl: './list-create.component.html',
-    styleUrls: ['./list-create.component.css']
+    styleUrls: ['./list-create.component.css'],
 })
 export class ListCreateComponent implements OnInit {
     animeList: Anime[];
@@ -21,18 +21,22 @@ export class ListCreateComponent implements OnInit {
     newList = [];
     createListForm: FormGroup;
 
-    constructor(private route: ActivatedRoute,
-                private router: Router,
-                private listService: ListsService,
-                private animeService: AnimeService) {
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private listService: ListsService,
+        private animeService: AnimeService
+    ) {
         this.createListForm = new FormGroup({
             name: new FormControl(''),
-            description: new FormControl('')
+            description: new FormControl(''),
         });
     }
 
     ngOnInit(): void {
-        this.animeService.getAllAnimes().subscribe(data => this.animeList = data);
+        this.animeService
+            .getAllAnimes()
+            .subscribe((data) => (this.animeList = data));
     }
 
     onSelect(event: TypeaheadMatch): void {
@@ -56,24 +60,23 @@ export class ListCreateComponent implements OnInit {
             name: this.createListForm.get('name').value,
             creationDate: 'string',
             description: this.createListForm.get('description').value,
-            isOwnedBy: null
+            isOwnedBy: null,
         };
-        this.listService.createList(list).subscribe(
-            () => {
-                this.fillList();
-                return this.router.navigate(['/lists']);
-            }
-        );
+        this.listService.createList(list).subscribe(() => {
+            this.fillList();
+            return this.router.navigate(['/lists']);
+        });
     }
 
     fillList(): void {
         this.thisList = this.route.snapshot.data.lastList;
         for (const i of this.newList) {
-            const ili: IsListedIn = {id: 666, list_id: this.thisList.id + 1, anime_id: i.id};
-            this.listService.putAnimeInList(ili).subscribe(
-                () => {
-                }
-            );
+            const ili: IsListedIn = {
+                id: 666,
+                list_id: this.thisList.id + 1,
+                anime_id: i.id,
+            };
+            this.listService.putAnimeInList(ili).subscribe(() => {});
         }
     }
 }

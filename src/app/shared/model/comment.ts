@@ -1,6 +1,6 @@
-import {User} from './user';
-import {Anime} from './anime';
-import {Article} from './article';
+import { User } from './user';
+import { Anime } from './anime';
+import { Article } from './article';
 
 export interface Comment {
     user?: User;
