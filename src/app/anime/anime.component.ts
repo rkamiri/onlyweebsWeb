@@ -144,7 +144,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
     }
 
     addAnimeToList(): void {
-        let isInOneOfTheDefaultLists = false;
+        let notInADefaultList = false;
         this.listService
             .getListByUserIdAndName(this.selectedList)
             .subscribe((list) => {
@@ -153,26 +153,48 @@ export class AnimeComponent implements OnDestroy, OnInit {
                     list.name === 'Currently watching' ||
                     list.name === 'Plan to watch'
                 ) {
-                    const animesFromAllLists = this.getAnimesFromAllLists();
-                    setTimeout(
-                        () =>
-                            (isInOneOfTheDefaultLists = animesFromAllLists.some(
-                                (anime) => anime.id === this.anime.id
-                            )),
-                        20
+                    notInADefaultList = this.getAnimesFromAllLists().some(
+                        (anime) => anime.id === this.anime.id
                     );
-                    if (!isInOneOfTheDefaultLists) {
+                    if (notInADefaultList) {
                         this.addAnimeToListDumb(list);
                     } else {
-                        this.listService
-                            .getMyDefaultLists()
-                            .subscribe((lists) => {
-                                console.log(lists);
-                            });
+                        this.removeAnimeFromListIfAlreadyIn(list, 'Watched');
+                        this.removeAnimeFromListIfAlreadyIn(
+                            list,
+                            'Currently watching'
+                        );
+                        this.removeAnimeFromListIfAlreadyIn(
+                            list,
+                            'Plan to watch'
+                        );
                     }
                 } else {
                     this.addAnimeToListDumb(list);
                 }
+            });
+    }
+
+    removeAnimeFromListIfAlreadyIn(list: Lists, listName: string): void {
+        this.listService
+            .getListByUserIdAndName(listName)
+            .subscribe((watched) => {
+                this.listService
+                    .getOneListContentByID(watched.id)
+                    .subscribe((data) => {
+                        data.forEach((a) => {
+                            if (a.title === this.anime.title) {
+                                this.listService
+                                    .deleteAnimeInList(
+                                        watched.id,
+                                        this.anime.id
+                                    )
+                                    .subscribe();
+                            } else {
+                                this.addAnimeToListDumb(list);
+                            }
+                        });
+                    });
             });
     }
 
