@@ -4,10 +4,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
 import {UserService} from '../shared/service/user.service';
 import {environment} from '../../environments/environment';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Image} from '../shared/model/image';
-import {ImageService} from '../shared/service/image.service';
+import {HttpClient} from '@angular/common/http';
 import {ISpinnerConfig, SPINNER_ANIMATIONS, SPINNER_PLACEMENT} from '@hardpool/ngx-spinner';
+import {ImageService} from '../shared/service/image.service';
 
 @Component({
     selector: 'app-account',
@@ -19,10 +18,11 @@ export class AccountComponent implements OnInit {
     public personalInfoForm: FormGroup;
     public bioForm: FormGroup;
     public passwordForm: FormGroup;
-    public profilePicture: Image;
+    public profilePictureUrl: string;
     public spinner: boolean;
     public spinnerConfig: ISpinnerConfig;
     public currentUser: User;
+    public sameIp: string;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -56,8 +56,26 @@ export class AccountComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.sameIp = 'true';
         this.currentUser = this.route.snapshot.data.currentUser;
-        this.getProfileImage();
+        this.userService.checkSameIp().subscribe((data) => {if (!data) {this.sameIp = 'false'; }});
+        this.createProfilePictureUrl();
+        this.fillForms();
+        this.setSpinnerConfig();
+    }
+
+    setSpinnerConfig(): void {
+        this.spinnerConfig = {
+            placement: SPINNER_PLACEMENT.block_window,
+            animation: SPINNER_ANIMATIONS.spin_3,
+            size: '20rem',
+            bgColor: 'rgba(40, 43, 48, 0.6)',
+            color: '#097ce7'
+        };
+        this.spinner = false;
+    }
+
+    fillForms(): void {
         this.personalInfoForm.controls.id.setValue(this.currentUser.id);
         this.personalInfoForm.controls.username.setValue(this.currentUser.username);
         this.personalInfoForm.controls.firstname.setValue(this.currentUser.firstname);
@@ -72,20 +90,10 @@ export class AccountComponent implements OnInit {
         this.bioForm.controls.email.setValue(this.currentUser.email);
         this.passwordForm.controls.id.setValue(this.currentUser.id);
         this.newPassWordUser = this.currentUser;
-        this.spinnerConfig = {
-            placement: SPINNER_PLACEMENT.block_window,
-            animation: SPINNER_ANIMATIONS.spin_3,
-            size: '20rem',
-            bgColor: 'rgba(40, 43, 48, 0.6)',
-            color: '#097ce7'
-        };
-        this.spinner = false;
     }
 
-    getProfileImage(): void {
-        this.imageService.getProfilePicture().subscribe((image) => {
-            this.profilePicture = image;
-        });
+    createProfilePictureUrl(): void {
+        this.profilePictureUrl = environment.backend + '/image/' + this.currentUser.image.id;
     }
 
     updatePersonalInfos(): void {
@@ -101,23 +109,7 @@ export class AccountComponent implements OnInit {
     }
 
     updateBio(): void {
-        this.userService.updateCurrentUser(this.bioForm.value).subscribe(
-            (data) => {
-                location.reload();
-            }
-        );
-    }
-
-    updatePassword(): void {
-        if (this.passwordForm.get('newPasswordA').value === this.passwordForm.get('newPasswordB').value && this.passwordForm.get('newPasswordA').value !== '' && this.passwordForm.get('newPasswordB').value !== '') {
-            this.currentUser.password = this.passwordForm.get('newPasswordA').value;
-            this.userService.updateCurrentUser(this.newPassWordUser).subscribe(
-                (data) => {
-                    this.userService.logout();
-                    return this.router.navigate(['login']);
-                }
-            );
-        }
+        this.userService.updateCurrentUser(this.bioForm.value).subscribe(() => {location.reload(); });
     }
 
     fileChange(event): void {
@@ -126,12 +118,7 @@ export class AccountComponent implements OnInit {
         const file: File = fileList[0];
         const formData: FormData = new FormData();
         formData.append('uploadFile', file, file.name);
-        const headers = new HttpHeaders({Accept: 'application/json'});
-        const options = {headers};
-        this.http.post(environment.backend + '/upload/image/' + this.currentUser.id, formData, options)
-            .subscribe(() => {
-                setTimeout(location.reload.bind(location), 1);
-            });
+        this.imageService.postProfilePicture(formData, this.currentUser.id).subscribe(() => setTimeout(location.reload.bind(location), 1));
     }
 
     showSpinner(): void {
@@ -140,5 +127,15 @@ export class AccountComponent implements OnInit {
 
     hideSpinner(): void {
         this.spinner = false;
+    }
+
+    updateIp(): void {
+        this.userService.updateIp().subscribe(() => {
+            this.sameIp = 'changed';
+        });
+    }
+
+    updatePassword(): void {
+        this.userService.sendMailForPasswordUpdateAnfGenerateToken().subscribe(() => {});
     }
 }

@@ -1,38 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Anime} from '../shared/model/anime';
-import {Article} from '../shared/model/article';
 import {ArticleService} from '../shared/service/article.service';
+import {Article} from '../shared/model/article';
+import {Lists} from '../shared/model/lists';
+import {AnimeService} from '../shared/service/anime.service';
+import {Anime} from '../shared/model/anime';
+import {ListsService} from '../shared/service/lists.service';
+import {environment} from '../../environments/environment';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    toplists = [];
-    imageObject = [];
-    public listArticles = [];
-    constructor(private route: ActivatedRoute, private articleService: ArticleService) { }
+    public lists: Lists[];
+    public articles: Article[];
+    public animes: Anime[];
+    public imagesUrls: string[];
+    loaded: boolean;
 
-    ngOnInit(): void {
-        for (let i = 0; i < 8; i++) {
-            this.imageObject.push({thumbImage: this.route.snapshot.data.animeList[i].cover,
-                title : this.route.snapshot.data.animeList[i].internationalTitle});
-        }
-
-        for (let i = 0; i < 5; i++) {
-            this.toplists.push(this.route.snapshot.data.allLists[i]);
-        }
-        this.articleService.getAllArticles().subscribe((data) => {
-            console.log(data);
-            this.listArticles = data;
-        });
-        console.log(this.listArticles);
+    constructor(private route: ActivatedRoute,
+                private articleService: ArticleService,
+                private animeService: AnimeService,
+                private listsService: ListsService) {
+        this.loaded = false;
+        this.imagesUrls = [];
     }
 
-    goToAnime($event): void {
-        const id = this.route.snapshot.data.animeList[$event].id;
-        window.open('/#/animes/' + id + '/', '_self');
+    ngOnInit(): void {
+        this.fillArraysWithData();
+        this.setTimeOut();
+    }
+
+    fillArraysWithData(): void {
+        this.listsService.getAllLists().subscribe(data => this.lists = data.slice(0, 5));
+        this.animeService.getAnimesByPage(1).subscribe(data => {
+            this.animes = data.slice(0, 6);
+        });
+        this.articleService.getAllArticles().subscribe(data => {
+            this.articles = data.slice(0, 5);
+            data.forEach(article => this.imagesUrls.push(environment.backend + '/image/' + article.cover.id));
+        });
+    }
+
+    setTimeOut(): void {
+        setTimeout(() => {
+            this.loaded = true;
+        }, 100);
     }
 }

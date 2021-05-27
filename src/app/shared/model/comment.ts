@@ -1,8 +1,11 @@
 import {User} from './user';
+import {Anime} from './anime';
+import {Article} from './article';
 
 export interface Comment {
-    usersEntity: User;
-    anime_id: number;
-    comment: string;
-    date: string;
+    user?: User;
+    body: string;
+    date?: string;
+    animeEntity?: Anime;
+    articleEntity?: Article;
 }

@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ListsService} from '../shared/service/lists.service';
 import {TypeaheadMatch} from 'ngx-bootstrap/typeahead/typeahead-match.class';
 import {IsListedIn} from '../shared/model/is.listed.in';
+import {AnimeService} from '../shared/service/anime.service';
 
 @Component({
     selector: 'app-list-create',
@@ -20,7 +21,10 @@ export class ListCreateComponent implements OnInit {
     newList = [];
     createListForm: FormGroup;
 
-    constructor(private route: ActivatedRoute, private router: Router, private listService: ListsService) {
+    constructor(private route: ActivatedRoute,
+                private router: Router,
+                private listService: ListsService,
+                private animeService: AnimeService) {
         this.createListForm = new FormGroup({
             name: new FormControl(''),
             description: new FormControl('')
@@ -28,7 +32,7 @@ export class ListCreateComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.animeList = this.route.snapshot.data.getAnimeList;
+        this.animeService.getAllAnimes().subscribe(data => this.animeList = data);
     }
 
     onSelect(event: TypeaheadMatch): void {
@@ -52,7 +56,7 @@ export class ListCreateComponent implements OnInit {
             name: this.createListForm.get('name').value,
             creationDate: 'string',
             description: this.createListForm.get('description').value,
-            isOwnedBy: +sessionStorage.getItem('userid')
+            isOwnedBy: null
         };
         this.listService.createList(list).subscribe(
             () => {

@@ -12,11 +12,6 @@ import {AnimeListComponent} from './anime-list/anime-list.component';
 import {OnelistComponent} from './onelist/onelist.component';
 import {MylistsComponent} from './mylists/mylists.component';
 import {ListCreateComponent} from './list-create/list-create.component';
-import {AnimeListResolver} from './shared/resolver/anime.list.resolver';
-import {AnimeListResearchResolver} from './shared/resolver/anime.list.research.resolver';
-import {AnimeResolver} from './shared/resolver/anime.resolver';
-import {GlobalRatingResolver} from './shared/resolver/global.rating.resolver';
-import {CurrentUserRatingResolver} from './shared/resolver/current.user.rating.resolver';
 import {AccountResolver} from './shared/resolver/account.resolver';
 import {ListsResolver} from './shared/resolver/lists.resolver';
 import {LastListsResolver} from './shared/resolver/last.list.resolver';
@@ -26,85 +21,49 @@ import {CustomListsResolver} from './shared/resolver/custom.lists.resolver';
 import {ArticleListComponent} from './article-list/article-list.component';
 import {ArticleComponent} from './article/article.component';
 import {ArticleResolver} from './shared/resolver/article.resolver';
-
+import {ArticleEditorComponent} from './article-editor/article-editor.component';
+import {NotFoundErrorComponent} from './errors/not-found-error/not-found-error.component';
+import {ForbiddenErrorComponent} from './errors/forbidden-error/forbidden-error.component';
+import {UnauthorizedErrorComponent} from './errors/unauthorized-error/unauthorized-error.component';
+import {ServerErrorComponent} from './errors/server-error/server-error.component';
+import {PasswordUpdateComponent} from './password-update/password-update.component';
+import {AnimeResolver} from './shared/resolver/anime.resolver';
 
 const routes: Routes = [
-    {path: '', component: HomeComponent,  resolve: {
-            animeList: AnimeListResolver,
-            allLists: ListsResolver
-        }},
-    {path: 'home', component: HomeComponent,
-        resolve: {
-            animeList: AnimeListResolver,
-            allLists: ListsResolver,
-            listArticles: ArticleResolver
-        }},
+    {path: 'not-found', component: NotFoundErrorComponent},
+    {path: 'forbidden', component: ForbiddenErrorComponent},
+    {path: 'unauthorized', component: UnauthorizedErrorComponent},
+    {path: 'server-error', component: ServerErrorComponent},
+    {path: '', component: HomeComponent},
+    {path: 'home', component: HomeComponent},
+    {path: 'animes/research', component: AnimeListComponent, runGuardsAndResolvers: 'always'},
+    {path: 'animes/:id', component: AnimeComponent, runGuardsAndResolvers: 'always', resolve: {anime: AnimeResolver}},
+    {path: 'animes/page/:page', component: AnimeListComponent, runGuardsAndResolvers: 'always'},
     {
-        path: 'animes', component: AnimeListComponent,
-        resolve: {
-            animeList: AnimeListResolver
-        }
-    },
-    {
-        path: 'animes/research/:research', component: AnimeListComponent,
-        resolve: {
-            animeList: AnimeListResearchResolver
-        },
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'animes/:id',
-        component: AnimeComponent,
-        resolve: {
-            anime: AnimeResolver,
-            globalRating: GlobalRatingResolver,
-            currentUserRating: CurrentUserRatingResolver,
-            currentUser: AccountResolver
-        },
-        runGuardsAndResolvers: 'always'
-    },
-    {
-        path: 'lists', component: ListsComponent,
-        resolve: {
-            allLists: ListsResolver,
-            lastList: LastListsResolver,
-            customLists: CustomListsResolver
-        }
-    },
-    {
-        path: 'lists/:id', component: OnelistComponent,
-        resolve: {
-            list: OneListResolver,
-            listContent: ListContentResolver,
-            getAnimeList: AnimeListResolver
-        }
+        path: 'lists/:id',
+        component: OnelistComponent,
+        resolve: {list: OneListResolver, listContent: ListContentResolver}
     },
     {path: 'login', component: SigninComponent},
     {path: 'help', component: HelpComponent},
     {path: 'playback', component: PlaybackComponent},
     {path: 'register', component: RegisterComponent},
+    {path: 'account', component: AccountComponent, resolve: {currentUser: AccountResolver}},
     {
-        path: 'account', component: AccountComponent,
-        resolve: {
-            currentUser: AccountResolver
-        }
-    },
-    {
-        path: 'list-create', component: ListCreateComponent,
-        resolve: {
-            getAnimeList: AnimeListResolver,
-            getCurrentList: ListsResolver,
-            lastList: LastListsResolver
-        }
+        path: 'list-create',
+        component: ListCreateComponent,
+        resolve: {getCurrentList: ListsResolver, lastList: LastListsResolver}
     },
     {path: 'articles', component: ArticleListComponent},
+    {path: 'articles/:id', component: ArticleComponent, resolve: {article: ArticleResolver}},
+    {path: 'my-lists', component: MylistsComponent},
+    {path: 'editor', component: ArticleEditorComponent},
+    {path: 'password-update/:token', component: PasswordUpdateComponent},
     {
-        path: 'articles/:id', component: ArticleComponent,
-        resolve: {
-            article: ArticleResolver,
-        }
+        path: 'lists', component: ListsComponent,
+        resolve: {allLists: ListsResolver, lastList: LastListsResolver, customLists: CustomListsResolver}
     },
-    {path: 'my-lists', component: MylistsComponent}
+    {path: '**', redirectTo: 'not-found', pathMatch: 'full'},
 ];
 
 @NgModule({

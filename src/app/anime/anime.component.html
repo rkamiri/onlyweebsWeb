@@ -1,11 +1,11 @@
-<div id="container">
+<div *ngIf="anime !== undefined" id="container">
     <div class="row box" id="page">
         <div class="col-lg-3 col-md-2 col-sm-2 col-12" id="imgPlace">
-            <img src="{{anime.cover}}" class="img-fluid" id="cover" alt="">
+            <img loading="lazy" src="{{anime.imgUrl}}" class="img-fluid" id="cover" alt="">
         </div>
 
         <div class="col-lg-6  col-md-6 col-sm-8 col-12" id="center">
-            <h1 id="animeTitle">{{ anime.internationalTitle }}</h1>
+            <h1 id="animeTitle">{{ anime.title }}</h1>
             <div id="parentLists" *ngIf="isConnected">
                 <div class="input-group mb-3" id="default">
                     <label for="optionSelectDefault"></label>
@@ -40,11 +40,6 @@
                     </a>
                 </div>
             </div>
-
-            <div class="row">
-                <p class="genreTag">Genre: genre1, genre2, genre3</p>
-                <p>tag: tag1, tag2, tag3</p>
-            </div>
             <div class="row">
                 <h1>Synopsis</h1>
                 <p>{{ anime.synopsis }}</p>
@@ -56,8 +51,8 @@
                 <h1 class="detailsContent">Details</h1>
                 <p class="detailsContent">Studio: StudioName</p>
                 <p class="detailsContent">Producer: ProducerName</p>
-                <p class="detailsContent">Release Date: jj/mm/yy</p>
-                <p class="detailsContent">Japanese Name: {{ anime.title }}</p>
+                <p class="detailsContent">Airing Date: {{anime.airing}}</p>
+                <p class="detailsContent">Number of episodes: {{ anime.episodes }}</p>
             </div>
             <div class="row">
                 <h1 class="detailsContent">Global Rate : {{ globalRate }}/10</h1>
@@ -74,23 +69,20 @@
             </div>
         </div>
     </div>
-
     <div class="row d-flex justify-content-center">
-        <div [ngClass]="isConnected ? 'col-sm-6 col-md-6 col-6 pb-6' : 'col-sm-8 col-md-8 col-8 pb-8'">
+        <div *ngIf="comments !== undefined"
+             [ngClass]="isConnected ? 'col-sm-6 col-md-6 col-6 pb-6' : 'col-sm-8 col-md-8 col-8 pb-8'">
             <h1>Comments</h1>
             <div *ngFor="let comment of comments ; let index = index" class="mt-4 text-justify float-left comment">
-
-                <img src="data:image/webp;base64,{{comment.usersEntity.image.content}}" alt="profile image"
+                <img loading="lazy" src="data:image/webp;base64,{{comment.user.image.content}}" alt="profile image"
                      class="rounded-circle" width="80" height="80">
-                <h4> {{comment.usersEntity.firstname}} "{{comment.usersEntity.username}}
-                    " {{comment.usersEntity.lastname}} </h4>
+                <h4>{{comment.user.username}}</h4>
                 <span>-{{comment.date |  date:'dd/MM/yyyy'}}</span> <br>
-                <p>{{comment.comment}}</p>
+                <p>{{comment.body}}</p>
             </div>
         </div>
-
-        <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
-            <form id="algin-form" (ngSubmit)="sendComment()" [formGroup]="commentForm">
+        <div *ngIf="isConnected" class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+            <form id="align-form" (ngSubmit)="sendAnimeComment()" [formGroup]="commentForm">
                 <div class="form-group">
                     <h1>Leave a comment</h1> <label for="message">Message</label> <textarea name="msg" id="message"
                                                                                             cols="30" rows="5"
@@ -101,10 +93,11 @@
                 <div class="form-group">
                     <button type="submit"
                             class="btn btn-primary">{{userHasComment ? 'Edit Comment' : 'Post Comment' }}</button>
+                    <button *ngIf="userHasComment" id="delete-button" type="button" class="btn btn-danger"
+                            (click)="deleteAnimeComment()">Delete your comment
+                    </button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-

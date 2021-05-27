@@ -6,8 +6,7 @@ import {Comment} from '../model/comment';
 
 const httpOptions = {
     headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        responseType: 'text'
+        'Content-Type': 'application/json'
     })
 };
 
@@ -18,10 +17,23 @@ export class CommentService {
 
     constructor(private httpclient: HttpClient) {}
 
-    getCommentsForAnime(animeId): Observable<Comment[]> {
-        return this.httpclient.get<Comment[]>(environment.backend + '/anime-comment/' + animeId, httpOptions);
+    getCommentsForAnime(animeId: number): Observable<Comment[]> {
+        return this.httpclient.get<Comment[]>(environment.backend + '/comment/anime/' + animeId, httpOptions);
     }
+
+    getCommentsForArticle(articleId: number): Observable<Comment[]> {
+        return this.httpclient.get<Comment[]>(environment.backend + '/comment/article/' + articleId, httpOptions);
+    }
+
     putCommentForAnime(comment: Comment): Observable<void> {
-        return this.httpclient.put<void>(environment.backend + '/anime-comment/', comment, httpOptions);
+        return this.httpclient.put<void>(environment.backend + '/comment/', comment, httpOptions);
+    }
+
+    deleteAnimeComment(animeId: number): any {
+        return this.httpclient.delete<any>(environment.backend + '/comment/anime/' + animeId, httpOptions);
+    }
+
+    deleteArticleComment(articleId: number): any {
+        return this.httpclient.delete<any>(environment.backend + '/comment/article/' + articleId, httpOptions);
     }
 }

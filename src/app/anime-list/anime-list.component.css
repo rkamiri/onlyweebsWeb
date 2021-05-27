@@ -1,3 +1,8 @@
+body{
+    background-color: rgba(40, 43, 48, .5);
+    padding-bottom: 2vh;
+}
+
 a {
     text-decoration: none;
     color: #e4e4e4;
@@ -15,6 +20,7 @@ a {
     margin-top: 2vh;
     width: 15vw;
     background-color: rgba(40, 43, 48, .75);
+    height: 45vh !important;
 }
 
 .card:hover{
@@ -27,6 +33,29 @@ a {
 }
 .col-sm-4{
     margin-top: 2vh;
+}
+
+.page-link{
+    background-color: #3e4042!important;
+    border-color: #A5A5A5!important;
+    color: white;
+}
+
+.page-link:hover{
+    background-color: #097ce7!important;
+}
+
+.current{
+    color: #097ce7;
+}
+.current:hover{
+    background-color: #3e4042!important;
+}
+
+*:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 @media screen and (max-width: 1400px) {

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ArticleService} from '../shared/service/article.service';
 import {Article} from '../shared/model/article';
+import {environment} from '../../environments/environment';
 
 @Component({
     selector: 'app-article-list',
@@ -9,14 +10,17 @@ import {Article} from '../shared/model/article';
 })
 export class ArticleListComponent implements OnInit {
     public listArticles: Article[];
+    public articleImageUrls: string[];
 
 
     constructor(private articleService: ArticleService) {
+        this.articleImageUrls = [];
     }
 
     ngOnInit(): void {
         this.articleService.getAllArticles().subscribe((data) => {
             this.listArticles = data;
+            data.forEach(article => this.articleImageUrls.push(environment.backend + '/image/' + article.cover.id));
         });
     }
 }

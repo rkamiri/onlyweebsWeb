@@ -30,8 +30,7 @@ export class NavComponent implements OnInit {
                     : searchArray;
             })
         )
-    formatter = (x: SearchResult) => x.internationalTitle;
-
+    formatter = (x: SearchResult) => x.title;
 
     constructor(  private router: Router, private userService: UserService, private searchService: SearchService) { }
 
@@ -58,7 +57,7 @@ export class NavComponent implements OnInit {
         else{
             switch (this.searchArray.length){
                 case 0: {
-                    this.router.navigate(['animes']);
+                    this.router.navigate(['animes/page/1']);
                     break;
                 }
                 case 1: {
@@ -67,7 +66,7 @@ export class NavComponent implements OnInit {
                     break;
                 }
                 default: {
-                    this.router.navigate(['animes/research/' , this.searchInputValue]);
+                    this.router.navigate(['animes/research'], {queryParams: {query: this.searchInputValue, page: 1}}).then();
                     break;
                 }
             }

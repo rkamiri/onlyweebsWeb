@@ -1,5 +1,6 @@
 body{
     background-color: rgba(40, 43, 48, .75);
+    padding-bottom: 2vh;
 }
 .img-fluid {
     width: 262px;
@@ -73,3 +74,22 @@ body{
     border-color: #868686;
     width: 50vw;
 }
+.articleImage {
+    margin-top: 1vh;
+    width: 23vw;
+    height: 23vh;
+}
+.featurette:hover{
+    background-color: #11428D;
+    border-radius: 1vh;
+    cursor: pointer;
+}
+
+.img-fluid{
+    min-width: 100%;
+}
+
+#articleTitle {
+    margin-left: 2vw;
+}
+

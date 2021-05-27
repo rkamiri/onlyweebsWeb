@@ -1,6 +1,15 @@
 *{
     color: white;
 }
+
+#alert-ip {
+    background-color: red;
+}
+
+#alert-success-ip {
+    background-color: green;
+}
+
 .account-settings .user-profile {
     margin:auto;
     padding-bottom: 1vh;
@@ -52,4 +61,9 @@ textarea{
     min-width: 38.5vw
 }
 
-#uploadImage {display: none;}
+#uploadImage {
+    display: none;
+}
+.user-avatar:hover {
+    cursor: pointer;
+}

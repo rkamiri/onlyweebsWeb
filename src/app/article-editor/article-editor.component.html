@@ -1,0 +1,57 @@
+<body class="container" xmlns="http://www.w3.org/1999/html">
+    <div class="row">
+        <div class="col-md-8" id="editorContainer">
+            <h1>Add new article</h1>
+            <form [formGroup]="articleInfos">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="title" formControlName="title"
+                           placeholder="Enter Title">
+                    <br/>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="featuredImage" (change)="fileChange($event)">
+                        <label class="custom-file-label" for="featuredImage">Choose featured image</label>
+                    </div>
+                </div>
+            </form>
+            <div id="editor">
+                <ckeditor [(ngModel)]="body" [editor]="Editor" data="<p>Hello, world!</p>" (ready)="onReady($event)"></ckeditor>
+            </div>
+        </div>
+
+        <div class="col-md-2" id="details">
+            <div class="detailsBox">
+                <h2>Publication</h2>
+                <div class="detailsBoxContent">
+                    <button class="btn btn-primary" (click)="submit()">Publish Article</button>
+                </div>
+            </div>
+            <div class="detailsBox">
+                <h2>Tags</h2>
+                <div class="detailsBoxContent">
+                    <div>
+                        <input type="checkbox" id="new" name="subscribe" value="newsletter">
+                        <label for="new">News</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="event" name="subscribe" value="newsletter">
+                        <label for="event">Event</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="video" name="subscribe" value="newsletter">
+                        <label for="video">Video</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="music" name="subscribe" value="newsletter">
+                        <label for="music">Music</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="videogame" name="subscribe" value="newsletter">
+                        <label for="videogame">Video games</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+

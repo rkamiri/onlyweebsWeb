@@ -22,14 +22,19 @@ import {TypeaheadModule} from 'ngx-bootstrap/typeahead';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {FileUploadModule} from 'ng2-file-upload';
 import {OnelistComponent} from './onelist/onelist.component';
-import { MylistsComponent } from './mylists/mylists.component';
-import { ListCreateComponent } from './list-create/list-create.component';
+import {MylistsComponent} from './mylists/mylists.component';
+import {ListCreateComponent} from './list-create/list-create.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxSpinnerModule} from '@hardpool/ngx-spinner';
-import { ArticleListComponent } from './article-list/article-list.component';
-import { ArticleComponent } from './article/article.component';
-import {NgImageSliderModule} from "ng-image-slider";
-
+import {ArticleListComponent} from './article-list/article-list.component';
+import {ArticleComponent, SafeHtmlPipe} from './article/article.component';
+import {ArticleEditorComponent} from './article-editor/article-editor.component';
+import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
+import {NotFoundErrorComponent} from './errors/not-found-error/not-found-error.component';
+import { ForbiddenErrorComponent } from './errors/forbidden-error/forbidden-error.component';
+import { UnauthorizedErrorComponent } from './errors/unauthorized-error/unauthorized-error.component';
+import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { PasswordUpdateComponent } from './password-update/password-update.component';
 
 @NgModule({
     declarations: [
@@ -49,7 +54,14 @@ import {NgImageSliderModule} from "ng-image-slider";
         MylistsComponent,
         ListCreateComponent,
         ArticleListComponent,
-        ArticleComponent
+        ArticleComponent,
+        ArticleEditorComponent,
+        SafeHtmlPipe,
+        NotFoundErrorComponent,
+        ForbiddenErrorComponent,
+        UnauthorizedErrorComponent,
+        ServerErrorComponent,
+        PasswordUpdateComponent
     ],
     imports: [
         BrowserModule,
@@ -63,12 +75,12 @@ import {NgImageSliderModule} from "ng-image-slider";
         HttpClientModule,
         BrowserAnimationsModule,
         NgxSpinnerModule,
-        NgImageSliderModule
+        CKEditorModule,
     ],
     providers: [
         [
             {provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true},
-            {provide: LocationStrategy, useClass: HashLocationStrategy}
+            {provide: LocationStrategy, useClass: HashLocationStrategy},
         ],
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

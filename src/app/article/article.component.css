@@ -3,6 +3,8 @@
     font-family: 'Karla', sans-serif !important;
 }
 
+
+
 .container{
     background-color: rgba(40, 43, 48, .95);
     border-radius: 0.3em;
@@ -18,6 +20,10 @@ h1{
 }
 #mainContent {
     margin-top: 2vh;
+}
+
+#mainContent img{
+    width: 40vw;
 }
 
 .articleBox {

@@ -15,6 +15,8 @@ import {ListsService} from '../shared/service/lists.service';
     styleUrls: ['./anime.component.css']
 })
 export class AnimeComponent implements OnDestroy, OnInit {
+
+
     public userCustomLists: Lists[];
     public userDefaultLists: Lists[];
     public anime: Anime;
@@ -42,7 +44,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
                 this.commentsService.getCommentsForAnime(this.anime.id).subscribe((comments) => {
                     this.comments = comments;
                     comments.forEach(comment => {
-                        if (comment.usersEntity.id === +sessionStorage.getItem('userid')) {
+                        if (comment.user.id === +sessionStorage.getItem('userid')) {
                             this.userHasComment = true;
                         }
                     });
@@ -75,8 +77,11 @@ export class AnimeComponent implements OnDestroy, OnInit {
             this.listService.getMyDefaultLists().subscribe((defaultLists) => {
                 this.userDefaultLists = defaultLists;
             });
+            this.currentRate = this.activatedRoute.snapshot.data.currentUserRating;
+            this.ratingService.getCurrentUserRatingForThisAnime(this.anime.id).subscribe((data) => {
+                this.currentRate = data;
+            });
             if (this.currentRate === null || this.currentRate === undefined) {
-                this.currentRate = this.activatedRoute.snapshot.data.currentUserRating;
                 if (!(this.currentRate === 666)) {
                     this.rateForm.controls.rate.setValue(this.currentRate);
                 } else {
@@ -115,12 +120,12 @@ export class AnimeComponent implements OnDestroy, OnInit {
         }
     }
 
-    sendComment(): void {
+    sendAnimeComment(): void {
         this.commentsService.putCommentForAnime({
-            usersEntity: null,
-            anime_id: this.anime.id,
-            comment: this.commentForm.get('comment').value.toString(),
-            date: null
+            user: null,
+            body: this.commentForm.get('comment').value.toString(),
+            date: null,
+            animeEntity: this.anime
         }).subscribe(() => {
             location.reload();
         });
@@ -135,5 +140,13 @@ export class AnimeComponent implements OnDestroy, OnInit {
                 }
             );
         });
+    }
+
+    deleteAnimeComment(): void {
+        if (confirm('Are you sure you want to delete this comment ?')) {
+            this.commentsService.deleteAnimeComment(this.anime.id).subscribe(() => {
+                location.reload();
+            });
+        }
     }
 }

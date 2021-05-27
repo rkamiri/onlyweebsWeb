@@ -1,13 +1,16 @@
 <div class="col text-center">
     <button class="btn btn-light" [routerLink]="['/list-create']">Create a new list</button>
 </div>
-<ul>
-    <li *ngFor="let list of defaultLists">
+<ul class="group-list">
+    <li *ngFor="let list of defaultLists" id="list-def">
         <a [routerLink]="['/lists', list.id]">{{ list.name }}</a>
         <p>{{ list.description }}</p>
     </li>
-    <li *ngFor="let list of customLists">
+    <li *ngFor="let list of customLists" id="list-cus">
         <a [routerLink]="['/lists', list.id]">{{ list.name }}</a>
         <p>{{ list.description }}</p>
+        <div class="text-center" id="button-div">
+            <button id="delete-button" type="button" class="btn btn-danger" (click)="delete(list.id)">Delete</button>
+        </div>
     </li>
 </ul>
