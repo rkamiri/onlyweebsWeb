@@ -1,6 +1,6 @@
 #container {
     color: white;
-    background-color: rgba(40, 43, 48, .75);
+    background-color: rgba(40, 43, 48, 0.75);
     border-radius: 0.3em;
 }
 
@@ -21,7 +21,6 @@
 
 #synopsis {
     text-align: justify;
-
 }
 
 #btn {
@@ -100,16 +99,15 @@ h1 {
     padding-left: 40px;
     padding-right: 30px;
     padding-top: 10px;
-    width:100%;
+    width: 100%;
 }
 
 .comment h4,
 .comment span,
 .darker h4,
 .darker span {
-    display: inline
+    display: inline;
 }
-
 
 @media screen and (max-width: 576px) {
     p {
@@ -146,7 +144,6 @@ h1 {
     }
 
     #animeTitle {
-
     }
 }
 
@@ -155,7 +152,3 @@ h1 {
         min-width: 10vw;
     }
 }
-
-
-
-

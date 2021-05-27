@@ -1,4 +1,4 @@
-*{
+* {
     color: white;
 }
 
@@ -11,7 +11,7 @@
 }
 
 .account-settings .user-profile {
-    margin:auto;
+    margin: auto;
     padding-bottom: 1vh;
     text-align: center;
 }
@@ -39,7 +39,7 @@
     text-align: center;
 }
 .card {
-    background-color: rgba(40, 43, 48, .75);
+    background-color: rgba(40, 43, 48, 0.75);
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -57,8 +57,8 @@
     transition: 0.2s ease;
     margin-bottom: 2vh;
 }
-textarea{
-    min-width: 38.5vw
+textarea {
+    min-width: 38.5vw;
 }
 
 #uploadImage {
