@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, Observable, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { UserService } from '../shared/service/user.service';
 import { Router } from '@angular/router';
 import { SearchService } from '../shared/service/search.service';
