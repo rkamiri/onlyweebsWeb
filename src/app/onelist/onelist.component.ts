@@ -25,6 +25,7 @@ export class OnelistComponent implements OnInit {
     public addAnimeForm: FormGroup;
     public index: number;
     public owned: boolean;
+    public isDefault: boolean;
 
     constructor(
         private modalService: NgbModal,
@@ -40,6 +41,10 @@ export class OnelistComponent implements OnInit {
 
     ngOnInit(): void {
         this.listInfo = this.route.snapshot.data.list;
+        this.isDefault =
+            this.listInfo.name === 'Watched' ||
+            this.listInfo.name === 'Currently watching' ||
+            this.listInfo.name === 'Plan to watch';
         this.owned =
             +sessionStorage.getItem('userid') === this.listInfo.isOwnedBy;
         this.animesOfThisList = this.route.snapshot.data.listContent;

@@ -44,7 +44,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <button (click)="deleteList()">
+                    <button *ngIf="!isDefault" (click)="deleteList()">
                         <span
                             ><i class="fa fa-trash"></i> delete this list</span
                         >
