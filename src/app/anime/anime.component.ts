@@ -156,18 +156,25 @@ export class AnimeComponent implements OnDestroy, OnInit {
                     notInADefaultList = this.getAnimesFromAllLists().some(
                         (anime) => anime.id === this.anime.id
                     );
-                    if (notInADefaultList) {
+                    if (this.getAnimesFromAllLists().length === 0) {
                         this.addAnimeToListDumb(list);
                     } else {
-                        this.removeAnimeFromListIfAlreadyIn(list, 'Watched');
-                        this.removeAnimeFromListIfAlreadyIn(
-                            list,
-                            'Currently watching'
-                        );
-                        this.removeAnimeFromListIfAlreadyIn(
-                            list,
-                            'Plan to watch'
-                        );
+                        if (notInADefaultList) {
+                            this.addAnimeToListDumb(list);
+                        } else {
+                            this.removeAnimeFromListIfAlreadyIn(
+                                list,
+                                'Watched'
+                            );
+                            this.removeAnimeFromListIfAlreadyIn(
+                                list,
+                                'Currently watching'
+                            );
+                            this.removeAnimeFromListIfAlreadyIn(
+                                list,
+                                'Plan to watch'
+                            );
+                        }
                     }
                 } else {
                     this.addAnimeToListDumb(list);
