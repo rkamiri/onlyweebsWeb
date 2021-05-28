@@ -1,28 +1,26 @@
 * {
     outline-width: 0;
-    font-family: 'Karla', sans-serif !important;
+    font-family: "Karla", sans-serif !important;
 }
 
-
-
-.container{
-    background-color: rgba(40, 43, 48, .95);
+.container {
+    background-color: rgba(40, 43, 48, 0.95);
     border-radius: 0.3em;
     max-width: 70vw;
     padding: 1vw;
     color: #e4e4e4;
 }
-h1{
+h1 {
     text-decoration: underline;
 }
-#head img{
+#head img {
     width: 100%;
 }
 #mainContent {
     margin-top: 2vh;
 }
 
-#mainContent img{
+#mainContent img {
     width: 40vw;
 }
 
@@ -39,7 +37,6 @@ h1{
 
 .author {
     display: flex;
-
 }
 
 .articleBox p {
@@ -54,14 +51,10 @@ h1{
     margin-top: 5vh;
 }
 
-
 @media screen and (max-width: 576px) {
-
-    .container{
+    .container {
         border-radius: 0;
         min-width: 100%;
         padding: 5vw;
     }
-
 }
-

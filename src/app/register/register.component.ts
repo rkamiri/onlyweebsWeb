@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {FormControl, FormGroup} from '@angular/forms';
-import {UserService} from '../shared/service/user.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+import { UserService } from '../shared/service/user.service';
 
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
-    styleUrls: ['./register.component.css']
+    styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
             firstname: new FormControl(''),
             lastname: new FormControl(''),
             email: new FormControl(''),
-            gender: new FormControl('')
+            gender: new FormControl(''),
         });
     }
 
@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
         this.userService.register(this.registerForm.value).subscribe(
             () => {
                 return this.router.navigate(['home']);
-            } ,
+            },
             (error) => {
                 error.log(error);
                 return;

@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {ArticleService} from '../shared/service/article.service';
-import {Article} from '../shared/model/article';
-import {environment} from '../../environments/environment';
+import { Component, OnInit } from '@angular/core';
+import { ArticleService } from '../shared/service/article.service';
+import { Article } from '../shared/model/article';
+import { environment } from '../../environments/environment';
 
 @Component({
     selector: 'app-article-list',
     templateUrl: './article-list.component.html',
-    styleUrls: ['./article-list.component.css']
+    styleUrls: ['./article-list.component.css'],
 })
 export class ArticleListComponent implements OnInit {
     public listArticles: Article[];
@@ -20,7 +20,11 @@ export class ArticleListComponent implements OnInit {
     ngOnInit(): void {
         this.articleService.getAllArticles().subscribe((data) => {
             this.listArticles = data;
-            data.forEach(article => this.articleImageUrls.push(environment.backend + '/image/' + article.cover.id));
+            data.forEach((article) =>
+                this.articleImageUrls.push(
+                    environment.backend + '/image/' + article.cover.id
+                )
+            );
         });
     }
 }

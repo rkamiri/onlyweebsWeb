@@ -1,43 +1,42 @@
 * {
     outline-width: 0;
-    font-family: 'Karla', sans-serif !important;
+    font-family: "Karla", sans-serif !important;
 }
-body{
+body {
     padding-top: 2vh;
     padding-bottom: 2vh;
 }
-.testA{
-    background-color: rgba(40, 43, 48, .75);
+.testA {
+    background-color: rgba(40, 43, 48, 0.75);
     border-radius: 0.3em;
     max-width: 40vw;
     margin: auto;
     padding: 1vw;
 }
 
-.test{
+.test {
     min-width: 36vw;
     margin: auto;
 }
-.test h1{
+.test h1 {
     color: white;
     margin: auto;
     text-align: center;
     margin-bottom: 5vh;
 }
-.test label{
+.test label {
     color: white;
     margin: 0;
     padding: 0;
 }
 
 .btn-primary:hover {
-    background: #11428D;
+    background: #11428d;
 }
 
 form {
     text-align: center;
 }
-
 
 .owinput {
     background: transparent;
@@ -51,7 +50,7 @@ form {
     margin-bottom: 2vh;
 }
 
-.owinput::placeholder{
+.owinput::placeholder {
     color: #e4e4e4;
 }
 
@@ -76,18 +75,18 @@ select:-webkit-autofill:focus {
 }
 
 @media screen and (max-width: 576px) {
-    body{
+    body {
         padding: 0;
         margin: -10px;
     }
-    h1{
-        padding-top: 2vh;;
+    h1 {
+        padding-top: 2vh;
         font-size: 9.5vw;
     }
-    .testA{
+    .testA {
         margin-left: -1.4vw;
         min-width: 100vw;
-        margin-top:0;
+        margin-top: 0;
         margin-bottom: 0;
         padding-bottom: 3vh;
     }
