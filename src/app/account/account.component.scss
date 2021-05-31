@@ -15,9 +15,11 @@
     padding-bottom: 1vh;
     text-align: center;
 }
+
 .account-settings .user-profile .user-avatar {
     margin: 0 0 1rem 0;
 }
+
 .account-settings .user-profile .user-avatar img {
     width: 7vw;
     height: 7vw;
@@ -25,19 +27,23 @@
     -moz-border-radius: 100px;
     border-radius: 100px;
 }
+
 .account-settings .user-profile h5.user-name {
     margin: 0 0 0.5rem 0;
 }
+
 .account-settings .user-profile h6.user-email {
     margin: 0;
     font-size: 0.8rem;
     font-weight: 400;
 }
+
 .account-settings .about {
     margin: 1rem 0 0 0;
     font-size: 0.8rem;
     text-align: center;
 }
+
 .card {
     background-color: rgba(40, 43, 48, 0.75);
     -webkit-border-radius: 5px;
@@ -46,6 +52,7 @@
     border: 0;
     margin-bottom: 1rem;
 }
+
 .form-control {
     background: transparent;
     border: none;
@@ -57,6 +64,7 @@
     transition: 0.2s ease;
     margin-bottom: 2vh;
 }
+
 textarea {
     min-width: 38.5vw;
 }
@@ -64,6 +72,7 @@ textarea {
 #uploadImage {
     display: none;
 }
+
 .user-avatar:hover {
     cursor: pointer;
 }
