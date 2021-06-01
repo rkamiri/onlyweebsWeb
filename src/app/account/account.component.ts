@@ -160,4 +160,15 @@ export class AccountComponent implements OnInit {
             .sendMailForPasswordUpdateAnfGenerateToken()
             .subscribe(() => {});
     }
+
+    deleteAccount(): void {
+        if (
+            confirm('Are you sure you want to permanently delete your account?')
+        ) {
+            this.userService.deleteUser().subscribe(() => {
+                this.userService.logout();
+                this.router.navigate(['/home']).then();
+            });
+        }
+    }
 }
