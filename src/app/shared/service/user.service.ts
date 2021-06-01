@@ -99,4 +99,10 @@ export class UserService {
             }
         );
     }
+
+    deleteUser(): any {
+        return this.httpclient.delete<any>(
+            environment.backend + '/users/delete'
+        );
+    }
 }
