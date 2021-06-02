@@ -83,11 +83,12 @@
         <div class="col-lg-2 col-md-3 col-sm-1 col-12" id="divDetails">
             <div class="row">
                 <h1 class="detailsContent">Details</h1>
-                <p class="detailsContent">Studio: StudioName</p>
-                <p class="detailsContent">Producer: ProducerName</p>
-                <p class="detailsContent">Airing Date: {{ anime.airing }}</p>
+                <p *ngIf="studios" class="detailsContent">Studio: {{studios[0] !=="" ? studios.toString() : 'not announced yet'}}</p>
+                <p *ngIf="producers" class="detailsContent">Producer:  {{producers[0] !=='' ? producers.toString() : 'not announced yet'}}</p>
+                <p class="detailsContent">Airing Date: {{ anime.airing !== 'None' ? anime.airing : 'not announced yet' }}</p>
+                <p *ngIf="genres" class="detailsContent"> Genres :{{genres[0] !=='' ? genres.toString() : 'not announced yet'}}</p>
                 <p class="detailsContent">
-                    Number of episodes: {{ anime.episodes }}
+                    Number of episodes: {{ anime.episodes ? anime.episodes : 'not announced yet' }}
                 </p>
             </div>
             <div class="row">

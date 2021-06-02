@@ -8,6 +8,7 @@ import { CommentService } from '../shared/service/comment.service';
 import { Lists } from '../shared/model/lists';
 import { IsListedIn } from '../shared/model/is.listed.in';
 import { ListsService } from '../shared/service/lists.service';
+import {AnimeService} from "../shared/service/anime.service";
 
 @Component({
     selector: 'app-anime',
@@ -29,13 +30,17 @@ export class AnimeComponent implements OnDestroy, OnInit {
     navigationSubscription;
     comments;
     userHasComment: boolean;
+    public genres: string[];
+    public studios: string[];
+    public producers: string[];
 
     constructor(
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private ratingService: RatingService,
         private listService: ListsService,
-        private commentsService: CommentService
+        private commentsService: CommentService,
+        private animeService: AnimeService
     ) {
         this.userHasComment = false;
         this.navigationSubscription = this.router.events.subscribe((e: any) => {
@@ -101,6 +106,18 @@ export class AnimeComponent implements OnDestroy, OnInit {
 
     initialiseAnime(): void {
         this.anime = this.activatedRoute.snapshot.data.anime;
+        this.animeService.getGenres(this.anime.id).subscribe(genres => {
+            this.genres = [];
+            genres.forEach(value => this.genres.push(value.name));
+        });
+        this.animeService.getProducers(this.anime.id).subscribe(producers => {
+            this.producers = [];
+            producers.forEach(value => this.producers.push(value.name));
+        });
+        this.animeService.getStudios(this.anime.id).subscribe(studios => {
+            this.studios = [];
+            studios.forEach(value => this.studios.push(value.name));
+        });
     }
 
     updateRating(): void {
