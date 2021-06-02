@@ -1,27 +1,10 @@
 <div class="col button-top">
-    <button class="btn btn-light" [routerLink]="['/list-create']">Create a new list</button>
+    <button class="btn btn-light" [routerLink]="['/list-create']">
+        Create a new list
+    </button>
 </div>
-<div class="row" id="rowList" *ngIf="listsImages!== undefined">
-    <div *ngFor="let list of lists; let i = index" class="col-lg-5 col-md-6 col-12" id="list">
-        <a [routerLink]="['/lists', list.id]" id="boxLink">
-            <div class=" list col-12 row">
-                <div class="col-xl-3 col-lg-3 col-md-4 col-3 row imagesDiv" id="imgDesc">
-                    <div *ngIf="listsImages[i].length<4" class="containerImg">
-                        <div class="imgDiv">
-                            <img loading="lazy" src="{{listsImages[i][0]}}" alt="" class="oneImg">
-                        </div>
-                    </div>
-                    <div *ngIf="listsImages[i].length==4" class=" containerImg">
-                        <div *ngFor="let listImage of listsImages[i]; let j=index" class="imgDiv">
-                            <img loading="lazy" src="{{listImage}}" alt="4 images together" class="fourImages">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-7 col-lg-7 col-md-7 col-6">
-                    <a [routerLink]="['/lists', list.id]" id="nameList">{{ list.name }}</a>
-                    <p class="textDescList">Par name <br/>{{ list.description }}</p>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
+
+<app-anime-list-display
+    [lists]="lists"
+    [isDefault]="'all_custom'"
+></app-anime-list-display>

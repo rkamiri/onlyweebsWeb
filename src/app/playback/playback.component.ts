@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-playback',
-  templateUrl: './playback.component.html',
-  styleUrls: ['./playback.component.css']
+    selector: 'app-playback',
+    templateUrl: './playback.component.html',
+    styleUrls: ['./playback.component.css'],
 })
 export class PlaybackComponent implements OnInit {
+    constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+    ngOnInit(): void {}
 }

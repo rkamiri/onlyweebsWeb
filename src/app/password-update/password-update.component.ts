@@ -1,28 +1,32 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from '../shared/service/user.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {FormControl, FormGroup} from '@angular/forms';
-import {PasswordUpdate} from '../shared/model/password.update';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../shared/service/user.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+import { PasswordUpdate } from '../shared/model/password.update';
 
 @Component({
     selector: 'app-password-update',
     templateUrl: './password-update.component.html',
-    styleUrls: ['./password-update.component.css']
+    styleUrls: ['./password-update.component.css'],
 })
 export class PasswordUpdateComponent implements OnInit {
     private token: string;
     public updatePasswordForm: FormGroup;
     public notSamePassword: boolean;
 
-    constructor(private userService: UserService, private actRoute: ActivatedRoute, private router: Router) {
+    constructor(
+        private userService: UserService,
+        private actRoute: ActivatedRoute,
+        private router: Router
+    ) {
         this.updatePasswordForm = new FormGroup({
             newPassword: new FormControl(''),
-            confirmPassword: new FormControl('')
+            confirmPassword: new FormControl(''),
         });
     }
 
     ngOnInit(): void {
-        this.actRoute.params.subscribe(params => {
+        this.actRoute.params.subscribe((params) => {
             this.token = params.token;
         });
         this.notSamePassword = false;
@@ -45,13 +49,15 @@ export class PasswordUpdateComponent implements OnInit {
     private updatePassword(): void {
         const passwordUpdate: PasswordUpdate = {
             token: this.token,
-            newPassword: this.updatePasswordForm.get('newPassword').value
+            newPassword: this.updatePasswordForm.get('newPassword').value,
         };
-        this.userService.postUpdatePasswordAction(passwordUpdate).subscribe((response) => {
-            if (response.status === 200) {
-                this.userService.logout();
-                this.router.navigate(['/login']).then();
-            }
-        });
+        this.userService
+            .postUpdatePasswordAction(passwordUpdate)
+            .subscribe((response) => {
+                if (response.status === 200) {
+                    this.userService.logout();
+                    this.router.navigate(['/login']).then();
+                }
+            });
     }
 }

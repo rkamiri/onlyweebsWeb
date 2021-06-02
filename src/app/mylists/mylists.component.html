@@ -1,55 +1,21 @@
 <div class="col text-center">
-    <button class="btn btn-light" [routerLink]="['/list-create']">Create a new list</button>
+    <button class="btn btn-light" [routerLink]="['/list-create']">
+        Create a new list
+    </button>
 </div>
 
-<div class="row" class="rowList" *ngIf="listsImagesCustom!== undefined">
-    <div *ngFor="let list of customLists; let i = index" class="col-lg-5 col-md-6 col-12" class="list">
-        <a [routerLink]="['/lists', list.id]" class="boxLink">
-            <div class=" list col-12 row">
-                <div class="col-xl-3 col-lg-3 col-md-4 col-3 row imagesDiv" class="imgDesc">
-                    <div *ngIf="listsImagesCustom[i].length<4" class="containerImg">
-                        <div class="imgDiv">
-                            <img loading="lazy" src="{{listsImagesCustom[i][0]}}" alt="" class="oneImg">
-                        </div>
-                    </div>
-                    <div *ngIf="listsImagesCustom[i].length==4" class=" containerImg">
-                        <div *ngFor="let listImage of listsImagesCustom[i]; let j=index" class="imgDiv">
-                            <img loading="lazy" src="{{listImage}}" alt="4 images together" class="fourImages">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-7 col-lg-7 col-md-7 col-6">
-                    <a [routerLink]="['/lists', list.id]" class="nameList">{{ list.name }}</a>
-                    <p class="textDescList">Par name <br/>{{ list.description }}</p>
-                </div>
-                <div class="text-center" id="button-div">
-                    <button id="delete-button" type="button" class="btn btn-danger" (click)="delete(list.id)">Delete</button>
-                </div>
-            </div>
-        </a>
-    </div>
+<h3 class="text-center listCustom">Your default lists</h3>
+<div className="col-12">
+    <app-anime-list-display
+        [lists]="defaultLists"
+        [isDefault]="'user_default'"
+    ></app-anime-list-display>
 </div>
-<div class="row" class="rowList" *ngIf="listsImagesDefault!== undefined">
-    <div *ngFor="let list of defaultLists; let i = index" class="col-lg-5 col-md-6 col-12" id="list">
-        <a [routerLink]="['/lists', list.id]" class="boxLink">
-            <div class=" list col-12 row">
-                <div class="col-xl-3 col-lg-3 col-md-4 col-3 row imagesDiv" class="imgDesc">
-                    <div *ngIf="listsImagesDefault[i].length<4" class="containerImg">
-                        <div class="imgDiv">
-                            <img loading="lazy" src="{{listsImagesDefault[i][0]}}" alt="" class="oneImg">
-                        </div>
-                    </div>
-                    <div *ngIf="listsImagesDefault[i].length==4" class=" containerImg">
-                        <div *ngFor="let listImage of listsImagesDefault[i]; let j=index" class="imgDiv">
-                            <img loading="lazy" src="{{listImage}}" alt="4 images together" class="fourImages">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-7 col-lg-7 col-md-7 col-6">
-                    <a [routerLink]="['/lists', list.id]" class="nameList">{{ list.name }}</a>
-                    <p class="textDescList">Par name <br/>{{ list.description }}</p>
-                </div>
-            </div>
-        </a>
-    </div>
+<hr />
+<h3 class="text-center listCustom">Your custom lists</h3>
+<div class="col-12">
+    <app-anime-list-display
+        [lists]="customLists"
+        [isDefault]="'user_custom'"
+    ></app-anime-list-display>
 </div>
