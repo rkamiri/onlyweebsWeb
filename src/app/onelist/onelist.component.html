@@ -1,22 +1,22 @@
 <div class="container body" style="font-size: large">
     <div class="container text-center header" id="list_title">
         <h3>{{ listInfo.name }}</h3>
-        <p>{{ listInfo.description }}</p>
+        <p id="desc">{{ listInfo.description }}</p>
     </div>
     <div class="table-responsive">
     <table class="table">
         <thead class="thead-light">
             <tr class="table-dark">
-                <th>Rank</th>
+                <th style="border-top-left-radius: 5px">Rank</th>
                 <th>Cover</th>
                 <th>Anime</th>
                 <th>Seen Episodes</th>
-                <th></th>
+                <th style="border-top-right-radius: 5px"></th>
             </tr>
         </thead>
 
         <tbody class="table-dark">
-            <tr *ngFor="let l of animesOfThisList; let i = index">
+            <tr *ngFor="let l of animesOfThisList; let i = index" class="tr">
                 <td id="{{ i + 1 }}">{{ i + 1 }}</td>
                 <td><img style="max-height: 72px" src="{{l.imgUrl}}"></td>
                 <td>
@@ -34,24 +34,20 @@
                     </button>
                 </td>
             </tr>
-            <tr *ngIf="owned">
-                <td>
-                    <button class="btn btn-primary" (click)="open(content)">
+            <tr *ngIf="owned" id="test">
+                <td style="border-bottom-left-radius: 5px">
+                    <button class="btn btn-primary" *ngIf="!isDefault" (click)="open(content)">
                         <span
-                            ><i class="fa fa-plus-square">
-                                add an anime</i
-                            ></span
-                        >
+                        ><i class="fa fa-plus-square"></i> add an anime</span>
                     </button>
                 </td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>
+                <td style="border-bottom-right-radius: 5px">
                     <button class="btn btn-danger" *ngIf="!isDefault" (click)="deleteList()">
                         <span
-                            ><i class="fa fa-trash"></i> delete this list</span
-                        >
+                            ><i class="fa fa-trash"></i> delete this list</span>
                     </button>
                 </td>
             </tr>

@@ -27,10 +27,12 @@ a {
     padding-bottom: 1vh;
     margin-bottom: 2vh;
     background-color: #2e3032;
+    border-radius: 5px;
 }
+
 th{
     background-color: #11428d!important;
-    border-color: #11428d!important;
+    border-color: transparent!important;
     color: white!important;
 }
 td{
@@ -43,4 +45,29 @@ td{
 }
 .close{
     color:red;
+}
+
+#desc{
+    font-size: 1vw;
+    text-align: center;
+    text-justify: inter-word;
+}
+#test{
+   border-color: transparent!important;
+}
+@media screen and (max-width: 576px) {
+    #desc{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #desc{
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    #desc{
+        font-size: 15px;
+    }
 }
