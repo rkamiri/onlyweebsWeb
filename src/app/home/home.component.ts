@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        console.log('here');
         this.fillArraysWithData();
         this.setTimeOut();
     }
