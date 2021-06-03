@@ -25,9 +25,8 @@
                         <tabset [justified]="true" class="" type="pills">
                             <tab *ngFor="let list of lists; let index = index">
                                 <ng-template tabHeading>
-                                    <span class=""
-                                        ><h4>Top {{ index + 1 }}</h4></span
-                                    >
+                                    <h4>Top {{ index + 1 }}</h4>
+                                    <span class=""></span>
                                 </ng-template>
                                 <div class="row displayList" style="margin: 5%">
                                     <div class="col-3">
@@ -130,7 +129,11 @@
                                                             bg-shadow
                                                         "
                                                     >
-                                                        <a>
+                                                        <a
+                                                            routerLink="/articles/{{
+                                                                articles[0].id
+                                                            }}"
+                                                        >
                                                             <h2
                                                                 class="
                                                                     h3
@@ -143,8 +146,9 @@
                                                                     articles[0]
                                                                         .title
                                                                 }}
-                                                            </h2></a
-                                                        >
+                                                            </h2>
+                                                        </a>
+
                                                         <div class="news-meta">
                                                             <span
                                                                 class="
@@ -235,7 +239,11 @@
                                                         "
                                                         >Anime</a
                                                     >
-                                                    <a>
+                                                    <a
+                                                        routerLink="/articles/{{
+                                                            articles[1].id
+                                                        }}"
+                                                    >
                                                         <h2
                                                             class="
                                                                 h5
@@ -297,7 +305,11 @@
                                                         "
                                                         >Anime</a
                                                     >
-                                                    <a>
+                                                    <a
+                                                        routerLink="/articles/{{
+                                                            articles[2].id
+                                                        }}"
+                                                    >
                                                         <h2
                                                             class="
                                                                 h5
@@ -359,7 +371,11 @@
                                                         "
                                                         >Anime</a
                                                     >
-                                                    <a>
+                                                    <a
+                                                        routerLink="/articles/{{
+                                                            articles[3].id
+                                                        }}"
+                                                    >
                                                         <h2
                                                             class="
                                                                 h5
@@ -421,7 +437,11 @@
                                                         "
                                                         >Anime</a
                                                     >
-                                                    <a>
+                                                    <a
+                                                        routerLink="/articles/{{
+                                                            articles[4].id
+                                                        }}"
+                                                    >
                                                         <h2
                                                             class="
                                                                 h5
