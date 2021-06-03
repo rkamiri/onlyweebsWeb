@@ -1,54 +1,59 @@
-<div class="container text-center text-light" id="">
-    <h4>Create a new list</h4>
-</div>
-<div>
-    <form
-        class="container w-75 text-light"
-        [formGroup]="createListForm"
-        (ngSubmit)="onSubmit()"
-    >
-        <label for="listName">Name</label>
-        <input
-            required="true"
-            formControlName="name"
-            placeholder="Enter name"
-            type="text"
-            id="listName"
-            class="form-control"
-        />
-        <label for="listDescription">Description</label>
-        <textarea
-            id="listDescription"
-            formControlName="description"
-            required="true"
-            placeholder="Enter description"
-            type="text"
-        ></textarea>
-        <div class="custom-control custom-switch">
+<body>
+<div class="container contentContainer">
+    <div class="row align-items-center">
+        <h4>Create a new list</h4>
+    </div>
+
+    <div class="row">
+        <form
+            class="container w-75 text-light"
+            [formGroup]="createListForm"
+            (ngSubmit)="onSubmit()"
+        >
+            <label for="listName">List name</label>
             <input
-                type="checkbox"
-                class="custom-control-input"
-                id="privateChoice"
+                required="true"
+                formControlName="name"
+                placeholder="Enter name"
+                type="text"
+                id="listName"
+                class="form-control"
             />
-            <label class="custom-control-label" for="privateChoice"
+
+            <label for="listDescription">Description</label>
+            <textarea style="width: 100%"
+                id="listDescription"
+                formControlName="description"
+                required="true"
+                placeholder="Enter description"
+                type="text"
+            ></textarea>
+
+            <div class="custom-control custom-switch">
+                <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="privateChoice"
+                />
+                <label class="custom-control-label" for="privateChoice"
                 >Private</label
-            >
-        </div>
-        <p></p>
-        <label for="addAnime">Add anime to your list</label>
-        <input
-            placeholder="Search an anime"
-            id="addAnime"
-            [(ngModel)]="selectedValue"
-            [ngModelOptions]="{ standalone: true }"
-            [typeahead]="animeList"
-            typeaheadOptionField="title"
-            [typeaheadScrollable]="true"
-            (typeaheadOnSelect)="onSelect($event)"
-            class="form-control"
-        />
-        <table class="table text-light">
-            <tbody>
+                >
+            </div>
+            <p></p>
+            <label for="addAnime">Add anime to your list</label>
+            <input
+                placeholder="Search an anime"
+                id="addAnime"
+                [(ngModel)]="selectedValue"
+                [ngModelOptions]="{ standalone: true }"
+                [typeahead]="animeList"
+                typeaheadOptionField="title"
+                [typeaheadScrollable]="true"
+                (typeaheadOnSelect)="onSelect($event)"
+                class="form-control"
+            />
+            <table class="table text-light">
+                <tbody>
                 <tr *ngFor="let l of newList; let i = index">
                     <th id="{{ i + 1 }}" scope="row">{{ l["title"] }}</th>
                     <th id="{{ l }}" class="text-right delete">
@@ -60,17 +65,21 @@
                         </button>
                     </th>
                 </tr>
-            </tbody>
-        </table>
-        <button
-            id="sendNewList"
-            class="btn btn-sm btn-success float-right"
-            [disabled]="!createListForm.valid"
-        >
-            Create
-        </button>
-    </form>
-    <button id="cancelNewList" class="btn btn-sm btn-danger float-right">
-        <a class="text-light" href="/lists">Cancel</a>
-    </button>
+                </tbody>
+            </table>
+            <button
+                id="sendNewList"
+                class="btn btn-sm btn-success "
+                [disabled]="!createListForm.valid"
+            >
+                Create
+            </button>
+            <button id="cancelNewList" class="btn btn-sm btn-danger">
+                <a class="text-light" href="/lists">Cancel</a>
+            </button>
+        </form>
+    </div>
+
 </div>
+
+</body>

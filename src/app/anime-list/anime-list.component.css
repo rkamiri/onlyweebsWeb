@@ -1,4 +1,5 @@
 body {
+    padding-top: 2vh;
     background-color: rgba(40, 43, 48, 0.5);
     padding-bottom: 2vh;
 }
@@ -15,6 +16,13 @@ a {
 }
 .container {
     min-width: 80vw;
+
+}
+.container .card{
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vh;
 }
 .card {
     margin-top: 2vh;
@@ -58,6 +66,48 @@ a {
     box-shadow: none;
 }
 
+
+.product {
+    margin-bottom: 30px;
+}
+.product-inner {
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    padding: 10px;
+}
+.product img {
+    margin-bottom: 10px;
+}
+
+#searchBlock{
+    margin:auto;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    width: 75vw;
+    background-color: rgba(40, 43, 48, 0.75);
+    border-radius: 5px;
+}
+
+#searchBlock .input-group{
+    margin: auto;
+    width: 70vw;
+}
+
+#test{
+    width: 40vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vh;
+}
+
+#test .test{
+    margin: auto;
+}
+
+.test button{
+    min-width: 7.5vw!important;
+    width: 7.5vw!important;
+}
+
 @media screen and (max-width: 1400px) {
     .card {
         width: 18vw;
@@ -66,17 +116,20 @@ a {
 
 @media screen and (max-width: 1200px) {
     .card {
-        width: 40vw;
+        width: 35vw;
     }
 }
 
 @media screen and (max-width: 992px) {
     .card {
-        width: 40vw;
+        width: 35vw;
     }
 }
 
 @media screen and (max-width: 767px) {
+    .container{
+        padding: 0;
+    }
     .card {
         margin: auto;
         margin-top: 4vh;

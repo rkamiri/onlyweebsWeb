@@ -5,6 +5,7 @@ import { Article } from '../shared/model/article';
 import { ArticleService } from '../shared/service/article.service';
 import { Router } from '@angular/router';
 import { ImageService } from '../shared/service/image.service';
+import { ArticleCategories } from '../shared/model/articleCategories';
 
 @Component({
     selector: 'app-article-editor',
@@ -16,7 +17,8 @@ export class ArticleEditorComponent implements OnInit {
     public body: string;
     public articleInfos: FormGroup;
     private formData: FormData;
-
+    public categories: ArticleCategories[];
+    public selectedCategory: ArticleCategories;
     constructor(
         private articleService: ArticleService,
         private route: Router,
@@ -27,6 +29,12 @@ export class ArticleEditorComponent implements OnInit {
         this.formData = new FormData();
         this.articleInfos = new FormGroup({
             title: new FormControl(''),
+        });
+        this.categories = [];
+        this.articleService.getAllCategories().subscribe((data) => {
+            this.categories = data;
+            this.selectedCategory = this.categories[0];
+            console.log(data);
         });
     }
 
@@ -53,11 +61,17 @@ export class ArticleEditorComponent implements OnInit {
             created_at: null,
             author: null,
             cover: null,
+            category: this.selectedCategory,
         };
         this.imageService.postArticleImage(this.formData).subscribe(() => {
             this.articleService.postArticle(article).subscribe((data) => {
                 this.route.navigate(['/articles/' + data]).then();
             });
         });
+    }
+
+    changeCategory($event: ArticleCategories): void {
+        this.selectedCategory = $event;
+        console.log($event);
     }
 }

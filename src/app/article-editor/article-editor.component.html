@@ -44,54 +44,32 @@
                     </button>
                 </div>
             </div>
-            <div class="detailsBox">
-                <h2>Tags</h2>
+            <div class="detailsBox" *ngIf="categories">
+                <h2>Category</h2>
                 <div class="detailsBoxContent">
-                    <div>
-                        <input
-                            type="checkbox"
-                            id="new"
-                            name="subscribe"
-                            value="newsletter"
-                        />
-                        <label for="new">News</label>
-                    </div>
-                    <div>
-                        <input
-                            type="checkbox"
-                            id="event"
-                            name="subscribe"
-                            value="newsletter"
-                        />
-                        <label for="event">Event</label>
-                    </div>
-                    <div>
-                        <input
-                            type="checkbox"
-                            id="video"
-                            name="subscribe"
-                            value="newsletter"
-                        />
-                        <label for="video">Video</label>
-                    </div>
-                    <div>
-                        <input
-                            type="checkbox"
-                            id="music"
-                            name="subscribe"
-                            value="newsletter"
-                        />
-                        <label for="music">Music</label>
-                    </div>
-                    <div>
-                        <input
-                            type="checkbox"
-                            id="videogame"
-                            name="subscribe"
-                            value="newsletter"
-                        />
-                        <label for="videogame">Video games</label>
-                    </div>
+                    <form>
+                        <div *ngFor="let category of categories">
+                            <input
+                                name="selectedCategory"
+                                *ngIf="category.id === 1"
+                                checked
+                                type="radio"
+                                value="{{ category.id }}"
+                                (click)="changeCategory(category.id)"
+                            />
+                            <input
+                                name="selectedCategory"
+                                *ngIf="category.id !== 1"
+                                type="radio"
+                                value="{{ category.id }}"
+                                (click)="changeCategory(category.id)"
+                            />
+
+                            <label>
+                                {{ category.name }}
+                            </label>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

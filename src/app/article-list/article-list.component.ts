@@ -10,6 +10,7 @@ import { environment } from '../../environments/environment';
 })
 export class ArticleListComponent implements OnInit {
     public listArticles: Article[];
+    public listArticlesRunner: Article[];
     public articleImageUrls: string[];
 
     constructor(private articleService: ArticleService) {
@@ -24,6 +25,13 @@ export class ArticleListComponent implements OnInit {
                     environment.backend + '/image/' + article.cover.id
                 )
             );
+            if (this.listArticles.length > 5) {
+                this.listArticlesRunner = this.listArticles.slice(
+                    5,
+                    this.listArticles.length + 1
+                );
+                console.log(this.listArticlesRunner);
+            }
         });
     }
 }
