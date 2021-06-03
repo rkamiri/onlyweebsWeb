@@ -41,6 +41,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxTweetModule } from 'ngx-tweet';
 import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
+import { AnimeListDisplayComponent } from './anime-list-display/anime-list-display.component';
 
 @NgModule({
     declarations: [
@@ -68,6 +69,7 @@ import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
         UnauthorizedErrorComponent,
         ServerErrorComponent,
         PasswordUpdateComponent,
+        AnimeListDisplayComponent,
     ],
     imports: [
         BrowserModule,

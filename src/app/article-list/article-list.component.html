@@ -71,6 +71,30 @@
                                                         "
                                                     >
                                                         <a
+                                                            [style.background-color]="
+                                                                listArticles[0]
+                                                                    .category
+                                                                    .bgColor
+                                                            "
+                                                            class="
+                                                                p-1
+                                                                badge
+                                                                badge-primary
+                                                                rounded-0
+                                                            "
+                                                            [routerLink]="[
+                                                                '/articles/',
+                                                                listArticles[0]
+                                                                    .id
+                                                            ]"
+                                                        >
+                                                            {{
+                                                                listArticles[0]
+                                                                    .category
+                                                                    .name
+                                                            }}</a
+                                                        >
+                                                        <a
                                                             [routerLink]="[
                                                                 '/articles/',
                                                                 listArticles[0]
@@ -182,6 +206,11 @@
                                                     "
                                                 >
                                                     <a
+                                                        [style.background-color]="
+                                                            listArticles[1]
+                                                                .category
+                                                                .bgColor
+                                                        "
                                                         class="
                                                             p-1
                                                             badge badge-primary
@@ -191,7 +220,11 @@
                                                             '/articles/',
                                                             listArticles[1].id
                                                         ]"
-                                                        >Anime</a
+                                                    >
+                                                        {{
+                                                            listArticles[1]
+                                                                .category.name
+                                                        }}</a
                                                     >
                                                     <a
                                                         [routerLink]="[
@@ -260,6 +293,11 @@
                                                     "
                                                 >
                                                     <a
+                                                        [style.background-color]="
+                                                            listArticles[2]
+                                                                .category
+                                                                .bgColor
+                                                        "
                                                         class="
                                                             p-1
                                                             badge badge-primary
@@ -269,7 +307,10 @@
                                                             '/articles/',
                                                             listArticles[2].id
                                                         ]"
-                                                        >Anime</a
+                                                        >{{
+                                                            listArticles[2]
+                                                                .category.name
+                                                        }}</a
                                                     >
                                                     <a
                                                         [routerLink]="[
@@ -338,6 +379,11 @@
                                                     "
                                                 >
                                                     <a
+                                                        [style.background-color]="
+                                                            listArticles[3]
+                                                                .category
+                                                                .bgColor
+                                                        "
                                                         class="
                                                             p-1
                                                             badge badge-primary
@@ -347,7 +393,10 @@
                                                             '/articles/',
                                                             listArticles[3].id
                                                         ]"
-                                                        >Anime</a
+                                                        >{{
+                                                            listArticles[3]
+                                                                .category.name
+                                                        }}</a
                                                     >
                                                     <a
                                                         [routerLink]="[
@@ -416,6 +465,11 @@
                                                     "
                                                 >
                                                     <a
+                                                        [style.background-color]="
+                                                            listArticles[4]
+                                                                .category
+                                                                .bgColor
+                                                        "
                                                         class="
                                                             p-1
                                                             badge badge-primary
@@ -425,7 +479,10 @@
                                                             '/articles/',
                                                             listArticles[4].id
                                                         ]"
-                                                        >Anime</a
+                                                        >{{
+                                                            listArticles[4]
+                                                                .category.name
+                                                        }}</a
                                                     >
                                                     <a
                                                         [routerLink]="[
@@ -456,7 +513,10 @@
                     </div>
                 </div>
                 <a
-                    *ngFor="let article of listArticles; let index = index"
+                    *ngFor="
+                        let article of listArticlesRunner;
+                        let index = index
+                    "
                     id="featuretteBlock"
                 >
                     <hr class="featurette-divider" />
@@ -470,6 +530,15 @@
                             </h2>
                         </div>
                         <div class="col-md-5 order-md-1">
+                            <a
+                                style="position: absolute; top: 1vh"
+                                [style.background-color]="
+                                    article.category.bgColor
+                                "
+                                class="p-1 badge badge-primary rounded-0"
+                                [routerLink]="['/articles/', article.id]"
+                                >{{ article.category.name }}</a
+                            >
                             <img
                                 loading="lazy"
                                 class="
@@ -479,7 +548,7 @@
                                     mx-auto
                                     articleImage
                                 "
-                                src="{{ articleImageUrls[index] }}"
+                                src="{{ articleImageUrls[index + 5] }}"
                                 alt="article image"
                             />
                         </div>

@@ -1,24 +1,18 @@
-.card {
-    background-color: rgba(40, 43, 48, 0.75);
+body {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
 }
-
-.delete {
-    color: red;
+.contentContainer {
+    background-color: #2e3032;
+    padding-bottom: 1vh;
 }
-
-.btn-group-xs > .btn,
-.btn-xs {
-    padding: 0.25rem 0.4rem;
-    font-size: 0.875rem;
-    line-height: 0.5;
-    border-radius: 0.2rem;
-    margin-left: 0.25rem;
+h4 {
+    padding-top: 1vh;
+    color: white;
+    margin: auto;
+    text-align: center;
 }
 
 #cancelNewList {
-    margin-right: 1px;
-}
-
-a {
-    text-decoration: none;
+    margin-left: 1vw;
 }

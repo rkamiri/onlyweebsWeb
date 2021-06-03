@@ -1,58 +1,76 @@
-<div class="container text-center" id="list_title">
-    <h3>{{ listInfo.name }}</h3>
-    <p>{{ listInfo.description }}</p>
-</div>
-<div class="container w-75" style="font-size: large">
-    <table class="table">
-        <thead class="thead-light">
-            <tr class="table-dark">
-                <th>Rang</th>
-                <th>Animé</th>
-                <th>Nombre d'épisodes vus</th>
-                <th></th>
-            </tr>
-        </thead>
+<div class="container body" style="font-size: large">
+    <div class="container text-center header" id="list_title">
+        <h3>{{ listInfo.name }}</h3>
+        <p id="desc">{{ listInfo.description }}</p>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-light">
+                <tr class="table-dark">
+                    <th style="border-top-left-radius: 5px">Rank</th>
+                    <th>Cover</th>
+                    <th>Anime</th>
+                    <th>Seen Episodes</th>
+                    <th style="border-top-right-radius: 5px"></th>
+                </tr>
+            </thead>
 
-        <tbody class="table-dark">
-            <tr *ngFor="let l of animesOfThisList; let i = index">
-                <td id="{{ i + 1 }}">{{ i + 1 }}</td>
-                <td>
-                    <a [routerLink]="['/animes', l.id]">{{ l.title }}</a>
-                </td>
-                <td>0/98</td>
-                <td>
-                    <button
-                        *ngIf="owned"
-                        (click)="onDelete(l.id)"
-                        id="removeAnime"
-                        class="btn btn-xs btn-danger"
-                    >
-                        X
-                    </button>
-                </td>
-            </tr>
-            <tr *ngIf="owned" class="">
-                <td>
-                    <button (click)="open(content)">
-                        <span
-                            ><i class="fa fa-plus-square">
-                                add an anime</i
-                            ></span
+            <tbody class="table-dark">
+                <tr
+                    *ngFor="let l of animesOfThisList; let i = index"
+                    class="tr"
+                >
+                    <td id="{{ i + 1 }}">{{ i + 1 }}</td>
+                    <td>
+                        <img style="max-height: 72px" src="{{ l.imgUrl }}" />
+                    </td>
+                    <td>
+                        <a [routerLink]="['/animes', l.id]">{{ l.title }}</a>
+                    </td>
+                    <td>X/{{ l.episodes }}</td>
+                    <td>
+                        <button
+                            *ngIf="owned"
+                            (click)="onDelete(l.id)"
+                            id="removeAnime"
+                            class="btn btn-xs btn-danger"
                         >
-                    </button>
-                </td>
-                <td></td>
-                <td></td>
-                <td>
-                    <button *ngIf="!isDefault" (click)="deleteList()">
-                        <span
-                            ><i class="fa fa-trash"></i> delete this list</span
+                            X
+                        </button>
+                    </td>
+                </tr>
+                <tr *ngIf="owned" id="test">
+                    <td style="border-bottom-left-radius: 5px">
+                        <button
+                            class="btn btn-primary"
+                            *ngIf="!isDefault"
+                            (click)="open(content)"
                         >
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                            <span
+                                ><i class="fa fa-plus-square"></i> add an
+                                anime</span
+                            >
+                        </button>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="border-bottom-right-radius: 5px">
+                        <button
+                            class="btn btn-danger"
+                            *ngIf="!isDefault"
+                            (click)="deleteList()"
+                        >
+                            <span
+                                ><i class="fa fa-trash"></i> delete this
+                                list</span
+                            >
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <ng-template #content let-modal>
     <div class="modal-header">
@@ -73,7 +91,6 @@
             (ngSubmit)="onSubmit()"
         >
             <div class="form-group">
-                <label for="addAnime">Add anime to your list</label>
                 <div class="input-group">
                     <input
                         placeholder="Add an anime"
@@ -88,9 +105,9 @@
                     />
                     <button
                         id="sendNewList"
-                        class="btn btn-sm btn-success float-right"
+                        class="btn btn-sm btn-primary float-right searchBtn"
                     >
-                        Create
+                        Add
                     </button>
                 </div>
             </div>

@@ -8,10 +8,6 @@
     display: flex;
 }
 
-#button-div {
-    flex: 1;
-}
-
-#delete-button {
-    size: 5vw;
+.listCustom {
+    color: white;
 }
