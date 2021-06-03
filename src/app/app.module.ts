@@ -35,6 +35,12 @@ import { ForbiddenErrorComponent } from './errors/forbidden-error/forbidden-erro
 import { UnauthorizedErrorComponent } from './errors/unauthorized-error/unauthorized-error.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { PasswordUpdateComponent } from './password-update/password-update.component';
+import { CommonModule } from '@angular/common';
+import { NgImageSliderModule } from 'ng-image-slider';
+import { MatTabsModule } from '@angular/material/tabs';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { NgxTweetModule } from 'ngx-tweet';
+import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 
 @NgModule({
     declarations: [
@@ -76,6 +82,13 @@ import { PasswordUpdateComponent } from './password-update/password-update.compo
         BrowserAnimationsModule,
         NgxSpinnerModule,
         CKEditorModule,
+        CommonModule,
+        BrowserModule,
+        MatTabsModule,
+        NgImageSliderModule,
+        TabsModule.forRoot(),
+        NgxTweetModule,
+        NgxTwitterTimelineModule,
     ],
     providers: [
         [

@@ -1,570 +1,380 @@
-<div *ngIf="loaded" id="mainContainer" class="container text-light">
-    <div class="text-light text-center">
+<!-- LISTE DU MOMENT -->
+<div class="container mainContainer text-light">
+    <div class="text-center">
         <h3>LES LISTES DU MOMENTS</h3>
     </div>
-    <div class="row" *ngIf="lists !== undefined">
-        <div class="col-5">
-            <input
-                hidden
-                type="radio"
-                name="carousel-control"
-                id="button_1"
-                checked
-            />
-            <input hidden type="radio" name="carousel-control" id="button_2" />
-            <input hidden type="radio" name="carousel-control" id="button_3" />
-            <input hidden type="radio" name="carousel-control" id="button_4" />
-            <input hidden type="radio" name="carousel-control" id="button_5" />
-            <input hidden type="radio" name="carousel-control" id="button_6" />
-            <div id="carousel" class="">
-                <div
-                    class="p-wrapper"
-                    *ngFor="let list of lists; let index = index"
-                >
-                    <section class="top_{{ index + 1 }}">
-                        <div
-                            class="
-                                row
-                                justify-content-center
-                                align-content-center
-                            "
-                        >
-                            <div
-                                class="col-1 text-center justify-content-center"
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <tabset [justified]="true" class="" type="pills">
+                    <tab *ngFor="let list of lists; let index = index">
+                        <ng-template tabHeading>
+                            <span class=""
+                                ><h4>Top {{ index + 1 }}</h4></span
                             >
+                        </ng-template>
+                        <div class="row displayList" style="margin: 5%">
+                            <div class="col-3">
                                 <img
-                                    loading="lazy"
-                                    id="icon_like1"
-                                    class="icon_like rounded mx-auto d-block"
-                                    src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMzkxLjgzNyAzOTEuODM3IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzOTEuODM3IDM5MS44Mzc7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiNENzQ0M0U7IiBkPSJNMjg1LjI1NywzNS41MjhjNTguNzQzLDAuMjg2LDEwNi4yOTQsNDcuODM2LDEwNi41OCwxMDYuNTgNCgkJYzAsMTA3LjYyNC0xOTUuOTE4LDIxNC4yMDQtMTk1LjkxOCwyMTQuMjA0UzAsMjQ4LjE2NSwwLDE0Mi4xMDhjMC01OC44NjIsNDcuNzE3LTEwNi41OCwxMDYuNTgtMTA2LjU4bDAsMA0KCQljMzYuMDMyLTAuMjgxLDY5LjcxOCwxNy44NDIsODkuMzM5LDQ4LjA2NUMyMTUuNjc0LDUzLjUxNywyNDkuMjczLDM1LjQ0MSwyODUuMjU3LDM1LjUyOHoiLz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K"
-                                    alt=""
+                                    class="img-fluid"
+                                    src="{{ imageObject[0]['thumbImage'] }}"
                                 />
-                                <label class="text-center" for="icon_like1"
-                                    >1568{{ "" }}</label
-                                >
-                                <img
-                                    loading="lazy"
-                                    id="icon_share{{ index + 1 }}"
-                                    class="icon_share rounded mx-auto d-block"
-                                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMS42MjYgNTExLjYyNyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgY2xhc3M9IiI+PGc+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+Cgk8cGF0aCBkPSJNNTA2LjIwNiwxNzkuMDEyTDM2MC4wMjUsMzIuODM0Yy0zLjYxNy0zLjYxNy03Ljg5OC01LjQyNi0xMi44NDctNS40MjZzLTkuMjMzLDEuODA5LTEyLjg0Nyw1LjQyNiAgIGMtMy42MTcsMy42MTktNS40MjgsNy45MDItNS40MjgsMTIuODV2NzMuMDg5aC02My45NTNjLTEzNS43MTYsMC0yMTguOTg0LDM4LjM1NC0yNDkuODIzLDExNS4wNkM1LjA0MiwyNTkuMzM1LDAsMjkxLjAzLDAsMzI4LjkwNyAgIGMwLDMxLjU5NCwxMi4wODcsNzQuNTE0LDM2LjI1OSwxMjguNzYyYzAuNTcsMS4zMzUsMS41NjYsMy42MTQsMi45OTYsNi44NDljMS40MjksMy4yMzMsMi43MTIsNi4wODgsMy44NTQsOC41NjUgICBjMS4xNDYsMi40NzEsMi4zODQsNC41NjUsMy43MTUsNi4yNzZjMi4yODIsMy4yMzcsNC45NDgsNC44NTksNy45OTQsNC44NTljMi44NTUsMCw1LjA5Mi0wLjk1MSw2LjcxMS0yLjg1NCAgIGMxLjYxNS0xLjkwMiwyLjQyNC00LjI4NCwyLjQyNC03LjEzMmMwLTEuNzE4LTAuMjM4LTQuMjM2LTAuNzE1LTcuNTY5Yy0wLjQ3Ni0zLjMzMy0wLjcxNS01LjU2NC0wLjcxNS02LjcwOCAgIGMtMC45NTMtMTIuOTM4LTEuNDI5LTI0LjY1My0xLjQyOS0zNS4xMTRjMC0xOS4yMjMsMS42NjgtMzYuNDQ5LDQuOTk2LTUxLjY3NWMzLjMzMy0xNS4yMjksNy45NDgtMjguNDA3LDEzLjg1LTM5LjU0MyAgIGM1LjkwMS0xMS4xNCwxMy41MTItMjAuNzQ1LDIyLjg0MS0yOC44MzVjOS4zMjUtOC4wOSwxOS4zNjQtMTQuNzAyLDMwLjExOC0xOS44NDJjMTAuNzU2LTUuMTQxLDIzLjQxMy05LjE4NiwzNy45NzQtMTIuMTM1ICAgYzE0LjU2LTIuOTUsMjkuMjE1LTQuOTk3LDQzLjk2OC02LjE0czMxLjQ1NS0xLjcxMSw1MC4xMDktMS43MTFoNjMuOTUzdjczLjA5MWMwLDQuOTQ4LDEuODA3LDkuMjMyLDUuNDIxLDEyLjg0NyAgIGMzLjYyLDMuNjEzLDcuOTAxLDUuNDI0LDEyLjg0Nyw1LjQyNGM0Ljk0OCwwLDkuMjMyLTEuODExLDEyLjg1NC01LjQyNGwxNDYuMTc4LTE0Ni4xODNjMy42MTctMy42MTcsNS40MjQtNy44OTgsNS40MjQtMTIuODQ3ICAgQzUxMS42MjYsMTg2LjkyLDUwOS44MiwxODIuNjM2LDUwNi4yMDYsMTc5LjAxMnoiIGZpbGw9IiMzYWE2NDUiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIHN0eWxlPSIiIGNsYXNzPSIiPjwvcGF0aD4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8L2c+PC9zdmc+"
-                                    alt=""
-                                />
-                                <label
-                                    class="text-center"
-                                    for="icon_share{{ index + 1 }}"
-                                    >356{{ "" }}</label
-                                >
                             </div>
-                            <div id="top{{ index + 1 }}" class="col-11">
-                                <img
-                                    loading="lazy"
-                                    id="image_top{{ index + 1 }}"
-                                    class="image_top"
-                                    src="https://i2.wp.com/www.superpouvoir.com/wp-content/uploads/2019/04/top-5-sports-anime-of-2016-bentobyte-1140x500-1.jpg?resize=800%2C400&ssl=1"
-                                    alt=""
-                                />
-                                <div
-                                    id="infos_top{{ index + 1 }}"
-                                    class="text-left"
-                                >
-                                    <h3 id="nom_top{{ index + 1 }}">
-                                        <a
-                                            [routerLink]="[
-                                                '/lists',
-                                                lists[index].id
-                                            ]"
-                                            >{{ lists[index].name }}</a
-                                        >
-                                    </h3>
-                                    <h5 id="user_top{{ index + 1 }}">
-                                        par {{ lists[index].isOwnedBy }}
-                                    </h5>
+
+                            <div class="col">
+                                <div class="row">
+                                    <h3>{{ list.name }}</h3>
+                                </div>
+                                <div class="row">
+                                    <h4>{{ list.description }}</h4>
+                                </div>
+                                <div class="row">
+                                    <span>de {{ list.isOwnedBy }}</span>
                                 </div>
                             </div>
                         </div>
-                    </section>
-                </div>
-            </div>
-        </div>
-        <div class="col-7" *ngIf="loaded">
-            <div id="navigation" *ngFor="let list of lists; let index = index">
-                <a routerLink="/lists/{{ list.id }}">
-                    <label class="label_{{ index + 1 }}"></label>
-                    <div class="row">
-                        <div class="middle"></div>
-                        <div class="col-1 my-auto ici">
-                            <h3 class="text-primary">{{ index + 1 }}</h3>
-                        </div>
-                        <div class="col-4">
-                            <img
-                                loading="lazy"
-                                class=""
-                                style="max-width: 10em"
-                                src="https://i2.wp.com/www.superpouvoir.com/wp-content/uploads/2019/04/top-5-sports-anime-of-2016-bentobyte-1140x500-1.jpg?resize=800%2C400&ssl=1"
-                                alt=""
-                            />
-                        </div>
-                        <div class="col-6 my-auto">
-                            <p class="text-left">{{ lists[index].name }}</p>
-                        </div>
-                    </div>
-                </a>
+                    </tab>
+                </tabset>
             </div>
         </div>
     </div>
 </div>
-<div class="container">
+
+<!-- TOP DES SORTIES -->
+<div class="container mainContainer">
     <div class="text-light text-center">
         <h3>TOP DES SORTIES</h3>
     </div>
-    <div>
-        <div class="container anime" *ngIf="animes !== undefined">
-            <div class="row">
-                <div
-                    *ngFor="let anime of animes"
-                    class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-4"
-                >
-                    <a [routerLink]="['/animes', anime.id]">
-                        <div class="card">
-                            <img
-                                loading="lazy"
-                                src="{{ anime.imgUrl }}"
-                                class="card-img-top"
-                                alt="one piece png"
-                            />
-                            <div class="card-img-overlay">
-                                <h5 class="card-title">{{ anime.title }}</h5>
+    <ng-image-slider
+        #nav
+        (imageClick)="goToAnime($event)"
+        [imagePopup]="false"
+        [images]="imageObject"
+    >
+    </ng-image-slider>
+</div>
+
+<!-- ACTUALITé -->
+
+<div class="container mainContainer">
+    <div class="text-light text-center">
+        <h3>ACTUALITÉ</h3>
+    </div>
+    <div class="row">
+        <div class="row">
+            <div class="col-12 pb-5">
+                <section class="row">
+                    <div class="col-12 col-md-6 pb-0 pb-md-3 pt-2 pr-md-1">
+                        <div
+                            class="carousel"
+                            data-ride="carousel"
+                            id="featured"
+                        >
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div
+                                        class="
+                                            card
+                                            border-0
+                                            rounded-0
+                                            text-light
+                                            overflow
+                                            zoom
+                                        "
+                                    >
+                                        <div class="position-relative">
+                                            <div
+                                                class="
+                                                    ratio_left-cover-1
+                                                    image-wrapper
+                                                "
+                                            >
+                                                <a
+                                                    ><img
+                                                        alt="Bootstrap news template"
+                                                        class="img-fluid w-100"
+                                                        id="image1"
+                                                        src="{{
+                                                            imagesUrls[0]
+                                                        }}"
+                                                /></a>
+                                            </div>
+                                            <div
+                                                class="
+                                                    position-absolute
+                                                    p-2 p-lg-3
+                                                    b-0
+                                                    w-100
+                                                    bg-shadow
+                                                "
+                                            >
+                                                <a>
+                                                    <h2
+                                                        class="
+                                                            h3
+                                                            post-title
+                                                            text-white
+                                                            my-1
+                                                        "
+                                                    >
+                                                        {{ articles[0].title }}
+                                                    </h2></a
+                                                >
+                                                <div class="news-meta">
+                                                    <span class="news-author"
+                                                        >by
+                                                        <a
+                                                            class="
+                                                                text-white
+                                                                font-weight-bold
+                                                            "
+                                                            href="/#/animes"
+                                                            >{{
+                                                                articles[0]
+                                                                    .author
+                                                                    .username
+                                                            }}</a
+                                                        ></span
+                                                    >
+                                                    <span class="news-date"
+                                                        >on
+                                                        {{
+                                                            articles[0]
+                                                                .created_at
+                                                        }}</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="text-light text-center">
-            <h3>ACTUALITÉ</h3>
-        </div>
-    </div>
-    <div class="container" *ngIf="articles !== undefined">
-        <div class="row">
-            <div class="row" *ngIf="imagesUrls !== undefined">
-                <div class="col-12 pb-5">
-                    <section class="row">
-                        <div class="col-12 col-md-6 pb-0 pb-md-3 pt-2 pr-md-1">
-                            <div
-                                id="featured"
-                                class="carousel"
-                                data-ride="carousel"
-                            >
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
+                    </div>
+                    <div class="col-12 col-md-6 pt-2 pl-md-1 mb-3 mb-lg-4">
+                        <div class="row">
+                            <div class="col-6 pb-1 pt-0 pr-1">
+                                <div
+                                    class="
+                                        card
+                                        border-0
+                                        rounded-0
+                                        text-white
+                                        overflow
+                                        zoom
+                                    "
+                                >
+                                    <div class="position-relative">
                                         <div
                                             class="
-                                                card
-                                                border-0
-                                                rounded-0
-                                                text-light
-                                                overflow
-                                                zoom
+                                                ratio_right-cover-2
+                                                image-wrapper
                                             "
                                         >
-                                            <div class="position-relative">
-                                                <div
-                                                    class="
-                                                        ratio_left-cover-1
-                                                        image-wrapper
-                                                    "
-                                                >
-                                                    <a
-                                                        [routerLink]="[
-                                                            '/articles/',
-                                                            articles[0].id
-                                                        ]"
-                                                    >
-                                                        <img
-                                                            loading="lazy"
-                                                            id="image1"
-                                                            class="
-                                                                img-fluid
-                                                                w-100
-                                                            "
-                                                            src="{{
-                                                                imagesUrls[0]
-                                                            }}"
-                                                            alt="Bootstrap news template"
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div
-                                                    class="
-                                                        position-absolute
-                                                        p-2 p-lg-3
-                                                        b-0
-                                                        w-100
-                                                        bg-shadow
-                                                    "
-                                                >
-                                                    <a
-                                                        [routerLink]="[
-                                                            '/articles/',
-                                                            articles[0].id
-                                                        ]"
-                                                    >
-                                                        <h2
-                                                            class="
-                                                                h3
-                                                                post-title
-                                                                text-white
-                                                                my-1
-                                                            "
-                                                        >
-                                                            {{
-                                                                articles[0]
-                                                                    .title
-                                                            }}
-                                                        </h2>
-                                                    </a>
-                                                    <div class="news-meta">
-                                                        <span
-                                                            class="news-author"
-                                                            >by
-                                                            <a
-                                                                class="
-                                                                    text-white
-                                                                    font-weight-bold
-                                                                "
-                                                                href="/#/animes"
-                                                                >{{
-                                                                    articles[0]
-                                                                        .author
-                                                                        .username
-                                                                }}</a
-                                                            ></span
-                                                        >
-                                                        <span class="news-date">
-                                                            on
-                                                            {{
-                                                                articles[0]
-                                                                    .created_at
-                                                            }}</span
-                                                        >
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <a
+                                                ><img
+                                                    alt="simple blog template bootstrap"
+                                                    class="img-fluid"
+                                                    src="{{ imagesUrls[1] }}"
+                                            /></a>
+                                        </div>
+                                        <div
+                                            class="
+                                                position-absolute
+                                                p-2 p-lg-3
+                                                b-0
+                                                w-100
+                                                bg-shadow
+                                            "
+                                        >
+                                            <a
+                                                class="
+                                                    p-1
+                                                    badge badge-primary
+                                                    rounded-0
+                                                "
+                                                >Anime</a
+                                            >
+                                            <a>
+                                                <h2 class="h5 text-white my-1">
+                                                    {{ articles[1].title }}
+                                                </h2></a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 pb-1 pl-1 pt-0">
+                                <div
+                                    class="
+                                        card
+                                        border-0
+                                        rounded-0
+                                        text-white
+                                        overflow
+                                        zoom
+                                    "
+                                >
+                                    <div class="position-relative">
+                                        <div
+                                            class="
+                                                ratio_right-cover-2
+                                                image-wrapper
+                                            "
+                                        >
+                                            <a
+                                                ><img
+                                                    alt="bootstrap templates for blog"
+                                                    class="img-fluid"
+                                                    src="{{ imagesUrls[2] }}"
+                                            /></a>
+                                        </div>
+                                        <div
+                                            class="
+                                                position-absolute
+                                                p-2 p-lg-3
+                                                b-0
+                                                w-100
+                                                bg-shadow
+                                            "
+                                        >
+                                            <a
+                                                class="
+                                                    p-1
+                                                    badge badge-primary
+                                                    rounded-0
+                                                "
+                                                >Anime</a
+                                            >
+                                            <a>
+                                                <h2 class="h5 text-white my-1">
+                                                    {{ articles[2].title }}
+                                                </h2></a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 pb-1 pr-1 pt-1">
+                                <div
+                                    class="
+                                        card
+                                        border-0
+                                        rounded-0
+                                        text-white
+                                        overflow
+                                        zoom
+                                    "
+                                >
+                                    <div class="position-relative">
+                                        <div
+                                            class="
+                                                ratio_right-cover-2
+                                                image-wrapper
+                                            "
+                                        >
+                                            <a
+                                                ><img
+                                                    alt="bootstrap blog wordpress theme"
+                                                    class="img-fluid"
+                                                    src="{{ imagesUrls[3] }}"
+                                            /></a>
+                                        </div>
+                                        <div
+                                            class="
+                                                position-absolute
+                                                p-2 p-lg-3
+                                                b-0
+                                                w-100
+                                                bg-shadow
+                                            "
+                                        >
+                                            <a
+                                                class="
+                                                    p-1
+                                                    badge badge-primary
+                                                    rounded-0
+                                                "
+                                                >Anime</a
+                                            >
+                                            <a>
+                                                <h2 class="h5 text-white my-1">
+                                                    {{ articles[3].title }}
+                                                </h2></a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 pb-1 pl-1 pt-1">
+                                <div
+                                    class="
+                                        card
+                                        border-0
+                                        rounded-0
+                                        text-white
+                                        overflow
+                                        zoom
+                                    "
+                                >
+                                    <div class="position-relative">
+                                        <div
+                                            class="
+                                                ratio_right-cover-2
+                                                image-wrapper
+                                            "
+                                        >
+                                            <a
+                                                ><img
+                                                    alt="blog website templates bootstrap"
+                                                    class="img-fluid"
+                                                    src="{{ imagesUrls[4] }}"
+                                            /></a>
+                                        </div>
+                                        <div
+                                            class="
+                                                position-absolute
+                                                p-2 p-lg-3
+                                                b-0
+                                                w-100
+                                                bg-shadow
+                                            "
+                                        >
+                                            <a
+                                                class="
+                                                    p-1
+                                                    badge badge-primary
+                                                    rounded-0
+                                                "
+                                                >Anime</a
+                                            >
+                                            <a>
+                                                <h2 class="h5 text-white my-1">
+                                                    {{ articles[4].title }}
+                                                </h2></a
+                                            >
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 pt-2 pl-md-1 mb-3 mb-lg-4">
-                            <div class="row">
-                                <div class="col-6 pb-1 pt-0 pr-1">
-                                    <div
-                                        class="
-                                            card
-                                            border-0
-                                            rounded-0
-                                            text-white
-                                            overflow
-                                            zoom
-                                        "
-                                    >
-                                        <div class="position-relative">
-                                            <div
-                                                class="
-                                                    ratio_right-cover-2
-                                                    image-wrapper
-                                                "
-                                            >
-                                                <a
-                                                    [routerLink]="[
-                                                        '/articles/',
-                                                        articles[1].id
-                                                    ]"
-                                                >
-                                                    <img
-                                                        loading="lazy"
-                                                        class="img-fluid"
-                                                        src="{{
-                                                            imagesUrls[1]
-                                                        }}"
-                                                        alt="simple blog template bootstrap"
-                                                    />
-                                                </a>
-                                            </div>
-                                            <div
-                                                class="
-                                                    position-absolute
-                                                    p-2 p-lg-3
-                                                    b-0
-                                                    w-100
-                                                    bg-shadow
-                                                "
-                                            >
-                                                <a
-                                                    class="
-                                                        p-1
-                                                        badge badge-primary
-                                                        rounded-0
-                                                    "
-                                                    [routerLink]="[
-                                                        '/articles/',
-                                                        articles[1].id
-                                                    ]"
-                                                    >Anime</a
-                                                >
-                                                <a
-                                                    [routerLink]="[
-                                                        '/articles/',
-                                                        articles[1].id
-                                                    ]"
-                                                >
-                                                    <h2
-                                                        class="
-                                                            h5
-                                                            text-white
-                                                            my-1
-                                                        "
-                                                    >
-                                                        {{ articles[1].title }}
-                                                    </h2>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 pb-1 pl-1 pt-0">
-                                    <div
-                                        class="
-                                            card
-                                            border-0
-                                            rounded-0
-                                            text-white
-                                            overflow
-                                            zoom
-                                        "
-                                    >
-                                        <div class="position-relative">
-                                            <div
-                                                class="
-                                                    ratio_right-cover-2
-                                                    image-wrapper
-                                                "
-                                            >
-                                                <a
-                                                    [routerLink]="[
-                                                        '/articles/',
-                                                        articles[2].id
-                                                    ]"
-                                                >
-                                                    <img
-                                                        loading="lazy"
-                                                        class="img-fluid"
-                                                        src="{{
-                                                            imagesUrls[2]
-                                                        }}"
-                                                        alt="bootstrap templates for blog"
-                                                    />
-                                                </a>
-                                            </div>
-                                            <div
-                                                class="
-                                                    position-absolute
-                                                    p-2 p-lg-3
-                                                    b-0
-                                                    w-100
-                                                    bg-shadow
-                                                "
-                                            >
-                                                <a
-                                                    class="
-                                                        p-1
-                                                        badge badge-primary
-                                                        rounded-0
-                                                    "
-                                                    [routerLink]="[
-                                                        '/articles/',
-                                                        articles[2].id
-                                                    ]"
-                                                    >Anime</a
-                                                >
-                                                <a
-                                                    [routerLink]="[
-                                                        '/articles/',
-                                                        articles[2].id
-                                                    ]"
-                                                >
-                                                    <h2
-                                                        class="
-                                                            h5
-                                                            text-white
-                                                            my-1
-                                                        "
-                                                    >
-                                                        {{ articles[2].title }}
-                                                    </h2>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-6 pb-1 pr-1 pt-1">
-                                    <div
-                                        class="
-                                            card
-                                            border-0
-                                            rounded-0
-                                            text-white
-                                            overflow
-                                            zoom
-                                        "
-                                    >
-                                        <div class="position-relative">
-                                            <div
-                                                class="
-                                                    ratio_right-cover-2
-                                                    image-wrapper
-                                                "
-                                            >
-                                                <a
-                                                    [routerLink]="[
-                                                        '/articles/',
-                                                        articles[3].id
-                                                    ]"
-                                                >
-                                                    <img
-                                                        loading="lazy"
-                                                        class="img-fluid"
-                                                        src="{{
-                                                            imagesUrls[3]
-                                                        }}"
-                                                        alt="bootstrap blog wordpress theme"
-                                                    />
-                                                </a>
-                                            </div>
-                                            <div
-                                                class="
-                                                    position-absolute
-                                                    p-2 p-lg-3
-                                                    b-0
-                                                    w-100
-                                                    bg-shadow
-                                                "
-                                            >
-                                                <a
-                                                    class="
-                                                        p-1
-                                                        badge badge-primary
-                                                        rounded-0
-                                                    "
-                                                    [routerLink]="[
-                                                        '/articles/',
-                                                        articles[3].id
-                                                    ]"
-                                                    >Anime</a
-                                                >
-                                                <a
-                                                    [routerLink]="[
-                                                        '/articles/',
-                                                        articles[3].id
-                                                    ]"
-                                                >
-                                                    <h2
-                                                        class="
-                                                            h5
-                                                            text-white
-                                                            my-1
-                                                        "
-                                                    >
-                                                        {{ articles[3].title }}
-                                                    </h2>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 pb-1 pl-1 pt-1">
-                                    <div
-                                        class="
-                                            card
-                                            border-0
-                                            rounded-0
-                                            text-white
-                                            overflow
-                                            zoom
-                                        "
-                                    >
-                                        <div class="position-relative">
-                                            <div
-                                                class="
-                                                    ratio_right-cover-2
-                                                    image-wrapper
-                                                "
-                                            >
-                                                <a
-                                                    [routerLink]="[
-                                                        '/articles/',
-                                                        articles[4].id
-                                                    ]"
-                                                >
-                                                    <img
-                                                        loading="lazy"
-                                                        class="img-fluid"
-                                                        src="{{
-                                                            imagesUrls[4]
-                                                        }}"
-                                                        alt="blog website templates bootstrap"
-                                                    />
-                                                </a>
-                                            </div>
-                                            <div
-                                                class="
-                                                    position-absolute
-                                                    p-2 p-lg-3
-                                                    b-0
-                                                    w-100
-                                                    bg-shadow
-                                                "
-                                            >
-                                                <a
-                                                    class="
-                                                        p-1
-                                                        badge badge-primary
-                                                        rounded-0
-                                                    "
-                                                    [routerLink]="[
-                                                        '/articles/',
-                                                        articles[4].id
-                                                    ]"
-                                                    >Anime</a
-                                                >
-                                                <a
-                                                    [routerLink]="[
-                                                        '/articles/',
-                                                        articles[4].id
-                                                    ]"
-                                                >
-                                                    <h2
-                                                        class="
-                                                            h5
-                                                            text-white
-                                                            my-1
-                                                        "
-                                                    >
-                                                        {{ articles[4].title }}
-                                                    </h2>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
+                    </div>
+                </section>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- RESEAUX -->
+
+<div class="container mainContainer">
+    <div class="text-light text-center">
+        <h3>NOTRE COMMUNAUTÉ</h3>
+    </div>
+    <div class="col"></div>
+    <div class="col">
+        <ngx-tweet tweetId="1400364175973654532"></ngx-tweet>
+        <div class="col"></div>
     </div>
 </div>

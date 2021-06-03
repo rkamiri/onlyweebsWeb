@@ -49,9 +49,7 @@
                     <a [routerLink]="['/lists', list.id]" id="nameList">{{
                         list.name
                     }}</a>
-                    <p class="textDescList">
-                        Par name <br />{{ list.description }}
-                    </p>
+                    <p class="textDescList">Par {{ list.isOwnedBy }}</p>
                 </div>
             </div>
         </a>

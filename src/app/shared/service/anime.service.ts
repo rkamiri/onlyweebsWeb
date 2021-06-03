@@ -64,4 +64,8 @@ export class AnimeService {
             environment.backend + '/animes/research/' + search + '/count'
         );
     }
+
+    getLatestAnime(): Observable<Anime[]> {
+        return this.httpclient.get<Anime[]>(environment.backend + '/latest/');
+    }
 }
