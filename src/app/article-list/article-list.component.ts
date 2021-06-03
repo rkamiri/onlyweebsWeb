@@ -30,7 +30,6 @@ export class ArticleListComponent implements OnInit {
                     5,
                     this.listArticles.length + 1
                 );
-                console.log(this.listArticlesRunner);
             }
         });
     }

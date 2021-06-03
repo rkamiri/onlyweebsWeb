@@ -19,10 +19,10 @@ a {
     border-radius: 0.2rem;
     margin-left: 0.25rem;
 }
-.body{
+.body {
     padding-top: 2vh;
 }
-.header{
+.header {
     padding-top: 1vh;
     padding-bottom: 1vh;
     margin-bottom: 2vh;
@@ -30,44 +30,44 @@ a {
     border-radius: 5px;
 }
 
-th{
-    background-color: #11428d!important;
-    border-color: transparent!important;
-    color: white!important;
+th {
+    background-color: #11428d !important;
+    border-color: transparent !important;
+    color: white !important;
 }
-td{
+td {
     background-color: #2e3032;
     border-color: white;
 }
-.searchBtn{
+.searchBtn {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
 }
-.close{
-    color:red;
+.close {
+    color: red;
 }
 
-#desc{
+#desc {
     font-size: 1vw;
     text-align: center;
     text-justify: inter-word;
 }
-#test{
-   border-color: transparent!important;
+#test {
+    border-color: transparent !important;
 }
 @media screen and (max-width: 576px) {
-    #desc{
+    #desc {
         font-size: 15px;
     }
 }
 
 @media screen and (max-width: 767px) {
-    #desc{
+    #desc {
         font-size: 15px;
     }
 }
 @media screen and (max-width: 1024px) {
-    #desc{
+    #desc {
         font-size: 15px;
     }
 }

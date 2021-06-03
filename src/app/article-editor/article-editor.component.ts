@@ -34,7 +34,6 @@ export class ArticleEditorComponent implements OnInit {
         this.articleService.getAllCategories().subscribe((data) => {
             this.categories = data;
             this.selectedCategory = this.categories[0];
-            console.log(data);
         });
     }
 
@@ -72,6 +71,5 @@ export class ArticleEditorComponent implements OnInit {
 
     changeCategory($event: ArticleCategories): void {
         this.selectedCategory = $event;
-        console.log($event);
     }
 }

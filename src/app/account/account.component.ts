@@ -61,8 +61,6 @@ export class AccountComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log('3');
-        console.log('hello world!');
         this.sameIp = 'true';
         this.currentUser = this.route.snapshot.data.currentUser;
         this.userService.checkSameIp().subscribe((data) => {
