@@ -16,10 +16,7 @@
                         </ng-template>
                         <div class="row displayList" style="margin: 5%">
                             <div class="col-3">
-                                <img
-                                    class="img-fluid"
-                                    src="{{ imageObject[0]['thumbImage'] }}"
-                                />
+                                <img class="img-fluid" src="" alt="" />
                             </div>
 
                             <div class="col">
@@ -42,8 +39,6 @@
         </div>
     </div>
 </div>
-
-<!-- TOP DES SORTIES -->
 <div class="container mainContainer">
     <div class="text-light text-center">
         <h3>TOP DES SORTIES</h3>
@@ -56,10 +51,7 @@
     >
     </ng-image-slider>
 </div>
-
-<!-- ACTUALITé -->
-
-<div class="container mainContainer">
+<div class="container mainContainer" *ngIf="articles !== undefined">
     <div class="text-light text-center">
         <h3>ACTUALITÉ</h3>
     </div>
