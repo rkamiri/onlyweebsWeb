@@ -65,7 +65,9 @@ export class AnimeService {
         );
     }
 
-    getLatestAnime(): Observable<Anime[]> {
-        return this.httpclient.get<Anime[]>(environment.backend + '/latest/');
+    getLatest(): Observable<Anime[]> {
+        return this.httpclient.get<Anime[]>(
+            environment.backend + '/animes/latest/'
+        );
     }
 }

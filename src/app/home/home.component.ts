@@ -42,9 +42,9 @@ export class HomeComponent implements OnInit {
         this.listsService
             .getAllLists()
             .subscribe((data) => (this.lists = data.slice(0, 5)));
-        this.animeService.getAnimesByPage(1).subscribe((data) => {
-            this.animes = data.slice(0, 6);
-            for (let i = 0; i < 6; i++) {
+        this.animeService.getLatest().subscribe((data) => {
+            this.animes = data;
+            for (let i = 0; i < this.animes.length; i++) {
                 const obj = {
                     thumbImage: data[i].imgUrl,
                     title: data[i].titleEnglish,

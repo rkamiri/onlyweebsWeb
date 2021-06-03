@@ -24,7 +24,9 @@
 
                             <div class="col">
                                 <div class="row">
-                                    <h3>{{ list.name }}</h3>
+                                    <a routerLink="/lists/{{ list.id }}"
+                                        ><h3>{{ list.name }}</h3></a
+                                    >
                                 </div>
                                 <div class="row">
                                     <h4>{{ list.description }}</h4>
