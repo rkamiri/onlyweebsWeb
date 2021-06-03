@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Article } from '../model/article';
+import { ArticleCategories } from '../model/articleCategories';
 
 @Injectable({ providedIn: 'root' })
 export class ArticleService {
@@ -21,6 +22,11 @@ export class ArticleService {
         return this.httpclient.post<number>(
             environment.backend + '/articles',
             content
+        );
+    }
+    getAllCategories(): Observable<ArticleCategories[]> {
+        return this.httpclient.get<ArticleCategories[]>(
+            environment.backend + '/article-categories/all'
         );
     }
 }
