@@ -1,0 +1,263 @@
+p {
+    color: white;
+}
+
+.button-top {
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+.list {
+    background-color: #2e3032;
+    margin-bottom: 2vh;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0;
+}
+
+.imagesDiv {
+    margin: 0;
+    padding: 0;
+}
+
+.imgDiv {
+    display: inline-block;
+}
+
+#list {
+    margin: auto;
+}
+
+.list:hover {
+    background-color: #11428d;
+}
+
+#containerImg {
+    width: 5vw;
+    height: 15vh;
+}
+
+.oneImg {
+    width: 8vw;
+    height: 15vh;
+}
+
+.textDescList {
+    font-size: 0.75vw;
+    display: inline-block;
+    /*display: -webkit-box;*/
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-width: 15vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#nameList {
+    font-size: 1vw;
+    text-decoration: underline white;
+    color: white;
+    display: block;
+}
+
+.fourImages {
+    width: 4vw;
+    height: 7.5vh;
+}
+
+.containerImg {
+    width: 8vw;
+    height: 15vh;
+}
+
+#imgDesc {
+    width: 8vw;
+    height: 15vh;
+}
+
+#boxLink {
+    text-decoration: none;
+}
+
+.group-list {
+}
+
+#list-def {
+}
+
+#list-cus {
+    display: flex;
+}
+
+#button-div {
+    flex: 1;
+}
+
+#delete-button {
+    font-size: 1.2vw;
+}
+
+.deleteButton {
+    float: right;
+    display: inline-block;
+}
+
+@media screen and (max-width: 576px) {
+    .fourImages {
+        width: 10vw;
+        height: 6vh;
+    }
+
+    .containerImg {
+        width: 20vw;
+        max-height: 12vh;
+    }
+
+    .oneImg {
+        width: 20vw;
+        height: 12vh;
+    }
+
+    #rowList {
+        margin-left: 0;
+    }
+
+    .textDescList {
+        font-size: 2vw;
+    }
+
+    #nameList {
+        font-size: 3vw;
+    }
+
+    .textDescList {
+        font-size: 1.5vw;
+    }
+
+    #imgDesc {
+        width: 20vw;
+        height: 12vh;
+    }
+
+    .list {
+        width: 80vw;
+        margin: auto;
+        margin-bottom: 2vh;
+    }
+
+    #delete-button {
+        font-size: 1.5vw;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 576px) {
+    .fourImages {
+        width: 8vw;
+        height: 6vh;
+    }
+
+    .containerImg {
+        width: 20vw;
+        max-height: 12vh;
+    }
+
+    .oneImg {
+        width: 16vw;
+        height: 12vh;
+    }
+
+    #nameList {
+        font-size: 2.75vw;
+    }
+
+    #rowList {
+        margin-left: 0;
+    }
+
+    .textDescList {
+        font-size: 1.25vw;
+    }
+
+    #imgDesc {
+        width: 12vw;
+        height: 12vh;
+    }
+
+    .list {
+        width: 70vw;
+    }
+}
+
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+    #containerImg {
+        width: 15vw;
+        height: 12vh;
+    }
+
+    .oneImg {
+        width: 8vw;
+        height: 12vh;
+    }
+
+    .fourImages {
+        width: 4vw;
+        height: 6vh;
+    }
+
+    #imgDesc {
+        width: 12vw;
+        height: 12vh;
+    }
+
+    .textDescList {
+        font-size: 1.1vw;
+    }
+    #nameList {
+        font-size: 2vw;
+    }
+
+    #rowList {
+        margin-left: 0;
+    }
+
+    .list {
+        width: 45vw;
+    }
+}
+
+@media screen and (width: 768px) {
+    #containerImg {
+        width: 15vw;
+        height: 12vh;
+    }
+
+    .oneImg {
+        width: 12vw;
+        height: 12vh;
+    }
+
+    .fourImages {
+        width: 6vw;
+        height: 6vh;
+    }
+
+    #imgDesc {
+        width: 12vw;
+        height: 12vh;
+    }
+
+    .textDescList {
+        font-size: 1.1vw;
+    }
+    #nameList {
+        font-size: 2vw;
+    }
+
+    #rowList {
+        margin-left: 0;
+    }
+
+    .list {
+        width: 45vw;
+    }
+}

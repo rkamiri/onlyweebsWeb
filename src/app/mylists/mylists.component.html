@@ -3,23 +3,19 @@
         Create a new list
     </button>
 </div>
-<ul class="group-list">
-    <li *ngFor="let list of defaultLists" id="list-def">
-        <a [routerLink]="['/lists', list.id]">{{ list.name }}</a>
-        <p>{{ list.description }}</p>
-    </li>
-    <li *ngFor="let list of customLists" id="list-cus">
-        <a [routerLink]="['/lists', list.id]">{{ list.name }}</a>
-        <p>{{ list.description }}</p>
-        <div class="text-center" id="button-div">
-            <button
-                id="delete-button"
-                type="button"
-                class="btn btn-danger"
-                (click)="delete(list.id)"
-            >
-                Delete
-            </button>
-        </div>
-    </li>
-</ul>
+
+<h3 class="text-center listCustom">Your default lists</h3>
+<div className="col-12">
+    <app-anime-list-display
+        [lists]="defaultLists"
+        [isDefault]="'user_default'"
+    ></app-anime-list-display>
+</div>
+<hr />
+<h3 class="text-center listCustom">Your custom lists</h3>
+<div class="col-12">
+    <app-anime-list-display
+        [lists]="customLists"
+        [isDefault]="'user_custom'"
+    ></app-anime-list-display>
+</div>
