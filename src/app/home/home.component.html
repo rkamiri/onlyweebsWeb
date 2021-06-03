@@ -44,12 +44,10 @@
         <h3>TOP DES SORTIES</h3>
     </div>
     <ng-image-slider
-        #nav
-        (imageClick)="goToAnime($event)"
-        [imagePopup]="false"
         [images]="imageObject"
-    >
-    </ng-image-slider>
+        (imageClick)="goToAnime($event)"
+        #nav
+    ></ng-image-slider>
 </div>
 <div class="container mainContainer" *ngIf="articles !== undefined">
     <div class="text-light text-center">

@@ -41,7 +41,7 @@
         "ngx-tweet": "^2.0.3",
         "ngx-twitter-timeline": "^0.1.5",
         "rxjs": "~6.6.0",
-        "tslib": "^2.0.0",
+        "tslib": "^2.2.0",
         "zone.js": "~0.10.2"
     },
     "devDependencies": {

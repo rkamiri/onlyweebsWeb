@@ -88,7 +88,7 @@ export class AnimeService {
 
     getLatest(): Observable<Anime[]> {
         return this.httpclient.get<Anime[]>(
-            environment.backend + '/animes/latest/'
+            environment.backend + '/animes/latest'
         );
     }
 }
