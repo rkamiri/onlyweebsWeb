@@ -35,6 +35,7 @@ import { ForbiddenErrorComponent } from './errors/forbidden-error/forbidden-erro
 import { UnauthorizedErrorComponent } from './errors/unauthorized-error/unauthorized-error.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { PasswordUpdateComponent } from './password-update/password-update.component';
+import { AnimeListDisplayComponent } from './anime-list-display/anime-list-display.component';
 
 @NgModule({
     declarations: [
@@ -62,6 +63,7 @@ import { PasswordUpdateComponent } from './password-update/password-update.compo
         UnauthorizedErrorComponent,
         ServerErrorComponent,
         PasswordUpdateComponent,
+        AnimeListDisplayComponent,
     ],
     imports: [
         BrowserModule,

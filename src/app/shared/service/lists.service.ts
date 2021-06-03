@@ -96,6 +96,18 @@ export class ListsService {
         );
     }
 
+    getImagesOfUserCustomList(): Observable<any> {
+        return this.httpclient.get<any>(
+            environment.backend + '/lists/user/image/custom'
+        );
+    }
+
+    getImagesOfUserDefaultList(): Observable<any> {
+        return this.httpclient.get<any>(
+            environment.backend + '/lists/user/image/default'
+        );
+    }
+
     deleteList(id: number): any {
         return this.httpclient.delete<any>(
             environment.backend + '/lists/user/' + id,
