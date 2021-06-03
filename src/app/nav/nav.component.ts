@@ -53,21 +53,23 @@ export class NavComponent implements OnInit {
     }
     logoutUser(): void {
         this.userService.logout();
-        this.router.navigate(['home']);
+        this.router.navigate(['home']).then();
     }
 
     searchItems(animeId: number): void {
         if (animeId) {
-            this.router.navigate(['animes/', animeId]);
+            this.router.navigate(['animes/', animeId]).then();
         } else {
             switch (this.searchArray.length) {
                 case 0: {
-                    this.router.navigate(['animes/page/1']);
+                    this.router.navigate(['animes/page/1']).then();
                     break;
                 }
                 case 1: {
                     this.searchInputValue = '';
-                    this.router.navigate(['animes/', this.searchArray[0].id]);
+                    this.router
+                        .navigate(['animes/', this.searchArray[0].id])
+                        .then();
                     break;
                 }
                 default: {
