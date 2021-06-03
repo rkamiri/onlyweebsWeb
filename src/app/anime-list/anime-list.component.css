@@ -16,9 +16,8 @@ a {
 }
 .container {
     min-width: 80vw;
-
 }
-.container .card{
+.container .card {
     padding: 0;
     margin-left: auto;
     margin-right: auto;
@@ -66,20 +65,19 @@ a {
     box-shadow: none;
 }
 
-
 .product {
     margin-bottom: 30px;
 }
 .product-inner {
-    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     padding: 10px;
 }
 .product img {
     margin-bottom: 10px;
 }
 
-#searchBlock{
-    margin:auto;
+#searchBlock {
+    margin: auto;
     padding-top: 2vh;
     padding-bottom: 2vh;
     width: 75vw;
@@ -87,25 +85,25 @@ a {
     border-radius: 5px;
 }
 
-#searchBlock .input-group{
+#searchBlock .input-group {
     margin: auto;
     width: 70vw;
 }
 
-#test{
+#test {
     width: 40vw;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2vh;
 }
 
-#test .test{
+#test .test {
     margin: auto;
 }
 
-.test button{
-    min-width: 7.5vw!important;
-    width: 7.5vw!important;
+.test button {
+    min-width: 7.5vw !important;
+    width: 7.5vw !important;
 }
 
 @media screen and (max-width: 1400px) {
@@ -127,7 +125,7 @@ a {
 }
 
 @media screen and (max-width: 767px) {
-    .container{
+    .container {
         padding: 0;
     }
     .card {

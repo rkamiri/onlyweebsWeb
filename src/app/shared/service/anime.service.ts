@@ -3,9 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Anime } from '../model/anime';
 import { environment } from '../../../environments/environment';
-import {Genres} from "../model/genres";
-import {Studios} from "../model/studios";
-import {Producers} from "../model/producers";
+import { Genres } from '../model/genres';
+import { Studios } from '../model/studios';
+import { Producers } from '../model/producers';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -83,6 +83,12 @@ export class AnimeService {
     getProducers(id: number): Observable<Producers[]> {
         return this.httpclient.get<Producers[]>(
             environment.backend + '/animes/' + id + '/producers'
+        );
+    }
+
+    getLatest(): Observable<Anime[]> {
+        return this.httpclient.get<Anime[]>(
+            environment.backend + '/animes/latest/'
         );
     }
 }

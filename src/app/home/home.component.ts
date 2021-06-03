@@ -7,6 +7,8 @@ import { AnimeService } from '../shared/service/anime.service';
 import { Anime } from '../shared/model/anime';
 import { ListsService } from '../shared/service/lists.service';
 import { environment } from '../../environments/environment';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-home',
@@ -18,6 +20,7 @@ export class HomeComponent implements OnInit {
     public articles: Article[];
     public animes: Anime[];
     public imagesUrls: string[];
+    public imageObject: Array<object> = [];
     loaded: boolean;
 
     constructor(
@@ -39,8 +42,15 @@ export class HomeComponent implements OnInit {
         this.listsService
             .getAllLists()
             .subscribe((data) => (this.lists = data.slice(0, 5)));
-        this.animeService.getAnimesByPage(1).subscribe((data) => {
-            this.animes = data.slice(0, 6);
+        this.animeService.getLatest().subscribe((data) => {
+            this.animes = data;
+            for (let i = 0; i < this.animes.length; i++) {
+                const obj = {
+                    thumbImage: data[i].imgUrl,
+                    title: data[i].titleEnglish,
+                };
+                this.imageObject.push(obj);
+            }
         });
         this.articleService.getAllArticles().subscribe((data) => {
             this.articles = data.slice(0, 5);
@@ -56,5 +66,14 @@ export class HomeComponent implements OnInit {
         setTimeout(() => {
             this.loaded = true;
         }, 100);
+    }
+
+    goToAnime($event): void {
+        const id = this.animes[$event].id;
+        window.open('/#/animes/' + id + '/', '_self');
+    }
+
+    getOwner($id): string {
+        return null;
     }
 }
