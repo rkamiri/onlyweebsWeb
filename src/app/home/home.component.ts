@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
 
     fillArraysWithData(): void {
         this.listsService
-            .getAllLists()
+            .getCustomLists()
             .subscribe((data) => (this.lists = data.slice(0, 5)));
         this.animeService.getLatest().subscribe((data) => {
             this.animes = data;

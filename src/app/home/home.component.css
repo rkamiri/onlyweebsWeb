@@ -40,7 +40,7 @@ body {
 }
 
 .displayList {
-    border: solid 0.05rem;
+    background-color: #23272a;
 }
 
 .img-fluid {
