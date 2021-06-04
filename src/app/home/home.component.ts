@@ -7,8 +7,6 @@ import { AnimeService } from '../shared/service/anime.service';
 import { Anime } from '../shared/model/anime';
 import { ListsService } from '../shared/service/lists.service';
 import { environment } from '../../environments/environment';
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-home',
@@ -40,7 +38,7 @@ export class HomeComponent implements OnInit {
 
     fillArraysWithData(): void {
         this.listsService
-            .getAllLists()
+            .getCustomLists()
             .subscribe((data) => (this.lists = data.slice(0, 5)));
         this.animeService.getLatest().subscribe((data) => {
             this.animes = data;
