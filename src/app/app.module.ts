@@ -42,6 +42,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxTweetModule } from 'ngx-tweet';
 import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 import { AnimeListDisplayComponent } from './anime-list-display/anime-list-display.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
     declarations: [
@@ -91,6 +92,7 @@ import { AnimeListDisplayComponent } from './anime-list-display/anime-list-displ
         TabsModule.forRoot(),
         NgxTweetModule,
         NgxTwitterTimelineModule,
+        MatExpansionModule,
     ],
     providers: [
         [

@@ -9,6 +9,7 @@ import { Lists } from '../shared/model/lists';
 import { IsListedIn } from '../shared/model/is.listed.in';
 import { ListsService } from '../shared/service/lists.service';
 import { AnimeService } from '../shared/service/anime.service';
+import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-anime',
@@ -40,7 +41,8 @@ export class AnimeComponent implements OnDestroy, OnInit {
         private ratingService: RatingService,
         private listService: ListsService,
         private commentsService: CommentService,
-        private animeService: AnimeService
+        private animeService: AnimeService,
+        config: NgbAccordionConfig
     ) {
         this.userHasComment = false;
         this.navigationSubscription = this.router.events.subscribe((e: any) => {
@@ -68,6 +70,8 @@ export class AnimeComponent implements OnDestroy, OnInit {
             comment: new FormControl(''),
         });
         this.userHasRated = 'Add Personal Rate';
+
+        config.type = 'dark';
     }
 
     ngOnDestroy(): void {

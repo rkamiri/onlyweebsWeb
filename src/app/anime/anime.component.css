@@ -1,154 +1,70 @@
-#container {
-    color: white;
-    background-color: rgba(40, 43, 48, 0.75);
-    border-radius: 0.3em;
+.container {
+    background-color: #2e3032;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
 }
 
-#cover {
-    width: 16vw;
-    padding-bottom: 2.5vh;
-    border-radius: 0.3em;
-    margin-top: 2.5vh;
+mat-expansion-panel {
+    background-color: #212223;
+    color: #f1f1f1;
 }
 
-#center {
-    margin-right: 0.6vw;
+mat-panel-title {
+    color: #097ce7;
+    font-size: 3vh;
 }
 
-.genreTag {
-    width: 100%;
+.synopsis {
+    font-size: 2vh;
 }
 
-#synopsis {
-    text-align: justify;
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #212223;
+    background-image: none;
 }
-
-#btn {
-    background-color: purple;
-    color: white;
+/* Remove IE arrow */
+select::-ms-expand {
+    display: none;
 }
-
-#parentLists {
+/* Custom Select */
+.select {
+    position: relative;
     display: flex;
+    width: 20em;
+    height: 3em;
+    line-height: 3;
+    background: #212223;
+    overflow: hidden;
+    border-radius: 0.25em;
 }
-
-#default {
-    margin-right: 1vw;
-    width: 47%;
-}
-
-#custom {
+select {
     flex: 1;
+    padding: 0 0.5em;
+    color: #fff;
+    cursor: pointer;
 }
-
-.addToList {
-    height: 40px;
+/* Arrow */
+.select::after {
+    content: "\25BC";
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #212223;
+    cursor: pointer;
+    pointer-events: none;
+    -webkit-transition: 0.25s all ease;
+    -o-transition: 0.25s all ease;
+    transition: 0.25s all ease;
 }
-
-.optionSelect {
-    height: 40px;
-}
-
-option {
-    background-color: rgba(40, 43, 48, 0.75);
-    color: white;
-}
-
-#animeTitle {
-    font-size: 2vw;
-    margin-left: -0.8vw;
-}
-
-#divDetails {
-}
-
-.detailsContent {
-    width: 100%;
-}
-
-#page {
-    margin: auto;
-}
-
-p {
-    font-size: 1vw;
-}
-
-h1 {
-    font-size: 2vw;
-}
-
-#ratingBtn {
-    border-bottom-right-radius: 0px;
-    border-top-right-radius: 0px;
-}
-
-#rate {
-    border-bottom-left-radius: 0px;
-    border-top-left-radius: 0px;
-}
-
-#ratingGroup {
-    padding-bottom: 2vh;
-}
-
-.comment {
-    background-color: rgb(5, 35, 76);
-    float: left;
-    border-radius: 5px;
-    padding-left: 40px;
-    padding-right: 30px;
-    padding-top: 10px;
-    width: 100%;
-}
-
-.comment h4,
-.comment span,
-.darker h4,
-.darker span {
-    display: inline;
-}
-
-@media screen and (max-width: 576px) {
-    p {
-        font-size: 3vw;
-    }
-
-    #cover {
-        width: 23vw;
-        height: 20vh;
-        margin-left: 35vw;
-    }
-
-    #animeTitle {
-        font-size: 6vw;
-        margin: 0;
-        padding-left: 1vw;
-    }
-
-    h1 {
-        font-size: 4vw;
-    }
-
-    #addToList {
-        width: 14vw;
-        font-size: 3vw;
-    }
-
-    #select {
-        font-size: 3vw;
-    }
-
-    #optionSelect {
-        width: 20vw;
-    }
-
-    #animeTitle {
-    }
-}
-
-@media (max-width: 768px) {
-    #cover {
-        min-width: 10vw;
-    }
+/* Transition */
+.select:hover::after {
+    color: #f1f1f1;
 }
