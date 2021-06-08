@@ -19,6 +19,7 @@ export class ListsComponent implements OnInit {
 
     ngOnInit(): void {
         this.lists = this.route.snapshot.data.customLists;
+        console.log(this.route.snapshot.data.customLists);
         this.listService
             .getImagesOfCustomLists()
             .subscribe((data) => (this.listsImages = data));

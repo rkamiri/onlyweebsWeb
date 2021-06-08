@@ -30,7 +30,14 @@ export class CommentService {
         );
     }
 
-    putCommentForAnime(comment: Comment): Observable<void> {
+    getCommentsForLists(listId: number): any {
+        return this.httpclient.get<Comment[]>(
+            environment.backend + '/comment/list/' + listId,
+            httpOptions
+        );
+    }
+
+    putComment(comment: Comment): Observable<void> {
         return this.httpclient.put<void>(
             environment.backend + '/comment/',
             comment,
@@ -48,6 +55,13 @@ export class CommentService {
     deleteArticleComment(articleId: number): any {
         return this.httpclient.delete<any>(
             environment.backend + '/comment/article/' + articleId,
+            httpOptions
+        );
+    }
+
+    deleteListComment(listId: number): any {
+        return this.httpclient.delete<any>(
+            environment.backend + '/comment/list/' + listId,
             httpOptions
         );
     }

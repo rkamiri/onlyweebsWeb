@@ -102,6 +102,11 @@ p {
     display: inline-block;
 }
 
+#owner {
+    color: #868686;
+    font-style: italic;
+}
+
 @media screen and (max-width: 576px) {
     .fourImages {
         width: 10vw;
@@ -148,6 +153,11 @@ p {
     #delete-button {
         font-size: 1.5vw;
     }
+
+    #owner {
+        color: #868686;
+        font-style: italic;
+    }
 }
 
 @media screen and (max-width: 768px) and (min-width: 576px) {
@@ -186,6 +196,11 @@ p {
     .list {
         width: 70vw;
     }
+
+    #owner {
+        color: #868686;
+        font-style: italic;
+    }
 }
 
 @media screen and (max-width: 1023px) and (min-width: 768px) {
@@ -223,6 +238,11 @@ p {
     .list {
         width: 45vw;
     }
+
+    #owner {
+        color: #868686;
+        font-style: italic;
+    }
 }
 
 @media screen and (width: 768px) {
@@ -259,5 +279,10 @@ p {
 
     .list {
         width: 45vw;
+    }
+
+    #owner {
+        color: #868686;
+        font-style: italic;
     }
 }
