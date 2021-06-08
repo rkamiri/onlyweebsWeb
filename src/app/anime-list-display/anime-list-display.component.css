@@ -28,6 +28,10 @@ p {
     margin: auto;
 }
 
+#solo {
+    margin-left: 4.213vw;
+}
+
 .list:hover {
     background-color: #11428d;
 }
@@ -77,16 +81,6 @@ p {
 
 #boxLink {
     text-decoration: none;
-}
-
-.group-list {
-}
-
-#list-def {
-}
-
-#list-cus {
-    display: flex;
 }
 
 #button-div {
@@ -148,6 +142,10 @@ p {
     #delete-button {
         font-size: 1.5vw;
     }
+
+    #solo {
+        margin: auto;
+    }
 }
 
 @media screen and (max-width: 768px) and (min-width: 576px) {
@@ -186,9 +184,13 @@ p {
     .list {
         width: 70vw;
     }
+
+    #solo {
+        margin-left: 4.2vw;
+    }
 }
 
-@media screen and (max-width: 1023px) and (min-width: 768px) {
+@media screen and (max-width: 1024px) and (min-width: 768px) {
     #containerImg {
         width: 15vw;
         height: 12vh;
@@ -259,5 +261,9 @@ p {
 
     .list {
         width: 45vw;
+    }
+
+    #solo {
+        margin-left: 0;
     }
 }
