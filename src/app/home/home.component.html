@@ -46,8 +46,13 @@
                                         <div class="row">
                                             <h4>{{ list.description }}</h4>
                                         </div>
-                                        <div class="row">
-                                            <span>de {{ list.isOwnedBy }}</span>
+                                        <div id="owner" class="row">
+                                            <span
+                                                >écrite par
+                                                {{
+                                                    list.isOwnedBy.username
+                                                }}</span
+                                            >
                                         </div>
                                     </div>
                                 </div>

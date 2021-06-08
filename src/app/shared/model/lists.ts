@@ -1,7 +1,9 @@
+import { User } from './user';
+
 export interface Lists {
-    id: number;
+    id?: number;
     name: string;
-    creationDate: string;
+    creationDate?: string;
     description: string;
-    isOwnedBy: number;
+    isOwnedBy?: User;
 }

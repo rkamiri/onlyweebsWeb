@@ -1,6 +1,7 @@
 import { User } from './user';
 import { Anime } from './anime';
 import { Article } from './article';
+import { Lists } from './lists';
 
 export interface Comment {
     user?: User;
@@ -8,4 +9,5 @@ export interface Comment {
     date?: string;
     animeEntity?: Anime;
     articleEntity?: Article;
+    listsEntity?: Lists;
 }

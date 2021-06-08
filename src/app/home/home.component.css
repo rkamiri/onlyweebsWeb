@@ -127,3 +127,8 @@ body {
 #articleTitle {
     margin-left: 2vw;
 }
+
+#owner {
+    color: #868686;
+    font-style: italic;
+}
