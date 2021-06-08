@@ -147,19 +147,6 @@ export class AnimeComponent implements OnDestroy, OnInit {
         }
     }
 
-    sendAnimeComment(): void {
-        this.commentsService
-            .putCommentForAnime({
-                user: null,
-                body: this.commentForm.get('comment').value.toString(),
-                date: null,
-                animeEntity: this.anime,
-            })
-            .subscribe(() => {
-                location.reload();
-            });
-    }
-
     addAnimeToList(): void {
         let notInADefaultList = false;
         this.listService
@@ -247,6 +234,19 @@ export class AnimeComponent implements OnDestroy, OnInit {
             });
         });
         return animeArray;
+    }
+
+    sendAnimeComment(): void {
+        this.commentsService
+            .putComment({
+                user: null,
+                body: this.commentForm.get('comment').value.toString(),
+                date: null,
+                animeEntity: this.anime,
+            })
+            .subscribe(() => {
+                location.reload();
+            });
     }
 
     deleteAnimeComment(): void {

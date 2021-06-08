@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Lists } from '../shared/model/lists';
 import { Anime } from '../shared/model/anime';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
 import { ListsService } from '../shared/service/lists.service';
 import { IsListedIn } from '../shared/model/is.listed.in';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { AnimeService } from '../shared/service/anime.service';
+import { UserService } from '../shared/service/user.service';
+import { CommentService } from '../shared/service/comment.service';
+import { Comment } from '../shared/model/comment';
 
 @Component({
     selector: 'app-onelist',
@@ -26,17 +29,45 @@ export class OnelistComponent implements OnInit {
     public index: number;
     public owned: boolean;
     public isDefault: boolean;
+    public isConnected;
+    public userHasComment;
+    private navigationSubscription;
+    public comments: Comment[];
+    public commentForm: FormGroup;
 
     constructor(
         private modalService: NgbModal,
         private route: ActivatedRoute,
         private listService: ListsService,
+        private userService: UserService,
+        private commentService: CommentService,
         private router: Router,
         private animeService: AnimeService
     ) {
+        this.userHasComment = false;
         this.addAnimeForm = new FormGroup({});
         this.closeResult = '';
         this.index = 0;
+        this.navigationSubscription = this.router.events.subscribe((e: any) => {
+            if (e instanceof NavigationEnd) {
+                this.userService.getCurrentUser().subscribe((user) => {
+                    this.isConnected = !(user === null);
+                    this.commentService
+                        .getCommentsForLists(this.listInfo.id)
+                        .subscribe((comments) => {
+                            this.comments = comments;
+                            comments.forEach((comment) => {
+                                if (comment.user.id === user.id) {
+                                    this.userHasComment = true;
+                                }
+                            });
+                        });
+                });
+            }
+        });
+        this.commentForm = new FormGroup({
+            comment: new FormControl(''),
+        });
     }
 
     ngOnInit(): void {
@@ -46,7 +77,7 @@ export class OnelistComponent implements OnInit {
             this.listInfo.name === 'Currently watching' ||
             this.listInfo.name === 'Plan to watch';
         this.owned =
-            +sessionStorage.getItem('userid') === this.listInfo.isOwnedBy;
+            +sessionStorage.getItem('userid') === this.listInfo.isOwnedBy.id;
         this.animesOfThisList = this.route.snapshot.data.listContent;
         this.animeService
             .getAllAnimes()
@@ -112,6 +143,27 @@ export class OnelistComponent implements OnInit {
             this.listService.deleteList(this.listInfo.id).subscribe(() => {
                 this.router.navigate(['/lists']).then();
             });
+        }
+    }
+
+    sendListComment(): void {
+        this.commentService
+            .putComment({
+                body: this.commentForm.get('comment').value.toString(),
+                listsEntity: this.listInfo,
+            })
+            .subscribe(() => {
+                location.reload();
+            });
+    }
+
+    deleteListComment(): void {
+        if (confirm('Are you sure you want to delete this comment ?')) {
+            this.commentService
+                .deleteListComment(this.listInfo.id)
+                .subscribe(() => {
+                    location.reload();
+                });
         }
     }
 }
