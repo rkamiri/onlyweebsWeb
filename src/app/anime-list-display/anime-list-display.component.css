@@ -83,27 +83,26 @@ p {
     text-decoration: none;
 }
 
-#button-div {
-    flex: 1;
-}
-
-#delete-button {
-    font-size: 1.2vw;
-}
-
-.deleteButton {
-    float: right;
+#divList {
+    margin-left: 1vw;
+    padding: 0;
     display: inline-block;
+}
+
+#left {
+    display: inline-block;
+    width: 15vw;
+}
+
+#right {
+    font-size: 1.2vw;
+    display: inline-block;
+    float: right;
 }
 
 #owner {
     color: #868686;
     font-style: italic;
-    /* margin-top: -2.5vh; */
-}
-
-#divList {
-    padding: 0;
 }
 
 @media screen and (max-width: 576px) {
@@ -148,7 +147,7 @@ p {
         margin: auto auto 2vh;
     }
 
-    #delete-button {
+    #right {
         font-size: 1.5vw;
     }
 
@@ -164,6 +163,14 @@ p {
 
     #solo {
         margin: auto;
+    }
+
+    #left {
+        width: 30vw;
+    }
+
+    #owner {
+        font-size: 1.5vw;
     }
 }
 
@@ -212,6 +219,14 @@ p {
     #solo {
         margin-left: 4.2vw;
     }
+
+    #left {
+        width: 30vw;
+    }
+
+    #owner {
+        font-size: 1.25vw;
+    }
 }
 
 @media screen and (max-width: 1024px) and (min-width: 768px) {
@@ -258,6 +273,14 @@ p {
     #owner {
         color: #868686;
         font-style: italic;
+    }
+
+    #left {
+        width: 30vw;
+    }
+
+    #owner {
+        font-size: 1.1vw;
     }
 }
 
@@ -307,7 +330,15 @@ p {
         max-height: 5vh;
     }
 
+    #owner {
+        font-size: 1.1vw;
+    }
+
     #solo {
         margin-left: 0;
+    }
+
+    #left {
+        width: 30vw;
     }
 }
