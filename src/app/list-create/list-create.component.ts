@@ -56,11 +56,8 @@ export class ListCreateComponent implements OnInit {
 
     createList(): void {
         const list: Lists = {
-            id: 666,
             name: this.createListForm.get('name').value,
-            creationDate: 'string',
             description: this.createListForm.get('description').value,
-            isOwnedBy: null,
         };
         this.listService.createList(list).subscribe(() => {
             this.fillList();
@@ -72,7 +69,6 @@ export class ListCreateComponent implements OnInit {
         this.thisList = this.route.snapshot.data.lastList;
         for (const i of this.newList) {
             const ili: IsListedIn = {
-                id: 666,
                 list_id: this.thisList.id + 1,
                 anime_id: i.id,
             };

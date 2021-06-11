@@ -64,9 +64,10 @@
                     <a [routerLink]="['/lists', list.id]" id="nameList">{{
                         list.name
                     }}</a>
-                    <p class="textDescList">
-                        Par name <br />{{ list.description }}
-                    </p>
+                    <p>{{ list.description }}</p>
+                    <span id="owner"
+                        >écrite par {{ list.isOwnedBy.username }}</span
+                    >
                     <div
                         class="deleteButton"
                         *ngIf="isDefault === 'user_custom'"

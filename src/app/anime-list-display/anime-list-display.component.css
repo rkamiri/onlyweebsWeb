@@ -97,6 +97,11 @@ p {
     display: inline-block;
 }
 
+#owner {
+    color: #868686;
+    font-style: italic;
+}
+
 @media screen and (max-width: 576px) {
     .fourImages {
         width: 10vw;
@@ -142,6 +147,11 @@ p {
 
     #delete-button {
         font-size: 1.5vw;
+    }
+
+    #owner {
+        color: #868686;
+        font-style: italic;
     }
 
     .textDescList {
@@ -191,6 +201,11 @@ p {
         width: 70vw;
     }
 
+    #owner {
+        color: #868686;
+        font-style: italic;
+    }
+
     #solo {
         margin-left: 4.2vw;
     }
@@ -236,6 +251,11 @@ p {
     .list {
         width: 45vw;
     }
+
+    #owner {
+        color: #868686;
+        font-style: italic;
+    }
 }
 
 @media screen and (width: 768px) {
@@ -272,6 +292,11 @@ p {
 
     .list {
         width: 45vw;
+    }
+
+    #owner {
+        color: #868686;
+        font-style: italic;
     }
 
     .textDescList {
