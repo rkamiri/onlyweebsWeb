@@ -79,7 +79,11 @@
                             id="delete-button"
                             type="button"
                             class="btn btn-danger"
-                            (click)="delete(list.id)"
+                            (click)="
+                                $event.preventDefault();
+                                $event.stopPropagation();
+                                delete(list.id)
+                            "
                         >
                             ✕
                         </button>
