@@ -29,4 +29,9 @@ export class ArticleService {
             environment.backend + '/article-categories/all'
         );
     }
+    getArticlesByPage(page: number): Observable<Article[]> {
+        return this.httpclient.get<Article[]>(
+            environment.backend + '/articles/page/' + page
+        );
+    }
 }
