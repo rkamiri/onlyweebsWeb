@@ -71,7 +71,11 @@ const routes: Routes = [
         component: ListCreateComponent,
         resolve: { getCurrentList: ListsResolver, lastList: LastListsResolver },
     },
-    { path: 'articles', component: ArticleListComponent },
+    {
+        path: 'articles',
+        component: ArticleListComponent,
+        runGuardsAndResolvers: 'always',
+    },
     {
         path: 'articles/:id',
         component: ArticleComponent,
