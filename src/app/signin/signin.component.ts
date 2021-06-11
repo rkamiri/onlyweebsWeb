@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from '../shared/service/user.service';
 import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-signin',
@@ -13,7 +14,11 @@ export class SigninComponent implements OnInit {
     loginForm: FormGroup;
     id: Subscription;
 
-    constructor(private router: Router, private userService: UserService) {
+    constructor(
+        private router: Router,
+        private userService: UserService,
+        private toastr: ToastrService
+    ) {
         this.loginForm = new FormGroup({
             username: new FormControl(''),
             password: new FormControl(''),
@@ -32,5 +37,9 @@ export class SigninComponent implements OnInit {
             this.userService.emitAuthStatus(true);
             return this.router.navigate(['account']);
         });
+        this.toastr.success(
+            'You are successfully logged in',
+            'Login successful!'
+        );
     }
 }
