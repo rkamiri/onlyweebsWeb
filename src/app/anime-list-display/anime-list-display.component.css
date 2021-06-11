@@ -105,6 +105,11 @@ p {
     font-style: italic;
 }
 
+#owner {
+    color: #868686;
+    font-style: italic;
+}
+
 @media screen and (max-width: 576px) {
     .fourImages {
         width: 10vw;
@@ -172,6 +177,11 @@ p {
     #owner {
         font-size: 1.5vw;
     }
+
+    #owner {
+        color: #868686;
+        font-style: italic;
+    }
 }
 
 @media screen and (max-width: 768px) and (min-width: 576px) {
@@ -215,7 +225,7 @@ p {
         color: #868686;
         font-style: italic;
     }
-
+  
     #solo {
         margin-left: 4.2vw;
     }
@@ -324,7 +334,7 @@ p {
         color: #868686;
         font-style: italic;
     }
-
+  
     .textDescList {
         max-width: 17vw;
         max-height: 5vh;
