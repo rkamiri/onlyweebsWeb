@@ -4,6 +4,39 @@
             <h1>Actualités</h1>
         </div>
         <div class="container">
+            <div>
+                <p>recherche avancée</p>
+                <div class="row">
+                    <div class="col">
+                        <div ngbDropdown class="d-inline-block">
+                            <button
+                                class="btn btn-outline-primary"
+                                id="dropdownBasic1"
+                                ngbDropdownToggle
+                            >
+                                {{
+                                    selectedCategory
+                                        ? selectedCategory.name
+                                        : "Category"
+                                }}
+                            </button>
+                            <div
+                                ngbDropdownMenu
+                                aria-labelledby="dropdownBasic1"
+                            >
+                                <button
+                                    *ngFor="let category of categories"
+                                    ngbDropdownItem
+                                    (click)="changeCategory(category)"
+                                >
+                                    {{ category.name }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="row">
                     <div class="col-12 pb-5">
@@ -558,4 +591,5 @@
             </div>
         </div>
     </div>
+    <button (click)="loadMore()" class="btn btn-primary">load more</button>
 </body>
