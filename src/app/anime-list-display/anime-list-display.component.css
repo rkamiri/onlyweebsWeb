@@ -53,6 +53,7 @@ p {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     max-width: 15vw;
+    max-height: 9vh;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -143,6 +144,11 @@ p {
         font-size: 1.5vw;
     }
 
+    .textDescList {
+        max-width: 35vw;
+        max-height: 5vh;
+    }
+
     #solo {
         margin: auto;
     }
@@ -222,6 +228,11 @@ p {
         margin-left: 0;
     }
 
+    .textDescList {
+        max-width: 17vw;
+        max-height: 5vh;
+    }
+
     .list {
         width: 45vw;
     }
@@ -261,6 +272,11 @@ p {
 
     .list {
         width: 45vw;
+    }
+
+    .textDescList {
+        max-width: 17vw;
+        max-height: 5vh;
     }
 
     #solo {
