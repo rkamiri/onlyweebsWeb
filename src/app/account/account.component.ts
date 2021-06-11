@@ -11,6 +11,7 @@ import {
     SPINNER_PLACEMENT,
 } from '@hardpool/ngx-spinner';
 import { ImageService } from '../shared/service/image.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-account',
@@ -33,7 +34,8 @@ export class AccountComponent implements OnInit {
         private router: Router,
         private userService: UserService,
         private http: HttpClient,
-        private imageService: ImageService
+        private imageService: ImageService,
+        private toastr: ToastrService
     ) {
         this.personalInfoForm = new FormGroup({
             id: new FormControl(''),
@@ -71,6 +73,13 @@ export class AccountComponent implements OnInit {
         this.createProfilePictureUrl();
         this.fillForms();
         this.setSpinnerConfig();
+        this.toastr.info(
+            'You can change your profile image by clicking on it',
+            'Customize your profile!',
+            {
+                timeOut: 2500,
+            }
+        );
     }
 
     setSpinnerConfig(): void {
@@ -158,7 +167,12 @@ export class AccountComponent implements OnInit {
     updatePassword(): void {
         this.userService
             .sendMailForPasswordUpdateAnfGenerateToken()
-            .subscribe(() => {});
+            .subscribe(() => {
+                this.toastr.info(
+                    'Go check you email, you should be able to update your password',
+                    'Mail sent!'
+                );
+            });
     }
 
     deleteAccount(): void {

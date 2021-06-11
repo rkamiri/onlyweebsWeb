@@ -7,6 +7,7 @@ import { ListsService } from '../shared/service/lists.service';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
 import { IsListedIn } from '../shared/model/is.listed.in';
 import { AnimeService } from '../shared/service/anime.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-list-create',
@@ -25,7 +26,8 @@ export class ListCreateComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private listService: ListsService,
-        private animeService: AnimeService
+        private animeService: AnimeService,
+        private toastr: ToastrService
     ) {
         this.createListForm = new FormGroup({
             name: new FormControl(''),
@@ -64,6 +66,11 @@ export class ListCreateComponent implements OnInit {
                 this.fillList();
                 return this.router.navigate(['/lists']);
             });
+        } else {
+            this.toastr.error(
+                'Your list must contain a least one anime.',
+                'Empty list !'
+            );
         }
     }
 

@@ -77,7 +77,11 @@
             </tbody>
         </table>
     </div>
-    <div id="commentSection" class="row d-flex justify-content-center">
+    <div
+        *ngIf="!isDefault"
+        id="commentSection"
+        class="row d-flex justify-content-center"
+    >
         <div
             *ngIf="comments !== undefined"
             [ngClass]="

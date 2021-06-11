@@ -6,6 +6,7 @@ import { SearchService } from '../shared/service/search.service';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { SearchResult } from '../shared/model/searchResult';
 import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-nav',
@@ -35,7 +36,8 @@ export class NavComponent implements OnInit {
     constructor(
         private router: Router,
         private userService: UserService,
-        private searchService: SearchService
+        private searchService: SearchService,
+        private toastr: ToastrService
     ) {}
 
     ngOnInit(): void {
@@ -54,6 +56,7 @@ export class NavComponent implements OnInit {
     logoutUser(): void {
         this.userService.logout();
         this.router.navigate(['home']).then();
+        this.toastr.success('You are logged out', 'Logout successful!');
     }
 
     searchItems(animeId: number): void {
