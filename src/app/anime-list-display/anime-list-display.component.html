@@ -2,7 +2,7 @@
     <div
         *ngFor="let list of lists; let i = index"
         class="col-lg-5 col-md-6 col-12"
-        id="list"
+        id="{{ !lists[i + 1] && i % 2 === 0 ? 'solo' : 'list' }}"
     >
         <a [routerLink]="['/lists', list.id]" id="boxLink">
             <div class="list col-12 row">
@@ -60,14 +60,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-7 col-lg-7 col-md-7 col-6 containerTxt">
+                <div id="divList" class="col-xl-9 col-lg-9 col-md-8 col-9">
                     <a [routerLink]="['/lists', list.id]" id="nameList">{{
                         list.name
                     }}</a>
-                    <p>{{ list.description }}</p>
-                    <span id="owner"
-                        >écrite par {{ list.isOwnedBy.username }}</span
-                    >
+                    <p class="textDescList">{{ list.description }}</p>
+                    <p id="owner">écrite par {{ list.isOwnedBy.username }}</p>
                     <div
                         class="deleteButton"
                         *ngIf="isDefault === 'user_custom'"

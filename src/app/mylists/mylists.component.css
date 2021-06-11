@@ -1,13 +1,4 @@
-.group-list {
-}
-
-#list-def {
-}
-
-#list-cus {
-    display: flex;
-}
-
 .listCustom {
     color: white;
+    text-align: center;
 }
