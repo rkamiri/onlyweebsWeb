@@ -55,14 +55,16 @@ export class ListCreateComponent implements OnInit {
     }
 
     createList(): void {
-        const list: Lists = {
-            name: this.createListForm.get('name').value,
-            description: this.createListForm.get('description').value,
-        };
-        this.listService.createList(list).subscribe(() => {
-            this.fillList();
-            return this.router.navigate(['/lists']);
-        });
+        if (this.newList.length !== 0) {
+            const list: Lists = {
+                name: this.createListForm.get('name').value,
+                description: this.createListForm.get('description').value,
+            };
+            this.listService.createList(list).subscribe(() => {
+                this.fillList();
+                return this.router.navigate(['/lists']);
+            });
+        }
     }
 
     fillList(): void {

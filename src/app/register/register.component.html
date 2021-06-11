@@ -41,6 +41,12 @@
                         type="email"
                         formControlName="email"
                         placeholder="Email"
+                        ngModel
+                        email="true"
+                        [class.is-invalid]="
+                            registerForm.get('email').invalid &&
+                            registerForm.get('email').touched
+                        "
                     />
                     <br />
                     <div class="form-check form-check-inline">
