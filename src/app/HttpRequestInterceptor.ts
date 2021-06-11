@@ -29,9 +29,10 @@ export class HttpRequestInterceptor implements HttpInterceptor {
                         error instanceof
                         HttpErrorResponse /*&& this.router.url !== '/login'*/
                     ) {
+                        const url = this.router.url;
                         if (error.status === 404) {
                             this.router.navigate(['/not-found']).then();
-                        } else if (error.status === 403) {
+                        } else if (error.status === 403 && url !== '/login') {
                             this.router.navigate(['/forbidden']).then();
                         } else if (error.status === 401) {
                             this.router.navigate(['/unauthorized']).then();

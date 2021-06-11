@@ -32,14 +32,22 @@ export class SigninComponent implements OnInit {
     }
 
     loginUser(): void {
-        this.userService.login(this.loginForm.value).subscribe(() => {
-            sessionStorage.setItem('isConnected', 'true');
-            this.userService.emitAuthStatus(true);
-            return this.router.navigate(['account']);
-        });
-        this.toastr.success(
-            'You are successfully logged in',
-            'Login successful!'
+        this.userService.login(this.loginForm.value).subscribe(
+            () => {
+                sessionStorage.setItem('isConnected', 'true');
+                this.userService.emitAuthStatus(true);
+                this.toastr.success(
+                    'You are successfully logged in',
+                    'Login successful!'
+                );
+                return this.router.navigate(['account']);
+            },
+            (error) => {
+                this.toastr.error(
+                    'Your username/password is wrong',
+                    'Login failed!'
+                );
+            }
         );
     }
 }
