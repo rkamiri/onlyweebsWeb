@@ -34,10 +34,21 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col">
+                        <input type="text" [(ngModel)]="searchInputValue" />
+                    </div>
+                    <div class="col">
+                        <button
+                            class="btn btn-primary"
+                            (click)="searchWithParams()"
+                        >
+                            Search
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" *ngIf="listArticles.length >= 5">
                 <div class="row">
                     <div class="col-12 pb-5">
                         <section class="row">
@@ -558,7 +569,7 @@
                         routerLink="/articles/{{ article.id }}"
                     >
                         <div class="col-md-6 order-md-2">
-                            <h2 id="articleTitle" class="featurette-heading">
+                            <h2 class="featurette-heading articleTitle">
                                 {{ article.title }}
                             </h2>
                         </div>
@@ -591,5 +602,40 @@
             </div>
         </div>
     </div>
-    <button (click)="loadMore()" class="btn btn-primary">load more</button>
+    <div *ngIf="listArticles.length < 5">
+        <a *ngFor="let article of listArticles; let index = index">
+            <hr class="featurette-divider" />
+            <div class="row featurette" routerLink="/articles/{{ article.id }}">
+                <div class="col-md-6 order-md-2">
+                    <h2 class="featurette-heading articleTitle">
+                        {{ article.title }}
+                    </h2>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <a
+                        style="position: absolute; top: 1vh"
+                        [style.background-color]="article.category.bgColor"
+                        class="p-1 badge badge-primary rounded-0"
+                        [routerLink]="['/articles/', article.id]"
+                        >{{ article.category.name }}</a
+                    >
+                    <img
+                        loading="lazy"
+                        class="
+                            bottom
+                            bd-placeholder-img bd-placeholder-img-lg
+                            featurette-image
+                            mx-auto
+                            articleImage
+                        "
+                        src="{{ articleImageUrls[index + 5] }}"
+                        alt="article image"
+                    />
+                </div>
+            </div>
+        </a>
+    </div>
+    <div id="loadMoreBtn" *ngIf="enableLoadMore === true">
+        <button (click)="loadMore()" class="btn btn-primary">Load more</button>
+    </div>
 </body>

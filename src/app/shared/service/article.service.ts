@@ -8,6 +8,7 @@ import { ArticleCategories } from '../model/articleCategories';
 @Injectable({ providedIn: 'root' })
 export class ArticleService {
     constructor(private httpclient: HttpClient) {}
+
     getAllArticles(): Observable<any> {
         return this.httpclient.get<string>(environment.backend + '/articles');
     }
@@ -24,14 +25,34 @@ export class ArticleService {
             content
         );
     }
+
     getAllCategories(): Observable<ArticleCategories[]> {
         return this.httpclient.get<ArticleCategories[]>(
             environment.backend + '/article-categories/all'
         );
     }
+
     getArticlesByPage(page: number): Observable<Article[]> {
         return this.httpclient.get<Article[]>(
             environment.backend + '/articles/page/' + page
+        );
+    }
+
+    getArticlesByParamsAndPage(
+        page: number,
+        categoryId: number,
+        title: string
+    ): Observable<Article[]> {
+        console.log(categoryId);
+        if (!categoryId) {
+            categoryId = null;
+        }
+        return this.httpclient.post<Article[]>(
+            environment.backend + '/articles/research/page/' + page,
+            {
+                title,
+                categoryId,
+            }
         );
     }
 }
