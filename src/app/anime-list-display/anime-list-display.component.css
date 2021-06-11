@@ -49,13 +49,12 @@ p {
 .textDescList {
     font-size: 0.75vw;
     display: inline-block;
-    /*display: -webkit-box;*/
-    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     max-width: 15vw;
-    max-height: 9vh;
+    max-height: 6vh;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin: 0;
 }
 
 #nameList {
@@ -100,6 +99,11 @@ p {
 #owner {
     color: #868686;
     font-style: italic;
+    /* margin-top: -2.5vh; */
+}
+
+#divList {
+    padding: 0;
 }
 
 @media screen and (max-width: 576px) {
@@ -141,8 +145,7 @@ p {
 
     .list {
         width: 80vw;
-        margin: auto;
-        margin-bottom: 2vh;
+        margin: auto auto 2vh;
     }
 
     #delete-button {

@@ -60,14 +60,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-9 col-lg-9 col-md-8 col-9 containerTxt">
+                <div id="divList" class="col-xl-9 col-lg-9 col-md-8 col-9">
                     <a [routerLink]="['/lists', list.id]" id="nameList">{{
                         list.name
                     }}</a>
-                    <p>{{ list.description }}</p>
-                    <span id="owner"
-                        >écrite par {{ list.isOwnedBy.username }}</span
-                    >
+                    <p class="textDescList">{{ list.description }}</p>
+                    <p id="owner">écrite par {{ list.isOwnedBy.username }}</p>
                     <div
                         class="deleteButton"
                         *ngIf="isDefault === 'user_custom'"
