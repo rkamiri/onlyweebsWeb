@@ -28,6 +28,10 @@ p {
     margin: auto;
 }
 
+#solo {
+    margin-left: 4.213vw;
+}
+
 .list:hover {
     background-color: #11428d;
 }
@@ -45,12 +49,12 @@ p {
 .textDescList {
     font-size: 0.75vw;
     display: inline-block;
-    /*display: -webkit-box;*/
-    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     max-width: 15vw;
+    max-height: 6vh;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin: 0;
 }
 
 #nameList {
@@ -79,27 +83,26 @@ p {
     text-decoration: none;
 }
 
-.group-list {
-}
-
-#list-def {
-}
-
-#list-cus {
-    display: flex;
-}
-
-#button-div {
-    flex: 1;
-}
-
-#delete-button {
-    font-size: 1.2vw;
-}
-
-.deleteButton {
-    float: right;
+#divList {
+    margin-left: 1vw;
+    padding: 0;
     display: inline-block;
+}
+
+#left {
+    display: inline-block;
+    width: 15vw;
+}
+
+#right {
+    font-size: 1.2vw;
+    display: inline-block;
+    float: right;
+}
+
+#owner {
+    color: #868686;
+    font-style: italic;
 }
 
 #owner {
@@ -146,11 +149,32 @@ p {
 
     .list {
         width: 80vw;
-        margin: auto;
-        margin-bottom: 2vh;
+        margin: auto auto 2vh;
     }
 
-    #delete-button {
+    #right {
+        font-size: 1.5vw;
+    }
+
+    #owner {
+        color: #868686;
+        font-style: italic;
+    }
+
+    .textDescList {
+        max-width: 35vw;
+        max-height: 5vh;
+    }
+
+    #solo {
+        margin: auto;
+    }
+
+    #left {
+        width: 30vw;
+    }
+
+    #owner {
         font-size: 1.5vw;
     }
 
@@ -201,9 +225,21 @@ p {
         color: #868686;
         font-style: italic;
     }
+  
+    #solo {
+        margin-left: 4.2vw;
+    }
+
+    #left {
+        width: 30vw;
+    }
+
+    #owner {
+        font-size: 1.25vw;
+    }
 }
 
-@media screen and (max-width: 1023px) and (min-width: 768px) {
+@media screen and (max-width: 1024px) and (min-width: 768px) {
     #containerImg {
         width: 15vw;
         height: 12vh;
@@ -235,6 +271,11 @@ p {
         margin-left: 0;
     }
 
+    .textDescList {
+        max-width: 17vw;
+        max-height: 5vh;
+    }
+
     .list {
         width: 45vw;
     }
@@ -242,6 +283,14 @@ p {
     #owner {
         color: #868686;
         font-style: italic;
+    }
+
+    #left {
+        width: 30vw;
+    }
+
+    #owner {
+        font-size: 1.1vw;
     }
 }
 
@@ -284,5 +333,22 @@ p {
     #owner {
         color: #868686;
         font-style: italic;
+    }
+  
+    .textDescList {
+        max-width: 17vw;
+        max-height: 5vh;
+    }
+
+    #owner {
+        font-size: 1.1vw;
+    }
+
+    #solo {
+        margin-left: 0;
+    }
+
+    #left {
+        width: 30vw;
     }
 }
