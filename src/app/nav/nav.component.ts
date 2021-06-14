@@ -38,7 +38,9 @@ export class NavComponent implements OnInit {
         private userService: UserService,
         private searchService: SearchService,
         private toastr: ToastrService
-    ) {}
+    ) {
+        console.log('0');
+    }
 
     ngOnInit(): void {
         this.authSubscription = this.userService
