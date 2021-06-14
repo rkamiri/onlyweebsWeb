@@ -114,7 +114,28 @@
             </div>
             <div class="col-md-4">
                 <h2>A lire aussi</h2>
-                <div class="articleBox rounded">
+                <div
+                    class="articleBox rounded"
+                    *ngFor="let similarArticle of similarArticles"
+                >
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img
+                                loading="lazy"
+                                class="rounded-left"
+                                src="{{ imagePath + similarArticle.cover.id }}"
+                                alt=""
+                            />
+                        </div>
+                        <div class="col-md-6">
+                            <p>
+                                {{ similarArticle.title }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="articleBox rounded">
                     <div class="row">
                         <div class="col-md-6">
                             <img
@@ -185,25 +206,7 @@
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="articleBox rounded">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img
-                                loading="lazy"
-                                class="rounded-left"
-                                src="https://www.actugaming.net/wp-content/uploads/2021/02/NieR-Replicant-ver-1-22474487139_2021_02-24-21_002.jpg"
-                                alt=""
-                            />
-                        </div>
-                        <div class="col-md-6">
-                            <p>
-                                NieR Replicant ver.1.22474487139, pêche et
-                                jardinage : notre guide complet
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>

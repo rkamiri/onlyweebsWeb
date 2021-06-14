@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 import { CommentService } from '../shared/service/comment.service';
 import { Comment } from '../shared/model/comment';
 import { FormControl, FormGroup } from '@angular/forms';
+import { getSortHeaderNotContainedWithinSortError } from '@angular/material/sort/sort-errors';
 
 @Component({
     selector: 'app-article',
@@ -21,6 +22,8 @@ export class ArticleComponent implements OnInit {
     public comments: Comment[];
     public userHasComment: boolean;
     public commentForm: FormGroup;
+    public similarArticles: Article[];
+    public imagePath: string;
 
     constructor(
         private articleService: ArticleService,
@@ -32,11 +35,18 @@ export class ArticleComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.imagePath = environment.backend + '/image/';
         this.articleCoverUrl =
             environment.backend + '/image/' + this.article.cover.id;
         this.userImageUrl =
             environment.backend + '/image/' + this.article.author.image.id;
         this.initArticleComments();
+        this.articleService
+            .getSimilarArticles(this.article.id, this.article.category.id)
+            .subscribe((articles) => {
+                this.similarArticles = articles;
+                console.log(this.similarArticles);
+            });
     }
 
     initArticleComments(): void {

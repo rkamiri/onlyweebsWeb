@@ -55,4 +55,13 @@ export class ArticleService {
             }
         );
     }
+    getSimilarArticles(articleId: number, category: number) {
+        return this.httpclient.get<Article[]>(
+            environment.backend +
+                '/articles/similar/article_id/' +
+                articleId +
+                '/category/' +
+                category
+        );
+    }
 }
