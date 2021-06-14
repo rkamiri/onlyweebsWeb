@@ -40,7 +40,9 @@ export class SigninComponent implements OnInit {
                     'You are successfully logged in',
                     'Login successful!'
                 );
-                return this.router.navigate(['account']);
+                return this.router.navigate(['account']).then(() => {
+                    window.location.reload();
+                });
             },
             (error) => {
                 this.toastr.error(
