@@ -48,7 +48,10 @@
                     >LISTS</a
                 >
             </li>
-            <li *ngIf="isUserAuthenticated" class="nav-item">
+            <li
+                *ngIf="isUserAuthenticated && adminStatus === 'ROLE_ADMIN'"
+                class="nav-item"
+            >
                 <a
                     class="nav-link"
                     [routerLink]="['/editor']"
