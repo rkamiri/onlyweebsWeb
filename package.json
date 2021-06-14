@@ -38,6 +38,7 @@
         "ng-image-slider": "^2.8.0",
         "ng2-file-upload": "^1.4.0",
         "ngx-bootstrap": "^6.2.0",
+        "ngx-sharebuttons": "^8.0.5",
         "ngx-tweet": "^2.0.3",
         "ngx-twitter-timeline": "^0.1.5",
         "rxjs": "~6.6.0",

@@ -99,7 +99,6 @@ import { AnimeListDisplayComponent } from './anime-list-display/anime-list-displ
                 useClass: HttpRequestInterceptor,
                 multi: true,
             },
-            { provide: LocationStrategy, useClass: HashLocationStrategy },
         ],
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
