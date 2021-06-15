@@ -78,6 +78,17 @@ export class AnimeComponent implements OnDestroy, OnInit {
 
     ngOnInit(): void {
         this.anime = this.activatedRoute.snapshot.data.anime;
+        this.ratingService
+            .getGlobalRatingOfAnAnime(
+                this.activatedRoute.snapshot.data.anime.id
+            )
+            .subscribe((gRate) => {
+                if (isNaN(gRate)) {
+                    this.globalRate = undefined;
+                } else {
+                    this.globalRate = gRate;
+                }
+            });
         this.globalRate = this.activatedRoute.snapshot.data.globalRating;
         if (sessionStorage.getItem('isConnected') === 'true') {
             this.listService.getMyCustomLists().subscribe((customLists) => {
@@ -87,20 +98,16 @@ export class AnimeComponent implements OnDestroy, OnInit {
             this.listService.getMyDefaultLists().subscribe((defaultLists) => {
                 this.userDefaultLists = defaultLists;
             });
-            this.currentRate =
-                this.activatedRoute.snapshot.data.currentUserRating;
             this.ratingService
                 .getCurrentUserRatingForThisAnime(this.anime.id)
                 .subscribe((data) => {
                     this.currentRate = data;
+                    if (data === 666) {
+                        this.currentRate = undefined;
+                    } else {
+                        this.rateForm.controls.rate.setValue(data);
+                    }
                 });
-            if (this.currentRate === null || this.currentRate === undefined) {
-                if (!(this.currentRate === 666)) {
-                    this.rateForm.controls.rate.setValue(this.currentRate);
-                } else {
-                    this.currentRate = undefined;
-                }
-            }
         }
     }
 
