@@ -103,6 +103,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
                 useClass: HttpRequestInterceptor,
                 multi: true,
             },
+            {
+                provide: LocationStrategy,
+                useClass: HashLocationStrategy,
+            },
         ],
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
