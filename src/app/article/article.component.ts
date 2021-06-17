@@ -44,7 +44,7 @@ export class ArticleComponent implements OnInit {
                     this.similarArticles = articles;
                 });
         });
-        this.pageUrl = window.location.href;
+        this.pageUrl = window.location.href.replace('#', '%23');
         this.imagePath = environment.backend + '/image/';
         this.initArticleComments();
     }
