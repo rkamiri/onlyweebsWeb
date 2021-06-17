@@ -61,14 +61,13 @@
                             <h5 class="card-title">{{ anime.title }}</h5>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">
+                            <label class="card-text">
                                 {{
                                     anime.synopsis
-                                        ? (anime.synopsis | slice: 0:150)
+                                        ? anime.synopsis
                                         : "no synopsis yet"
                                 }}
-                                {{ anime.synopsis.length >= 150 ? "..." : "" }}
-                            </p>
+                            </label>
                         </div>
                     </div>
                 </a>
