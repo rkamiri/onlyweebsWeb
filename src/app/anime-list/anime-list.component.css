@@ -106,6 +106,16 @@ a {
     width: 7.5vw !important;
 }
 
+.dropdown-menu {
+    max-height: 10vh;
+    overflow-y: auto;
+    background-attachment: local, local, scroll, scroll;
+}
+
+/*.dropdown-item {
+    white-space: normal;
+}*/
+
 @media screen and (max-width: 1400px) {
     .card {
         width: 18vw;
