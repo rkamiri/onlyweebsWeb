@@ -20,8 +20,6 @@ a {
     height: 100%;
     overflow: hidden;
     white-space: initial;
-    /*word-wrap: break-word;
-    text-overflow: ellipsis;*/
     overflow-wrap: break-word;
     text-overflow: ellipsis;
 }
