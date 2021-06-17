@@ -43,6 +43,7 @@ import { NgxTweetModule } from 'ngx-tweet';
 import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 import { AnimeListDisplayComponent } from './anime-list-display/anime-list-display.component';
 import { ToastrModule } from 'ngx-toastr';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
     declarations: [
@@ -93,6 +94,7 @@ import { ToastrModule } from 'ngx-toastr';
         NgxTweetModule,
         NgxTwitterTimelineModule,
         ToastrModule.forRoot(),
+        MatExpansionModule,
     ],
     providers: [
         [
