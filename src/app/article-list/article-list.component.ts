@@ -43,7 +43,6 @@ export class ArticleListComponent implements OnInit {
             if (data.category || data.query) {
                 this.category = data.category;
                 this.query = data.query;
-                console.log(this.query);
                 this.articleService
                     .getArticlesByParamsAndPage(
                         this.page,
@@ -81,6 +80,7 @@ export class ArticleListComponent implements OnInit {
                                     article.cover.id
                             )
                         );
+
                         if (this.listArticles.length > 5) {
                             this.listArticlesRunner = this.listArticles.slice(
                                 5,

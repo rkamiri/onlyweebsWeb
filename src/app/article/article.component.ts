@@ -47,7 +47,6 @@ export class ArticleComponent implements OnInit {
         this.pageUrl = window.location.href;
         this.imagePath = environment.backend + '/image/';
         this.initArticleComments();
-        console.log(this.comments);
     }
 
     initArticleComments(): void {

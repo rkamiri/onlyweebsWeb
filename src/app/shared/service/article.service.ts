@@ -43,7 +43,6 @@ export class ArticleService {
         categoryId: number,
         title: string
     ): Observable<Article[]> {
-        console.log(categoryId);
         if (!categoryId) {
             categoryId = null;
         }
