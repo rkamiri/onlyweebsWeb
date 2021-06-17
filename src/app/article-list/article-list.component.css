@@ -9,11 +9,6 @@ body {
 #image1 {
     height: 460px;
 }
-#articles {
-    border-radius: 5px;
-    width: 75vw;
-    margin: auto;
-}
 #articleList {
     margin-top: 2vh;
 }

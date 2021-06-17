@@ -101,7 +101,6 @@ import { ToastrModule } from 'ngx-toastr';
                 useClass: HttpRequestInterceptor,
                 multi: true,
             },
-            { provide: LocationStrategy, useClass: HashLocationStrategy },
         ],
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

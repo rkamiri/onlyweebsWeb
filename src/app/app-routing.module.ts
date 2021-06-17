@@ -80,6 +80,7 @@ const routes: Routes = [
         path: 'articles/:id',
         component: ArticleComponent,
         resolve: { article: ArticleResolver },
+        runGuardsAndResolvers: 'always',
     },
     { path: 'my-lists', component: MylistsComponent },
     { path: 'editor', component: ArticleEditorComponent },
