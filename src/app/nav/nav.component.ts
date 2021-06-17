@@ -61,7 +61,9 @@ export class NavComponent implements OnInit {
     logoutUser(): void {
         this.userService.logout();
         this.router.navigate(['home']).then(() => {
-            window.location.reload();
+            setTimeout(() => {
+                window.location.reload();
+            }, 500);
         });
         this.toastr.success('You are logged out', 'Logout successful!');
     }

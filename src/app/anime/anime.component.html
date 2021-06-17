@@ -72,7 +72,9 @@
             </div>
 
             <div class="col-md-3 col-lg-3 col-sm-4" id="rating">
-                <span class="globalRat"> {{ globalRate * 100 }} %</span>
+                <span class="globalRat">
+                    {{ globalRate * 10 | number: "1.0-2" }} %</span
+                >
                 <br />
                 <span class="currentRat">
                     my rating: {{ currentRate }}/10
@@ -92,14 +94,24 @@
                             (ngModelChange)="validateValue($event)"
                         ></ngb-rating>
                         <br />
-                        <button id="ratingBtn" class="btn btn-sm btn-primary">
+                        <button
+                            *ngIf="isConnected"
+                            class="btn btn-sm btn-primary"
+                        >
                             {{ currentRate ? "Update" : "Add" }}
+                        </button>
+                        <button
+                            *ngIf="!isConnected"
+                            class="btn btn-sm btn-primary"
+                            routerLink="/login"
+                        >
+                            Login to rate
                         </button>
                     </div>
                 </form>
             </div>
 
-            <div class="container text-light">
+            <div class="container text-light" *ngIf="studios !== undefined">
                 <div class="row">
                     <div class="col">
                         <mat-accordion>
@@ -115,7 +127,10 @@
                                     <mat-panel-title> Details</mat-panel-title>
                                 </mat-expansion-panel-header>
                                 <!-- DETAILS -->
-                                <table class="table text-light details">
+                                <table
+                                    *ngIf="producers !== undefined"
+                                    class="table text-light details"
+                                >
                                     <tbody>
                                         <tr>
                                             <th *ngIf="studios" scope="row">
@@ -130,9 +145,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th *ngIf="producers" scope="row">
-                                                Producer
-                                            </th>
+                                            <th scope="row">Producer</th>
                                             <td>
                                                 {{
                                                     producers[0] !== ""
