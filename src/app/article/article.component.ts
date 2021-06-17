@@ -1,12 +1,13 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { ArticleService } from '../shared/service/article.service';
 import { Article } from '../shared/model/article';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from '../../environments/environment';
 import { CommentService } from '../shared/service/comment.service';
 import { Comment } from '../shared/model/comment';
 import { FormControl, FormGroup } from '@angular/forms';
+import { getSortHeaderNotContainedWithinSortError } from '@angular/material/sort/sort-errors';
 
 @Component({
     selector: 'app-article',
@@ -21,21 +22,30 @@ export class ArticleComponent implements OnInit {
     public comments: Comment[];
     public userHasComment: boolean;
     public commentForm: FormGroup;
+    public similarArticles: Article[];
+    public imagePath: string;
+    public pageUrl: string;
 
     constructor(
         private articleService: ArticleService,
         private commentsService: CommentService,
-        private route: ActivatedRoute
+        public route: ActivatedRoute,
+        public router: Router
     ) {
-        this.article = this.route.snapshot.data.article;
         this.commentForm = new FormGroup({ comment: new FormControl('') });
     }
 
     ngOnInit(): void {
-        this.articleCoverUrl =
-            environment.backend + '/image/' + this.article.cover.id;
-        this.userImageUrl =
-            environment.backend + '/image/' + this.article.author.image.id;
+        this.route.params.subscribe((params) => {
+            this.article = this.route.snapshot.data.article;
+            this.articleService
+                .getSimilarArticles(this.article.id, this.article.category.id)
+                .subscribe((articles) => {
+                    this.similarArticles = articles;
+                });
+        });
+        this.pageUrl = window.location.href;
+        this.imagePath = environment.backend + '/image/';
         this.initArticleComments();
     }
 
@@ -70,6 +80,31 @@ export class ArticleComponent implements OnInit {
                     location.reload();
                 });
         }
+    }
+
+    share(website: string): void {
+        let url = '';
+        switch (website) {
+            case 'facebook':
+                url =
+                    'http://www.facebook.com/sharer/sharer.php?u=' +
+                    this.pageUrl +
+                    '&t=onlyweebs';
+                break;
+            case 'twitter':
+                url =
+                    'https://twitter.com/intent/tweet?url=' +
+                    this.article.title +
+                    ' ' +
+                    this.pageUrl +
+                    '&hashtags=onlyweebs';
+                break;
+        }
+        window.open(
+            url,
+            'example',
+            'width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0'
+        );
     }
 }
 
