@@ -74,15 +74,33 @@ export class AnimeService {
         );
     }
 
+    getAllGenres(): Observable<Genres[]> {
+        return this.httpclient.get<Genres[]>(
+            environment.backend + '/genres/all'
+        );
+    }
+
     getStudios(id: number): Observable<Studios[]> {
         return this.httpclient.get<Studios[]>(
             environment.backend + '/animes/' + id + '/studios'
         );
     }
 
+    getAllStudios(): Observable<Studios[]> {
+        return this.httpclient.get<Studios[]>(
+            environment.backend + '/studios/all'
+        );
+    }
+
     getProducers(id: number): Observable<Producers[]> {
         return this.httpclient.get<Producers[]>(
             environment.backend + '/animes/' + id + '/producers'
+        );
+    }
+
+    getAllProducers(): Observable<Producers[]> {
+        return this.httpclient.get<Producers[]>(
+            environment.backend + '/producers/all'
         );
     }
 

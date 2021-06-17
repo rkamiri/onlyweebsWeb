@@ -3,6 +3,9 @@ import { Anime } from '../shared/model/anime';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AnimeService } from '../shared/service/anime.service';
 import { document } from 'ngx-bootstrap/utils';
+import { Genres } from '../shared/model/genres';
+import { Studios } from '../shared/model/studios';
+import { Producers } from '../shared/model/producers';
 
 @Component({
     selector: 'app-anime-list',
@@ -18,6 +21,10 @@ export class AnimeListComponent implements OnInit {
     private research: string;
     public page: number;
     public queryParams: Params;
+    public listGenres: Genres[];
+    public listStudios: Studios[];
+    public listProducers: Producers[];
+    public clickedGenre: number;
 
     constructor(
         private route: ActivatedRoute,
@@ -26,6 +33,15 @@ export class AnimeListComponent implements OnInit {
 
     ngOnInit(): void {
         this.initPage();
+        this.animeService
+            .getAllGenres()
+            .subscribe((data) => (this.listGenres = data));
+        this.animeService
+            .getAllStudios()
+            .subscribe((data) => (this.listStudios = data));
+        this.animeService
+            .getAllProducers()
+            .subscribe((data) => (this.listProducers = data));
     }
 
     initPage(): void {
