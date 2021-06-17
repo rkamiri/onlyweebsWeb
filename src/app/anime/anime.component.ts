@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Anime } from '../shared/model/anime';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RatingService } from '../shared/service/rating.service';
 import { Rating } from '../shared/model/rating';
 import { CommentService } from '../shared/service/comment.service';
@@ -34,6 +34,8 @@ export class AnimeComponent implements OnDestroy, OnInit {
     public genres: string[];
     public studios: string[];
     public producers: string[];
+    public dateNow = new Date();
+    ctrl = new FormControl(null, Validators.required);
 
     constructor(
         private router: Router,

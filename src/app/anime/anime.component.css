@@ -1,9 +1,12 @@
-.container {
-    background-color: #2e3032;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+body {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
 }
 
+.container {
+    padding: 2vh;
+    background-color: #2e3032;
+}
 mat-expansion-panel {
     background-color: #212223;
     color: #f1f1f1;
@@ -14,7 +17,8 @@ mat-panel-title {
     font-size: 3vh;
 }
 
-.synopsis {
+.synopsis,
+.details {
     font-size: 2vh;
 }
 
@@ -67,4 +71,24 @@ select {
 /* Transition */
 .select:hover::after {
     color: #f1f1f1;
+}
+
+.comment,
+.comment-info {
+    margin-bottom: 2vh;
+}
+
+#animeTitle {
+    font-size: 3vh;
+}
+
+#defaultList,
+#customList {
+    font-size: 2vh;
+    margin-top: 1vh;
+    margin-right: 1vh;
+    min-width: 50%;
+}
+
+@media only screen and (max-width: 1000px) {
 }
