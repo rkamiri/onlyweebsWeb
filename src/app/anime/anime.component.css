@@ -78,6 +78,10 @@ select {
     margin-bottom: 2vh;
 }
 
+.commentTitle {
+    font-size: 2vh;
+}
+
 #animeTitle {
     font-size: 3vh;
 }
@@ -90,5 +94,29 @@ select {
     min-width: 50%;
 }
 
+.currentRat {
+    color: #868686;
+    font-size: small;
+}
+
+.globalRat {
+    color: green;
+    font-size: 3vh;
+}
+
 @media only screen and (max-width: 1000px) {
+}
+
+.star {
+    position: relative;
+    display: inline-block;
+    font-size: 2vh;
+    color: #d3d3d3;
+}
+.full {
+    color: yellow;
+}
+
+.addToList {
+    white-space: nowrap;
 }

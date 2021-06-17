@@ -10,7 +10,7 @@
                     src="{{ anime.imgUrl }}"
                 />
             </div>
-            <div class="col-8">
+            <div class="col-6">
                 <p id="animeTitle">{{ anime.title }}</p>
                 <p>{{ anime.titleEnglish }}</p>
                 <hr />
@@ -31,7 +31,7 @@
                                         {{ list.name }}
                                     </option>
                                 </select>
-                                <div class="input-group-prepend">
+                                <div class="input-group-sm">
                                     <button
                                         (click)="addAnimeToList()"
                                         class="btn btn-primary btn-sm addToList"
@@ -56,7 +56,7 @@
                                         {{ list.name }}
                                     </option>
                                 </select>
-                                <div class="input-group-prepend">
+                                <div class="input-group-sm">
                                     <button
                                         (click)="addAnimeToList()"
                                         class="btn btn-primary btn-sm addToList"
@@ -71,181 +71,227 @@
                 </div>
             </div>
 
-            <div class="col-md-1 col-lg-1 col-sm-4" id="rating">tets</div>
-        </div>
-    </div>
-
-    <div class="container text-light">
-        <div class="row">
-            <div class="col">
-                <mat-accordion>
-                    <mat-expansion-panel expanded>
-                        <mat-expansion-panel-header>
-                            <mat-panel-title> Synopsis</mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <!-- SYNOPSIS -->
-                        <p class="synopsis">{{ anime.synopsis }}</p>
-                    </mat-expansion-panel>
-                    <mat-expansion-panel>
-                        <mat-expansion-panel-header>
-                            <mat-panel-title> Details</mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <!-- DETAILS -->
-                        <table class="table text-light details">
-                            <tbody>
-                                <tr>
-                                    <th *ngIf="studios" scope="row">Studio</th>
-                                    <td>
-                                        {{
-                                            studios[0] !== ""
-                                                ? studios.toString()
-                                                : "not announced yet"
-                                        }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th *ngIf="producers" scope="row">
-                                        Producer
-                                    </th>
-                                    <td>
-                                        {{
-                                            producers[0] !== ""
-                                                ? producers.toString()
-                                                : "not announced yet"
-                                        }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Airing Date</th>
-                                    <td>
-                                        {{
-                                            anime.airing !== "None"
-                                                ? anime.airing
-                                                : "not announced yet"
-                                        }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Number of episodes</th>
-                                    <td>
-                                        {{
-                                            anime.episodes
-                                                ? anime.episodes
-                                                : "not announced yet"
-                                        }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </mat-expansion-panel>
-                    <mat-expansion-panel>
-                        <mat-expansion-panel-header>
-                            <mat-panel-title> Comments</mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <!-- COMMENTAIRE -->
-                        <div class="row">
-                            <div
-                                *ngIf="comments !== undefined"
-                                [ngClass]="isConnected ? '' : ''"
-                                class="col-md-8 col-sm-9"
-                            >
-                                <div
-                                    *ngFor="
-                                        let comment of comments;
-                                        let index = index
-                                    "
-                                    class="row"
+            <div class="col-md-3 col-lg-3 col-sm-4" id="rating">
+                <span class="globalRat"> {{ globalRate * 100 }} %</span>
+                <br />
+                <span class="currentRat">
+                    my rating: {{ currentRate }}/10
+                </span>
+                <form [formGroup]="rateForm" (ngSubmit)="updateRating()">
+                    <div class="input-group" id="ratingGroup">
+                        <ng-template #t let-fill="fill">
+                            <span class="star" [class.full]="fill === 100">
+                                <span class="half" [style.width.%]="fill"
+                                    >&#x2605;</span
                                 >
-                                    <div
-                                        *ngIf="comment.user.image !== undefined"
-                                        class="
-                                            col-md-2 col-xs-5
-                                            comment-info
-                                            text-center
-                                        "
-                                    >
-                                        <img
-                                            alt="profile image"
-                                            class="rounded-circle img-fluid"
-                                            height="80"
-                                            loading="lazy"
-                                            src="data:image/webp;base64,{{
-                                                comment.user.image.content
-                                            }}"
-                                            width="80"
-                                        />
-                                        <div
-                                            style="
-                                                font-size: 1vw;
-                                                color: #097ce7;
-                                            "
-                                        >
-                                            {{ comment.user.username }}
-                                        </div>
-                                        <p>
-                                            {{
-                                                comment.date
-                                                    | date: "dd-MM-yyyy"
-                                            }}
-                                        </p>
-                                        <br />
-                                    </div>
+                            </span>
+                        </ng-template>
+                        <ngb-rating
+                            [starTemplate]="t"
+                            [formControl]="rateForm.controls.rate"
+                            (ngModelChange)="validateValue($event)"
+                        ></ngb-rating>
+                        <br />
+                        <button id="ratingBtn" class="btn btn-sm btn-primary">
+                            {{ currentRate ? "Update" : "Add" }}
+                        </button>
+                    </div>
+                </form>
+            </div>
 
+            <div class="container text-light">
+                <div class="row">
+                    <div class="col">
+                        <mat-accordion>
+                            <mat-expansion-panel expanded>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title> Synopsis</mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <!-- SYNOPSIS -->
+                                <p class="synopsis">{{ anime.synopsis }}</p>
+                            </mat-expansion-panel>
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title> Details</mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <!-- DETAILS -->
+                                <table class="table text-light details">
+                                    <tbody>
+                                        <tr>
+                                            <th *ngIf="studios" scope="row">
+                                                Studio
+                                            </th>
+                                            <td>
+                                                {{
+                                                    studios[0] !== ""
+                                                        ? studios.toString()
+                                                        : "not announced yet"
+                                                }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th *ngIf="producers" scope="row">
+                                                Producer
+                                            </th>
+                                            <td>
+                                                {{
+                                                    producers[0] !== ""
+                                                        ? producers.toString()
+                                                        : "not announced yet"
+                                                }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Airing Date</th>
+                                            <td>
+                                                {{
+                                                    anime.airing !== "None"
+                                                        ? anime.airing
+                                                        : "not announced yet"
+                                                }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">
+                                                Number of episodes
+                                            </th>
+                                            <td>
+                                                {{
+                                                    anime.episodes
+                                                        ? anime.episodes
+                                                        : "not announced yet"
+                                                }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </mat-expansion-panel>
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title> Comments</mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <!-- COMMENTAIRE -->
+                                <div class="row">
                                     <div
-                                        class="
-                                            container
-                                            col-md-10 col-xs-5
-                                            comment
-                                        "
+                                        *ngIf="comments !== undefined"
+                                        [ngClass]="isConnected ? '' : ''"
+                                        class="col-md-8 col-sm-9"
                                     >
-                                        {{ comment.body }}
+                                        <div
+                                            *ngFor="
+                                                let comment of comments;
+                                                let index = index
+                                            "
+                                            class="row"
+                                        >
+                                            <div
+                                                *ngIf="
+                                                    comment.user.image !==
+                                                    undefined
+                                                "
+                                                class="
+                                                    col-md-2 col-xs-5
+                                                    comment-info
+                                                    text-center
+                                                "
+                                            >
+                                                <img
+                                                    alt="profile image"
+                                                    class="
+                                                        rounded-circle
+                                                        img-fluid
+                                                    "
+                                                    height="80"
+                                                    loading="lazy"
+                                                    src="data:image/webp;base64,{{
+                                                        comment.user.image
+                                                            .content
+                                                    }}"
+                                                    width="80"
+                                                />
+                                                <div
+                                                    style="
+                                                        font-size: 1vw;
+                                                        color: #097ce7;
+                                                    "
+                                                >
+                                                    {{ comment.user.username }}
+                                                </div>
+                                                <p>
+                                                    {{
+                                                        comment.date
+                                                            | date: "dd-MM-yyyy"
+                                                    }}
+                                                </p>
+                                                <br />
+                                            </div>
+
+                                            <div
+                                                class="
+                                                    container
+                                                    col-md-10 col-xs-5
+                                                    comment
+                                                "
+                                            >
+                                                {{ comment.body }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        *ngIf="isConnected"
+                                        class="col-md-4 col-sm-3"
+                                    >
+                                        <form
+                                            (ngSubmit)="sendAnimeComment()"
+                                            [formGroup]="commentForm"
+                                            id="align-form"
+                                        >
+                                            <div class="form-group">
+                                                <span class="commentTitle"
+                                                    >Leave a comment</span
+                                                >
+                                                <textarea
+                                                    class="form-control"
+                                                    cols="30"
+                                                    formControlName="comment"
+                                                    id="message"
+                                                    name="msg"
+                                                    rows="5"
+                                                    style="
+                                                        background-color: black;
+                                                    "
+                                                ></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <button
+                                                    class="btn btn-primary"
+                                                    type="submit"
+                                                >
+                                                    {{
+                                                        userHasComment
+                                                            ? "Edit Comment"
+                                                            : "Post Comment"
+                                                    }}
+                                                </button>
+                                                <button
+                                                    (click)="
+                                                        deleteAnimeComment()
+                                                    "
+                                                    *ngIf="userHasComment"
+                                                    class="btn btn-danger"
+                                                    id="delete-button"
+                                                    type="button"
+                                                >
+                                                    Delete your comment
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                            </div>
-                            <div *ngIf="isConnected" class="col-md-4 col-sm-3">
-                                <form
-                                    (ngSubmit)="sendAnimeComment()"
-                                    [formGroup]="commentForm"
-                                    id="align-form"
-                                >
-                                    <div class="form-group">
-                                        <h1>Leave a comment</h1>
-                                        <textarea
-                                            class="form-control"
-                                            cols="30"
-                                            formControlName="comment"
-                                            id="message"
-                                            name="msg"
-                                            rows="5"
-                                            style="background-color: black"
-                                        ></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <button
-                                            class="btn btn-primary"
-                                            type="submit"
-                                        >
-                                            {{
-                                                userHasComment
-                                                    ? "Edit Comment"
-                                                    : "Post Comment"
-                                            }}
-                                        </button>
-                                        <button
-                                            (click)="deleteAnimeComment()"
-                                            *ngIf="userHasComment"
-                                            class="btn btn-danger"
-                                            id="delete-button"
-                                            type="button"
-                                        >
-                                            Delete your comment
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </mat-expansion-panel>
-                </mat-accordion>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
