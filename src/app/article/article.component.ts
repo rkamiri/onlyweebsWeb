@@ -32,25 +32,22 @@ export class ArticleComponent implements OnInit {
         public route: ActivatedRoute,
         public router: Router
     ) {
-        this.article = this.route.snapshot.data.article;
         this.commentForm = new FormGroup({ comment: new FormControl('') });
     }
 
     ngOnInit(): void {
+        this.route.params.subscribe((params) => {
+            this.article = this.route.snapshot.data.article;
+            this.articleService
+                .getSimilarArticles(this.article.id, this.article.category.id)
+                .subscribe((articles) => {
+                    this.similarArticles = articles;
+                });
+        });
         this.pageUrl = window.location.href;
-        console.log(this.pageUrl);
         this.imagePath = environment.backend + '/image/';
-        this.articleCoverUrl =
-            environment.backend + '/image/' + this.article.cover.id;
-        this.userImageUrl =
-            environment.backend + '/image/' + this.article.author.image.id;
         this.initArticleComments();
-        this.articleService
-            .getSimilarArticles(this.article.id, this.article.category.id)
-            .subscribe((articles) => {
-                this.similarArticles = articles;
-                console.log(this.similarArticles);
-            });
+        console.log(this.comments);
     }
 
     initArticleComments(): void {
@@ -84,6 +81,31 @@ export class ArticleComponent implements OnInit {
                     location.reload();
                 });
         }
+    }
+
+    share(website: string): void {
+        let url = '';
+        switch (website) {
+            case 'facebook':
+                url =
+                    'http://www.facebook.com/sharer/sharer.php?u=' +
+                    this.pageUrl +
+                    '&t=onlyweebs';
+                break;
+            case 'twitter':
+                url =
+                    'https://twitter.com/intent/tweet?url=' +
+                    this.article.title +
+                    ' ' +
+                    this.pageUrl +
+                    '&hashtags=onlyweebs';
+                break;
+        }
+        window.open(
+            url,
+            'example',
+            'width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0'
+        );
     }
 }
 

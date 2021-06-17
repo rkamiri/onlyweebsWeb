@@ -11,7 +11,7 @@
                     <img
                         loading="lazy"
                         *ngIf="article.cover !== undefined"
-                        src="{{ articleCoverUrl }}"
+                        src="{{ imagePath + article.cover.id }}"
                         alt="article image"
                     />
                 </div>
@@ -22,33 +22,39 @@
                 <div id="author">
                     <img
                         loading="lazy"
-                        *ngIf="userImageUrl !== undefined"
+                        *ngIf="article.cover !== undefined"
                         class="rounded-circle d-inline"
-                        src="{{ userImageUrl }}"
-                        alt=""
+                        src="{{ imagePath + article.author.image.id }}"
+                        alt="article image"
                     />
                     <p class="d-inline p-2">
                         Par {{ article.author.username }}, Rédacteur
                         onlyweebs.com
                     </p>
                     <a
-                        class="twitter-share-button sharer"
-                        href="https://twitter.com/intent/tweet?url={{
-                            pageUrl
-                        }}&hashtags=onlyweebs"
-                        data-url="www.google.com"
-                        id="share-tw"
+                        href="#"
+                        target="popup"
+                        (click)="share('twitter')"
+                        class="
+                            scl-btn scl-crcl
+                            shadow
+                            btn-twitter-f
+                            fa fa-twitter
+                        "
                     >
-                        <i class="fa fa-twitter-square"></i>
                     </a>
                     <a
-                        id="share-fb"
-                        href="http://www.facebook.com/sharer/sharer.php?u={{
-                            pageUrl
-                        }}&t=Jesaispas"
-                        target="_blank"
-                        class="share-popup sharer fa fa-facebook"
-                    ></a>
+                        href="#"
+                        target="popup"
+                        (click)="share('facebook')"
+                        class="
+                            scl-btn scl-crcl
+                            shadow
+                            btn-facebook-f
+                            fa fa-facebook
+                        "
+                    >
+                    </a>
                 </div>
                 <div class="row d-flex justify-content-center">
                     <div
@@ -59,6 +65,16 @@
                         "
                     >
                         <h1>Comments</h1>
+                        <p
+                            *ngIf="
+                                comments === undefined || comments.length === 0
+                            "
+                        >
+                            There are no comments yet ...
+                            <a routerLink="/login" *ngIf="!isConnected"
+                                >Login to write a comment</a
+                            >
+                        </p>
                         <div
                             *ngFor="let comment of comments; let index = index"
                             class="mt-4 text-justify float-left comment"
@@ -136,21 +152,25 @@
                     class="articleBox rounded"
                     *ngFor="let similarArticle of similarArticles"
                 >
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img
-                                loading="lazy"
-                                class="rounded-left"
-                                src="{{ imagePath + similarArticle.cover.id }}"
-                                alt=""
-                            />
+                    <a routerLink="/articles/{{ similarArticle.id }}">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img
+                                    loading="lazy"
+                                    class="rounded-left"
+                                    src="{{
+                                        imagePath + similarArticle.cover.id
+                                    }}"
+                                    alt=""
+                                />
+                            </div>
+                            <div class="col-md-6">
+                                <p>
+                                    {{ similarArticle.title }}
+                                </p>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <p>
-                                {{ similarArticle.title }}
-                            </p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

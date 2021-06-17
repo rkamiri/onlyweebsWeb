@@ -1,6 +1,6 @@
-* {
+body {
     outline-width: 0;
-    font-family: "Karla", sans-serif !important;
+    font-family: "Karla", sans-serif;
 }
 
 .container {
@@ -57,4 +57,36 @@ h1 {
         min-width: 100%;
         padding: 5vw;
     }
+}
+
+.scl-btn {
+    padding: 15px;
+    font-size: 25px;
+    width: 55px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px;
+    color: white;
+}
+/* Hover Effect */
+.scl-btn:hover {
+    opacity: 0.8;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+/* Round buttons */
+.scl-crcl {
+    border-radius: 50%;
+}
+/* Round Corners */
+.scl-rnd {
+    border-radius: 5px;
+}
+/* Brand Colors */
+.btn-facebook-f {
+    background: #3b5998;
+}
+.btn-twitter-f {
+    background: #55acee;
 }
