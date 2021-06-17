@@ -1,154 +1,126 @@
-#container {
-    color: white;
-    background-color: rgba(40, 43, 48, 0.75);
-    border-radius: 0.3em;
-}
-
-#cover {
-    width: 16vw;
-    padding-bottom: 2.5vh;
-    border-radius: 0.3em;
-    margin-top: 2.5vh;
-}
-
-#center {
-    margin-right: 0.6vw;
-}
-
-.genreTag {
-    width: 100%;
-}
-
-#synopsis {
-    text-align: justify;
-}
-
-#btn {
-    background-color: purple;
-    color: white;
-}
-
-#parentLists {
-    display: flex;
-}
-
-#default {
-    margin-right: 1vw;
-    width: 47%;
-}
-
-#custom {
-    flex: 1;
-}
-
-.addToList {
-    height: 40px;
-}
-
-.optionSelect {
-    height: 40px;
-}
-
-option {
-    background-color: rgba(40, 43, 48, 0.75);
-    color: white;
-}
-
-#animeTitle {
-    font-size: 2vw;
-    margin-left: -0.8vw;
-}
-
-#divDetails {
-}
-
-.detailsContent {
-    width: 100%;
-}
-
-#page {
-    margin: auto;
-}
-
-p {
-    font-size: 1vw;
-}
-
-h1 {
-    font-size: 2vw;
-}
-
-#ratingBtn {
-    border-bottom-right-radius: 0px;
-    border-top-right-radius: 0px;
-}
-
-#rate {
-    border-bottom-left-radius: 0px;
-    border-top-left-radius: 0px;
-}
-
-#ratingGroup {
+body {
+    padding-top: 2vh;
     padding-bottom: 2vh;
 }
 
-.comment {
-    background-color: rgb(5, 35, 76);
-    float: left;
-    border-radius: 5px;
-    padding-left: 40px;
-    padding-right: 30px;
-    padding-top: 10px;
-    width: 100%;
+.container {
+    padding: 2vh;
+    background-color: #2e3032;
+}
+mat-expansion-panel {
+    background-color: #212223;
+    color: #f1f1f1;
 }
 
-.comment h4,
-.comment span,
-.darker h4,
-.darker span {
-    display: inline;
+mat-panel-title {
+    color: #097ce7;
+    font-size: 3vh;
 }
 
-@media screen and (max-width: 576px) {
-    p {
-        font-size: 3vw;
-    }
-
-    #cover {
-        width: 23vw;
-        height: 20vh;
-        margin-left: 35vw;
-    }
-
-    #animeTitle {
-        font-size: 6vw;
-        margin: 0;
-        padding-left: 1vw;
-    }
-
-    h1 {
-        font-size: 4vw;
-    }
-
-    #addToList {
-        width: 14vw;
-        font-size: 3vw;
-    }
-
-    #select {
-        font-size: 3vw;
-    }
-
-    #optionSelect {
-        width: 20vw;
-    }
-
-    #animeTitle {
-    }
+.synopsis,
+.details {
+    font-size: 2vh;
 }
 
-@media (max-width: 768px) {
-    #cover {
-        min-width: 10vw;
-    }
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #212223;
+    background-image: none;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+    display: none;
+}
+/* Custom Select */
+.select {
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    line-height: 3;
+    background: #212223;
+    overflow: hidden;
+    border-radius: 0.25em;
+}
+select {
+    flex: 1;
+    padding: 0 0.5em;
+    color: #fff;
+    cursor: pointer;
+}
+/* Arrow */
+.select::after {
+    content: "\25BC";
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #212223;
+    cursor: pointer;
+    pointer-events: none;
+    -webkit-transition: 0.25s all ease;
+    -o-transition: 0.25s all ease;
+    transition: 0.25s all ease;
+}
+/* Transition */
+.select:hover::after {
+    color: #f1f1f1;
+}
+
+.comment,
+.comment-info {
+    margin-bottom: 2vh;
+}
+
+.comment-user {
+    font-size: 2vh;
+}
+
+.commentTitle {
+    font-size: 2vh;
+}
+
+#animeTitle {
+    font-size: 3vh;
+}
+
+#defaultList,
+#customList {
+    font-size: 2vh;
+    margin-top: 1vh;
+    margin-right: 1vh;
+    min-width: 50%;
+}
+
+.currentRat {
+    color: #868686;
+    font-size: small;
+}
+
+.globalRat {
+    color: green;
+    font-size: 3vh;
+}
+
+@media only screen and (max-width: 1000px) {
+}
+
+.star {
+    position: relative;
+    display: inline-block;
+    font-size: 2vh;
+    color: #d3d3d3;
+}
+.full {
+    color: yellow;
+}
+
+.addToList {
+    white-space: nowrap;
 }

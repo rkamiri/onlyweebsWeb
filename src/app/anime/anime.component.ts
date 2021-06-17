@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Anime } from '../shared/model/anime';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RatingService } from '../shared/service/rating.service';
 import { Rating } from '../shared/model/rating';
 import { CommentService } from '../shared/service/comment.service';
@@ -9,6 +9,7 @@ import { Lists } from '../shared/model/lists';
 import { IsListedIn } from '../shared/model/is.listed.in';
 import { ListsService } from '../shared/service/lists.service';
 import { AnimeService } from '../shared/service/anime.service';
+import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-anime',
@@ -33,6 +34,8 @@ export class AnimeComponent implements OnDestroy, OnInit {
     public genres: string[];
     public studios: string[];
     public producers: string[];
+    public dateNow = new Date();
+    ctrl = new FormControl(null, Validators.required);
 
     constructor(
         private router: Router,
@@ -40,7 +43,8 @@ export class AnimeComponent implements OnDestroy, OnInit {
         private ratingService: RatingService,
         private listService: ListsService,
         private commentsService: CommentService,
-        private animeService: AnimeService
+        private animeService: AnimeService,
+        config: NgbAccordionConfig
     ) {
         this.userHasComment = false;
         this.navigationSubscription = this.router.events.subscribe((e: any) => {
@@ -68,6 +72,8 @@ export class AnimeComponent implements OnDestroy, OnInit {
             comment: new FormControl(''),
         });
         this.userHasRated = 'Add Personal Rate';
+
+        config.type = 'dark';
     }
 
     ngOnDestroy(): void {
