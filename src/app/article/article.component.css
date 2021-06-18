@@ -1,6 +1,5 @@
 body {
     outline-width: 0;
-    font-family: "Karla", sans-serif;
 }
 
 .container {
@@ -18,6 +17,9 @@ h1 {
 }
 #mainContent {
     margin-top: 2vh;
+    display: block;
+    word-wrap: break-word;
+    max-width: 40vw;
 }
 
 #mainContent img {
