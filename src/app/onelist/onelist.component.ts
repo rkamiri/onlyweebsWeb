@@ -51,16 +51,18 @@ export class OnelistComponent implements OnInit {
         this.navigationSubscription = this.router.events.subscribe((e: any) => {
             if (e instanceof NavigationEnd) {
                 this.userService.getCurrentUser().subscribe((user) => {
-                    this.isConnected = !(user === null);
+                    this.isConnected = user !== null;
                     this.commentService
                         .getCommentsForLists(this.listInfo.id)
                         .subscribe((comments) => {
                             this.comments = comments;
-                            comments.forEach((comment) => {
-                                if (comment.user.id === user.id) {
-                                    this.userHasComment = true;
-                                }
-                            });
+                            if (user !== null) {
+                                comments.forEach((comment) => {
+                                    if (comment.user.id === user.id) {
+                                        this.userHasComment = true;
+                                    }
+                                });
+                            }
                         });
                 });
             }
