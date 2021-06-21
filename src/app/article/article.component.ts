@@ -1,10 +1,4 @@
-import {
-    Component,
-    OnInit,
-    Pipe,
-    PipeTransform,
-    ViewEncapsulation,
-} from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { ArticleService } from '../shared/service/article.service';
 import { Article } from '../shared/model/article';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -22,8 +16,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class ArticleComponent implements OnInit {
     public isConnected = sessionStorage.getItem('isConnected') === 'true';
     public article: Article;
-    public articleCoverUrl: string;
-    public userImageUrl: string;
     public comments: Comment[];
     public userHasComment: boolean;
     public commentForm: FormGroup;
@@ -41,7 +33,7 @@ export class ArticleComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe((params) => {
+        this.route.params.subscribe(() => {
             this.article = this.route.snapshot.data.article;
             this.articleService
                 .getSimilarArticles(this.article.id, this.article.category.id)
