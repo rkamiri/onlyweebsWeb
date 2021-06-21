@@ -1,4 +1,10 @@
-import { Component, OnInit, Pipe, PipeTransform, ViewEncapsulation } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    Pipe,
+    PipeTransform,
+    ViewEncapsulation,
+} from '@angular/core';
 import { ArticleService } from '../shared/service/article.service';
 import { Article } from '../shared/model/article';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,7 +18,6 @@ import { FormControl, FormGroup } from '@angular/forms';
     selector: 'app-article',
     templateUrl: './article.component.html',
     styleUrls: ['./article.component.css'],
-    encapsulation: ViewEncapsulation.None
 })
 export class ArticleComponent implements OnInit {
     public isConnected = sessionStorage.getItem('isConnected') === 'true';
