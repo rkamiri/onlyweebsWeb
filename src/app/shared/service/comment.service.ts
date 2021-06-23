@@ -45,23 +45,31 @@ export class CommentService {
         );
     }
 
-    deleteAnimeComment(animeId: number): any {
+    deleteAnimeComment(animeId: number, userId: number): any {
         return this.httpclient.delete<any>(
-            environment.backend + '/comment/anime/' + animeId,
+            environment.backend +
+                '/comment/anime/' +
+                animeId +
+                '/user/' +
+                userId,
             httpOptions
         );
     }
 
-    deleteArticleComment(articleId: number): any {
+    deleteArticleComment(articleId: number, userId: number): any {
         return this.httpclient.delete<any>(
-            environment.backend + '/comment/article/' + articleId,
+            environment.backend +
+                '/comment/article/' +
+                articleId +
+                '/user/' +
+                userId,
             httpOptions
         );
     }
 
-    deleteListComment(listId: number): any {
+    deleteListComment(listId: number, userId: number): any {
         return this.httpclient.delete<any>(
-            environment.backend + '/comment/list/' + listId,
+            environment.backend + '/comment/list/' + listId + '/user/' + userId,
             httpOptions
         );
     }

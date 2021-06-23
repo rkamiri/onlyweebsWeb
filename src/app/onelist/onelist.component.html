@@ -107,6 +107,14 @@
                 />
                 <h4>{{ comment.user.username }}</h4>
                 <span>-{{ comment.date | date: "dd/MM/yyyy" }}</span> <br />
+                <button
+                    (click)="deleteListComment(comment.user.id)"
+                    *ngIf="adminStatus === 'ROLE_ADMIN'"
+                    class="btn btn-danger"
+                    type="button"
+                >
+                    KILL
+                </button>
                 <p>{{ comment.body }}</p>
             </div>
         </div>
@@ -146,7 +154,7 @@
                         id="delete-button"
                         type="button"
                         class="btn btn-danger"
-                        (click)="deleteListComment()"
+                        (click)="deleteListComment(-667)"
                     >
                         Delete your comment
                     </button>

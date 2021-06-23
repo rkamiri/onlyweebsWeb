@@ -34,6 +34,7 @@ export class OnelistComponent implements OnInit {
     private navigationSubscription;
     public comments: Comment[];
     public commentForm: FormGroup;
+    public adminStatus: string;
 
     constructor(
         private modalService: NgbModal,
@@ -73,6 +74,9 @@ export class OnelistComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.userService
+            .getCurrentUserRole()
+            .subscribe((data) => (this.adminStatus = data.auth));
         this.listInfo = this.route.snapshot.data.list;
         this.isDefault =
             this.listInfo.name === 'Watched' ||
@@ -159,10 +163,10 @@ export class OnelistComponent implements OnInit {
             });
     }
 
-    deleteListComment(): void {
+    deleteListComment(userId: number): void {
         if (confirm('Are you sure you want to delete this comment ?')) {
             this.commentService
-                .deleteListComment(this.listInfo.id)
+                .deleteListComment(this.listInfo.id, userId)
                 .subscribe(() => {
                     location.reload();
                 });

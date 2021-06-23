@@ -12,6 +12,7 @@ import { AnimeService } from '../shared/service/anime.service';
 import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../shared/model/user';
 import { UserService } from '../shared/service/user.service';
+import { Comment } from '../shared/model/comment';
 
 @Component({
     selector: 'app-anime',
@@ -31,13 +32,14 @@ export class AnimeComponent implements OnDestroy, OnInit {
     commentForm: FormGroup;
     userHasRated: string;
     navigationSubscription;
-    comments;
+    public comments: Comment[];
     userHasComment: boolean;
     public genres: string[];
     public studios: string[];
     public producers: string[];
     public currentUser: User;
     ctrl = new FormControl(null, Validators.required);
+    public adminStatus: string;
 
     constructor(
         private router: Router,
@@ -74,6 +76,9 @@ export class AnimeComponent implements OnDestroy, OnInit {
     }
 
     ngOnInit(): void {
+        this.userService
+            .getCurrentUserRole()
+            .subscribe((data) => (this.adminStatus = data.auth));
         this.userService.getCurrentUser().subscribe((user) => {
             this.currentUser = user;
             this.isConnected = user !== null;
@@ -270,10 +275,10 @@ export class AnimeComponent implements OnDestroy, OnInit {
             });
     }
 
-    deleteAnimeComment(): void {
+    deleteAnimeComment(userId: number): void {
         if (confirm('Are you sure you want to delete this comment ?')) {
             this.commentsService
-                .deleteAnimeComment(this.anime.id)
+                .deleteAnimeComment(this.anime.id, userId)
                 .subscribe(() => {
                     location.reload();
                 });

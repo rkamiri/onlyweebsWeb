@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 import { CommentService } from '../shared/service/comment.service';
 import { Comment } from '../shared/model/comment';
 import { FormControl, FormGroup } from '@angular/forms';
+import { UserService } from '../shared/service/user.service';
 
 @Component({
     selector: 'app-article',
@@ -22,10 +23,12 @@ export class ArticleComponent implements OnInit {
     public similarArticles: Article[];
     public imagePath: string;
     public pageUrl: string;
+    adminStatus: string;
 
     constructor(
         private articleService: ArticleService,
         private commentsService: CommentService,
+        private userService: UserService,
         public route: ActivatedRoute,
         public router: Router
     ) {
@@ -33,6 +36,9 @@ export class ArticleComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.userService
+            .getCurrentUserRole()
+            .subscribe((data) => (this.adminStatus = data.auth));
         this.route.params.subscribe(() => {
             this.article = this.route.snapshot.data.article;
             this.articleService
@@ -69,10 +75,10 @@ export class ArticleComponent implements OnInit {
         });
     }
 
-    deleteArticleComment(): void {
+    deleteArticleComment(userId: number): void {
         if (confirm('Are you sure you want to delete this comment ?')) {
             this.commentsService
-                .deleteArticleComment(this.article.id)
+                .deleteArticleComment(this.article.id, userId)
                 .subscribe(() => {
                     location.reload();
                 });
