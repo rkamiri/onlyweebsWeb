@@ -3,7 +3,17 @@
         <div class="row">
             <div class="col-md-8">
                 <div id="head">
-                    <h1>{{ article.title }}</h1>
+                    <h1 id="titre">{{ article.title }}</h1>
+                    <button
+                        id="deleteButton"
+                        (click)="deleteArticle()"
+                        *ngIf="adminStatus === 'ROLE_ADMIN'"
+                        class="btn btn-danger"
+                        type="button"
+                    >
+                        DELETE
+                    </button>
+                    <br />
                     <label
                         >Publié le
                         {{ article.created_at | date: "dd/MM/yyyy" }}</label
