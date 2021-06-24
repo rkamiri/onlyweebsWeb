@@ -109,6 +109,14 @@ export class ArticleComponent implements OnInit {
             'width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0'
         );
     }
+
+    deleteArticle(): void {
+        if (confirm('Are you sure you want to delete this article ?')) {
+            this.articleService
+                .deleteArticle(this.article.id)
+                .subscribe(() => this.router.navigate(['/articles']));
+        }
+    }
 }
 
 @Pipe({ name: 'safeHtml' })
