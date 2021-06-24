@@ -28,6 +28,7 @@ import { UnauthorizedErrorComponent } from './errors/unauthorized-error/unauthor
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { PasswordUpdateComponent } from './password-update/password-update.component';
 import { AnimeResolver } from './shared/resolver/anime.resolver';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
     { path: 'not-found', component: NotFoundErrorComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
     { path: 'server-error', component: ServerErrorComponent },
     { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
+    { path: 'about-us', component: AboutUsComponent },
     {
         path: 'animes/research',
         component: AnimeListComponent,
