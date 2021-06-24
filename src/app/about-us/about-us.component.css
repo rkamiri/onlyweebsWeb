@@ -1,0 +1,43 @@
+body {
+    background-color: rgba(40, 43, 48, 0.75);
+    padding-bottom: 2vh;
+    padding-top: 2vh;
+}
+
+#mainContainer {
+    background-color: #2e3032;
+    padding-top: 2vh;
+    margin: auto;
+    padding-bottom: 2vh;
+}
+
+.row {
+    margin-top: 3vh;
+}
+
+body p {
+    padding: 0.5vw;
+    color: white;
+}
+
+body h3 {
+    padding: 0.5vw;
+    color: white;
+    margin-top: 2vh;
+    text-decoration: underline;
+}
+
+.boxTxt {
+    margin-top: 2vh;
+    text-align: center;
+}
+.boxTxt p {
+    width: 25vw;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.boxImg {
+    width: 25vw;
+    border-radius: 0.5vw;
+}
