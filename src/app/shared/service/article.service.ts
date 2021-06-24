@@ -13,6 +13,12 @@ export class ArticleService {
         return this.httpclient.get<string>(environment.backend + '/articles');
     }
 
+    getFiveArticles(): Observable<Article[]> {
+        return this.httpclient.get<Article[]>(
+            environment.backend + '/articles/five'
+        );
+    }
+
     getArticle(id: number): Observable<any> {
         return this.httpclient.get<string>(
             environment.backend + '/articles/' + id

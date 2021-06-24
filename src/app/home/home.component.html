@@ -1,18 +1,4 @@
 <body>
-    <!-- <img
-     id="left"
-     loading="lazy"
-     class="sideImage"
-     src="assets/not_very_stonks_pub.png"
-     alt="alt"
- />
- <img
-     id="right"
-     loading="lazy"
-     class="sideImage"
-     src="assets/not_very_stonks_pub.png"
-     alt="alt"
- />-->
     <div id="center">
         <div class="container mainContainer text-light">
             <div class="text-center">
@@ -80,11 +66,11 @@
             </div>
             <div class="row">
                 <div class="row">
-                    <div class="col-12 pb-5">
+                    <div class="col-12 pb-5" style="">
                         <section class="row">
                             <div
                                 class="
-                                    col-12 col-md-6
+                                    col-12 col-md-6 col-sm-4
                                     pb-0 pb-md-3
                                     pt-2
                                     pr-md-1
@@ -98,6 +84,7 @@
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
                                             <div
+                                                style="background-color: red"
                                                 class="
                                                     card
                                                     border-0
@@ -115,17 +102,24 @@
                                                         "
                                                     >
                                                         <a
-                                                            ><img
+                                                            [routerLink]="[
+                                                                '/articles/',
+                                                                articles[0].id
+                                                            ]"
+                                                        >
+                                                            <img
                                                                 alt="Bootstrap news template"
                                                                 class="
                                                                     img-fluid
                                                                     w-100
                                                                 "
                                                                 id="image1"
+                                                                loading="lazy"
                                                                 src="{{
                                                                     imagesUrls[0]
                                                                 }}"
-                                                        /></a>
+                                                            />
+                                                        </a>
                                                     </div>
                                                     <div
                                                         class="
@@ -137,9 +131,33 @@
                                                         "
                                                     >
                                                         <a
-                                                            routerLink="/articles/{{
+                                                            [routerLink]="[
+                                                                '/articles/',
                                                                 articles[0].id
-                                                            }}"
+                                                            ]"
+                                                            [style.background-color]="
+                                                                articles[0]
+                                                                    .category
+                                                                    .bgColor
+                                                            "
+                                                            class="
+                                                                p-1
+                                                                badge
+                                                                badge-primary
+                                                                rounded-0
+                                                            "
+                                                        >
+                                                            {{
+                                                                articles[0]
+                                                                    .category
+                                                                    .name
+                                                            }}</a
+                                                        >
+                                                        <a
+                                                            [routerLink]="[
+                                                                '/articles/',
+                                                                articles[0].id
+                                                            ]"
                                                         >
                                                             <h2
                                                                 class="
@@ -155,7 +173,6 @@
                                                                 }}
                                                             </h2>
                                                         </a>
-
                                                         <div class="news-meta">
                                                             <span
                                                                 class="
@@ -179,7 +196,8 @@
                                                                 class="
                                                                     news-date
                                                                 "
-                                                                >on
+                                                            >
+                                                                on
                                                                 {{
                                                                     articles[0]
                                                                         .created_at
@@ -221,13 +239,20 @@
                                                     "
                                                 >
                                                     <a
-                                                        ><img
+                                                        [routerLink]="[
+                                                            '/articles/',
+                                                            articles[1].id
+                                                        ]"
+                                                    >
+                                                        <img
                                                             alt="simple blog template bootstrap"
                                                             class="img-fluid"
+                                                            loading="lazy"
                                                             src="{{
                                                                 imagesUrls[1]
                                                             }}"
-                                                    /></a>
+                                                        />
+                                                    </a>
                                                 </div>
                                                 <div
                                                     class="
@@ -239,17 +264,30 @@
                                                     "
                                                 >
                                                     <a
+                                                        [routerLink]="[
+                                                            '/articles/',
+                                                            articles[1].id
+                                                        ]"
+                                                        [style.background-color]="
+                                                            articles[1].category
+                                                                .bgColor
+                                                        "
                                                         class="
                                                             p-1
                                                             badge badge-primary
                                                             rounded-0
                                                         "
-                                                        >Anime</a
+                                                    >
+                                                        {{
+                                                            articles[1].category
+                                                                .name
+                                                        }}</a
                                                     >
                                                     <a
-                                                        routerLink="/articles/{{
+                                                        [routerLink]="[
+                                                            '/articles/',
                                                             articles[1].id
-                                                        }}"
+                                                        ]"
                                                     >
                                                         <h2
                                                             class="
@@ -262,8 +300,8 @@
                                                                 articles[1]
                                                                     .title
                                                             }}
-                                                        </h2></a
-                                                    >
+                                                        </h2>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -287,13 +325,20 @@
                                                     "
                                                 >
                                                     <a
-                                                        ><img
+                                                        [routerLink]="[
+                                                            '/articles/',
+                                                            articles[2].id
+                                                        ]"
+                                                    >
+                                                        <img
                                                             alt="bootstrap templates for blog"
                                                             class="img-fluid"
+                                                            loading="lazy"
                                                             src="{{
                                                                 imagesUrls[2]
                                                             }}"
-                                                    /></a>
+                                                        />
+                                                    </a>
                                                 </div>
                                                 <div
                                                     class="
@@ -305,17 +350,29 @@
                                                     "
                                                 >
                                                     <a
+                                                        [routerLink]="[
+                                                            '/articles/',
+                                                            articles[2].id
+                                                        ]"
+                                                        [style.background-color]="
+                                                            articles[2].category
+                                                                .bgColor
+                                                        "
                                                         class="
                                                             p-1
                                                             badge badge-primary
                                                             rounded-0
                                                         "
-                                                        >Anime</a
+                                                        >{{
+                                                            articles[2].category
+                                                                .name
+                                                        }}</a
                                                     >
                                                     <a
-                                                        routerLink="/articles/{{
+                                                        [routerLink]="[
+                                                            '/articles/',
                                                             articles[2].id
-                                                        }}"
+                                                        ]"
                                                     >
                                                         <h2
                                                             class="
@@ -328,8 +385,8 @@
                                                                 articles[2]
                                                                     .title
                                                             }}
-                                                        </h2></a
-                                                    >
+                                                        </h2>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -353,13 +410,20 @@
                                                     "
                                                 >
                                                     <a
-                                                        ><img
+                                                        [routerLink]="[
+                                                            '/articles/',
+                                                            articles[3].id
+                                                        ]"
+                                                    >
+                                                        <img
                                                             alt="bootstrap blog wordpress theme"
                                                             class="img-fluid"
+                                                            loading="lazy"
                                                             src="{{
                                                                 imagesUrls[3]
                                                             }}"
-                                                    /></a>
+                                                        />
+                                                    </a>
                                                 </div>
                                                 <div
                                                     class="
@@ -371,17 +435,29 @@
                                                     "
                                                 >
                                                     <a
+                                                        [routerLink]="[
+                                                            '/articles/',
+                                                            articles[3].id
+                                                        ]"
+                                                        [style.background-color]="
+                                                            articles[3].category
+                                                                .bgColor
+                                                        "
                                                         class="
                                                             p-1
                                                             badge badge-primary
                                                             rounded-0
                                                         "
-                                                        >Anime</a
+                                                        >{{
+                                                            articles[3].category
+                                                                .name
+                                                        }}</a
                                                     >
                                                     <a
-                                                        routerLink="/articles/{{
+                                                        [routerLink]="[
+                                                            '/articles/',
                                                             articles[3].id
-                                                        }}"
+                                                        ]"
                                                     >
                                                         <h2
                                                             class="
@@ -394,8 +470,8 @@
                                                                 articles[3]
                                                                     .title
                                                             }}
-                                                        </h2></a
-                                                    >
+                                                        </h2>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -419,13 +495,20 @@
                                                     "
                                                 >
                                                     <a
-                                                        ><img
+                                                        [routerLink]="[
+                                                            '/articles/',
+                                                            articles[4].id
+                                                        ]"
+                                                    >
+                                                        <img
                                                             alt="blog website templates bootstrap"
                                                             class="img-fluid"
+                                                            loading="lazy"
                                                             src="{{
                                                                 imagesUrls[4]
                                                             }}"
-                                                    /></a>
+                                                        />
+                                                    </a>
                                                 </div>
                                                 <div
                                                     class="
@@ -437,17 +520,29 @@
                                                     "
                                                 >
                                                     <a
+                                                        [routerLink]="[
+                                                            '/articles/',
+                                                            articles[4].id
+                                                        ]"
+                                                        [style.background-color]="
+                                                            articles[4].category
+                                                                .bgColor
+                                                        "
                                                         class="
                                                             p-1
                                                             badge badge-primary
                                                             rounded-0
                                                         "
-                                                        >Anime</a
+                                                        >{{
+                                                            articles[4].category
+                                                                .name
+                                                        }}</a
                                                     >
                                                     <a
-                                                        routerLink="/articles/{{
+                                                        [routerLink]="[
+                                                            '/articles/',
                                                             articles[4].id
-                                                        }}"
+                                                        ]"
                                                     >
                                                         <h2
                                                             class="
@@ -460,8 +555,8 @@
                                                                 articles[4]
                                                                     .title
                                                             }}
-                                                        </h2></a
-                                                    >
+                                                        </h2>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>

@@ -51,8 +51,8 @@ export class HomeComponent implements OnInit {
                 this.imageObject.push(obj);
             }
         });
-        this.articleService.getAllArticles().subscribe((data) => {
-            this.articles = data.slice(0, 5);
+        this.articleService.getFiveArticles().subscribe((data) => {
+            this.articles = data;
             data.forEach((article) =>
                 this.imagesUrls.push(
                     environment.backend + '/image/' + article.cover.id
