@@ -94,20 +94,26 @@ export class ListsService {
         );
     }
 
-    getImagesOfCustomLists(): Observable<any> {
-        return this.httpclient.get<any>(
+    getImagesOfCustomLists(): Observable<[[]]> {
+        return this.httpclient.get<[[]]>(
             environment.backend + '/lists/spotify/image/custom'
         );
     }
 
-    getImagesOfUserCustomList(): Observable<any> {
-        return this.httpclient.get<any>(
+    getImagesOfUserCustomList(): Observable<[[]]> {
+        return this.httpclient.get<[[]]>(
             environment.backend + '/lists/user/image/custom'
         );
     }
 
-    getImagesOfUserDefaultList(): Observable<any> {
-        return this.httpclient.get<any>(
+    getImagesOfUserCustomListByUserId(id: number): Observable<[[]]> {
+        return this.httpclient.get<[[]]>(
+            environment.backend + '/lists/user/' + id + '/image/custom'
+        );
+    }
+
+    getImagesOfUserDefaultList(): Observable<[[]]> {
+        return this.httpclient.get<[[]]>(
             environment.backend + '/lists/user/image/default'
         );
     }

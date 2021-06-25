@@ -30,7 +30,7 @@
                             </div>
                         </div>
                         <div *ngIf="userLists !== undefined" class="custom">
-                            <app-anime-list-display [lists]="userLists" [isDefault]="'all_custom'">
+                            <app-anime-list-display [lists]="userLists" [isDefault]="'user_custom'" [userId]="user.id">
                             </app-anime-list-display>
                         </div>
                     </div>

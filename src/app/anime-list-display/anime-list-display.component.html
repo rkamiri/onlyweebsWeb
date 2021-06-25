@@ -70,11 +70,7 @@
                             écrite par {{ list.isOwnedBy.username }}
                         </p>
                     </div>
-                    <div
-                        id="right"
-                        class="deleteButton"
-                        *ngIf="isDefault === 'user_custom'"
-                    >
+                    <div id="right" class="deleteButton" *ngIf="connectedUser && isDefault === 'user_custom' && connectedUser.id === list.isOwnedBy.id">
                         <button
                             id="delete-button"
                             type="button"

@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Lists } from '../shared/model/lists';
 import { ActivatedRoute } from '@angular/router';
 import { ListsService } from '../shared/service/lists.service';
+import { UserService } from '../shared/service/user.service';
+import { User } from '../shared/model/user';
 
 @Component({
     selector: 'app-anime-list-display',
@@ -13,22 +15,32 @@ export class AnimeListDisplayComponent implements OnInit {
     lists: Lists[];
     @Input()
     isDefault: string;
+    @Input()
+    userId: number;
     listsImages: [[]];
+    connectedUser: User;
 
     constructor(
         private route: ActivatedRoute,
-        private listService: ListsService
-    ) {}
+        private listService: ListsService,
+        private userService: UserService
+    ) { }
 
     ngOnInit(): void {
+        this.userService.getCurrentUser().subscribe((data) => this.connectedUser = data);
         if (this.isDefault === 'user_default') {
             this.listService
                 .getImagesOfUserDefaultList()
                 .subscribe((data) => (this.listsImages = data));
+        } else if (this.userId !== null && this.isDefault === 'user_custom') {
+            this.listService.getImagesOfUserCustomListByUserId(this.userId).subscribe((data) => {
+                this.listsImages = data;
+            });
         } else if (this.isDefault === 'user_custom') {
             this.listService
                 .getImagesOfUserCustomList()
                 .subscribe((data) => (this.listsImages = data));
+
         } else {
             this.listService
                 .getImagesOfCustomLists()
