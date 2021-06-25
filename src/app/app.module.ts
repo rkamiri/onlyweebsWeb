@@ -44,6 +44,8 @@ import { NgxTwitterTimelineModule } from 'ngx-twitter-timeline';
 import { AnimeListDisplayComponent } from './anime-list-display/anime-list-display.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
     declarations: [
@@ -72,6 +74,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
         ServerErrorComponent,
         PasswordUpdateComponent,
         AnimeListDisplayComponent,
+        AboutUsComponent,
+        UserComponent,
     ],
     imports: [
         BrowserModule,

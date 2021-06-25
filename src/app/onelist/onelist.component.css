@@ -6,6 +6,16 @@
     color: #aaaaaa;
 }
 
+#authorr:hover {
+    color: #097ce7;
+    text-decoration: underline;
+}
+
+#author:hover {
+    color: #097ce7;
+    text-decoration: underline;
+}
+
 a {
     color: white;
     text-decoration: none;

@@ -7,6 +7,7 @@ body {
     padding: 2vh;
     background-color: #2e3032;
 }
+
 mat-expansion-panel {
     background-color: #212223;
     color: #f1f1f1;
@@ -30,13 +31,14 @@ select {
     outline: 0;
     box-shadow: none;
     border: 0 !important;
-    background: #212223;
-    background-image: none;
+    background: #212223 none;
 }
+
 /* Remove IE arrow */
 select::-ms-expand {
     display: none;
 }
+
 /* Custom Select */
 .select {
     position: relative;
@@ -48,12 +50,14 @@ select::-ms-expand {
     overflow: hidden;
     border-radius: 0.25em;
 }
+
 select {
     flex: 1;
     padding: 0 0.5em;
     color: #fff;
     cursor: pointer;
 }
+
 /* Arrow */
 .select::after {
     content: "\25BC";
@@ -68,6 +72,7 @@ select {
     -o-transition: 0.25s all ease;
     transition: 0.25s all ease;
 }
+
 /* Transition */
 .select:hover::after {
     color: #f1f1f1;
@@ -117,10 +122,16 @@ select {
     font-size: 2vh;
     color: #d3d3d3;
 }
+
 .full {
     color: yellow;
 }
 
 .addToList {
     white-space: nowrap;
+}
+
+#authorr:hover {
+    color: #097ce7;
+    text-decoration: underline;
 }

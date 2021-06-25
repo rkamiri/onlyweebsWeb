@@ -24,14 +24,6 @@ p {
     display: inline-block;
 }
 
-#list {
-    margin: auto;
-}
-
-#solo {
-    margin-left: 4.213vw;
-}
-
 .list:hover {
     background-color: #11428d;
 }
