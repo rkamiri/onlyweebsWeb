@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 import { CommentService } from '../shared/service/comment.service';
 import { Comment } from '../shared/model/comment';
 import { FormControl, FormGroup } from '@angular/forms';
-import { getSortHeaderNotContainedWithinSortError } from '@angular/material/sort/sort-errors';
+import { UserService } from '../shared/service/user.service';
 
 @Component({
     selector: 'app-article',
@@ -17,18 +17,18 @@ import { getSortHeaderNotContainedWithinSortError } from '@angular/material/sort
 export class ArticleComponent implements OnInit {
     public isConnected = sessionStorage.getItem('isConnected') === 'true';
     public article: Article;
-    public articleCoverUrl: string;
-    public userImageUrl: string;
     public comments: Comment[];
     public userHasComment: boolean;
     public commentForm: FormGroup;
     public similarArticles: Article[];
     public imagePath: string;
     public pageUrl: string;
+    adminStatus: string;
 
     constructor(
         private articleService: ArticleService,
         private commentsService: CommentService,
+        private userService: UserService,
         public route: ActivatedRoute,
         public router: Router
     ) {
@@ -36,7 +36,10 @@ export class ArticleComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe((params) => {
+        this.userService
+            .getCurrentUserRole()
+            .subscribe((data) => (this.adminStatus = data.auth));
+        this.route.params.subscribe(() => {
             this.article = this.route.snapshot.data.article;
             this.articleService
                 .getSimilarArticles(this.article.id, this.article.category.id)
@@ -44,7 +47,7 @@ export class ArticleComponent implements OnInit {
                     this.similarArticles = articles;
                 });
         });
-        this.pageUrl = window.location.href;
+        this.pageUrl = window.location.href.replace('#', '%23');
         this.imagePath = environment.backend + '/image/';
         this.initArticleComments();
     }
@@ -72,10 +75,10 @@ export class ArticleComponent implements OnInit {
         });
     }
 
-    deleteArticleComment(): void {
+    deleteArticleComment(userId: number): void {
         if (confirm('Are you sure you want to delete this comment ?')) {
             this.commentsService
-                .deleteArticleComment(this.article.id)
+                .deleteArticleComment(this.article.id, userId)
                 .subscribe(() => {
                     location.reload();
                 });
@@ -105,6 +108,14 @@ export class ArticleComponent implements OnInit {
             'example',
             'width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0'
         );
+    }
+
+    deleteArticle(): void {
+        if (confirm('Are you sure you want to delete this article ?')) {
+            this.articleService
+                .deleteArticle(this.article.id)
+                .subscribe(() => this.router.navigate(['/articles']));
+        }
     }
 }
 

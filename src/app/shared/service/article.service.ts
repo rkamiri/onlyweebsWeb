@@ -13,6 +13,12 @@ export class ArticleService {
         return this.httpclient.get<string>(environment.backend + '/articles');
     }
 
+    getFiveArticles(): Observable<Article[]> {
+        return this.httpclient.get<Article[]>(
+            environment.backend + '/articles/five'
+        );
+    }
+
     getArticle(id: number): Observable<any> {
         return this.httpclient.get<string>(
             environment.backend + '/articles/' + id
@@ -54,13 +60,23 @@ export class ArticleService {
             }
         );
     }
-    getSimilarArticles(articleId: number, category: number) {
+
+    getSimilarArticles(
+        articleId: number,
+        category: number
+    ): Observable<Article[]> {
         return this.httpclient.get<Article[]>(
             environment.backend +
                 '/articles/similar/article_id/' +
                 articleId +
                 '/category/' +
                 category
+        );
+    }
+
+    deleteArticle(articleId: number): any {
+        return this.httpclient.delete(
+            environment.backend + '/articles/' + articleId
         );
     }
 }

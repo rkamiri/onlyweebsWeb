@@ -4,7 +4,7 @@
             <h4>Create a new list</h4>
         </div>
 
-        <div class="row">
+        <div class="row" *ngIf="animeList !== undefined">
             <form
                 class="container w-75 text-light"
                 [formGroup]="createListForm"

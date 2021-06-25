@@ -27,6 +27,8 @@ export class AnimeListComponent implements OnInit {
     public selectedGenre: Genres;
     public selectedStudio: Studios;
     public selectedProducer: Producers;
+    //1 = advancedSearch, 2 = search, 3 = default
+    public navCase: number;
 
     constructor(
         private route: ActivatedRoute,
@@ -62,8 +64,6 @@ export class AnimeListComponent implements OnInit {
                         : null,
                     page: 1,
             */
-
-            console.log(this.queryParams);
             if (this.queryParams.page) {
                 this.currentPage = parseInt(this.queryParams.page, null);
 
@@ -81,9 +81,11 @@ export class AnimeListComponent implements OnInit {
                         .subscribe((pages) => {
                             this.pages = pages;
                             this.pages = Math.ceil(pages / 20);
+                            console.log(this.pages);
                             this.pagesArray = [].constructor(this.pages);
                             if (this.pages > 1) {
                                 this.activatePagination = true;
+                                this.navCase = 1;
                             }
 
                             this.animeService
@@ -106,6 +108,7 @@ export class AnimeListComponent implements OnInit {
                             this.pagesArray = [].constructor(this.pages);
                             if (this.pages > 1) {
                                 this.activatePagination = true;
+                                this.navCase = 2;
                             }
                             this.animeService
                                 .getAllAnimeByName(
@@ -126,6 +129,7 @@ export class AnimeListComponent implements OnInit {
                         this.pagesArray = [].constructor(this.pages);
                         if (this.pages > 1) {
                             this.activatePagination = true;
+                            this.navCase = 3;
                         }
                         this.animeService
                             .getAnimesByPage(this.currentPage)
@@ -140,7 +144,18 @@ export class AnimeListComponent implements OnInit {
 
     changePage(newCurrentPage: number): void {
         this.currentPage = newCurrentPage;
-        if (!document.location.href.includes('research')) {
+        if (
+            this.queryParams.genre ||
+            this.queryParams.studio ||
+            this.queryParams.producer
+        ) {
+            this.animeService.getAllAnimesByAdvancedResearch(
+                this.selectedGenre.id,
+                this.selectedStudio.id,
+                this.selectedProducer.id,
+                this.currentPage
+            );
+        } else if (!document.location.href.includes('research')) {
             this.animeService
                 .getAnimesByPage(this.currentPage)
                 .subscribe((data) => {
@@ -160,7 +175,7 @@ export class AnimeListComponent implements OnInit {
 
     searchWithParams(): void {
         this.router
-            .navigate(['research/pagination/'], {
+            .navigate(['animes/research'], {
                 queryParams: {
                     genre: this.selectedGenre ? this.selectedGenre.id : null,
                     studio: this.selectedStudio ? this.selectedStudio.id : null,

@@ -1,6 +1,13 @@
 body {
     background-color: rgba(40, 43, 48, 0.75);
+    padding-top: 2vh;
     padding-bottom: 2vh;
+}
+
+.container {
+    padding: 5vh;
+    margin-bottom: 2vh;
+    background-color: #2e3032;
 }
 .img-fluid {
     width: 262px;
@@ -85,8 +92,6 @@ body {
     height: 23vh;
 }
 .featurette:hover {
-    background-color: #11428d;
-    border-radius: 1vh;
     cursor: pointer;
 }
 
@@ -96,6 +101,8 @@ body {
 
 .articleTitle {
     margin-left: 2vw;
+    margin-top: 1vw;
+    font-size: 3vh;
 }
 
 #loadMoreBtn {
@@ -104,4 +111,18 @@ body {
 }
 #loadMoreBtn button {
     margin: auto;
+}
+
+@media screen and (min-width: 1000px) {
+    .image1 {
+        width: 50%;
+        height: 50%;
+    }
+}
+
+.featurette-image {
+    width: 262px;
+    height: 262px;
+    margin: auto;
+    display: block;
 }

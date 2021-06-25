@@ -34,6 +34,7 @@ export class OnelistComponent implements OnInit {
     private navigationSubscription;
     public comments: Comment[];
     public commentForm: FormGroup;
+    public adminStatus: string;
 
     constructor(
         private modalService: NgbModal,
@@ -51,16 +52,18 @@ export class OnelistComponent implements OnInit {
         this.navigationSubscription = this.router.events.subscribe((e: any) => {
             if (e instanceof NavigationEnd) {
                 this.userService.getCurrentUser().subscribe((user) => {
-                    this.isConnected = !(user === null);
+                    this.isConnected = user !== null;
                     this.commentService
                         .getCommentsForLists(this.listInfo.id)
                         .subscribe((comments) => {
                             this.comments = comments;
-                            comments.forEach((comment) => {
-                                if (comment.user.id === user.id) {
-                                    this.userHasComment = true;
-                                }
-                            });
+                            if (user !== null) {
+                                comments.forEach((comment) => {
+                                    if (comment.user.id === user.id) {
+                                        this.userHasComment = true;
+                                    }
+                                });
+                            }
                         });
                 });
             }
@@ -71,6 +74,9 @@ export class OnelistComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.userService
+            .getCurrentUserRole()
+            .subscribe((data) => (this.adminStatus = data.auth));
         this.listInfo = this.route.snapshot.data.list;
         this.isDefault =
             this.listInfo.name === 'Watched' ||
@@ -157,10 +163,10 @@ export class OnelistComponent implements OnInit {
             });
     }
 
-    deleteListComment(): void {
+    deleteListComment(userId: number): void {
         if (confirm('Are you sure you want to delete this comment ?')) {
             this.commentService
-                .deleteListComment(this.listInfo.id)
+                .deleteListComment(this.listInfo.id, userId)
                 .subscribe(() => {
                     location.reload();
                 });

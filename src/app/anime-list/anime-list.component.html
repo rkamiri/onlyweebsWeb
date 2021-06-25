@@ -8,18 +8,6 @@
 <body>
     <div class="container" style="width: 80vw">
         <div id="searchBlock">
-            <div class="input-group">
-                <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Search this blog"
-                />
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </div>
             <div class="row">
                 <div class="col">
                     <div ngbDropdown class="d-inline-block">
@@ -146,16 +134,28 @@
                         class="page-item"
                     >
                         <a
-                            *ngIf="!queryParams.query"
+                            *ngIf="navCase === 3"
                             [routerLink]="['/animes/page', 1]"
                             class="page-link test"
                             >First</a
                         >
                         <a
-                            *ngIf="queryParams.query"
+                            *ngIf="navCase === 2"
                             [routerLink]="['/animes/research']"
                             [queryParams]="{
                                 query: queryParams.query,
+                                page: 1
+                            }"
+                            class="page-link test"
+                            >First</a
+                        >
+                        <a
+                            *ngIf="navCase === 1"
+                            [routerLink]="['/animes/research']"
+                            [queryParams]="{
+                                genre: queryParams.genre,
+                                studio: queryParams.studio,
+                                producer: queryParams.producer,
                                 page: 1
                             }"
                             class="page-link test"
@@ -167,13 +167,13 @@
                         class="page-item"
                     >
                         <a
-                            *ngIf="!queryParams.query"
+                            *ngIf="navCase === 3"
                             [routerLink]="['/animes/page', currentPage - 1]"
                             class="page-link test"
                             >Previous</a
                         >
                         <a
-                            *ngIf="queryParams.query"
+                            *ngIf="navCase === 2"
                             [routerLink]="['/animes/research']"
                             [queryParams]="{
                                 query: queryParams.query,
@@ -182,19 +182,44 @@
                             class="page-link test"
                             >Previous</a
                         >
+                        <a
+                            *ngIf="navCase === 1"
+                            [routerLink]="['/animes/research']"
+                            [queryParams]="{
+                                genre: queryParams.genre,
+                                studio: queryParams.studio,
+                                producer: queryParams.producer,
+                                page: currentPage - 2
+                            }"
+                            class="page-link test"
+                            >Previous</a
+                        >
                     </li>
                     <li class="page-item" *ngIf="currentPage !== 1">
                         <a
-                            *ngIf="!queryParams.query"
+                            *ngIf="navCase === 3"
                             [routerLink]="['/animes/page', currentPage - 1]"
                             class="page-link test"
                             >{{ currentPage - 1 }}</a
                         >
                         <a
-                            *ngIf="queryParams.query"
+                            *ngIf="navCase === 2"
                             [routerLink]="['/animes/research']"
                             [queryParams]="{
                                 query: queryParams.query,
+                                page: currentPage - 1
+                            }"
+                            class="page-link test"
+                            >{{ currentPage - 1 }}</a
+                        >
+
+                        <a
+                            *ngIf="navCase === 1"
+                            [routerLink]="['/animes/research']"
+                            [queryParams]="{
+                                genre: queryParams.genre,
+                                studio: queryParams.studio,
+                                producer: queryParams.producer,
                                 page: currentPage - 1
                             }"
                             class="page-link test"
@@ -215,13 +240,13 @@
                         [ngClass]="{ disabled: currentPage === pages }"
                     >
                         <a
-                            *ngIf="!queryParams.query"
+                            *ngIf="navCase === 3"
                             [routerLink]="['/animes/page', currentPage + 1]"
                             class="page-link test"
                             >{{ currentPage + 1 }}</a
                         >
                         <a
-                            *ngIf="queryParams.query"
+                            *ngIf="navCase === 2"
                             [routerLink]="['/animes/research']"
                             [queryParams]="{
                                 query: queryParams.query,
@@ -230,19 +255,43 @@
                             class="page-link test"
                             >{{ currentPage + 1 }}</a
                         >
+                        <a
+                            *ngIf="navCase === 1"
+                            [routerLink]="['/animes/research']"
+                            [queryParams]="{
+                                genre: queryParams.genre,
+                                studio: queryParams.studio,
+                                producer: queryParams.producer,
+                                page: currentPage + 1
+                            }"
+                            class="page-link test"
+                            >{{ currentPage + 1 }}</a
+                        >
                     </li>
                     <li class="page-item" *ngIf="currentPage === 1">
                         <a
-                            *ngIf="!queryParams.query"
+                            *ngIf="navCase === 3"
                             [routerLink]="['/animes/page', currentPage + 2]"
                             class="page-link test"
                             >{{ currentPage + 2 }}</a
                         >
                         <a
-                            *ngIf="queryParams.query"
+                            *ngIf="navCase === 2"
                             [routerLink]="['/animes/research']"
                             [queryParams]="{
                                 query: queryParams.query,
+                                page: currentPage + 2
+                            }"
+                            class="page-link test"
+                            >{{ currentPage + 2 }}</a
+                        >
+                        <a
+                            *ngIf="navCase === 1"
+                            [routerLink]="['/animes/research']"
+                            [queryParams]="{
+                                genre: queryParams.genre,
+                                studio: queryParams.studio,
+                                producer: queryParams.producer,
                                 page: currentPage + 2
                             }"
                             class="page-link test"
@@ -254,16 +303,28 @@
                         class="page-item"
                     >
                         <a
-                            *ngIf="!queryParams.query"
+                            *ngIf="navCase === 3"
                             [routerLink]="['/animes/page', currentPage + 1]"
                             class="page-link test"
                             >Next</a
                         >
                         <a
-                            *ngIf="queryParams.query"
+                            *ngIf="navCase === 2"
                             [routerLink]="['/animes/research']"
                             [queryParams]="{
                                 query: queryParams.query,
+                                page: currentPage + 1
+                            }"
+                            class="page-link test"
+                            >Next</a
+                        >
+                        <a
+                            *ngIf="navCase === 1"
+                            [routerLink]="['/animes/research']"
+                            [queryParams]="{
+                                genre: queryParams.genre,
+                                studio: queryParams.studio,
+                                producer: queryParams.producer,
                                 page: currentPage + 1
                             }"
                             class="page-link test"
@@ -275,16 +336,28 @@
                         class="page-item"
                     >
                         <a
-                            *ngIf="!queryParams.query"
+                            *ngIf="navCase === 3"
                             [routerLink]="['/animes/page', pages]"
                             class="page-link test"
                             >Last</a
                         >
                         <a
-                            *ngIf="queryParams.query"
+                            *ngIf="navCase === 2"
                             [routerLink]="['/animes/research']"
                             [queryParams]="{
                                 query: queryParams.query,
+                                page: pages
+                            }"
+                            class="page-link test"
+                            >Last</a
+                        >
+                        <a
+                            *ngIf="navCase === 1"
+                            [routerLink]="['/animes/research']"
+                            [queryParams]="{
+                                genre: queryParams.genre,
+                                studio: queryParams.studio,
+                                producer: queryParams.producer,
                                 page: pages
                             }"
                             class="page-link test"

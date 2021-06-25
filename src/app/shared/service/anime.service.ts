@@ -126,13 +126,15 @@ export class AnimeService {
     }
 
     getAllAnimesByAdvancedResearch(
-        genre: Genres,
-        studio: Studios,
-        producer: Producers,
+        genre: number,
+        studio: number,
+        producer: number,
         currentPage: number
     ): Observable<Anime[]> {
         return this.httpclient.post<Anime[]>(
-            environment.backend + '/animes/research/pagination/' + currentPage,
+            environment.backend +
+                '/animes/research/pagination/' +
+                (currentPage - 1),
             {
                 genre,
                 studio,

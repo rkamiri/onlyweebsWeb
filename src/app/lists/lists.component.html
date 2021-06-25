@@ -1,10 +1,20 @@
-<div class="col button-top text-center">
-    <button class="btn btn-primary" [routerLink]="['/list-create']">
-        Create a new list
-    </button>
-</div>
+<body>
+    <div id="button">
+        <div *ngIf="currentUser !== null" class="col button-top text-center">
+            <button class="btn btn-primary" [routerLink]="['/list-create']">
+                Create a new list
+            </button>
+        </div>
 
-<app-anime-list-display
-    [lists]="lists"
-    [isDefault]="'all_custom'"
-></app-anime-list-display>
+        <div *ngIf="currentUser == null" class="col button-top text-center">
+            <button class="btn btn-primary" [routerLink]="['/login']">
+                Login to create a new list
+            </button>
+        </div>
+    </div>
+
+    <app-anime-list-display
+        [lists]="lists"
+        [isDefault]="'all_custom'"
+    ></app-anime-list-display>
+</body>
