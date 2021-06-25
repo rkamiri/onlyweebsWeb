@@ -101,3 +101,8 @@ h1 {
 .btn-twitter-f {
     background: #55acee;
 }
+
+.authorr:hover {
+    color: #097ce7;
+    text-decoration: underline;
+}
