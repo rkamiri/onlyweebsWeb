@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="custom">
+                        <div *ngIf="userLists !== undefined" class="custom">
                             <app-anime-list-display [lists]="userLists" [isDefault]="'all_custom'">
                             </app-anime-list-display>
                         </div>
