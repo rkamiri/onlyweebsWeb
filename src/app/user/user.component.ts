@@ -22,13 +22,10 @@ export class UserComponent implements OnInit {
     this.deletedUser = this.activatedRoute.snapshot.data.user.username.startsWith("deleted");
     this.user = this.activatedRoute.snapshot.data.user;
     this.profilePictureUrl = environment.backend + '/image/' + this.activatedRoute.snapshot.data.user.image.id;
-<<<<<<< HEAD
     this.listsService.getCustomListsByUserId(this.activatedRoute.snapshot.data.user.id).subscribe((data) => {
       this.userLists = data;
       console.log(data);
     });
-=======
     this.listsService.getCustomListsByUserId(this.activatedRoute.snapshot.data.user.id).subscribe((data) => this.userLists = data);
->>>>>>> 22934be4fc136baf8f7d3225f4b6001537fb066a
   }
 }
