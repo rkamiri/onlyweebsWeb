@@ -105,4 +105,8 @@ export class UserService {
             environment.backend + '/users/delete'
         );
     }
+
+    getCurrentUserRole(): Observable<any> {
+        return this.httpclient.get<any>(environment.backend + '/users/role');
+    }
 }

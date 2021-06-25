@@ -28,13 +28,14 @@
                             id="dropdownBasic1"
                             ngbDropdownToggle
                         >
-                            Genres
+                            {{ selectedGenre ? selectedGenre.name : "Genre" }}
                         </button>
                         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                             <button
                                 ngbDropdownItem
                                 *ngFor="let genre of listGenres"
                                 value="{{ genre.id }}"
+                                (click)="changeGenre(genre, 'genre')"
                             >
                                 {{ genre.name }}
                             </button>
@@ -49,13 +50,16 @@
                             id="dropdownBasic2"
                             ngbDropdownToggle
                         >
-                            Studios
+                            {{
+                                selectedStudio ? selectedStudio.name : "Studio"
+                            }}
                         </button>
                         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                             <button
                                 ngbDropdownItem
                                 *ngFor="let studio of listStudios"
                                 value="{{ studio.id }}"
+                                (click)="changeGenre(studio, 'studio')"
                             >
                                 {{ studio.name }}
                             </button>
@@ -70,17 +74,30 @@
                             id="dropdownBasic3"
                             ngbDropdownToggle
                         >
-                            Producers
+                            {{
+                                selectedProducer
+                                    ? selectedProducer.name
+                                    : "Producer"
+                            }}
                         </button>
                         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                             <button
                                 ngbDropdownItem
                                 *ngFor="let producer of listProducers"
                                 value="{{ producer.id }}"
+                                (click)="changeGenre(producer, 'producer')"
                             >
                                 {{ producer.name }}
                             </button>
                         </div>
+                    </div>
+                    <div class="col">
+                        <button
+                            class="btn btn-outline-primary"
+                            (click)="searchWithParams()"
+                        >
+                            Search
+                        </button>
                     </div>
                 </div>
             </div>

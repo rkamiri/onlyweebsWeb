@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Anime } from '../shared/model/anime';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RatingService } from '../shared/service/rating.service';
 import { Rating } from '../shared/model/rating';
 import { CommentService } from '../shared/service/comment.service';
@@ -9,6 +9,9 @@ import { Lists } from '../shared/model/lists';
 import { IsListedIn } from '../shared/model/is.listed.in';
 import { ListsService } from '../shared/service/lists.service';
 import { AnimeService } from '../shared/service/anime.service';
+import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
+import { User } from '../shared/model/user';
+import { UserService } from '../shared/service/user.service';
 
 @Component({
     selector: 'app-anime',
@@ -22,7 +25,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
     public currentRate: number;
     public globalRate: number;
     public selectedList: string;
-    public isConnected = sessionStorage.getItem('isConnected') === 'true';
+    public isConnected;
     public hasCustom: boolean;
     rateForm: FormGroup;
     commentForm: FormGroup;
@@ -33,32 +36,23 @@ export class AnimeComponent implements OnDestroy, OnInit {
     public genres: string[];
     public studios: string[];
     public producers: string[];
+    public currentUser: User;
+    ctrl = new FormControl(null, Validators.required);
 
     constructor(
         private router: Router,
+        private userService: UserService,
         private activatedRoute: ActivatedRoute,
         private ratingService: RatingService,
         private listService: ListsService,
         private commentsService: CommentService,
-        private animeService: AnimeService
+        private animeService: AnimeService,
+        config: NgbAccordionConfig
     ) {
         this.userHasComment = false;
         this.navigationSubscription = this.router.events.subscribe((e: any) => {
             if (e instanceof NavigationEnd) {
                 this.initialiseAnime();
-                this.commentsService
-                    .getCommentsForAnime(this.anime.id)
-                    .subscribe((comments) => {
-                        this.comments = comments;
-                        comments.forEach((comment) => {
-                            if (
-                                comment.user.id ===
-                                +sessionStorage.getItem('userid')
-                            ) {
-                                this.userHasComment = true;
-                            }
-                        });
-                    });
             }
         });
         this.rateForm = new FormGroup({
@@ -68,6 +62,9 @@ export class AnimeComponent implements OnDestroy, OnInit {
             comment: new FormControl(''),
         });
         this.userHasRated = 'Add Personal Rate';
+
+        config.type = 'dark';
+        this.globalRate = 0;
     }
 
     ngOnDestroy(): void {
@@ -77,31 +74,53 @@ export class AnimeComponent implements OnDestroy, OnInit {
     }
 
     ngOnInit(): void {
-        this.anime = this.activatedRoute.snapshot.data.anime;
-        this.globalRate = this.activatedRoute.snapshot.data.globalRating;
-        if (sessionStorage.getItem('isConnected') === 'true') {
-            this.listService.getMyCustomLists().subscribe((customLists) => {
-                this.userCustomLists = customLists;
-                this.hasCustom = customLists.length !== 0;
-            });
-            this.listService.getMyDefaultLists().subscribe((defaultLists) => {
-                this.userDefaultLists = defaultLists;
-            });
-            this.currentRate =
-                this.activatedRoute.snapshot.data.currentUserRating;
-            this.ratingService
-                .getCurrentUserRatingForThisAnime(this.anime.id)
-                .subscribe((data) => {
-                    this.currentRate = data;
+        this.userService.getCurrentUser().subscribe((user) => {
+            this.currentUser = user;
+            this.isConnected = user !== null;
+            if (user !== null) {
+                this.listService.getMyCustomLists().subscribe((customLists) => {
+                    this.userCustomLists = customLists;
+                    this.hasCustom = customLists.length !== 0;
                 });
-            if (this.currentRate === null || this.currentRate === undefined) {
-                if (!(this.currentRate === 666)) {
-                    this.rateForm.controls.rate.setValue(this.currentRate);
-                } else {
-                    this.currentRate = undefined;
-                }
+                this.listService
+                    .getMyDefaultLists()
+                    .subscribe((defaultLists) => {
+                        this.userDefaultLists = defaultLists;
+                    });
+                this.ratingService
+                    .getCurrentUserRatingForThisAnime(this.anime.id)
+                    .subscribe((data) => {
+                        this.currentRate = data;
+                        if (data === 666) {
+                            this.currentRate = undefined;
+                        } else {
+                            this.rateForm.controls.rate.setValue(data);
+                        }
+                    });
+                this.commentsService
+                    .getCommentsForAnime(this.anime.id)
+                    .subscribe((comments) => {
+                        this.comments = comments;
+                        comments.forEach((comment) => {
+                            if (comment.user.id === this.currentUser.id) {
+                                this.userHasComment = true;
+                            }
+                        });
+                    });
             }
-        }
+        });
+        this.anime = this.activatedRoute.snapshot.data.anime;
+        this.ratingService
+            .getGlobalRatingOfAnAnime(
+                this.activatedRoute.snapshot.data.anime.id
+            )
+            .subscribe((gRate) => {
+                if (isNaN(gRate)) {
+                    this.globalRate = 0;
+                } else {
+                    this.globalRate = gRate;
+                }
+            });
     }
 
     initialiseAnime(): void {
@@ -122,7 +141,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
 
     updateRating(): void {
         const rating: Rating = {
-            userId: +sessionStorage.getItem('userid'),
+            userId: this.currentUser.id,
             animeId: this.anime.id,
             rate: this.rateForm.controls.rate.value,
         };

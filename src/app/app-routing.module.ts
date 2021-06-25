@@ -71,11 +71,16 @@ const routes: Routes = [
         component: ListCreateComponent,
         resolve: { getCurrentList: ListsResolver, lastList: LastListsResolver },
     },
-    { path: 'articles', component: ArticleListComponent },
+    {
+        path: 'articles',
+        component: ArticleListComponent,
+        runGuardsAndResolvers: 'always',
+    },
     {
         path: 'articles/:id',
         component: ArticleComponent,
         resolve: { article: ArticleResolver },
+        runGuardsAndResolvers: 'always',
     },
     { path: 'my-lists', component: MylistsComponent },
     { path: 'editor', component: ArticleEditorComponent },

@@ -18,6 +18,7 @@ export class NavComponent implements OnInit {
     authSubscription: Subscription;
     isUserAuthenticated: boolean;
     searchInputValue: string;
+    adminStatus: string;
     searchArray: Array<SearchResult>;
     username: string;
     search = (text$: Observable<string>) =>
@@ -41,6 +42,9 @@ export class NavComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        this.userService.getCurrentUserRole().subscribe((data) => {
+            this.adminStatus = data.auth;
+        });
         this.authSubscription = this.userService
             .authListener()
             .subscribe((state) => {
@@ -53,9 +57,14 @@ export class NavComponent implements OnInit {
             });
         this.searchArray = [];
     }
+
     logoutUser(): void {
         this.userService.logout();
-        this.router.navigate(['home']).then();
+        this.router.navigate(['home']).then(() => {
+            setTimeout(() => {
+                window.location.reload();
+            }, 500);
+        });
         this.toastr.success('You are logged out', 'Logout successful!');
     }
 
@@ -89,6 +98,7 @@ export class NavComponent implements OnInit {
             }
         }
     }
+
     onSearchItemSelected(
         result: NgbTypeaheadSelectItemEvent<SearchResult>
     ): void {

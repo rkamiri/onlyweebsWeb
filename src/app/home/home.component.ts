@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from '../shared/service/article.service';
 import { Article } from '../shared/model/article';
 import { Lists } from '../shared/model/lists';
@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
+        private router: Router,
         private articleService: ArticleService,
         private animeService: AnimeService,
         private listsService: ListsService
@@ -68,10 +69,6 @@ export class HomeComponent implements OnInit {
 
     goToAnime($event): void {
         const id = this.animes[$event].id;
-        window.open('/#/animes/' + id + '/', '_self');
-    }
-
-    getOwner($id): string {
-        return null;
+        this.router.navigate(['/animes/', id]).then();
     }
 }

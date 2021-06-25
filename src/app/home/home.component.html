@@ -1,18 +1,18 @@
 <body>
-    <img
-        id="left"
-        loading="lazy"
-        class="sideImage"
-        src="assets/not_very_stonks_pub.png"
-        alt="alt"
-    />
-    <img
-        id="right"
-        loading="lazy"
-        class="sideImage"
-        src="assets/not_very_stonks_pub.png"
-        alt="alt"
-    />
+    <!-- <img
+     id="left"
+     loading="lazy"
+     class="sideImage"
+     src="assets/not_very_stonks_pub.png"
+     alt="alt"
+ />
+ <img
+     id="right"
+     loading="lazy"
+     class="sideImage"
+     src="assets/not_very_stonks_pub.png"
+     alt="alt"
+ />-->
     <div id="center">
         <div class="container mainContainer text-light">
             <div class="text-center">
@@ -67,9 +67,11 @@
                 <h3>TOP DES SORTIES</h3>
             </div>
             <ng-image-slider
-                [images]="imageObject"
-                (imageClick)="goToAnime($event)"
+                style="cursor: pointer"
                 #nav
+                [images]="imageObject"
+                [imagePopup]="false"
+                (imageClick)="goToAnime($event)"
             ></ng-image-slider>
         </div>
         <div class="container mainContainer" *ngIf="articles !== undefined">

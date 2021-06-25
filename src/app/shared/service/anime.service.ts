@@ -109,4 +109,35 @@ export class AnimeService {
             environment.backend + '/animes/latest'
         );
     }
+
+    getAllPagesByAdvancedSearch(
+        genre: Genres,
+        studio: Studios,
+        producer: Producers
+    ): Observable<number> {
+        return this.httpclient.post<number>(
+            environment.backend + '/animes/research/count',
+            {
+                genre,
+                studio,
+                producer,
+            }
+        );
+    }
+
+    getAllAnimesByAdvancedResearch(
+        genre: Genres,
+        studio: Studios,
+        producer: Producers,
+        currentPage: number
+    ): Observable<Anime[]> {
+        return this.httpclient.post<Anime[]>(
+            environment.backend + '/animes/research/pagination/' + currentPage,
+            {
+                genre,
+                studio,
+                producer,
+            }
+        );
+    }
 }
