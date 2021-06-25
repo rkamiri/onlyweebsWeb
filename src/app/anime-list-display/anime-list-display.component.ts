@@ -24,23 +24,28 @@ export class AnimeListDisplayComponent implements OnInit {
         private route: ActivatedRoute,
         private listService: ListsService,
         private userService: UserService
-    ) { }
+    ) {}
 
     ngOnInit(): void {
-        this.userService.getCurrentUser().subscribe((data) => this.connectedUser = data);
-        if (this.isDefault === 'user_default') {
+        this.userService
+            .getCurrentUser()
+            .subscribe((data) => (this.connectedUser = data));
+        if (this.userId) {
+            console.log('ttt');
+            this.listService
+                .getImagesOfUserCustomListByUserId(this.userId)
+                .subscribe((data) => {
+                    console.log(data);
+                    this.listsImages = data;
+                });
+        } else if (this.isDefault === 'user_default') {
             this.listService
                 .getImagesOfUserDefaultList()
                 .subscribe((data) => (this.listsImages = data));
-        } else if (this.userId !== null && this.isDefault === 'user_custom') {
-            this.listService.getImagesOfUserCustomListByUserId(this.userId).subscribe((data) => {
-                this.listsImages = data;
-            });
         } else if (this.isDefault === 'user_custom') {
             this.listService
                 .getImagesOfUserCustomList()
                 .subscribe((data) => (this.listsImages = data));
-
         } else {
             this.listService
                 .getImagesOfCustomLists()
