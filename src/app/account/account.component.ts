@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import {
     ISpinnerConfig,
     SPINNER_ANIMATIONS,
-    SPINNER_PLACEMENT
+    SPINNER_PLACEMENT,
 } from '@hardpool/ngx-spinner';
 import { ImageService } from '../shared/service/image.service';
 import { ToastrService } from 'ngx-toastr';
@@ -16,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
     selector: 'app-account',
     templateUrl: './account.component.html',
-    styleUrls: ['./account.component.scss']
+    styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
     private newPassWordUser: User;
@@ -43,7 +43,7 @@ export class AccountComponent implements OnInit {
             firstname: new FormControl(''),
             lastname: new FormControl(''),
             email: new FormControl(''),
-            bio: new FormControl('')
+            bio: new FormControl(''),
         });
         this.bioForm = new FormGroup({
             id: new FormControl(''),
@@ -51,14 +51,14 @@ export class AccountComponent implements OnInit {
             username: new FormControl(''),
             firstname: new FormControl(''),
             lastname: new FormControl(''),
-            email: new FormControl('')
+            email: new FormControl(''),
         });
         this.passwordForm = new FormGroup({
             id: new FormControl(''),
             username: new FormControl(''),
             oldPassword: new FormControl(''),
             newPasswordA: new FormControl(''),
-            newPasswordB: new FormControl('')
+            newPasswordB: new FormControl(''),
         });
     }
 
@@ -77,7 +77,7 @@ export class AccountComponent implements OnInit {
             'You can change your profile image by clicking on it',
             'Customize your profile!',
             {
-                timeOut: 2500
+                timeOut: 2500,
             }
         );
     }
@@ -88,7 +88,7 @@ export class AccountComponent implements OnInit {
             animation: SPINNER_ANIMATIONS.spin_3,
             size: '20rem',
             bgColor: 'rgba(40, 43, 48, 0.6)',
-            color: '#097ce7'
+            color: '#097ce7',
         };
         this.spinner = false;
     }

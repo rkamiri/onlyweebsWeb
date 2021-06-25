@@ -45,7 +45,9 @@ export class ListsService {
     }
 
     getCustomListsByUserId(id: number): Observable<Lists[]> {
-        return this.httpclient.get<Lists[]>(environment.backend + '/lists/user/custom/' + id);
+        return this.httpclient.get<Lists[]>(
+            environment.backend + '/lists/user/custom/' + id
+        );
     }
 
     getOneListById(id): Observable<Lists> {

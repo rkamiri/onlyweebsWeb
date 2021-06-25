@@ -16,7 +16,6 @@ export class RatingService {
     }
 
     putCurrentUserRatingOfAnAnime(rating: object): Observable<number> {
-        console.log('33');
         return this.httpclient.put<number>(
             environment.backend + '/rating',
             rating

@@ -9,25 +9,49 @@
                     <div class="col">
                         <div class="input-group">
                             <div class="d-inline-block" ngbDropdown>
-                                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                                <button
+                                    class="btn btn-outline-primary"
+                                    id="dropdownBasic1"
+                                    ngbDropdownToggle
+                                >
                                     {{
-                                    selectedCategory
-                                    ? selectedCategory.name
-                                    : "Category"
+                                        selectedCategory
+                                            ? selectedCategory.name
+                                            : "Category"
                                     }}
                                 </button>
-                                <div class="col" aria-labelledby="dropdownBasic1" ngbDropdownMenu>
-                                    <button (click)="changeCategory(category)" *ngFor="let category of categories"
-                                        ngbDropdownItem>
+                                <div
+                                    class="col"
+                                    aria-labelledby="dropdownBasic1"
+                                    ngbDropdownMenu
+                                >
+                                    <button
+                                        (click)="changeCategory(category)"
+                                        *ngFor="let category of categories"
+                                        ngbDropdownItem
+                                    >
                                         {{ category.name }}
                                     </button>
                                 </div>
                             </div>
-                            <input type="hidden" name="search_param" value="all" id="search_param" />
-                            <input type="text" class="form-control" name="x" [(ngModel)]="searchInputValue"
-                                placeholder="Search articles" />
+                            <input
+                                type="hidden"
+                                name="search_param"
+                                value="all"
+                                id="search_param"
+                            />
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="x"
+                                [(ngModel)]="searchInputValue"
+                                placeholder="Search articles"
+                            />
                             <span class="input-group-btn">
-                                <button (click)="searchWithParams()" class="btn btn-primary">
+                                <button
+                                    (click)="searchWithParams()"
+                                    class="btn btn-primary"
+                                >
                                     Search
                                 </button>
                             </span>
@@ -42,94 +66,126 @@
                 <div class="row">
                     <div class="col-12 pb-5" style="">
                         <section class="row">
-                            <div class="
+                            <div
+                                class="
                                     col-12 col-md-6 col-sm-4
                                     pb-0 pb-md-3
                                     pt-2
                                     pr-md-1
-                                ">
-                                <div class="carousel" data-ride="carousel" id="featured">
+                                "
+                            >
+                                <div
+                                    class="carousel"
+                                    data-ride="carousel"
+                                    id="featured"
+                                >
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <div style="background-color: red" class="
+                                            <div
+                                                style="background-color: red"
+                                                class="
                                                     card
                                                     border-0
                                                     rounded-0
                                                     text-light
                                                     overflow
                                                     zoom
-                                                ">
+                                                "
+                                            >
                                                 <div class="position-relative">
-                                                    <div class="
+                                                    <div
+                                                        class="
                                                             ratio_left-cover-1
                                                             image-wrapper
-                                                        ">
-                                                        <a [routerLink]="[
+                                                        "
+                                                    >
+                                                        <a
+                                                            [routerLink]="[
                                                                 '/articles/',
                                                                 listArticles[0]
                                                                     .id
-                                                            ]">
-                                                            <img alt="Bootstrap news template" class="
+                                                            ]"
+                                                        >
+                                                            <img
+                                                                alt="Bootstrap news template"
+                                                                class="
                                                                     img-fluid
                                                                     w-100
-                                                                " id="image1" loading="lazy" src="{{
+                                                                "
+                                                                id="image1"
+                                                                loading="lazy"
+                                                                src="{{
                                                                     articleImageUrls[0]
-                                                                }}" />
+                                                                }}"
+                                                            />
                                                         </a>
                                                     </div>
-                                                    <div class="
+                                                    <div
+                                                        class="
                                                             position-absolute
                                                             p-2 p-lg-3
                                                             b-0
                                                             w-100
                                                             bg-shadow
-                                                        ">
-                                                        <a [routerLink]="[
+                                                        "
+                                                    >
+                                                        <a
+                                                            [routerLink]="[
                                                                 '/articles/',
                                                                 listArticles[0]
                                                                     .id
-                                                            ]" [style.background-color]="
+                                                            ]"
+                                                            [style.background-color]="
                                                                 listArticles[0]
                                                                     .category
                                                                     .bgColor
-                                                            " class="
+                                                            "
+                                                            class="
                                                                 p-1
                                                                 badge
                                                                 badge-primary
                                                                 rounded-0
-                                                            ">
+                                                            "
+                                                        >
                                                             {{
-                                                            listArticles[0]
-                                                            .category
-                                                            .name
-                                                            }}</a>
-                                                        <a [routerLink]="[
+                                                                listArticles[0]
+                                                                    .category
+                                                                    .name
+                                                            }}</a
+                                                        >
+                                                        <a
+                                                            [routerLink]="[
                                                                 '/articles/',
                                                                 listArticles[0]
                                                                     .id
-                                                            ]">
-                                                            <h2 class="
+                                                            ]"
+                                                        >
+                                                            <h2
+                                                                class="
                                                                     h3
                                                                     post-title
                                                                     text-white
                                                                     my-1
-                                                                ">
+                                                                "
+                                                            >
                                                                 {{
-                                                                listArticles[0]
-                                                                .title
+                                                                    listArticles[0]
+                                                                        .title
                                                                 }}
                                                             </h2>
                                                         </a>
                                                         <div class="news-meta">
-
-                                                            <span class="
+                                                            <span
+                                                                class="
                                                                     news-date
-                                                                ">
+                                                                "
+                                                            >
                                                                 on
                                                                 {{
-                                                                listArticles[0]
-                                                                .created_at
-                                                                }}</span>
+                                                                    listArticles[0]
+                                                                        .created_at
+                                                                }}</span
+                                                            >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -138,72 +194,95 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="
+                            <div
+                                class="
                                     col-12 col-md-6
                                     pt-2
                                     pl-md-1
                                     mb-3 mb-lg-4
-                                ">
+                                "
+                            >
                                 <div class="row">
                                     <div class="col-6 pb-1 pt-0 pr-1">
-                                        <div class="
+                                        <div
+                                            class="
                                                 card
                                                 border-0
                                                 rounded-0
                                                 text-white
                                                 overflow
                                                 zoom
-                                            ">
+                                            "
+                                        >
                                             <div class="position-relative">
-                                                <div class="
+                                                <div
+                                                    class="
                                                         ratio_right-cover-2
                                                         image-wrapper
-                                                    ">
-                                                    <a [routerLink]="[
+                                                    "
+                                                >
+                                                    <a
+                                                        [routerLink]="[
                                                             '/articles/',
                                                             listArticles[1].id
-                                                        ]">
-                                                        <img alt="simple blog template bootstrap" class="img-fluid"
-                                                            loading="lazy" src="{{
+                                                        ]"
+                                                    >
+                                                        <img
+                                                            alt="simple blog template bootstrap"
+                                                            class="img-fluid"
+                                                            loading="lazy"
+                                                            src="{{
                                                                 articleImageUrls[1]
-                                                            }}" />
+                                                            }}"
+                                                        />
                                                     </a>
                                                 </div>
-                                                <div class="
+                                                <div
+                                                    class="
                                                         position-absolute
                                                         p-2 p-lg-3
                                                         b-0
                                                         w-100
                                                         bg-shadow
-                                                    ">
-                                                    <a [routerLink]="[
+                                                    "
+                                                >
+                                                    <a
+                                                        [routerLink]="[
                                                             '/articles/',
                                                             listArticles[1].id
-                                                        ]" [style.background-color]="
+                                                        ]"
+                                                        [style.background-color]="
                                                             listArticles[1]
                                                                 .category
                                                                 .bgColor
-                                                        " class="
+                                                        "
+                                                        class="
                                                             p-1
                                                             badge badge-primary
                                                             rounded-0
-                                                        ">
+                                                        "
+                                                    >
                                                         {{
-                                                        listArticles[1]
-                                                        .category.name
-                                                        }}</a>
-                                                    <a [routerLink]="[
+                                                            listArticles[1]
+                                                                .category.name
+                                                        }}</a
+                                                    >
+                                                    <a
+                                                        [routerLink]="[
                                                             '/articles/',
                                                             listArticles[1].id
-                                                        ]">
-                                                        <h2 class="
+                                                        ]"
+                                                    >
+                                                        <h2
+                                                            class="
                                                                 h5
                                                                 text-white
                                                                 my-1
-                                                            ">
+                                                            "
+                                                        >
                                                             {{
-                                                            listArticles[1]
-                                                            .title
+                                                                listArticles[1]
+                                                                    .title
                                                             }}
                                                         </h2>
                                                     </a>
@@ -212,63 +291,84 @@
                                         </div>
                                     </div>
                                     <div class="col-6 pb-1 pl-1 pt-0">
-                                        <div class="
+                                        <div
+                                            class="
                                                 card
                                                 border-0
                                                 rounded-0
                                                 text-white
                                                 overflow
                                                 zoom
-                                            ">
+                                            "
+                                        >
                                             <div class="position-relative">
-                                                <div class="
+                                                <div
+                                                    class="
                                                         ratio_right-cover-2
                                                         image-wrapper
-                                                    ">
-                                                    <a [routerLink]="[
+                                                    "
+                                                >
+                                                    <a
+                                                        [routerLink]="[
                                                             '/articles/',
                                                             listArticles[2].id
-                                                        ]">
-                                                        <img alt="bootstrap templates for blog" class="img-fluid"
-                                                            loading="lazy" src="{{
+                                                        ]"
+                                                    >
+                                                        <img
+                                                            alt="bootstrap templates for blog"
+                                                            class="img-fluid"
+                                                            loading="lazy"
+                                                            src="{{
                                                                 articleImageUrls[2]
-                                                            }}" />
+                                                            }}"
+                                                        />
                                                     </a>
                                                 </div>
-                                                <div class="
+                                                <div
+                                                    class="
                                                         position-absolute
                                                         p-2 p-lg-3
                                                         b-0
                                                         w-100
                                                         bg-shadow
-                                                    ">
-                                                    <a [routerLink]="[
+                                                    "
+                                                >
+                                                    <a
+                                                        [routerLink]="[
                                                             '/articles/',
                                                             listArticles[2].id
-                                                        ]" [style.background-color]="
+                                                        ]"
+                                                        [style.background-color]="
                                                             listArticles[2]
                                                                 .category
                                                                 .bgColor
-                                                        " class="
+                                                        "
+                                                        class="
                                                             p-1
                                                             badge badge-primary
                                                             rounded-0
-                                                        ">{{
-                                                        listArticles[2]
-                                                        .category.name
-                                                        }}</a>
-                                                    <a [routerLink]="[
+                                                        "
+                                                        >{{
+                                                            listArticles[2]
+                                                                .category.name
+                                                        }}</a
+                                                    >
+                                                    <a
+                                                        [routerLink]="[
                                                             '/articles/',
                                                             listArticles[2].id
-                                                        ]">
-                                                        <h2 class="
+                                                        ]"
+                                                    >
+                                                        <h2
+                                                            class="
                                                                 h5
                                                                 text-white
                                                                 my-1
-                                                            ">
+                                                            "
+                                                        >
                                                             {{
-                                                            listArticles[2]
-                                                            .title
+                                                                listArticles[2]
+                                                                    .title
                                                             }}
                                                         </h2>
                                                     </a>
@@ -277,63 +377,84 @@
                                         </div>
                                     </div>
                                     <div class="col-6 pb-1 pr-1 pt-1">
-                                        <div class="
+                                        <div
+                                            class="
                                                 card
                                                 border-0
                                                 rounded-0
                                                 text-white
                                                 overflow
                                                 zoom
-                                            ">
+                                            "
+                                        >
                                             <div class="position-relative">
-                                                <div class="
+                                                <div
+                                                    class="
                                                         ratio_right-cover-2
                                                         image-wrapper
-                                                    ">
-                                                    <a [routerLink]="[
+                                                    "
+                                                >
+                                                    <a
+                                                        [routerLink]="[
                                                             '/articles/',
                                                             listArticles[3].id
-                                                        ]">
-                                                        <img alt="bootstrap blog wordpress theme" class="img-fluid"
-                                                            loading="lazy" src="{{
+                                                        ]"
+                                                    >
+                                                        <img
+                                                            alt="bootstrap blog wordpress theme"
+                                                            class="img-fluid"
+                                                            loading="lazy"
+                                                            src="{{
                                                                 articleImageUrls[3]
-                                                            }}" />
+                                                            }}"
+                                                        />
                                                     </a>
                                                 </div>
-                                                <div class="
+                                                <div
+                                                    class="
                                                         position-absolute
                                                         p-2 p-lg-3
                                                         b-0
                                                         w-100
                                                         bg-shadow
-                                                    ">
-                                                    <a [routerLink]="[
+                                                    "
+                                                >
+                                                    <a
+                                                        [routerLink]="[
                                                             '/articles/',
                                                             listArticles[3].id
-                                                        ]" [style.background-color]="
+                                                        ]"
+                                                        [style.background-color]="
                                                             listArticles[3]
                                                                 .category
                                                                 .bgColor
-                                                        " class="
+                                                        "
+                                                        class="
                                                             p-1
                                                             badge badge-primary
                                                             rounded-0
-                                                        ">{{
-                                                        listArticles[3]
-                                                        .category.name
-                                                        }}</a>
-                                                    <a [routerLink]="[
+                                                        "
+                                                        >{{
+                                                            listArticles[3]
+                                                                .category.name
+                                                        }}</a
+                                                    >
+                                                    <a
+                                                        [routerLink]="[
                                                             '/articles/',
                                                             listArticles[3].id
-                                                        ]">
-                                                        <h2 class="
+                                                        ]"
+                                                    >
+                                                        <h2
+                                                            class="
                                                                 h5
                                                                 text-white
                                                                 my-1
-                                                            ">
+                                                            "
+                                                        >
                                                             {{
-                                                            listArticles[3]
-                                                            .title
+                                                                listArticles[3]
+                                                                    .title
                                                             }}
                                                         </h2>
                                                     </a>
@@ -342,63 +463,84 @@
                                         </div>
                                     </div>
                                     <div class="col-6 pb-1 pl-1 pt-1">
-                                        <div class="
+                                        <div
+                                            class="
                                                 card
                                                 border-0
                                                 rounded-0
                                                 text-white
                                                 overflow
                                                 zoom
-                                            ">
+                                            "
+                                        >
                                             <div class="position-relative">
-                                                <div class="
+                                                <div
+                                                    class="
                                                         ratio_right-cover-2
                                                         image-wrapper
-                                                    ">
-                                                    <a [routerLink]="[
+                                                    "
+                                                >
+                                                    <a
+                                                        [routerLink]="[
                                                             '/articles/',
                                                             listArticles[4].id
-                                                        ]">
-                                                        <img alt="blog website templates bootstrap" class="img-fluid"
-                                                            loading="lazy" src="{{
+                                                        ]"
+                                                    >
+                                                        <img
+                                                            alt="blog website templates bootstrap"
+                                                            class="img-fluid"
+                                                            loading="lazy"
+                                                            src="{{
                                                                 articleImageUrls[4]
-                                                            }}" />
+                                                            }}"
+                                                        />
                                                     </a>
                                                 </div>
-                                                <div class="
+                                                <div
+                                                    class="
                                                         position-absolute
                                                         p-2 p-lg-3
                                                         b-0
                                                         w-100
                                                         bg-shadow
-                                                    ">
-                                                    <a [routerLink]="[
+                                                    "
+                                                >
+                                                    <a
+                                                        [routerLink]="[
                                                             '/articles/',
                                                             listArticles[4].id
-                                                        ]" [style.background-color]="
+                                                        ]"
+                                                        [style.background-color]="
                                                             listArticles[4]
                                                                 .category
                                                                 .bgColor
-                                                        " class="
+                                                        "
+                                                        class="
                                                             p-1
                                                             badge badge-primary
                                                             rounded-0
-                                                        ">{{
-                                                        listArticles[4]
-                                                        .category.name
-                                                        }}</a>
-                                                    <a [routerLink]="[
+                                                        "
+                                                        >{{
+                                                            listArticles[4]
+                                                                .category.name
+                                                        }}</a
+                                                    >
+                                                    <a
+                                                        [routerLink]="[
                                                             '/articles/',
                                                             listArticles[4].id
-                                                        ]">
-                                                        <h2 class="
+                                                        ]"
+                                                    >
+                                                        <h2
+                                                            class="
                                                                 h5
                                                                 text-white
                                                                 my-1
-                                                            ">
+                                                            "
+                                                        >
                                                             {{
-                                                            listArticles[4]
-                                                            .title
+                                                                listArticles[4]
+                                                                    .title
                                                             }}
                                                         </h2>
                                                     </a>
@@ -412,29 +554,44 @@
                     </div>
                 </div>
 
-                <a *ngFor="
+                <a
+                    *ngFor="
                         let article of listArticlesRunner;
                         let index = index
-                    ">
+                    "
+                >
                     <hr class="featurette-divider" />
-                    <div class="row featurette" routerLink="/articles/{{ article.id }}">
+                    <div
+                        class="row featurette"
+                        routerLink="/articles/{{ article.id }}"
+                    >
                         <div class="col-md-6 order-md-2">
                             <h2 class="featurette-heading articleTitle">
                                 {{ article.title }}
                             </h2>
                         </div>
                         <div class="col-md-5 order-md-1">
-                            <a style="position: absolute; top: 1vh" [style.background-color]="
+                            <a
+                                style="position: absolute; top: 1vh"
+                                [style.background-color]="
                                     article.category.bgColor
-                                " class="p-1 badge badge-primary rounded-0"
-                                [routerLink]="['/articles/', article.id]">{{ article.category.name }}</a>
-                            <img loading="lazy" class="
+                                "
+                                class="p-1 badge badge-primary rounded-0"
+                                [routerLink]="['/articles/', article.id]"
+                                >{{ article.category.name }}</a
+                            >
+                            <img
+                                loading="lazy"
+                                class="
                                     bottom
                                     bd-placeholder-img bd-placeholder-img-lg
                                     featurette-image
                                     mx-auto
                                     articleImage
-                                " src="{{ articleImageUrls[index + 5] }}" alt="article image" />
+                                "
+                                src="{{ articleImageUrls[index + 5] }}"
+                                alt="article image"
+                            />
                         </div>
                     </div>
                 </a>
@@ -442,24 +599,37 @@
             </div>
             <div *ngIf="listArticles.length < 5">
                 <a *ngFor="let article of listArticles; let index = index">
-                    <div class="row featurette" routerLink="/articles/{{ article.id }}">
+                    <div
+                        class="row featurette"
+                        routerLink="/articles/{{ article.id }}"
+                    >
                         <div class="col-md-6 order-md-2">
                             <h2 class="featurette-heading articleTitle">
                                 {{ article.title }}
                             </h2>
                         </div>
                         <div class="col-md-5 order-md-1">
-                            <a style="position: absolute; top: 1vh" [style.background-color]="
+                            <a
+                                style="position: absolute; top: 1vh"
+                                [style.background-color]="
                                     article.category.bgColor
-                                " class="p-1 badge badge-primary rounded-0"
-                                [routerLink]="['/articles/', article.id]">{{ article.category.name }}</a>
-                            <img loading="lazy" class="
+                                "
+                                class="p-1 badge badge-primary rounded-0"
+                                [routerLink]="['/articles/', article.id]"
+                                >{{ article.category.name }}</a
+                            >
+                            <img
+                                loading="lazy"
+                                class="
                                     bottom
                                     bd-placeholder-img bd-placeholder-img-lg
                                     featurette-image
                                     mx-auto
                                     articleImage
-                                " src="{{ articleImageUrls[index] }}" alt="article image" />
+                                "
+                                src="{{ articleImageUrls[index] }}"
+                                alt="article image"
+                            />
                         </div>
                     </div>
                     <hr *ngIf="index < 3" class="featurette-divider" />

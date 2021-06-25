@@ -2,10 +2,12 @@
     outline-width: 0;
     font-family: "Karla", sans-serif !important;
 }
+
 body {
     padding-top: 10vh;
     padding-bottom: 10vh;
 }
+
 .testA {
     background-color: rgba(40, 43, 48, 0.75);
     border-radius: 0.3em;
@@ -20,6 +22,7 @@ body {
     margin: auto;
     margin-left: 0;
 }
+
 .test {
     min-width: 20vw;
     margin: auto;
@@ -91,30 +94,25 @@ select:-webkit-autofill:focus {
         padding: 0;
         margin: -10px;
     }
-
     .container {
         margin: 0;
         padding: 0;
         background-color: rgba(40, 43, 48, 0.75);
     }
-
     .testA {
         background-color: rgba(0, 0, 0, 0);
         max-width: 100vw;
         min-height: 100vh;
         margin: auto;
     }
-
     .testB {
         border-right: 0px solid #a5a5a5;
         min-width: 48vw;
         margin: auto;
     }
-
     .test {
         margin-top: 0;
     }
-
     .testB img {
         width: 50vw;
         display: block;
