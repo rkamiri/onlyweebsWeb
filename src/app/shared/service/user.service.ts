@@ -112,5 +112,5 @@ export class UserService {
 
     getUser(id: string): Observable<User> {
         return this.httpclient.get<User>(environment.backend + '/users/' + id);
-    } 
+    }
 }

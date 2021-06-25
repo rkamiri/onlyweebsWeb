@@ -2,10 +2,12 @@
     outline-width: 0;
     font-family: "Karla", sans-serif !important;
 }
+
 body {
     padding-top: 2vh;
     padding-bottom: 2vh;
 }
+
 .testA {
     background-color: rgba(40, 43, 48, 0.75);
     border-radius: 0.3em;
@@ -18,12 +20,14 @@ body {
     min-width: 36vw;
     margin: auto;
 }
+
 .test h1 {
     color: white;
     margin: auto;
     text-align: center;
     margin-bottom: 5vh;
 }
+
 .test label {
     color: white;
     margin: 0;

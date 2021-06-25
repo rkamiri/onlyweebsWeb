@@ -3,6 +3,7 @@ body {
     padding-bottom: 2vh;
     padding-top: 2vh;
 }
+
 #left {
     float: left;
     width: 14vw;
@@ -30,6 +31,7 @@ body {
     left: 0;
     margin-top: 3vh;
 }
+
 .mainContainer {
     background-color: #2e3032;
     padding-top: 2vh;
@@ -47,6 +49,7 @@ body {
     width: 262px;
     height: 226px;
 }
+
 #image1 {
     height: 460px;
 }
@@ -60,6 +63,7 @@ body {
     width: 100%;
     height: 18vh;
 }
+
 #parent {
     display: flex;
 }
@@ -79,13 +83,16 @@ body {
     left: inherit;
     margin-right: 1rem;
 }
+
 .overflow {
     position: relative;
     overflow: hidden;
 }
+
 .zoom img {
     transition: all 0.2s linear;
 }
+
 .zoom:hover img {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
@@ -115,5 +122,5 @@ body {
         rgba(48, 48, 48, 0.71) 49%,
         rgba(19, 19, 19, 0.8) 100%
     );
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313', GradientType=0 );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313', GradientType=0);
 }

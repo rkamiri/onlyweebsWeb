@@ -22,7 +22,9 @@ export class ListsComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.userService.getCurrentUser().subscribe((data) => this.currentUser = data);
+        this.userService
+            .getCurrentUser()
+            .subscribe((data) => (this.currentUser = data));
         this.lists = this.route.snapshot.data.customLists;
         this.listService
             .getImagesOfCustomLists()

@@ -17,7 +17,7 @@ import { Comment } from '../shared/model/comment';
 @Component({
     selector: 'app-anime',
     templateUrl: './anime.component.html',
-    styleUrls: ['./anime.component.css']
+    styleUrls: ['./anime.component.css'],
 })
 export class AnimeComponent implements OnDestroy, OnInit {
     public userCustomLists: Lists[];
@@ -58,10 +58,10 @@ export class AnimeComponent implements OnDestroy, OnInit {
             }
         });
         this.rateForm = new FormGroup({
-            rate: new FormControl('')
+            rate: new FormControl(''),
         });
         this.commentForm = new FormGroup({
-            comment: new FormControl('')
+            comment: new FormControl(''),
         });
         this.userHasRated = 'Add Personal Rate';
 
@@ -145,18 +145,14 @@ export class AnimeComponent implements OnDestroy, OnInit {
     }
 
     updateRating(): void {
-        console.log('11');
         const rating: Rating = {
             userId: this.currentUser.id,
             animeId: this.anime.id,
-            rate: this.rateForm.controls.rate.value
+            rate: this.rateForm.controls.rate.value,
         };
         this.ratingService
             .putCurrentUserRatingOfAnAnime(rating)
-            .subscribe(() => {
-                console.log('22');
-                location.reload();
-            });
+            .subscribe(() => location.reload());
     }
 
     validateValue(event: number): void {
@@ -239,7 +235,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
         const ili: IsListedIn = {
             id: 666,
             list_id: list.id,
-            anime_id: this.anime.id
+            anime_id: this.anime.id,
         };
         this.listService.putAnimeInList(ili).subscribe(() => {
             setTimeout(location.reload.bind(location), 1);
@@ -268,7 +264,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
                 user: null,
                 body: this.commentForm.get('comment').value.toString(),
                 date: null,
-                animeEntity: this.anime
+                animeEntity: this.anime,
             })
             .subscribe(() => {
                 location.reload();

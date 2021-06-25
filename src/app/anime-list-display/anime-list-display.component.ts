@@ -31,13 +31,9 @@ export class AnimeListDisplayComponent implements OnInit {
             .getCurrentUser()
             .subscribe((data) => (this.connectedUser = data));
         if (this.userId) {
-            console.log('ttt');
             this.listService
                 .getImagesOfUserCustomListByUserId(this.userId)
-                .subscribe((data) => {
-                    console.log(data);
-                    this.listsImages = data;
-                });
+                .subscribe((data) => (this.listsImages = data));
         } else if (this.isDefault === 'user_default') {
             this.listService
                 .getImagesOfUserDefaultList()

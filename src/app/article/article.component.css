@@ -18,12 +18,15 @@ body {
     padding: 1vw;
     color: #e4e4e4;
 }
+
 h1 {
     text-decoration: underline;
 }
+
 #head img {
     width: 100%;
 }
+
 #mainContent {
     margin-top: 2vh;
     display: block;
@@ -79,25 +82,34 @@ h1 {
     margin: 5px;
     color: white;
 }
+
 /* Hover Effect */
+
 .scl-btn:hover {
     opacity: 0.8;
     text-align: center;
     text-decoration: none;
     color: white;
 }
+
 /* Round buttons */
+
 .scl-crcl {
     border-radius: 50%;
 }
+
 /* Round Corners */
+
 .scl-rnd {
     border-radius: 5px;
 }
+
 /* Brand Colors */
+
 .btn-facebook-f {
     background: #3b5998;
 }
+
 .btn-twitter-f {
     background: #55acee;
 }
