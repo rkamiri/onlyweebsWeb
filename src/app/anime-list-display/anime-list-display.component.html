@@ -73,7 +73,7 @@
                     <div
                         id="right"
                         class="deleteButton"
-                        *ngIf="isDefault === 'user_custom'"
+                        *ngIf="isDefault === 'user_custom' && connectedUser !== undefined && connectedUser.id == list.isOwnedBy.id"
                     >
                         <button
                             id="delete-button"
