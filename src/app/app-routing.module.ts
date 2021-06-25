@@ -29,6 +29,8 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { PasswordUpdateComponent } from './password-update/password-update.component';
 import { AnimeResolver } from './shared/resolver/anime.resolver';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { UserComponent } from './user/user.component';
+import { UserResolver } from './shared/resolver/user.resolver';
 
 const routes: Routes = [
     { path: 'not-found', component: NotFoundErrorComponent },
@@ -58,6 +60,11 @@ const routes: Routes = [
         path: 'lists/:id',
         component: OnelistComponent,
         resolve: { list: OneListResolver, listContent: ListContentResolver },
+    },
+    {
+        path: 'user/:id',
+        component: UserComponent,
+        resolve: { user: UserResolver },
     },
     { path: 'login', component: SigninComponent },
     { path: 'help', component: HelpComponent },
