@@ -27,7 +27,7 @@ export class AnimeListDisplayComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.userService.getCurrentUser().subscribe((data) => this.connectedUser = data)
+        this.userService.getCurrentUser().subscribe((data) => this.connectedUser = data);
         if (this.isDefault === 'user_default') {
             this.listService
                 .getImagesOfUserDefaultList()
