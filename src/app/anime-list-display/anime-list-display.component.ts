@@ -13,22 +13,29 @@ export class AnimeListDisplayComponent implements OnInit {
     lists: Lists[];
     @Input()
     isDefault: string;
+    @Input()
+    userId: number;
     listsImages: [[]];
 
     constructor(
         private route: ActivatedRoute,
         private listService: ListsService
-    ) {}
+    ) { }
 
     ngOnInit(): void {
         if (this.isDefault === 'user_default') {
             this.listService
                 .getImagesOfUserDefaultList()
                 .subscribe((data) => (this.listsImages = data));
+        } else if (this.userId !== null && this.isDefault === 'user_custom') {
+            this.listService.getImagesOfUserCustomListByUserId(this.userId).subscribe((data) => {
+                this.listsImages = data;
+            });
         } else if (this.isDefault === 'user_custom') {
             this.listService
                 .getImagesOfUserCustomList()
                 .subscribe((data) => (this.listsImages = data));
+
         } else {
             this.listService
                 .getImagesOfCustomLists()
