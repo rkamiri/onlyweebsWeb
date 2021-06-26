@@ -1,7 +1,9 @@
 <div class="container body" style="font-size: large">
     <div class="container text-center header" id="list_title">
         <h3>{{ listInfo.name }}</h3>
-        <p class="desc">Author : {{ listInfo.isOwnedBy.username }}</p>
+        <a id="author" [routerLink]="['/user', listInfo.isOwnedBy.id]">
+            <p class="desc">Author : {{ listInfo.isOwnedBy.username }}</p>
+        </a>
         <p class="desc">Description : {{ listInfo.description }}</p>
     </div>
     <div class="table-responsive">
@@ -105,7 +107,9 @@
                     width="80"
                     height="80"
                 />
-                <h4>{{ comment.user.username }}</h4>
+                <a id="authorr" [routerLink]="['/user', comment.user.id]">
+                    <h4>{{ comment.user.username }}</h4>
+                </a>
                 <span>-{{ comment.date | date: "dd/MM/yyyy" }}</span> <br />
                 <button
                     (click)="deleteListComment(comment.user.id)"

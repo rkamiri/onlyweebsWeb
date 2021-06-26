@@ -109,4 +109,8 @@ export class UserService {
     getCurrentUserRole(): Observable<any> {
         return this.httpclient.get<any>(environment.backend + '/users/role');
     }
+
+    getUser(id: string): Observable<User> {
+        return this.httpclient.get<User>(environment.backend + '/users/' + id);
+    }
 }

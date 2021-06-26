@@ -226,7 +226,17 @@
                                                         color: #097ce7;
                                                     "
                                                 >
-                                                    {{ comment.user.username }}
+                                                    <a
+                                                        id="authorr"
+                                                        [routerLink]="[
+                                                            '/user',
+                                                            comment.user.id
+                                                        ]"
+                                                        >{{
+                                                            comment.user
+                                                                .username
+                                                        }}</a
+                                                    >
                                                 </div>
                                                 <p>
                                                     {{

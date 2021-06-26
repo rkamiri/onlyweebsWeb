@@ -130,3 +130,8 @@ select {
 .addToList {
     white-space: nowrap;
 }
+
+#authorr:hover {
+    color: #097ce7;
+    text-decoration: underline;
+}

@@ -25,9 +25,13 @@
 
                                     <div class="col" style="margin-left: 1vw">
                                         <div class="row">
-                                            <a routerLink="/lists/{{ list.id }}"
-                                                ><h3>{{ list.name }}</h3></a
+                                            <a
+                                                routerLink="/lists/{{
+                                                    list.id
+                                                }}"
                                             >
+                                                <h3>{{ list.name }}</h3>
+                                            </a>
                                         </div>
                                         <div class="row">
                                             <h4>{{ list.description }}</h4>
@@ -174,24 +178,6 @@
                                                             </h2>
                                                         </a>
                                                         <div class="news-meta">
-                                                            <span
-                                                                class="
-                                                                    news-author
-                                                                "
-                                                                >by
-                                                                <a
-                                                                    class="
-                                                                        text-white
-                                                                        font-weight-bold
-                                                                    "
-                                                                    href="/#/animes"
-                                                                    >{{
-                                                                        articles[0]
-                                                                            .author
-                                                                            .username
-                                                                    }}</a
-                                                                ></span
-                                                            >
                                                             <span
                                                                 class="
                                                                     news-date

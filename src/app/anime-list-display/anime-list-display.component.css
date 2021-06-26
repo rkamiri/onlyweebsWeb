@@ -24,14 +24,6 @@ p {
     display: inline-block;
 }
 
-#list {
-    margin: auto;
-}
-
-#solo {
-    margin-left: 4.213vw;
-}
-
 .list:hover {
     background-color: #11428d;
 }
@@ -225,7 +217,7 @@ p {
         color: #868686;
         font-style: italic;
     }
-  
+
     #solo {
         margin-left: 4.2vw;
     }
@@ -334,7 +326,7 @@ p {
         color: #868686;
         font-style: italic;
     }
-  
+
     .textDescList {
         max-width: 17vw;
         max-height: 5vh;

@@ -45,6 +45,7 @@ import { AnimeListDisplayComponent } from './anime-list-display/anime-list-displ
 import { ToastrModule } from 'ngx-toastr';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
     declarations: [
@@ -74,6 +75,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
         PasswordUpdateComponent,
         AnimeListDisplayComponent,
         AboutUsComponent,
+        UserComponent,
     ],
     imports: [
         BrowserModule,

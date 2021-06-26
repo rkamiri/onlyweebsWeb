@@ -1,0 +1,130 @@
+body 
+    color: white
+
+.account-settings .user-profile 
+    margin: auto
+    padding-bottom: 1vh
+    text-align: center
+
+
+.account-settings .user-profile .user-avatar 
+    margin: 0 0 1rem 0
+
+
+.account-settings .user-profile .user-avatar img 
+    width: 7vw
+    height: 7vw
+    -webkit-border-radius: 100px
+    -moz-border-radius: 100px
+    border-radius: 100px
+
+
+.account-settings .user-profile h5.user-name 
+    margin: 0 0 0.5rem 0
+
+
+.account-settings .user-profile 
+    margin: 0
+    font-size: 0.8rem
+    font-weight: 400
+
+
+#bioo 
+    margin: 1rem 0 0 0
+    font-size: 0.8rem
+    text-align: justify
+    height: 30vh
+    overflow-y: scroll
+    margin-bottom: 1vh
+
+
+.card 
+    background-color: rgba(40, 43, 48, 0.75)
+    -webkit-border-radius: 5px
+    -moz-border-radius: 5px
+    border-radius: 5px
+    border: 0
+    margin-bottom: 1rem
+
+
+.lists 
+    padding-top: 1vh
+    padding-bottom: 1vh
+    margin: auto
+    width: 80vw
+
+
+.custom 
+    margin: auto
+    width: 65vw
+
+
+.error-page
+    background: linear-gradient(rgba(0, 0, 0, 0.97), rgba(0, 0, 0, 0.97)), url("https://media1.tenor.com/images/1ac375ffe6f2e99ac36eb1b42a7b9707/tenor.gif?itemid=13593873") no-repeat
+    background-size: cover
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif
+    height: 80vh
+
+#container
+    margin-top: 3vh
+    margin-bottom: 3vh
+
+    h1
+        font-size: 30vh
+        font-weight: bold
+        position: relative
+        margin: -8vh 0 0
+        padding: 0
+        color: black
+
+        &:after
+            content: attr(data-h1)
+            position: absolute
+            top: 0
+            left: 0
+            right: 0
+            color: transparent
+            background: -webkit-repeating-linear-gradient(-45deg, #71b7e6, #69a6ce, #b98acc, #ee8176, #b98acc, #69a6ce, #9b59b6)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            background-size: 400%
+            text-shadow: 1px 1px 2px transparentize(#fff, .75)
+            animation: animateTextBackground 3s ease-in-out infinite
+
+        + p
+            color: white
+            font-size: 8vh
+            font-weight: bold
+            line-height: 10vh
+            max-width: 600px
+            position: relative
+
+@keyframes animateTextBackground
+    0%
+        background-position: 0 0
+
+    25%
+        background-position: 100% 0
+
+    50%
+        background-position: 100% 100%
+
+    75%
+        background-position: 0 100%
+
+    100%
+        background-position: 0 0
+
+@media (max-width: 767px)
+
+    .error-page h1
+        font-size: 32vw
+
+        + p
+            font-size: 8vw
+            line-height: 10vw
+            max-width: 70vw

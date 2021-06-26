@@ -37,10 +37,15 @@
                         src="{{ imagePath + article.author.image.id }}"
                         alt="article image"
                     />
-                    <p class="d-inline p-2">
-                        Par {{ article.author.username }}, Rédacteur
-                        onlyweebs.com
-                    </p>
+                    <a
+                        class="authorr"
+                        [routerLink]="['/user', article.author.id]"
+                    >
+                        <p class="d-inline p-2">
+                            Par {{ article.author.username }}, Rédacteur
+                            onlyweebs.com
+                        </p>
+                    </a>
                     <a
                         href="#"
                         target="popup"
@@ -98,7 +103,12 @@
                                 width="80"
                                 height="80"
                             />
-                            <h4>{{ comment.user.username }}</h4>
+                            <a
+                                class="authorr"
+                                [routerLink]="['/user', comment.user.id]"
+                            >
+                                <h4>{{ comment.user.username }}</h4>
+                            </a>
                             <span
                                 >-{{ comment.date | date: "dd/MM/yyyy" }}</span
                             >

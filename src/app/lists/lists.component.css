@@ -5,3 +5,8 @@ body {
 #button {
     padding-bottom: 2vh;
 }
+
+#stonks {
+    width: 80vw;
+    margin: auto;
+}

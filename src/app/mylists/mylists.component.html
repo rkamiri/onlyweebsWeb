@@ -4,14 +4,16 @@
     </button>
 </div>
 
-<h3 class="listCustom">Your default lists</h3>
-<app-anime-list-display
-    [lists]="defaultLists"
-    [isDefault]="'user_default'"
-></app-anime-list-display>
+<div class="lists">
+    <h3 class="listCustom">Your default lists</h3>
+    <app-anime-list-display
+        [lists]="defaultLists"
+        [isDefault]="'user_default'"
+    ></app-anime-list-display>
 
-<h3 class="listCustom">Your custom lists</h3>
-<app-anime-list-display
-    [lists]="customLists"
-    [isDefault]="'user_custom'"
-></app-anime-list-display>
+    <h3 class="listCustom">Your custom lists</h3>
+    <app-anime-list-display
+        [lists]="customLists"
+        [isDefault]="'user_custom'"
+    ></app-anime-list-display>
+</div>
