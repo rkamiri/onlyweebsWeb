@@ -32,9 +32,9 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { UserComponent } from './user/user.component';
 import { UserResolver } from './shared/resolver/user.resolver';
 import { StatsComponent } from './stats/stats.component';
-import { GeneralStatsResolver } from './shared/resolver/general.stats.resolver';
-import { AnimeStatsResolver } from './shared/resolver/anime.stats.resolver';
-import { CommentStatsResolver } from './shared/resolver/comment.stats.resolver';
+import { AnimeStatsResolver } from './shared/resolver/stats/anime.stats.resolver';
+import { GeneralStatsResolver } from './shared/resolver/stats/general.stats.resolver';
+import { CommentStatsResolver } from './shared/resolver/stats/comment.stats.resolver';
 
 const routes: Routes = [
     { path: 'not-found', component: NotFoundErrorComponent },
