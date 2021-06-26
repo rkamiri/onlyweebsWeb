@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment';
 import { AnimeStats } from '../model/anime.stats';
+import { AverageStats } from '../model/average.stats';
 import { GeneralStats } from '../model/general.stats';
 
 const httpOptions = {
@@ -29,9 +30,9 @@ export class StatsService {
         );
     }
 
-    getCommentStats(): Observable<number> {
-        return this.httpclient.get<number>(
-            environment.backend + '/stats/comments-by-user'
+    getCommentStats(): Observable<AverageStats> {
+        return this.httpclient.get<AverageStats>(
+            environment.backend + '/stats/average'
         );
     }
 }

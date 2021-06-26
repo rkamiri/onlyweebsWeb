@@ -34,7 +34,7 @@ import { UserResolver } from './shared/resolver/user.resolver';
 import { StatsComponent } from './stats/stats.component';
 import { AnimeStatsResolver } from './shared/resolver/stats/anime.stats.resolver';
 import { GeneralStatsResolver } from './shared/resolver/stats/general.stats.resolver';
-import { CommentStatsResolver } from './shared/resolver/stats/comment.stats.resolver';
+import { AverageStatsResolver } from './shared/resolver/stats/average.stats.resolver';
 
 const routes: Routes = [
     { path: 'not-found', component: NotFoundErrorComponent },
@@ -80,7 +80,7 @@ const routes: Routes = [
         resolve: {
             generalStats: GeneralStatsResolver,
             animeStats: AnimeStatsResolver,
-            commentStats: CommentStatsResolver,
+            averageStats: AverageStatsResolver,
         },
     },
     {

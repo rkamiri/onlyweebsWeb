@@ -2,7 +2,7 @@
     *ngIf="
         generalStats !== undefined &&
         animeStats !== undefined &&
-        commentStats !== undefined
+        averageStats !== undefined
     "
 >
     <div id="titleDiv">
@@ -74,22 +74,32 @@
             <div class="stack">
                 <h2>How many times did our users comment ?</h2>
                 <p>On average, our users commented :</p>
-                <h3>{{ commentStats }} times.</h3>
+                <h3>{{ averageStats.commentsByUser }} times.</h3>
             </div>
             <div class="stack">
-                <h2>Place holder Place holder Place holder ?</h2>
-                <p>Place holder Place holder Place holder :</p>
-                <h3>Place holder times.</h3>
+                <h2>How many lists does our users have ?</h2>
+                <p>On average, our users have :</p>
+                <h3>{{ averageStats.listsByUser }} lists.</h3>
             </div>
             <div class="stack">
-                <h2>Place holder Place holder Place holder ?</h2>
-                <p>Place holder Place holder Place holder :</p>
-                <h3>Place holder times.</h3>
+                <h2>How many times do our users rate animes ?</h2>
+                <p>On average, our users rate animes :</p>
+                <h3>{{ averageStats.ratingByUser }} times.</h3>
             </div>
             <div class="stack">
-                <h2>Place holder Place holder Place holder ?</h2>
-                <p>Place holder Place holder Place holder :</p>
-                <h3>Place holder times.</h3>
+                <h2>How many animes have been watched by our users ?</h2>
+                <p>On average, our users have watched:</p>
+                <h3>{{ averageStats.watchedByUser }} animes.</h3>
+            </div>
+            <div class="stack">
+                <h2>How many animes are being watched by our users ?</h2>
+                <p>On average, our users are watching:</p>
+                <h3>{{ averageStats.watchingByUser }} animes.</h3>
+            </div>
+            <div class="stack">
+                <h2>How many animes do our users plan to watch ?</h2>
+                <p>On average, our users plan to watch:</p>
+                <h3>{{ averageStats.planToWatchByUser }} animes.</h3>
             </div>
         </div>
     </div>

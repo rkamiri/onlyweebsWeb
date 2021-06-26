@@ -96,3 +96,7 @@ body {
 .stack {
     margin-bottom: 10vh;
 }
+
+.stack h3 {
+    color: #097ce7;
+}
