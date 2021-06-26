@@ -52,12 +52,35 @@
                 *ngIf="isUserAuthenticated && adminStatus === 'ROLE_ADMIN'"
                 class="nav-item"
             >
-                <a
-                    class="nav-link"
-                    [routerLink]="['/editor']"
-                    routerLinkActive="is-active"
-                    >EDITOR</a
-                >
+                <div ngbDropdown class="d-inline-block">
+                    <button
+                        class="btn btn-outline-primary"
+                        id="dropdownBasic1"
+                        ngbDropdownToggle
+                    >
+                        <i class="fa fa-lock"></i> ADMIN
+                    </button>
+                    <div
+                        ngbDropdownMenu
+                        aria-labelledby="dropdownBasic1"
+                        class="dropdown-menu dropdown-menu-right"
+                    >
+                        <button ngbDropdownItem class="btn-nav-link">
+                            <a
+                                class="nav-link dropdown-nav-link"
+                                [routerLink]="['/editor']"
+                                >EDITOR</a
+                            >
+                        </button>
+                        <button ngbDropdownItem class="btn-nav-link">
+                            <a
+                                class="nav-link dropdown-nav-link"
+                                [routerLink]="['/stats']"
+                                >STATS</a
+                            >
+                        </button>
+                    </div>
+                </div>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSearchSubmit()">

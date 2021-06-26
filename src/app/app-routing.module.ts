@@ -31,6 +31,10 @@ import { AnimeResolver } from './shared/resolver/anime.resolver';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { UserComponent } from './user/user.component';
 import { UserResolver } from './shared/resolver/user.resolver';
+import { StatsComponent } from './stats/stats.component';
+import { GeneralStatsResolver } from './shared/resolver/general.stats.resolver';
+import { AnimeStatsResolver } from './shared/resolver/anime.stats.resolver';
+import { CommentStatsResolver } from './shared/resolver/comment.stats.resolver';
 
 const routes: Routes = [
     { path: 'not-found', component: NotFoundErrorComponent },
@@ -70,6 +74,15 @@ const routes: Routes = [
     { path: 'help', component: HelpComponent },
     { path: 'playback', component: PlaybackComponent },
     { path: 'register', component: RegisterComponent },
+    {
+        path: 'stats',
+        component: StatsComponent,
+        resolve: {
+            generalStats: GeneralStatsResolver,
+            animeStats: AnimeStatsResolver,
+            commentStats: CommentStatsResolver,
+        },
+    },
     {
         path: 'account',
         component: AccountComponent,
