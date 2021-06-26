@@ -32,7 +32,6 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { UserComponent } from './user/user.component';
 import { UserResolver } from './shared/resolver/user.resolver';
 import { StatsComponent } from './stats/stats.component';
-import { AnimeStatsResolver } from './shared/resolver/stats/anime.stats.resolver';
 import { GeneralStatsResolver } from './shared/resolver/stats/general.stats.resolver';
 import { AverageStatsResolver } from './shared/resolver/stats/average.stats.resolver';
 
@@ -79,7 +78,6 @@ const routes: Routes = [
         component: StatsComponent,
         resolve: {
             generalStats: GeneralStatsResolver,
-            animeStats: AnimeStatsResolver,
             averageStats: AverageStatsResolver,
         },
     },
