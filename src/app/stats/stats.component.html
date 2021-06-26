@@ -1,0 +1,20 @@
+<body
+    *ngIf="
+        generalStats !== undefined &&
+        animeStats !== undefined &&
+        commentStats !== undefined
+    "
+>
+    <div id="generalStats">
+        {{ generalStats.animes }}
+        <br />
+        {{ generalStats.comments }}
+        <br />
+        {{ generalStats.lists }}
+        <br />
+        {{ generalStats.users }}
+    </div>
+    <div id="animeStats" *ngFor="let anime of animeStats">
+        {{ anime.anime.title }} || {{ anime.numberOfTimesListed }}
+    </div>
+</body>
