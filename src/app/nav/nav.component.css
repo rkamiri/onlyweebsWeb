@@ -11,9 +11,9 @@
 }
 
 #searchBlock {
-    margin-top: 1.5vh;
-    margin-right: 5vw;
-    width: 20vw;
+    margin-top: 15px;
+    margin-right: 50px;
+    width: 500px;
 }
 
 #searchInput {
@@ -55,6 +55,12 @@
 
 .dropdown-nav-link:hover {
     color: #097ce7;
+}
+
+@media screen and (max-width: 1300px) {
+    #searchBlock {
+        width: 220px;
+    }
 }
 
 @media screen and (max-width: 576px) {

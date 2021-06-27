@@ -85,13 +85,13 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" (ngSubmit)="onSearchSubmit()">
-            <div class="input-group mb-3" id="searchBlock">
+            <div class="input-group mb-3" id="searchBlock" width="220">
                 <ng-template #rt let-r="result" let-t="term">
                     <img
                         loading="lazy"
                         [src]="r.imgUrl"
                         class="mr-1"
-                        style="width: 16px"
+                        width="16"
                     />
                     <ngb-highlight
                         [result]="r.title"
