@@ -145,7 +145,6 @@ export class AnimeComponent implements OnDestroy, OnInit {
     }
 
     updateRating(): void {
-        console.log('11');
         const rating: Rating = {
             userId: this.currentUser.id,
             animeId: this.anime.id,
@@ -153,10 +152,7 @@ export class AnimeComponent implements OnDestroy, OnInit {
         };
         this.ratingService
             .putCurrentUserRatingOfAnAnime(rating)
-            .subscribe(() => {
-                console.log('22');
-                location.reload();
-            });
+            .subscribe(() => location.reload());
     }
 
     validateValue(event: number): void {

@@ -46,6 +46,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { UserComponent } from './user/user.component';
+import { StatsComponent } from './stats/stats.component';
 
 @NgModule({
     declarations: [
@@ -76,6 +77,7 @@ import { UserComponent } from './user/user.component';
         AnimeListDisplayComponent,
         AboutUsComponent,
         UserComponent,
+        StatsComponent,
     ],
     imports: [
         BrowserModule,

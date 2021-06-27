@@ -33,10 +33,7 @@ export class UserComponent implements OnInit {
             this.activatedRoute.snapshot.data.user.image.id;
         this.listsService
             .getCustomListsByUserId(this.activatedRoute.snapshot.data.user.id)
-            .subscribe((data) => {
-                this.userLists = data;
-                console.log(data);
-            });
+            .subscribe((data) => (this.userLists = data));
         this.listsService
             .getCustomListsByUserId(this.activatedRoute.snapshot.data.user.id)
             .subscribe((data) => (this.userLists = data));
