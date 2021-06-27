@@ -28,7 +28,6 @@
     display: block;
     margin: auto;
     height: 1vw;
-    -webkit-filter: invert(100%);
 }
 
 ::placeholder {
