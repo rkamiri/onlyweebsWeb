@@ -10,10 +10,14 @@
     <div class="container" style="width: 80vw">
         <div id="searchBlock">
             <div class="row">
-                <div class="col">
+                <div class="advancedReasearch">
                     <div ngbDropdown class="d-inline-block">
                         <button
-                            class="btn btn-outline-primary"
+                            class="
+                                btn btn-outline-primary
+                                leftButtonRadius
+                                mobileSize
+                            "
                             id="dropdownBasic1"
                             ngbDropdownToggle
                         >
@@ -30,12 +34,9 @@
                             </button>
                         </div>
                     </div>
-                </div>
-
-                <div class="col">
                     <div ngbDropdown class="d-inline-block">
                         <button
-                            class="btn btn-outline-primary"
+                            class="btn btn-outline-primary noRadius mobileSize"
                             id="dropdownBasic2"
                             ngbDropdownToggle
                         >
@@ -54,12 +55,9 @@
                             </button>
                         </div>
                     </div>
-                </div>
-
-                <div class="col">
                     <div ngbDropdown class="d-inline-block">
                         <button
-                            class="btn btn-outline-primary"
+                            class="btn btn-outline-primary noRadius mobileSize"
                             id="dropdownBasic3"
                             ngbDropdownToggle
                         >
@@ -80,9 +78,9 @@
                             </button>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="d-inline-block">
                         <button
-                            class="btn btn-outline-primary"
+                            class="btn btn-primary specialRadius mobileSize"
                             (click)="searchWithParams()"
                         >
                             Search
