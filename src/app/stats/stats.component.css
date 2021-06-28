@@ -100,3 +100,7 @@ body {
 .stack h3 {
     color: #097ce7;
 }
+
+#rowInTable img {
+    aspect-ratio: attr(width) / attr(height);
+}
