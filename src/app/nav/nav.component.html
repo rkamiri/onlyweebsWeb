@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" routerLink="home">
+    <a class="navbar-brand" routerLink="home" *ngIf="logoUrl !== undefined">
         <img
             id="homeImage"
-            src="assets/ow-smol-text.webp"
+            src="{{ logoUrl }}"
             alt="alt"
             height="35"
             width="150"
