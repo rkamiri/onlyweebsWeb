@@ -7,6 +7,7 @@ import { debounceTime, switchMap } from 'rxjs/operators';
 import { SearchResult } from '../shared/model/searchResult';
 import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-nav',
@@ -21,6 +22,7 @@ export class NavComponent implements OnInit {
     adminStatus: string;
     searchArray: Array<SearchResult>;
     username: string;
+    public logoUrl = environment.backend + '/image/logo';
     search = (text$: Observable<string>) =>
         text$.pipe(
             debounceTime(200),
