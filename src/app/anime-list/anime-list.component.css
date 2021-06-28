@@ -98,7 +98,6 @@ a {
     padding-top: 2vh;
     padding-bottom: 2vh;
     width: 75vw;
-    background-color: rgba(40, 43, 48, 0.75);
     border-radius: 5px;
 }
 
@@ -123,6 +122,35 @@ a {
     width: 7.5vw !important;
 }
 
+.dropdown-menu {
+    max-height: 30vh;
+    overflow-y: auto;
+    background-attachment: local, local, scroll, scroll;
+}
+
+.advancedReasearch {
+    background: #212223;
+    margin: auto;
+}
+
+.noRadius {
+    border-radius: 0;
+}
+
+.specialRadius {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.leftButtonRadius {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/*.dropdown-item {
+    white-space: normal;
+}*/
+
 @media screen and (max-width: 1400px) {
     .card {
         width: 18vw;
@@ -146,10 +174,15 @@ a {
         padding: 0;
     }
     .card {
-        margin: auto;
-        margin-top: 4vh;
-    }
-    .card {
+        margin: 4vh auto auto;
         width: 80vw;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .mobileSize {
+        width: 75px;
+        font-size: 2.5vw;
+        margin: auto;
     }
 }
