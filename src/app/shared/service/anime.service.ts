@@ -74,9 +74,21 @@ export class AnimeService {
         );
     }
 
+    getAllGenres(): Observable<Genres[]> {
+        return this.httpclient.get<Genres[]>(
+            environment.backend + '/genres/all'
+        );
+    }
+
     getStudios(id: number): Observable<Studios[]> {
         return this.httpclient.get<Studios[]>(
             environment.backend + '/animes/' + id + '/studios'
+        );
+    }
+
+    getAllStudios(): Observable<Studios[]> {
+        return this.httpclient.get<Studios[]>(
+            environment.backend + '/studios/all'
         );
     }
 
@@ -86,9 +98,48 @@ export class AnimeService {
         );
     }
 
+    getAllProducers(): Observable<Producers[]> {
+        return this.httpclient.get<Producers[]>(
+            environment.backend + '/producers/all'
+        );
+    }
+
     getLatest(): Observable<Anime[]> {
         return this.httpclient.get<Anime[]>(
             environment.backend + '/animes/latest'
+        );
+    }
+
+    getAllPagesByAdvancedSearch(
+        genre: Genres,
+        studio: Studios,
+        producer: Producers
+    ): Observable<number> {
+        return this.httpclient.post<number>(
+            environment.backend + '/animes/research/count',
+            {
+                genre,
+                studio,
+                producer,
+            }
+        );
+    }
+
+    getAllAnimesByAdvancedResearch(
+        genre: number,
+        studio: number,
+        producer: number,
+        currentPage: number
+    ): Observable<Anime[]> {
+        return this.httpclient.post<Anime[]>(
+            environment.backend +
+                '/animes/research/pagination/' +
+                (currentPage - 1),
+            {
+                genre,
+                studio,
+                producer,
+            }
         );
     }
 }
