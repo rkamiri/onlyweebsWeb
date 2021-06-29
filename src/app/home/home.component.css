@@ -43,6 +43,10 @@ body {
 
 .displayList {
     background-color: #23272a;
+    height: 226px;
+    overflow: auto;
+    white-space: initial;
+    overflow-wrap: normal;
 }
 
 .img-fluid {
