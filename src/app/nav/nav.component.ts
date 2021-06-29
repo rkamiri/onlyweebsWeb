@@ -22,6 +22,7 @@ export class NavComponent implements OnInit {
     adminStatus: string;
     searchArray: Array<SearchResult>;
     username: string;
+    showMenu: boolean = false;
     public logoUrl = environment.backend + '/image/logo';
     search = (text$: Observable<string>) =>
         text$.pipe(
