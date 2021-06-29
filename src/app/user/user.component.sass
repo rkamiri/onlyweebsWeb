@@ -47,8 +47,34 @@ body
 
 .custom
     margin: auto
-    width: 66vw
-  
+    width: 66.5vw
+
+@media (max-width: 1025px) and (min-width: 767px)
+    body
+        margin: 0
+        padding: 0
+
+    .custom
+        margin-left: -2vw
+        padding: 0px
+        width: 100vw
+
+    .lists
+        width: 100%
+
+@media (max-width: 766px)
+    body
+        margin: 0
+        padding: 0
+
+    .custom
+        margin-left: -7vw
+        padding: 0px
+        width: 100vw
+
+    .lists
+        width: 100%
+
 .error-page
     background: linear-gradient(rgba(0, 0, 0, 0.97), rgba(0, 0, 0, 0.97)), url("https://media1.tenor.com/images/1ac375ffe6f2e99ac36eb1b42a7b9707/tenor.gif?itemid=13593873") no-repeat
     background-size: cover
