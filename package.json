@@ -39,8 +39,6 @@
         "ng2-file-upload": "^1.4.0",
         "ngx-bootstrap": "^6.2.0",
         "ngx-toastr": "^14.0.0",
-        "ngx-tweet": "^2.0.3",
-        "ngx-twitter-timeline": "^0.1.5",
         "rxjs": "~6.6.0",
         "tslib": "^2.0.0",
         "zone.js": "~0.11.4"
@@ -61,6 +59,7 @@
         "karma-jasmine": "~4.0.0",
         "karma-jasmine-html-reporter": "^1.5.0",
         "lint-staged": "^11.0.0",
+        "prettier": "^2.3.2",
         "protractor": "~7.0.0",
         "puppeteer": "^9.1.1",
         "rimraf": "^3.0.2",

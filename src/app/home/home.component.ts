@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ArticleService } from '../shared/service/article.service';
 import { Article } from '../shared/model/article';
 import { Lists } from '../shared/model/lists';
@@ -19,22 +19,18 @@ export class HomeComponent implements OnInit {
     public animes: Anime[];
     public imagesUrls: string[];
     public imageObject: Array<object> = [];
-    loaded: boolean;
 
     constructor(
-        private route: ActivatedRoute,
         private router: Router,
         private articleService: ArticleService,
         private animeService: AnimeService,
         private listsService: ListsService
     ) {
-        this.loaded = false;
         this.imagesUrls = [];
     }
 
     ngOnInit(): void {
         this.fillArraysWithData();
-        this.setTimeOut();
     }
 
     fillArraysWithData(): void {
@@ -59,12 +55,6 @@ export class HomeComponent implements OnInit {
                 )
             );
         });
-    }
-
-    setTimeOut(): void {
-        setTimeout(() => {
-            this.loaded = true;
-        }, 100);
     }
 
     goToAnime($event): void {
