@@ -12,7 +12,6 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "build:ci": "npm run clean && npm run build:prod",
-        "prepare": "husky install",
         "full-clean": "rimraf ./node_modules",
         "reinstall": "npm run full-clean && npm run clean && npm install",
         "rebuild": "npm run full-clean && npm install && npm run build"
