@@ -118,7 +118,7 @@ export class AccountComponent implements OnInit {
 
     createProfilePictureUrl(): void {
         this.profilePictureUrl =
-            environment.backend + '/image/' + this.currentUser.image.id;
+            environment.backend + '/image/' + this.currentUser.imageDto.id;
     }
 
     updatePersonalInfos(): void {

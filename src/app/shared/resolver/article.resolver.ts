@@ -4,18 +4,18 @@ import {
     Resolve,
     RouterStateSnapshot,
 } from '@angular/router';
-import { Anime } from '../model/anime';
+import { AnimeDto } from '../model/anime';
 import { Observable } from 'rxjs';
 import { ArticleService } from '../service/article.service';
 
 @Injectable({ providedIn: 'root' })
-export class ArticleResolver implements Resolve<Anime> {
+export class ArticleResolver implements Resolve<AnimeDto> {
     constructor(private service: ArticleService) {}
 
     resolve(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
-    ): Observable<Anime> | Promise<Anime> | Anime {
+    ): Observable<AnimeDto> | Promise<AnimeDto> | AnimeDto {
         return this.service.getArticle(+route.paramMap.get('id'));
     }
 }

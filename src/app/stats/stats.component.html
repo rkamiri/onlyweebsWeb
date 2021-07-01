@@ -53,19 +53,19 @@
                         <tr
                             id="rowInTable"
                             *ngFor="let anime of animeStats; index as i"
-                            routerLink="/animes/{{ anime.anime.id }}"
+                            routerLink="/animes/{{ anime.animeDTO.id }}"
                         >
                             <th scope="row">{{ i + 1 }}</th>
                             <td>
                                 <img
                                     class="img-fluid"
                                     loading="lazy"
-                                    [src]="anime.anime.imgUrl"
+                                    [src]="anime.animeDTO.imgUrl"
                                     width="61"
                                     height="87"
                                 />
                             </td>
-                            <td>{{ anime.anime.title }}</td>
+                            <td>{{ anime.animeDTO.title }}</td>
                             <td>{{ anime.numberOfTimesListed | number }}</td>
                         </tr>
                     </tbody>

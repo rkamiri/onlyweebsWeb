@@ -21,9 +21,9 @@ export class StatsComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.statsService
-            .getAnimeStats()
-            .subscribe((data) => (this.animeStats = data));
+        this.statsService.getAnimeStats().subscribe((data) => {
+            this.animeStats = data;
+        });
         this.generalStats = this.activatedRoute.snapshot.data.generalStats;
         this.averageStats = this.activatedRoute.snapshot.data.averageStats;
     }

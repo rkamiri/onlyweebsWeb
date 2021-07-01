@@ -1,4 +1,4 @@
-import { Image } from './image';
+import { ImageDto } from './image';
 
 export interface User {
     id: number;
@@ -10,5 +10,5 @@ export interface User {
     gender: string;
     bio: string;
     ip?: string;
-    image: Image;
+    imageDto: ImageDto;
 }

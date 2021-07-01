@@ -1,4 +1,4 @@
-export interface Anime {
+export interface AnimeDto {
     id: number;
     title: string;
     titleEnglish: string;

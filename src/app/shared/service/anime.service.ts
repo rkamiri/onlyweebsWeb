@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Anime } from '../model/anime';
+import { AnimeDto } from '../model/anime';
 import { environment } from '../../../environments/environment';
 import { Genres } from '../model/genres';
 import { Studios } from '../model/studios';
@@ -19,8 +19,8 @@ const httpOptions = {
 export class AnimeService {
     constructor(private httpclient: HttpClient) {}
 
-    getAllAnimes(): Observable<Anime[]> {
-        return this.httpclient.get<Anime[]>(
+    getAllAnimes(): Observable<AnimeDto[]> {
+        return this.httpclient.get<AnimeDto[]>(
             environment.backend + '/animes/all/'
         );
     }
@@ -31,9 +31,9 @@ export class AnimeService {
         );
     }
 
-    getAnimesByPage(page: number): Observable<Anime[]> {
+    getAnimesByPage(page: number): Observable<AnimeDto[]> {
         const numpage = page - 1;
-        return this.httpclient.get<Anime[]>(
+        return this.httpclient.get<AnimeDto[]>(
             environment.backend + '/animes/pagination/' + numpage
         );
     }
@@ -52,8 +52,8 @@ export class AnimeService {
         );
     }
 
-    getAllAnimeByName(term: string, page: number): Observable<Anime[]> {
-        return this.httpclient.get<Anime[]>(
+    getAllAnimeByName(term: string, page: number): Observable<AnimeDto[]> {
+        return this.httpclient.get<AnimeDto[]>(
             environment.backend +
                 '/animes/research/' +
                 term +
@@ -104,8 +104,8 @@ export class AnimeService {
         );
     }
 
-    getLatest(): Observable<Anime[]> {
-        return this.httpclient.get<Anime[]>(
+    getLatest(): Observable<AnimeDto[]> {
+        return this.httpclient.get<AnimeDto[]>(
             environment.backend + '/animes/latest'
         );
     }
@@ -130,8 +130,8 @@ export class AnimeService {
         studio: number,
         producer: number,
         currentPage: number
-    ): Observable<Anime[]> {
-        return this.httpclient.post<Anime[]>(
+    ): Observable<AnimeDto[]> {
+        return this.httpclient.post<AnimeDto[]>(
             environment.backend +
                 '/animes/research/pagination/' +
                 (currentPage - 1),

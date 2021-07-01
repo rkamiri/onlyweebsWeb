@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Lists } from '../shared/model/lists';
-import { Anime } from '../shared/model/anime';
+import { AnimeDto } from '../shared/model/anime';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
 import { ListsService } from '../shared/service/lists.service';
@@ -20,9 +20,9 @@ import { Comment } from '../shared/model/comment';
 export class OnelistComponent implements OnInit {
     private closeResult: string;
     public listInfo: Lists;
-    public animesOfThisList: Anime[];
-    public allAnimes: Anime[];
-    public animesThatWillBeAdded: Anime[];
+    public animesOfThisList: AnimeDto[];
+    public allAnimes: AnimeDto[];
+    public animesThatWillBeAdded: AnimeDto[];
     public selectedValue: string;
     public selectedOption: any;
     public addAnimeForm: FormGroup;

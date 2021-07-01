@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Anime } from '../model/anime';
+import { AnimeDto } from '../model/anime';
 import { Lists } from '../model/lists';
 import { environment } from '../../../environments/environment';
 
@@ -54,8 +54,8 @@ export class ListsService {
         return this.httpclient.get<Lists>(environment.backend + '/lists/' + id);
     }
 
-    getOneListContentByID(id): Observable<Anime[]> {
-        return this.httpclient.get<Anime[]>(
+    getOneListContentByID(id): Observable<AnimeDto[]> {
+        return this.httpclient.get<AnimeDto[]>(
             environment.backend + '/lists/' + id + '/content'
         );
     }

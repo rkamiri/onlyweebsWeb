@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { Image } from '../model/image';
+import { ImageDto } from '../model/image';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -18,8 +18,11 @@ const options = { headers };
 export class ImageService {
     constructor(private httpclient: HttpClient) {}
 
-    postProfilePicture(formData: FormData, userId: number): Observable<Image> {
-        return this.httpclient.post<Image>(
+    postProfilePicture(
+        formData: FormData,
+        userId: number
+    ): Observable<ImageDto> {
+        return this.httpclient.post<ImageDto>(
             environment.backend + '/image/user-image/' + userId,
             formData,
             options

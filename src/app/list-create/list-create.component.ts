@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Anime } from '../shared/model/anime';
+import { AnimeDto } from '../shared/model/anime';
 import { Lists } from '../shared/model/lists';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
     styleUrls: ['./list-create.component.css'],
 })
 export class ListCreateComponent implements OnInit {
-    animeList: Anime[];
+    animeList: AnimeDto[];
     thisList: Lists;
     selectedValue: string;
     selectedOption: any;

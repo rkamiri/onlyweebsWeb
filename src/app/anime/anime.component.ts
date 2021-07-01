@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Anime } from '../shared/model/anime';
+import { AnimeDto } from '../shared/model/anime';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RatingService } from '../shared/service/rating.service';
 import { Rating } from '../shared/model/rating';
@@ -22,7 +22,7 @@ import { Comment } from '../shared/model/comment';
 export class AnimeComponent implements OnDestroy, OnInit {
     public userCustomLists: Lists[];
     public userDefaultLists: Lists[];
-    public anime: Anime;
+    public anime: AnimeDto;
     public currentRate: number;
     public globalRate: number;
     public selectedList: string;
@@ -242,8 +242,8 @@ export class AnimeComponent implements OnDestroy, OnInit {
         });
     }
 
-    getAnimesFromAllLists(): Anime[] {
-        const animeArray: Anime[] = [];
+    getAnimesFromAllLists(): AnimeDto[] {
+        const animeArray: AnimeDto[] = [];
         this.listService.getMyDefaultLists().subscribe((lists) => {
             lists.forEach((defaultList) => {
                 this.listService

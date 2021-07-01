@@ -1,5 +1,5 @@
 import { User } from './user';
-import { Image } from './image';
+import { ImageDto } from './image';
 import { ArticleCategories } from './articleCategories';
 
 export interface Article {
@@ -8,6 +8,6 @@ export interface Article {
     body: string;
     created_at: Date;
     author: User;
-    cover: Image;
+    cover: ImageDto;
     category: ArticleCategories;
 }

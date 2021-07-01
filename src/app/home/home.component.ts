@@ -4,7 +4,7 @@ import { ArticleService } from '../shared/service/article.service';
 import { Article } from '../shared/model/article';
 import { Lists } from '../shared/model/lists';
 import { AnimeService } from '../shared/service/anime.service';
-import { Anime } from '../shared/model/anime';
+import { AnimeDto } from '../shared/model/anime';
 import { ListsService } from '../shared/service/lists.service';
 import { environment } from '../../environments/environment';
 
@@ -16,7 +16,7 @@ import { environment } from '../../environments/environment';
 export class HomeComponent implements OnInit {
     public lists: Lists[];
     public articles: Article[];
-    public animes: Anime[];
+    public animes: AnimeDto[];
     public imagesUrls: string[];
     public imageObject: Array<object> = [];
 

@@ -1,5 +1,5 @@
-export interface Image {
+export interface ImageDto {
     id?: number;
-    content: Uint8Array; // new Uint8Array(1024*1024*50); allocates 50MBytes
+    content: Uint8Array;
     name: string;
 }

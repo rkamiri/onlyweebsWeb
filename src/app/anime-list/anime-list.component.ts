@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Anime } from '../shared/model/anime';
+import { AnimeDto } from '../shared/model/anime';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { AnimeService } from '../shared/service/anime.service';
 import { document } from 'ngx-bootstrap/utils';
@@ -13,7 +13,7 @@ import { Producers } from '../shared/model/producers';
     styleUrls: ['./anime-list.component.css'],
 })
 export class AnimeListComponent implements OnInit {
-    public animeList: Anime[];
+    public animeList: AnimeDto[];
     public currentPage: number;
     public pages: number;
     public pagesArray: [];
@@ -81,7 +81,6 @@ export class AnimeListComponent implements OnInit {
                         .subscribe((pages) => {
                             this.pages = pages;
                             this.pages = Math.ceil(pages / 20);
-                            console.log(this.pages);
                             this.pagesArray = [].constructor(this.pages);
                             if (this.pages > 1) {
                                 this.activatePagination = true;

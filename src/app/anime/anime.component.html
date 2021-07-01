@@ -197,7 +197,7 @@
                                         >
                                             <div
                                                 *ngIf="
-                                                    comment.user.image !==
+                                                    comment.user.imageDto !==
                                                     undefined
                                                 "
                                                 class="
@@ -215,7 +215,7 @@
                                                     height="80"
                                                     loading="lazy"
                                                     src="data:image/webp;base64,{{
-                                                        comment.user.image
+                                                        comment.user.imageDto
                                                             .content
                                                     }}"
                                                     width="80"

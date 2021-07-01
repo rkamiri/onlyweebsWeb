@@ -30,7 +30,7 @@ export class UserComponent implements OnInit {
         this.profilePictureUrl =
             environment.backend +
             '/image/' +
-            this.activatedRoute.snapshot.data.user.image.id;
+            this.activatedRoute.snapshot.data.user.imageDto.id;
         this.listsService
             .getCustomListsByUserId(this.activatedRoute.snapshot.data.user.id)
             .subscribe((data) => (this.userLists = data));
