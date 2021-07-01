@@ -1,229 +1,146 @@
-<div class="container">
-    <ngx-spinner [visible]="spinner" [config]="spinnerConfig"></ngx-spinner>
-    <div
-        *ngIf="sameIp === 'false'"
-        class="alert alert-danger"
-        role="alert"
-        id="alert-ip"
-    >
-        Your current ip address is different from your last connection. Please
-        change password just to be safe.
-        <button
-            id="update-ip-button"
-            type="button"
-            class="btn btn-dark"
-            (click)="updateIp()"
-            onclick="document.getElementById('alert-ip').remove()"
-        >
-            Update your Ip
-        </button>
-    </div>
-    <div
-        id="alert-success-ip"
-        *ngIf="sameIp === 'changed'"
-        class="alert alert-success"
-        role="alert"
-    >
-        Your new IP address has been updated.
-    </div>
-    <div class="row gutters">
-        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-            <div class="card h-100">
-                <div class="card-body">
-                    <div class="account-settings">
-                        <div class="user-profile">
-                            <div class="user-avatar">
-                                <img
-                                    loading="lazy"
-                                    *ngIf="profilePictureUrl !== undefined"
-                                    src="{{ profilePictureUrl }}"
-                                    alt="profile image"
-                                    onclick="document.getElementById('uploadImage').click()"
-                                />
-                                <input
-                                    id="uploadImage"
-                                    type="file"
-                                    (change)="fileChange($event)"
-                                    placeholder="Upload file"
-                                    accept="image/*"
-                                />
-                            </div>
-                            <h5 class="user-name">
-                                {{ currentUser.username }}
-                            </h5>
-                            <h6 class="user-email">{{ currentUser.email }}</h6>
-                        </div>
-                        <div class="about">
-                            <h5 class="mb-2 text-primary">About</h5>
-                            <p>{{ currentUser.bio }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-            <div class="card h-100">
-                <div class="card-body">
-                    <form
-                        [formGroup]="personalInfoForm"
-                        (ngSubmit)="updatePersonalInfos()"
-                    >
-                        <div class="row gutters">
-                            <div
-                                class="
-                                    col-xl-12
-                                    col-lg-12
-                                    col-md-12
-                                    col-sm-12
-                                    col-12
-                                "
-                            >
-                                <h6 class="mb-3 text-primary">
-                                    Personal Infos
-                                </h6>
-                            </div>
-                            <div
-                                class="
-                                    col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12
-                                "
-                            >
-                                <div class="form-group">
-                                    <label for="fullName">Username</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="fullName"
-                                        formControlName="username"
-                                        placeholder="Enter username"
-                                    />
-                                </div>
-                            </div>
-                            <div
-                                class="
-                                    col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12
-                                "
-                            >
-                                <div class="form-group">
-                                    <label for="eMail">Email</label>
-                                    <input
-                                        type="email"
-                                        class="form-control"
-                                        id="eMail"
-                                        formControlName="email"
-                                        placeholder="Enter email ID"
-                                    />
-                                </div>
-                            </div>
-                            <div
-                                class="
-                                    col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12
-                                "
-                            >
-                                <div class="form-group">
-                                    <label for="firstname">First Name</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="firstname"
-                                        formControlName="firstname"
-                                        placeholder="Enter First Name"
-                                    />
-                                </div>
-                            </div>
-                            <div
-                                class="
-                                    col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12
-                                "
-                            >
-                                <div class="form-group">
-                                    <label for="lastname">Last Name</label>
-                                    <input
-                                        type="url"
-                                        class="form-control"
-                                        id="lastname"
-                                        formControlName="lastname"
-                                        placeholder="Enter Last Name"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row gutters">
-                            <div
-                                class="
-                                    col-xl-12
-                                    col-lg-12
-                                    col-md-12
-                                    col-sm-12
-                                    col-12
-                                "
-                            >
-                                <div class="text-right">
-                                    <button class="btn btn-primary">
-                                        Update Personal Info
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-body">
-                    <form [formGroup]="bioForm" (ngSubmit)="updateBio()">
-                        <div class="row gutters">
-                            <div
-                                class="
-                                    col-xl-12
-                                    col-lg-12
-                                    col-md-12
-                                    col-sm-12
-                                    col-12
-                                "
-                            >
-                                <h6 class="mb-3 text-primary">Update Bio</h6>
-                            </div>
+<body>
+	<div class="container">
+		<ngx-spinner [visible]="spinner" [config]="spinnerConfig"></ngx-spinner>
+		<div *ngIf="sameIp === 'false'" class="alert alert-danger" role="alert" id="alert-ip">
+			Your current ip address is different from your last connection. Please change password just to be safe.
+			<button
+				id="update-ip-button"
+				type="button"
+				class="btn btn-dark"
+				(click)="updateIp()"
+				onclick="document.getElementById('alert-ip').remove()"
+			>
+				Update your Ip
+			</button>
+		</div>
+		<div id="alert-success-ip" *ngIf="sameIp === 'changed'" class="alert alert-success" role="alert">Your new IP address has been updated.</div>
+		<div class="row gutters">
+			<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+				<div class="card h-100">
+					<div class="card-body">
+						<div class="account-settings">
+							<div class="user-profile">
+								<div class="user-avatar">
+									<img
+										loading="lazy"
+										*ngIf="profilePictureUrl !== undefined"
+										src="{{ profilePictureUrl }}"
+										alt="profile image"
+										onclick="document.getElementById('uploadImage').click()"
+									/>
+									<input id="uploadImage" type="file" (change)="fileChange($event)" placeholder="Upload file" accept="image/*" />
+								</div>
+								<h5 class="user-name">
+									{{ currentUser.username }}
+								</h5>
+								<h6 class="user-email">{{ currentUser.email }}</h6>
+							</div>
+							<div class="about">
+								<h5 class="mb-2 text-primary">About</h5>
+								<p>{{ currentUser.bio }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+				<div class="card h-100">
+					<div class="card-body">
+						<form [formGroup]="personalInfoForm" (ngSubmit)="updatePersonalInfos()">
+							<div class="row gutters">
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<h6 class="mb-3 text-primary">Personal Infos</h6>
+								</div>
+								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+									<div class="form-group">
+										<label for="fullName">Username</label>
+										<input
+											type="text"
+											class="form-control"
+											id="fullName"
+											formControlName="username"
+											placeholder="Enter username"
+										/>
+									</div>
+								</div>
+								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+									<div class="form-group">
+										<label for="eMail">Email</label>
+										<input type="email" class="form-control" id="eMail" formControlName="email" placeholder="Enter email ID" />
+									</div>
+								</div>
+								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+									<div class="form-group">
+										<label for="firstname">First Name</label>
+										<input
+											type="text"
+											class="form-control"
+											id="firstname"
+											formControlName="firstname"
+											placeholder="Enter First Name"
+										/>
+									</div>
+								</div>
+								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+									<div class="form-group">
+										<label for="lastname">Last Name</label>
+										<input
+											type="url"
+											class="form-control"
+											id="lastname"
+											formControlName="lastname"
+											placeholder="Enter Last Name"
+										/>
+									</div>
+								</div>
+							</div>
+							<div class="row gutters">
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="text-right">
+										<button class="btn btn-primary">Update Personal Info</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="card-body">
+						<form [formGroup]="bioForm" (ngSubmit)="updateBio()">
+							<div class="row gutters">
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<h6 class="mb-3 text-primary">Update Bio</h6>
+								</div>
 
-                            <div
-                                class="
-                                    col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12
-                                "
-                            >
-                                <div class="form-group">
-                                    <label for="bio"></label
-                                    ><textarea
-                                        class="form-control"
-                                        id="bio"
-                                        formControlName="bio"
-                                    ></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row gutters">
-                            <div
-                                class="
-                                    col-xl-12
-                                    col-lg-12
-                                    col-md-12
-                                    col-sm-12
-                                    col-12
-                                "
-                            >
-                                <div class="text-right">
-                                    <button class="btn btn-primary">
-                                        Update Bio
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-body">
-                    <button class="btn btn-danger" (click)="updatePassword()">
-                        Update your password
-                    </button>
-                    <button class="btn btn-dark" (click)="deleteAccount()">
-                        Delete your account
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+									<div class="form-group">
+										<label for="bio"></label><textarea class="form-control" id="bio" formControlName="bio"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="row gutters">
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="text-right">
+										<button class="btn btn-primary">Update Bio</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="card-body">
+						<button class="btn btn-danger" (click)="updatePassword()">Update your password</button>
+						<button class="btn btn-dark" (click)="deleteAccount()">Delete your account</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container card" *ngIf="userIsAuthenticated && adminStatus === 'ROLE_ADMIN'">
+		<div class="card-body">
+			<p>
+				<a [routerLink]="['/stats']">Stats</a>
+			</p>
+			<p>
+				<a [routerLink]="['/editor']">Editor</a>
+			</p>
+		</div>
+	</div>
+</body>

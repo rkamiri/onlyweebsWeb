@@ -1,78 +1,57 @@
 <body class="container" xmlns="http://www.w3.org/1999/html">
-    <div class="row">
-        <div class="col-md-8" id="editorContainer">
-            <h1>Add new article</h1>
-            <form [formGroup]="articleInfos">
-                <div class="form-group">
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="title"
-                        formControlName="title"
-                        placeholder="Enter Title"
-                    />
-                    <br />
-                    <div class="custom-file">
-                        <input
-                            type="file"
-                            class="custom-file-input"
-                            id="featuredImage"
-                            (change)="fileChange($event)"
-                        />
-                        <label class="custom-file-label" for="featuredImage"
-                            >Choose featured image</label
-                        >
-                    </div>
-                </div>
-            </form>
-            <div id="editor">
-                <ckeditor
-                    [(ngModel)]="body"
-                    [editor]="Editor"
-                    data="<p>Hello, world!</p>"
-                    (ready)="onReady($event)"
-                >
-                </ckeditor>
-            </div>
-        </div>
+	<div class="row">
+		<div class="col-md-8" id="editorContainer">
+			<h1>Add new article</h1>
+			<form [formGroup]="articleInfos">
+				<div class="form-group">
+					<input type="text" class="form-control" id="title" formControlName="title" placeholder="Enter Title" />
+					<br />
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="featuredImage" (change)="fileChange($event)" />
+						<label class="custom-file-label" for="featuredImage">Choose featured image</label>
+					</div>
+				</div>
+			</form>
+			<div id="editor">
+				<ckeditor [(ngModel)]="body" [editor]="Editor" data="<p>Hello, world!</p>" (ready)="onReady($event)"> </ckeditor>
+			</div>
+		</div>
 
-        <div class="col-md-2" id="details">
-            <div class="detailsBox">
-                <h2>Publication</h2>
-                <div class="detailsBoxContent">
-                    <button class="btn btn-primary" (click)="submit()">
-                        Publish Article
-                    </button>
-                </div>
-            </div>
-            <div class="detailsBox" *ngIf="categories">
-                <h2>Category</h2>
-                <div class="detailsBoxContent">
-                    <form>
-                        <div *ngFor="let category of categories">
-                            <input
-                                name="selectedCategory"
-                                *ngIf="category.id === 1"
-                                checked
-                                type="radio"
-                                value="{{ category.id }}"
-                                (click)="changeCategory(category.id)"
-                            />
-                            <input
-                                name="selectedCategory"
-                                *ngIf="category.id !== 1"
-                                type="radio"
-                                value="{{ category.id }}"
-                                (click)="changeCategory(category.id)"
-                            />
+		<div class="col-md-2" id="details">
+			<div class="detailsBox">
+				<h2>Publication</h2>
+				<div class="detailsBoxContent">
+					<button class="btn btn-primary" (click)="submit()">Publish Article</button>
+				</div>
+			</div>
+			<div class="detailsBox" *ngIf="categories">
+				<h2>Category</h2>
+				<div class="detailsBoxContent">
+					<form>
+						<div *ngFor="let category of categories">
+							<input
+								name="selectedCategory"
+								*ngIf="category.id === 1"
+								checked
+								type="radio"
+								value="{{ category.id }}"
+								(click)="changeCategory(category.id)"
+							/>
+							<input
+								name="selectedCategory"
+								*ngIf="category.id !== 1"
+								type="radio"
+								value="{{ category.id }}"
+								(click)="changeCategory(category.id)"
+							/>
 
-                            <label>
-                                {{ category.name }}
-                            </label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+							<label>
+								{{ category.name }}
+							</label>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>

@@ -1,86 +1,58 @@
 <body>
-    <div class="container contentContainer">
-        <div class="row align-items-center">
-            <h4>Create a new list</h4>
-        </div>
+	<div class="container contentContainer">
+		<div class="row align-items-center">
+			<h4>Create a new list</h4>
+		</div>
 
-        <div class="row" *ngIf="animeList !== undefined">
-            <form
-                class="container w-75 text-light"
-                [formGroup]="createListForm"
-                (ngSubmit)="onSubmit()"
-            >
-                <label for="listName">List name</label>
-                <input
-                    required="true"
-                    formControlName="name"
-                    placeholder="Enter name"
-                    type="text"
-                    id="listName"
-                    class="form-control"
-                />
+		<div class="row" *ngIf="animeList !== undefined">
+			<form class="container w-75 text-light" [formGroup]="createListForm" (ngSubmit)="onSubmit()">
+				<label for="listName">List name</label>
+				<input required="true" formControlName="name" placeholder="Enter name" type="text" id="listName" class="form-control" />
 
-                <label for="listDescription">Description</label>
-                <textarea
-                    style="width: 100%"
-                    id="listDescription"
-                    formControlName="description"
-                    required="true"
-                    placeholder="Enter description"
-                    type="text"
-                ></textarea>
+				<label for="listDescription">Description</label>
+				<textarea
+					style="width: 100%"
+					id="listDescription"
+					formControlName="description"
+					required="true"
+					placeholder="Enter description"
+					type="text"
+				></textarea>
 
-                <div class="custom-control custom-switch">
-                    <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        id="privateChoice"
-                    />
-                    <label class="custom-control-label" for="privateChoice"
-                        >Private</label
-                    >
-                </div>
-                <p></p>
-                <label for="addAnime">Add anime to your list</label>
-                <input
-                    placeholder="Search an anime"
-                    id="addAnime"
-                    [(ngModel)]="selectedValue"
-                    [ngModelOptions]="{ standalone: true }"
-                    [typeahead]="animeList"
-                    typeaheadOptionField="title"
-                    [typeaheadScrollable]="true"
-                    (typeaheadOnSelect)="onSelect($event)"
-                    class="form-control"
-                />
-                <table class="table text-light">
-                    <tbody>
-                        <tr *ngFor="let l of newList; let i = index">
-                            <th id="{{ i + 1 }}" scope="row">
-                                {{ l["title"] }}
-                            </th>
-                            <th id="{{ l }}" class="text-right delete">
-                                <button
-                                    (click)="onDelete($event)"
-                                    class="btn btn-xs btn-danger"
-                                >
-                                    X
-                                </button>
-                            </th>
-                        </tr>
-                    </tbody>
-                </table>
-                <button
-                    id="sendNewList"
-                    class="btn btn-sm btn-success"
-                    [disabled]="!createListForm.valid"
-                >
-                    Create
-                </button>
-                <button id="cancelNewList" class="btn btn-sm btn-danger">
-                    <a class="text-light" href="/lists">Cancel</a>
-                </button>
-            </form>
-        </div>
-    </div>
+				<div class="custom-control custom-switch">
+					<input type="checkbox" class="custom-control-input" id="privateChoice" />
+					<label class="custom-control-label" for="privateChoice">Private</label>
+				</div>
+				<p></p>
+				<label for="addAnime">Add anime to your list</label>
+				<input
+					placeholder="Search an anime"
+					id="addAnime"
+					[(ngModel)]="selectedValue"
+					[ngModelOptions]="{ standalone: true }"
+					[typeahead]="animeList"
+					typeaheadOptionField="title"
+					[typeaheadScrollable]="true"
+					(typeaheadOnSelect)="onSelect($event)"
+					class="form-control"
+				/>
+				<table class="table text-light">
+					<tbody>
+						<tr *ngFor="let l of newList; let i = index">
+							<th id="{{ i + 1 }}" scope="row">
+								{{ l['title'] }}
+							</th>
+							<th id="{{ l }}" class="text-right delete">
+								<button (click)="onDelete($event)" class="btn btn-xs btn-danger">X</button>
+							</th>
+						</tr>
+					</tbody>
+				</table>
+				<button id="sendNewList" class="btn btn-sm btn-success" [disabled]="!createListForm.valid">Create</button>
+				<button id="cancelNewList" class="btn btn-sm btn-danger">
+					<a class="text-light" href="/lists">Cancel</a>
+				</button>
+			</form>
+		</div>
+	</div>
 </body>

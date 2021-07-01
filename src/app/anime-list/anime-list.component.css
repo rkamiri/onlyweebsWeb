@@ -1,188 +1,169 @@
 body {
-    padding-top: 2vh;
-    background-color: rgba(40, 43, 48, 0.5);
-    padding-bottom: 2vh;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
 }
 
 a {
-    text-decoration: none;
-    color: #e4e4e4;
+	text-decoration: none;
+	color: #e4e4e4;
 }
 
 .card-title {
-    color: white;
-    padding: 2px;
-    border-radius: 5px;
+	color: white;
+	padding: 2px;
+	border-radius: 5px;
 }
 
 .card-text {
-    display: block;
-    height: 100%;
-    overflow: hidden;
-    white-space: initial;
-    overflow-wrap: break-word;
-    text-overflow: ellipsis;
+	display: block;
+	height: 100%;
+	overflow: hidden;
+	white-space: initial;
+	overflow-wrap: break-word;
+	text-overflow: ellipsis;
 }
 
 .container {
-    min-width: 80vw;
+	min-width: 80vw;
 }
 
 .container .card {
-    padding: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2vh;
+	padding: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2vh;
 }
 
 .card {
-    margin-top: 2vh;
-    width: 15vw;
-    background-color: rgba(40, 43, 48, 0.75);
-    height: 45vh !important;
+	margin-top: 2vh;
+	width: 15vw;
+	background-color: rgba(40, 43, 48, 1);
+	height: 45vh !important;
 }
 
 .card:hover {
-    background-color: rgba(9, 124, 231, 0.75);
+	background-color: rgba(9, 124, 231, 1);
 }
 
 .card-img-top {
-    height: 30vh !important;
-    object-fit: cover;
-    opacity: 0.6;
+	height: 30vh !important;
+	object-fit: cover;
 }
 
 .col-sm-4 {
-    margin-top: 2vh;
+	margin-top: 2vh;
 }
 
 .page-link {
-    background-color: #3e4042 !important;
-    border-color: #a5a5a5 !important;
-    color: white;
+	background-color: #2e3032 !important;
+	border-color: white !important;
+	color: white;
 }
 
 .page-link:hover {
-    background-color: #097ce7 !important;
+	background-color: #097ce7 !important;
 }
 
 .current {
-    color: #097ce7;
+	color: #097ce7;
 }
 
 .current:hover {
-    background-color: #3e4042 !important;
+	background-color: #3e4042 !important;
 }
 
 *:focus {
-    border-color: inherit;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-
-.product {
-    margin-bottom: 30px;
-}
-
-.product-inner {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    padding: 10px;
-}
-
-.product img {
-    margin-bottom: 10px;
+	border-color: inherit;
+	-webkit-box-shadow: none;
+	box-shadow: none;
 }
 
 #searchBlock {
-    margin: auto;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    width: 75vw;
-    border-radius: 5px;
+	margin: auto;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	width: 75vw;
+	border-radius: 5px;
 }
 
 #searchBlock .input-group {
-    margin: auto;
-    width: 70vw;
+	margin: auto;
+	width: 70vw;
 }
 
 #test {
-    width: 40vw;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2vh;
+	width: 40vw;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2vh;
 }
 
 #test .test {
-    margin: auto;
+	margin: auto;
 }
 
 .test button {
-    min-width: 7.5vw !important;
-    width: 7.5vw !important;
+	min-width: 7.5vw !important;
+	width: 7.5vw !important;
 }
 
 .dropdown-menu {
-    max-height: 30vh;
-    overflow-y: auto;
-    background-attachment: local, local, scroll, scroll;
+	max-height: 30vh;
+	overflow-y: auto;
+	background-attachment: local, local, scroll, scroll;
 }
 
 .advancedReasearch {
-    background: #212223;
-    margin: auto;
+	background: #212223;
+	margin: auto;
 }
 
 .noRadius {
-    border-radius: 0;
+	border-radius: 0;
 }
 
 .specialRadius {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
 }
 
 .leftButtonRadius {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
 }
 
-/*.dropdown-item {
-    white-space: normal;
-}*/
-
 @media screen and (max-width: 1400px) {
-    .card {
-        width: 18vw;
-    }
+	.card {
+		width: 18vw;
+	}
 }
 
 @media screen and (max-width: 1200px) {
-    .card {
-        width: 35vw;
-    }
+	.card {
+		width: 35vw;
+	}
 }
 
 @media screen and (max-width: 992px) {
-    .card {
-        width: 35vw;
-    }
+	.card {
+		width: 35vw;
+	}
 }
 
 @media screen and (max-width: 767px) {
-    .container {
-        padding: 0;
-    }
-    .card {
-        margin: 4vh auto auto;
-        width: 80vw;
-    }
+	.container {
+		padding: 0;
+	}
+	.card {
+		margin: 4vh auto auto;
+		width: 80vw;
+	}
 }
 
 @media screen and (max-width: 500px) {
-    .mobileSize {
-        width: 75px;
-        font-size: 2.5vw;
-        margin: auto;
-    }
+	.mobileSize {
+		width: 75px;
+		font-size: 2.5vw;
+		margin: auto;
+	}
 }

@@ -1,6 +1,6 @@
-import { AnimeDto } from './anime';
+import { AnimeDto } from './anime'
 
 export interface AnimeStats {
-    animeDTO: AnimeDto;
-    numberOfTimesListed: number;
+	animeDTO: AnimeDto
+	numberOfTimesListed: number
 }

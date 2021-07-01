@@ -1,99 +1,46 @@
 <div class="row" id="rowList">
-    <div
-        *ngFor="let list of lists; let i = index"
-        class="col-lg-6 col-md-6 col-12 custom"
-        id="{{ !lists[i + 1] && i % 2 === 0 ? 'solo' : 'list' }}"
-    >
-        <a [routerLink]="['/lists', list.id]" id="boxLink">
-            <div class="list col-12 row">
-                <div
-                    class="col-xl-3 col-lg-3 col-md-4 col-4 row imagesDiv"
-                    *ngIf="listsImages !== undefined"
-                    id="imgDesc"
-                >
-                    <div
-                        *ngIf="
-                            listsImages[i].length < 4 &&
-                            listsImages[i].length > 0
-                        "
-                        class="containerImg"
-                    >
-                        <div class="imgDiv">
-                            <img
-                                loading="lazy"
-                                src="{{ listsImages[i][0] }}"
-                                alt=""
-                                class="oneImg"
-                            />
-                        </div>
-                    </div>
-                    <div
-                        *ngIf="listsImages[i].length == 0"
-                        class="containerImg"
-                    >
-                        <div class="imgDiv">
-                            <img
-                                loading="lazy"
-                                src="https://api.onlyweebs.csid.agilitejoviale.fr/image/32"
-                                alt=""
-                                class="oneImg"
-                            />
-                        </div>
-                    </div>
-                    <div
-                        *ngIf="listsImages[i].length == 4"
-                        class="containerImg"
-                    >
-                        <div
-                            *ngFor="
-                                let listImage of listsImages[i];
-                                let j = index
-                            "
-                            class="imgDiv"
-                        >
-                            <img
-                                loading="lazy"
-                                src="{{ listImage }}"
-                                alt="4 images together"
-                                class="fourImages"
-                            />
-                        </div>
-                    </div>
-                </div>
-                <div id="divList" class="col-xl-8 col-lg-8 col-md-7 col-7">
-                    <div id="left">
-                        <a [routerLink]="['/lists', list.id]" id="nameList">{{
-                            list.name
-                        }}</a>
-                        <p class="textDescList">{{ list.description }}</p>
-                        <p id="owner">
-                            écrite par {{ list.isOwnedBy.username }}
-                        </p>
-                    </div>
-                    <div
-                        id="right"
-                        class="deleteButton"
-                        *ngIf="
-                            connectedUser &&
-                            isDefault === 'user_custom' &&
-                            connectedUser.id === list.isOwnedBy.id
-                        "
-                    >
-                        <button
-                            id="delete-button"
-                            type="button"
-                            class="btn btn-danger"
-                            (click)="
-                                $event.preventDefault();
-                                $event.stopPropagation();
-                                delete(list.id)
-                            "
-                        >
-                            ✕
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
+	<div *ngFor="let list of lists; let i = index" class="col-lg-6 col-md-6 col-12 custom" id="{{ !lists[i + 1] && i % 2 === 0 ? 'solo' : 'list' }}">
+		<a [routerLink]="['/lists', list.id]" id="boxLink">
+			<div class="list col-12 row">
+				<div class="col-xl-3 col-lg-3 col-md-4 col-4 row imagesDiv" *ngIf="listsImages !== undefined" id="imgDesc">
+					<div *ngIf="listsImages[i].length < 4 && listsImages[i].length > 0" class="containerImg">
+						<div class="imgDiv">
+							<img loading="lazy" src="{{ listsImages[i][0] }}" alt="" class="oneImg" />
+						</div>
+					</div>
+					<div *ngIf="listsImages[i].length == 0" class="containerImg">
+						<div class="imgDiv">
+							<img loading="lazy" src="https://api.onlyweebs.csid.agilitejoviale.fr/image/32" alt="" class="oneImg" />
+						</div>
+					</div>
+					<div *ngIf="listsImages[i].length == 4" class="containerImg">
+						<div *ngFor="let listImage of listsImages[i]; let j = index" class="imgDiv">
+							<img loading="lazy" src="{{ listImage }}" alt="4 images together" class="fourImages" />
+						</div>
+					</div>
+				</div>
+				<div id="divList" class="col-xl-8 col-lg-8 col-md-7 col-7">
+					<div id="left">
+						<a [routerLink]="['/lists', list.id]" id="nameList">{{ list.name }}</a>
+						<p class="textDescList">{{ list.description }}</p>
+						<p id="owner">écrite par {{ list.isOwnedBy.username }}</p>
+					</div>
+					<div
+						id="right"
+						class="deleteButton"
+						*ngIf="connectedUser && isDefault === 'user_custom' && connectedUser.id === list.isOwnedBy.id"
+					>
+						<button
+							id="delete-button"
+							type="button"
+							class="btn btn-danger"
+							(click)="$event.preventDefault(); $event.stopPropagation(); delete(list.id)"
+						>
+							✕
+						</button>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
 </div>

@@ -1,77 +1,77 @@
 .navbar {
-    background-color: #212223;
+	background-color: #212223;
 }
 
 .nav-item {
-    margin-right: 25px;
+	margin-right: 25px;
 }
 
 .navbar-dark .navbar-nav .is-active {
-    color: #097ce7;
+	color: #097ce7;
 }
 
 #searchBlock {
-    margin-top: 15px;
-    margin-right: 50px;
-    width: 500px;
+	margin-top: 15px;
+	margin-right: 50px;
+	width: 500px;
 }
 
 #searchInput {
-    background-color: dimgrey;
-    color: white;
-    box-shadow: none !important;
-    border-color: dimgrey;
-    width: 25vw;
+	background-color: dimgrey;
+	color: white;
+	box-shadow: none !important;
+	border-color: dimgrey;
+	width: 25vw;
 }
 
 #imgLoop {
-    display: block;
-    margin: auto;
-    height: 1vw;
+	display: block;
+	margin: auto;
+	height: 1vw;
 }
 
 ::placeholder {
-    color: white;
-    opacity: 1;
+	color: white;
+	opacity: 1;
 }
 
 #dropdownBasic1 {
-    margin-right: 3vw;
-    color: rgba(255, 255, 255, 0.5);
-    border: none;
+	margin-right: 3vw;
+	color: rgba(255, 255, 255, 0.5);
+	border: none;
 }
 
 .btn-nav-link:hover {
-    background-color: #3e4042;
+	background-color: #3e4042;
 }
 
 .dropdown-menu {
-    background-color: #3e4042;
+	background-color: #3e4042;
 }
 
 .dropdown-nav-link {
-    color: #e4e4e4;
+	color: #e4e4e4;
 }
 
 .dropdown-nav-link:hover {
-    color: #097ce7;
+	color: #097ce7;
 }
 
 @media screen and (max-width: 1300px) {
-    #searchBlock {
-        width: 220px;
-    }
+	#searchBlock {
+		width: 220px;
+	}
 }
 
 @media screen and (max-width: 576px) {
-    #imgLoop {
-        height: 4vw;
-    }
-    .btn-primary {
-        width: 13vw;
-    }
-    #searchBlock {
-        margin-top: 0;
-        margin-right: 0;
-    }
+	#imgLoop {
+		height: 4vw;
+	}
+	.btn-primary {
+		width: 13vw;
+	}
+	#searchBlock {
+		margin-top: 0;
+		margin-right: 0;
+	}
 }

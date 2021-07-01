@@ -1,133 +1,133 @@
 body {
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
 }
 
 .container {
-    padding: 2vh;
-    background-color: #2e3032;
+	padding: 2vh;
+	background-color: #2e3032;
 }
 
 mat-expansion-panel {
-    background-color: #212223;
-    color: #f1f1f1;
+	background-color: #212223;
+	color: #f1f1f1;
 }
 
 mat-panel-title {
-    color: #097ce7;
-    font-size: 3vh;
+	color: #097ce7;
+	font-size: 3vh;
 }
 
 .synopsis,
 .details {
-    font-size: 2vh;
+	font-size: 2vh;
 }
 
 select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    appearance: none;
-    outline: 0;
-    box-shadow: none;
-    border: 0 !important;
-    background: #212223 none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	outline: 0;
+	box-shadow: none;
+	border: 0 !important;
+	background: #212223 none;
 }
 
 select::-ms-expand {
-    display: none;
+	display: none;
 }
 
 .select {
-    position: relative;
-    display: flex;
-    width: 20em;
-    height: 3em;
-    line-height: 3;
-    background: #212223;
-    overflow: hidden;
-    border-radius: 0.25em;
+	position: relative;
+	display: flex;
+	width: 20em;
+	height: 3em;
+	line-height: 3;
+	background: #212223;
+	overflow: hidden;
+	border-radius: 0.25em;
 }
 
 select {
-    flex: 1;
-    padding: 0 0.5em;
-    color: #fff;
-    cursor: pointer;
+	flex: 1;
+	padding: 0 0.5em;
+	color: #fff;
+	cursor: pointer;
 }
 
 .select::after {
-    content: "\25BC";
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0 1em;
-    background: #212223;
-    cursor: pointer;
-    pointer-events: none;
-    -webkit-transition: 0.25s all ease;
-    -o-transition: 0.25s all ease;
-    transition: 0.25s all ease;
+	content: '\25BC';
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0 1em;
+	background: #212223;
+	cursor: pointer;
+	pointer-events: none;
+	-webkit-transition: 0.25s all ease;
+	-o-transition: 0.25s all ease;
+	transition: 0.25s all ease;
 }
 
 .select:hover::after {
-    color: #f1f1f1;
+	color: #f1f1f1;
 }
 
 .comment,
 .comment-info {
-    margin-bottom: 2vh;
+	margin-bottom: 2vh;
 }
 
 .comment-user {
-    font-size: 2vh;
+	font-size: 2vh;
 }
 
 .commentTitle {
-    font-size: 2vh;
+	font-size: 2vh;
 }
 
 #animeTitle {
-    font-size: 3vh;
+	font-size: 3vh;
 }
 
 #defaultList,
 #customList {
-    font-size: 2vh;
-    margin-top: 1vh;
-    margin-right: 1vh;
-    min-width: 50%;
+	font-size: 2vh;
+	margin-top: 1vh;
+	margin-right: 1vh;
+	min-width: 50%;
 }
 
 .currentRat {
-    color: #868686;
-    font-size: small;
+	color: #868686;
+	font-size: small;
 }
 
 .globalRat {
-    color: green;
-    font-size: 3vh;
+	color: green;
+	font-size: 3vh;
 }
 
 @media only screen and (max-width: 1000px) {
 }
 
 .star {
-    position: relative;
-    display: inline-block;
-    font-size: 2vh;
-    color: #d3d3d3;
+	position: relative;
+	display: inline-block;
+	font-size: 2vh;
+	color: #d3d3d3;
 }
 
 .full {
-    color: yellow;
+	color: yellow;
 }
 
 .addToList {
-    white-space: nowrap;
+	white-space: nowrap;
 }
 
 #authorr:hover {
-    color: #097ce7;
-    text-decoration: underline;
+	color: #097ce7;
+	text-decoration: underline;
 }

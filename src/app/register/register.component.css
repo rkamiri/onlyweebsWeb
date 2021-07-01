@@ -1,69 +1,64 @@
-* {
-    outline-width: 0;
-    font-family: "Karla", sans-serif !important;
-}
-
 body {
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
 }
 
 .testA {
-    background-color: rgba(40, 43, 48, 0.75);
-    border-radius: 0.3em;
-    max-width: 40vw;
-    margin: auto;
-    padding: 1vw;
+	background-color: #212223;
+	border-radius: 0.3em;
+	max-width: 40vw;
+	margin: auto;
+	padding: 1vw;
 }
 
 .test {
-    min-width: 36vw;
-    margin: auto;
+	min-width: 36vw;
+	margin: auto;
 }
 
 .test h1 {
-    color: white;
-    margin: auto;
-    text-align: center;
-    margin-bottom: 5vh;
+	color: white;
+	margin: auto;
+	text-align: center;
+	margin-bottom: 5vh;
 }
 
 .test label {
-    color: white;
-    margin: 0;
-    padding: 0;
+	color: white;
+	margin: 0;
+	padding: 0;
 }
 
 .btn-primary:hover {
-    background: #11428d;
+	background: #11428d;
 }
 
 form {
-    text-align: center;
+	text-align: center;
 }
 
 .owinput {
-    background: transparent;
-    border: none;
-    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15);
-    padding: 15px 0;
-    box-sizing: border-box;
-    color: #fff;
-    width: 100%;
-    transition: 0.2s ease;
-    margin-bottom: 2vh;
+	background: transparent;
+	border: none;
+	box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+	padding: 15px 0;
+	box-sizing: border-box;
+	color: #fff;
+	width: 100%;
+	transition: 0.2s ease;
+	margin-bottom: 2vh;
 }
 
 .owinput::placeholder {
-    color: #e4e4e4;
+	color: #e4e4e4;
 }
 
 .owinput:focus {
-    box-shadow: inset 0 -2px 0 #fff;
+	box-shadow: inset 0 -2px 0 #fff;
 }
 
 .owinput:-webkit-autofill {
-    background: transparent;
+	background: transparent;
 }
 
 .owinput:-webkit-autofill,
@@ -75,23 +70,23 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-    background-color: transparent;
+	background-color: transparent;
 }
 
 @media screen and (max-width: 576px) {
-    body {
-        padding: 0;
-        margin: -10px;
-    }
-    h1 {
-        padding-top: 2vh;
-        font-size: 9.5vw;
-    }
-    .testA {
-        margin-left: -1.4vw;
-        min-width: 100vw;
-        margin-top: 0;
-        margin-bottom: 0;
-        padding-bottom: 3vh;
-    }
+	body {
+		padding: 0;
+		margin: -10px;
+	}
+	h1 {
+		padding-top: 2vh;
+		font-size: 9.5vw;
+	}
+	.testA {
+		margin-left: -1.4vw;
+		min-width: 100vw;
+		margin-top: 0;
+		margin-bottom: 0;
+		padding-bottom: 3vh;
+	}
 }

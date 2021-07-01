@@ -1,370 +1,267 @@
 <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="List of all animes on Onlyweebs.fr" />
-    <meta name="keywords" content="Anime, Anime List, Weeb" />
-    <meta name="author" content="jeunes-entrepreneurs" />
-    <title>Anime List</title>
+	<meta charset="UTF-8" />
+	<meta name="description" content="List of all animes on Onlyweebs.fr" />
+	<meta name="keywords" content="Anime, Anime List, Weeb" />
+	<meta name="author" content="jeunes-entrepreneurs" />
+	<title>Anime List</title>
 </head>
-
 <body>
-    <div class="container" style="width: 80vw">
-        <div id="searchBlock">
-            <div class="row">
-                <div class="advancedReasearch">
-                    <div ngbDropdown class="d-inline-block">
-                        <button
-                            class="
-                                btn btn-outline-primary
-                                leftButtonRadius
-                                mobileSize
-                            "
-                            id="dropdownBasic1"
-                            ngbDropdownToggle
-                        >
-                            {{ selectedGenre ? selectedGenre.name : "Genre" }}
-                        </button>
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                            <button
-                                ngbDropdownItem
-                                *ngFor="let genre of listGenres"
-                                value="{{ genre.id }}"
-                                (click)="changeGenre(genre, 'genre')"
-                            >
-                                {{ genre.name }}
-                            </button>
-                        </div>
-                    </div>
-                    <div ngbDropdown class="d-inline-block">
-                        <button
-                            class="btn btn-outline-primary noRadius mobileSize"
-                            id="dropdownBasic2"
-                            ngbDropdownToggle
-                        >
-                            {{
-                                selectedStudio ? selectedStudio.name : "Studio"
-                            }}
-                        </button>
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                            <button
-                                ngbDropdownItem
-                                *ngFor="let studio of listStudios"
-                                value="{{ studio.id }}"
-                                (click)="changeGenre(studio, 'studio')"
-                            >
-                                {{ studio.name }}
-                            </button>
-                        </div>
-                    </div>
-                    <div ngbDropdown class="d-inline-block">
-                        <button
-                            class="btn btn-outline-primary noRadius mobileSize"
-                            id="dropdownBasic3"
-                            ngbDropdownToggle
-                        >
-                            {{
-                                selectedProducer
-                                    ? selectedProducer.name
-                                    : "Producer"
-                            }}
-                        </button>
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                            <button
-                                ngbDropdownItem
-                                *ngFor="let producer of listProducers"
-                                value="{{ producer.id }}"
-                                (click)="changeGenre(producer, 'producer')"
-                            >
-                                {{ producer.name }}
-                            </button>
-                        </div>
-                    </div>
-                    <div class="d-inline-block">
-                        <button
-                            class="btn btn-primary specialRadius mobileSize"
-                            (click)="searchWithParams()"
-                        >
-                            Search
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div
-                    *ngFor="let anime of animeList"
-                    class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
-                >
-                    <a [routerLink]="['/animes', anime.id]">
-                        <div class="card">
-                            <img
-                                loading="lazy"
-                                src="{{ anime.imgUrl }}"
-                                class="card-img-top"
-                                alt="one piece png"
-                            />
-                            <div class="card-img-overlay">
-                                <h5 class="card-title">{{ anime.title }}</h5>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">
-                                    {{
-                                        anime.synopsis
-                                            ? (anime.synopsis | slice: 0:150)
-                                            : "no synopsis yet"
-                                    }}
-                                    {{
-                                        anime.synopsis.length >= 150
-                                            ? "..."
-                                            : ""
-                                    }}
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+	<div class="container" style="width: 80vw">
+		<div id="searchBlock">
+			<div class="row">
+				<div class="advancedReasearch">
+					<div ngbDropdown class="d-inline-block">
+						<button class="btn btn-outline-primary leftButtonRadius mobileSize" id="dropdownBasic1" ngbDropdownToggle>
+							{{ selectedGenre ? selectedGenre.name : 'Genre' }}
+						</button>
+						<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+							<button ngbDropdownItem *ngFor="let genre of listGenres" value="{{ genre.id }}" (click)="changeGenre(genre, 'genre')">
+								{{ genre.name }}
+							</button>
+						</div>
+					</div>
+					<div ngbDropdown class="d-inline-block">
+						<button class="btn btn-outline-primary noRadius mobileSize" id="dropdownBasic2" ngbDropdownToggle>
+							{{ selectedStudio ? selectedStudio.name : 'Studio' }}
+						</button>
+						<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+							<button
+								ngbDropdownItem
+								*ngFor="let studio of listStudios"
+								value="{{ studio.id }}"
+								(click)="changeGenre(studio, 'studio')"
+							>
+								{{ studio.name }}
+							</button>
+						</div>
+					</div>
+					<div ngbDropdown class="d-inline-block">
+						<button class="btn btn-outline-primary noRadius mobileSize" id="dropdownBasic3" ngbDropdownToggle>
+							{{ selectedProducer ? selectedProducer.name : 'Producer' }}
+						</button>
+						<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+							<button
+								ngbDropdownItem
+								*ngFor="let producer of listProducers"
+								value="{{ producer.id }}"
+								(click)="changeGenre(producer, 'producer')"
+							>
+								{{ producer.name }}
+							</button>
+						</div>
+					</div>
+					<div class="d-inline-block">
+						<button class="btn btn-primary specialRadius mobileSize" (click)="searchWithParams()">Search</button>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div *ngFor="let anime of animeList" class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
+					<a [routerLink]="['/animes', anime.id]">
+						<div class="card">
+							<img loading="lazy" src="{{ anime.imgUrl }}" class="card-img-top" alt="one piece png" />
+							<div class="card-img-overlay">
+								<h5 class="card-title">{{ anime.title }}</h5>
+							</div>
+							<div class="card-body">
+								<p class="card-text">
+									{{ anime.synopsis ? (anime.synopsis | slice: 0:150) : 'no synopsis yet' }}
+									{{ anime.synopsis.length >= 150 ? '...' : '' }}
+								</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
 
-            <br />
-            <br />
+			<br />
+			<br />
 
-            <div *ngIf="activatePagination">
-                <ul *ngIf="pages" class="pagination justify-content-center">
-                    <li
-                        [ngClass]="{ disabled: currentPage === 1 }"
-                        class="page-item"
-                    >
-                        <a
-                            *ngIf="navCase === 3"
-                            [routerLink]="['/animes/page', 1]"
-                            class="page-link test"
-                            >First</a
-                        >
-                        <a
-                            *ngIf="navCase === 2"
-                            [routerLink]="['/animes/research']"
-                            [queryParams]="{
-                                query: queryParams.query,
-                                page: 1
-                            }"
-                            class="page-link test"
-                            >First</a
-                        >
-                        <a
-                            *ngIf="navCase === 1"
-                            [routerLink]="['/animes/research']"
-                            [queryParams]="{
-                                genre: queryParams.genre,
-                                studio: queryParams.studio,
-                                producer: queryParams.producer,
-                                page: 1
-                            }"
-                            class="page-link test"
-                            >First</a
-                        >
-                    </li>
-                    <li
-                        [ngClass]="{ disabled: currentPage === 1 }"
-                        class="page-item"
-                    >
-                        <a
-                            *ngIf="navCase === 3"
-                            [routerLink]="['/animes/page', currentPage - 1]"
-                            class="page-link test"
-                            >Previous</a
-                        >
-                        <a
-                            *ngIf="navCase === 2"
-                            [routerLink]="['/animes/research']"
-                            [queryParams]="{
-                                query: queryParams.query,
-                                page: currentPage - 2
-                            }"
-                            class="page-link test"
-                            >Previous</a
-                        >
-                        <a
-                            *ngIf="navCase === 1"
-                            [routerLink]="['/animes/research']"
-                            [queryParams]="{
-                                genre: queryParams.genre,
-                                studio: queryParams.studio,
-                                producer: queryParams.producer,
-                                page: currentPage - 2
-                            }"
-                            class="page-link test"
-                            >Previous</a
-                        >
-                    </li>
-                    <li class="page-item" *ngIf="currentPage !== 1">
-                        <a
-                            *ngIf="navCase === 3"
-                            [routerLink]="['/animes/page', currentPage - 1]"
-                            class="page-link test"
-                            >{{ currentPage - 1 }}</a
-                        >
-                        <a
-                            *ngIf="navCase === 2"
-                            [routerLink]="['/animes/research']"
-                            [queryParams]="{
-                                query: queryParams.query,
-                                page: currentPage - 1
-                            }"
-                            class="page-link test"
-                            >{{ currentPage - 1 }}</a
-                        >
+			<div *ngIf="activatePagination">
+				<ul *ngIf="pages" class="pagination justify-content-center">
+					<li [ngClass]="{ disabled: currentPage === 1 }" class="page-item">
+						<a *ngIf="navCase === 3" [routerLink]="['/animes/page', 1]" class="page-link test">First</a>
+						<a
+							*ngIf="navCase === 2"
+							[routerLink]="['/animes/research']"
+							[queryParams]="{
+								query: queryParams.query,
+								page: 1
+							}"
+							class="page-link test"
+							>First</a
+						>
+						<a
+							*ngIf="navCase === 1"
+							[routerLink]="['/animes/research']"
+							[queryParams]="{
+								genre: queryParams.genre,
+								studio: queryParams.studio,
+								producer: queryParams.producer,
+								page: 1
+							}"
+							class="page-link test"
+							>First</a
+						>
+					</li>
+					<li [ngClass]="{ disabled: currentPage === 1 }" class="page-item">
+						<a *ngIf="navCase === 3" [routerLink]="['/animes/page', currentPage - 1]" class="page-link test">Previous</a>
+						<a
+							*ngIf="navCase === 2"
+							[routerLink]="['/animes/research']"
+							[queryParams]="{
+								query: queryParams.query,
+								page: currentPage - 2
+							}"
+							class="page-link test"
+							>Previous</a
+						>
+						<a
+							*ngIf="navCase === 1"
+							[routerLink]="['/animes/research']"
+							[queryParams]="{
+								genre: queryParams.genre,
+								studio: queryParams.studio,
+								producer: queryParams.producer,
+								page: currentPage - 2
+							}"
+							class="page-link test"
+							>Previous</a
+						>
+					</li>
+					<li class="page-item" *ngIf="currentPage !== 1">
+						<a *ngIf="navCase === 3" [routerLink]="['/animes/page', currentPage - 1]" class="page-link test">{{ currentPage - 1 }}</a>
+						<a
+							*ngIf="navCase === 2"
+							[routerLink]="['/animes/research']"
+							[queryParams]="{
+								query: queryParams.query,
+								page: currentPage - 1
+							}"
+							class="page-link test"
+							>{{ currentPage - 1 }}</a
+						>
 
-                        <a
-                            *ngIf="navCase === 1"
-                            [routerLink]="['/animes/research']"
-                            [queryParams]="{
-                                genre: queryParams.genre,
-                                studio: queryParams.studio,
-                                producer: queryParams.producer,
-                                page: currentPage - 1
-                            }"
-                            class="page-link test"
-                            >{{ currentPage - 1 }}</a
-                        >
-                    </li>
-                    <li class="page-item">
-                        <button
-                            disabled
-                            (click)="changePage(currentPage)"
-                            class="page-link current test"
-                        >
-                            {{ currentPage }}
-                        </button>
-                    </li>
-                    <li
-                        class="page-item"
-                        [ngClass]="{ disabled: currentPage === pages }"
-                    >
-                        <a
-                            *ngIf="navCase === 3"
-                            [routerLink]="['/animes/page', currentPage + 1]"
-                            class="page-link test"
-                            >{{ currentPage + 1 }}</a
-                        >
-                        <a
-                            *ngIf="navCase === 2"
-                            [routerLink]="['/animes/research']"
-                            [queryParams]="{
-                                query: queryParams.query,
-                                page: currentPage + 1
-                            }"
-                            class="page-link test"
-                            >{{ currentPage + 1 }}</a
-                        >
-                        <a
-                            *ngIf="navCase === 1"
-                            [routerLink]="['/animes/research']"
-                            [queryParams]="{
-                                genre: queryParams.genre,
-                                studio: queryParams.studio,
-                                producer: queryParams.producer,
-                                page: currentPage + 1
-                            }"
-                            class="page-link test"
-                            >{{ currentPage + 1 }}</a
-                        >
-                    </li>
-                    <li class="page-item" *ngIf="currentPage === 1">
-                        <a
-                            *ngIf="navCase === 3"
-                            [routerLink]="['/animes/page', currentPage + 2]"
-                            class="page-link test"
-                            >{{ currentPage + 2 }}</a
-                        >
-                        <a
-                            *ngIf="navCase === 2"
-                            [routerLink]="['/animes/research']"
-                            [queryParams]="{
-                                query: queryParams.query,
-                                page: currentPage + 2
-                            }"
-                            class="page-link test"
-                            >{{ currentPage + 2 }}</a
-                        >
-                        <a
-                            *ngIf="navCase === 1"
-                            [routerLink]="['/animes/research']"
-                            [queryParams]="{
-                                genre: queryParams.genre,
-                                studio: queryParams.studio,
-                                producer: queryParams.producer,
-                                page: currentPage + 2
-                            }"
-                            class="page-link test"
-                            >{{ currentPage + 2 }}</a
-                        >
-                    </li>
-                    <li
-                        [ngClass]="{ disabled: currentPage === pages }"
-                        class="page-item"
-                    >
-                        <a
-                            *ngIf="navCase === 3"
-                            [routerLink]="['/animes/page', currentPage + 1]"
-                            class="page-link test"
-                            >Next</a
-                        >
-                        <a
-                            *ngIf="navCase === 2"
-                            [routerLink]="['/animes/research']"
-                            [queryParams]="{
-                                query: queryParams.query,
-                                page: currentPage + 1
-                            }"
-                            class="page-link test"
-                            >Next</a
-                        >
-                        <a
-                            *ngIf="navCase === 1"
-                            [routerLink]="['/animes/research']"
-                            [queryParams]="{
-                                genre: queryParams.genre,
-                                studio: queryParams.studio,
-                                producer: queryParams.producer,
-                                page: currentPage + 1
-                            }"
-                            class="page-link test"
-                            >Next</a
-                        >
-                    </li>
-                    <li
-                        [ngClass]="{ disabled: currentPage === pages }"
-                        class="page-item"
-                    >
-                        <a
-                            *ngIf="navCase === 3"
-                            [routerLink]="['/animes/page', pages]"
-                            class="page-link test"
-                            >Last</a
-                        >
-                        <a
-                            *ngIf="navCase === 2"
-                            [routerLink]="['/animes/research']"
-                            [queryParams]="{
-                                query: queryParams.query,
-                                page: pages
-                            }"
-                            class="page-link test"
-                            >Last</a
-                        >
-                        <a
-                            *ngIf="navCase === 1"
-                            [routerLink]="['/animes/research']"
-                            [queryParams]="{
-                                genre: queryParams.genre,
-                                studio: queryParams.studio,
-                                producer: queryParams.producer,
-                                page: pages
-                            }"
-                            class="page-link test"
-                            >Last</a
-                        >
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+						<a
+							*ngIf="navCase === 1"
+							[routerLink]="['/animes/research']"
+							[queryParams]="{
+								genre: queryParams.genre,
+								studio: queryParams.studio,
+								producer: queryParams.producer,
+								page: currentPage - 1
+							}"
+							class="page-link test"
+							>{{ currentPage - 1 }}</a
+						>
+					</li>
+					<li class="page-item">
+						<button disabled (click)="changePage(currentPage)" class="page-link current test">
+							{{ currentPage }}
+						</button>
+					</li>
+					<li class="page-item" [ngClass]="{ disabled: currentPage === pages }">
+						<a *ngIf="navCase === 3" [routerLink]="['/animes/page', currentPage + 1]" class="page-link test">{{ currentPage + 1 }}</a>
+						<a
+							*ngIf="navCase === 2"
+							[routerLink]="['/animes/research']"
+							[queryParams]="{
+								query: queryParams.query,
+								page: currentPage + 1
+							}"
+							class="page-link test"
+							>{{ currentPage + 1 }}</a
+						>
+						<a
+							*ngIf="navCase === 1"
+							[routerLink]="['/animes/research']"
+							[queryParams]="{
+								genre: queryParams.genre,
+								studio: queryParams.studio,
+								producer: queryParams.producer,
+								page: currentPage + 1
+							}"
+							class="page-link test"
+							>{{ currentPage + 1 }}</a
+						>
+					</li>
+					<li class="page-item" *ngIf="currentPage === 1">
+						<a *ngIf="navCase === 3" [routerLink]="['/animes/page', currentPage + 2]" class="page-link test">{{ currentPage + 2 }}</a>
+						<a
+							*ngIf="navCase === 2"
+							[routerLink]="['/animes/research']"
+							[queryParams]="{
+								query: queryParams.query,
+								page: currentPage + 2
+							}"
+							class="page-link test"
+							>{{ currentPage + 2 }}</a
+						>
+						<a
+							*ngIf="navCase === 1"
+							[routerLink]="['/animes/research']"
+							[queryParams]="{
+								genre: queryParams.genre,
+								studio: queryParams.studio,
+								producer: queryParams.producer,
+								page: currentPage + 2
+							}"
+							class="page-link test"
+							>{{ currentPage + 2 }}</a
+						>
+					</li>
+					<li [ngClass]="{ disabled: currentPage === pages }" class="page-item">
+						<a *ngIf="navCase === 3" [routerLink]="['/animes/page', currentPage + 1]" class="page-link test">Next</a>
+						<a
+							*ngIf="navCase === 2"
+							[routerLink]="['/animes/research']"
+							[queryParams]="{
+								query: queryParams.query,
+								page: currentPage + 1
+							}"
+							class="page-link test"
+							>Next</a
+						>
+						<a
+							*ngIf="navCase === 1"
+							[routerLink]="['/animes/research']"
+							[queryParams]="{
+								genre: queryParams.genre,
+								studio: queryParams.studio,
+								producer: queryParams.producer,
+								page: currentPage + 1
+							}"
+							class="page-link test"
+							>Next</a
+						>
+					</li>
+					<li [ngClass]="{ disabled: currentPage === pages }" class="page-item">
+						<a *ngIf="navCase === 3" [routerLink]="['/animes/page', pages]" class="page-link test">Last</a>
+						<a
+							*ngIf="navCase === 2"
+							[routerLink]="['/animes/research']"
+							[queryParams]="{
+								query: queryParams.query,
+								page: pages
+							}"
+							class="page-link test"
+							>Last</a
+						>
+						<a
+							*ngIf="navCase === 1"
+							[routerLink]="['/animes/research']"
+							[queryParams]="{
+								genre: queryParams.genre,
+								studio: queryParams.studio,
+								producer: queryParams.producer,
+								page: pages
+							}"
+							class="page-link test"
+							>Last</a
+						>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </body>

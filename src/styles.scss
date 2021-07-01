@@ -1,16 +1,16 @@
 @font-face {
-    font-display: swap;
-    font-style: normal;
-    font-family: "Lato", sans-serif;
-    src: local("/fonts/Lato-Regular.ttf") format("truetype");
+	font-display: swap;
+	font-style: normal;
+	font-family: 'Lato', sans-serif;
+	src: local('/fonts/Lato-Regular.ttf') format('truetype');
 }
 
 body {
-    background: transparent;
-    background-size: cover;
+	background: transparent;
+	background-size: cover;
 }
 
 html,
 body {
-    height: 100%;
+	height: 100%;
 }

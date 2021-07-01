@@ -1,20 +1,20 @@
 body {
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
 }
 
 .contentContainer {
-    background-color: #2e3032;
-    padding-bottom: 1vh;
+	background-color: #2e3032;
+	padding-bottom: 1vh;
 }
 
 h4 {
-    padding-top: 1vh;
-    color: white;
-    margin: auto;
-    text-align: center;
+	padding-top: 1vh;
+	color: white;
+	margin: auto;
+	text-align: center;
 }
 
 #cancelNewList {
-    margin-left: 1vw;
+	margin-left: 1vw;
 }

@@ -1,18 +1,18 @@
 #router {
-    background-image: url("../assets/bghome.webp");
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-top: 0;
+	background-image: url('../assets/bghome.webp');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding-top: 0;
 }
 
 footer {
-    clear: both;
-    position: relative;
-    height: 200px;
+	clear: both;
+	position: relative;
+	height: 200px;
 }
 
 i {
-    color: white;
-    background-color: white;
+	color: white;
+	background-color: white;
 }

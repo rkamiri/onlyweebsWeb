@@ -1,5 +1,5 @@
 export interface Rating {
-    userId: number;
-    animeId: number;
-    rate: number;
+	userId: number
+	animeId: number
+	rate: number
 }

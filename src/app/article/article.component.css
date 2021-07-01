@@ -1,120 +1,116 @@
 body {
-    outline-width: 0;
+	padding-top: 1vh;
+	padding-bottom: 1vw;
 }
 
 #titre {
-    display: inline-block;
+	display: inline-block;
 }
 
 #deleteButton {
-    float: right;
-    display: inline-block;
+	margin-left: 25px;
+	display: inline-block;
 }
 
 .container {
-    background-color: rgba(40, 43, 48, 0.95);
-    border-radius: 0.3em;
-    max-width: 70vw;
-    padding: 1vw;
-    color: #e4e4e4;
-}
-
-h1 {
-    text-decoration: underline;
+	background-color: #212223;
+	border-radius: 0.3em;
+	max-width: 70vw;
+	padding: 1vw;
+	color: #e4e4e4;
 }
 
 #head img {
-    width: 100%;
+	width: 100%;
 }
 
 #mainContent {
-    margin-top: 2vh;
-    display: block;
-    word-wrap: break-word;
-    max-width: 40vw;
+	margin-top: 2vh;
+	display: block;
+	word-wrap: break-word;
+	max-width: 40vw;
 }
 
 #mainContent img {
-    width: 40vw;
+	width: 40vw;
 }
 
 .articleBox {
-    margin-top: 2vh;
-    background-color: rgba(66, 68, 79, 0.95);
+	margin-top: 2vh;
 }
 
 .articleBox img {
-    width: 100%;
-    padding: 0;
-    margin: 0;
+	width: 100%;
+	padding: 0;
+	margin: 0;
 }
 
 .author {
-    display: flex;
+	display: flex;
 }
 
 .articleBox p {
-    font-size: 14px;
-    padding: 0;
-    margin: 0;
+	font-size: 14px;
+	padding: 0;
+	margin: 0;
 }
 
 #author {
-    border-top: white 1px solid;
-    padding-top: 1vh;
-    margin-top: 5vh;
+	border-top: white 1px solid;
+	padding-top: 1vh;
+	margin-top: 5vh;
 }
 
 @media screen and (max-width: 576px) {
-    .container {
-        border-radius: 0;
-        min-width: 100%;
-        padding: 5vw;
-    }
+	.container {
+		border-radius: 0;
+		min-width: 100%;
+		padding: 5vw;
+	}
 }
 
 .scl-btn {
-    padding: 15px;
-    font-size: 25px;
-    width: 55px;
-    text-align: center;
-    text-decoration: none;
-    margin: 5px;
-    color: white;
+	padding: 15px;
+	font-size: 25px;
+	width: 55px;
+	text-align: center;
+	text-decoration: none;
+	margin: 5px;
+	color: white;
 }
 
 /* Hover Effect */
 
 .scl-btn:hover {
-    opacity: 0.8;
-    text-align: center;
-    text-decoration: none;
-    color: white;
+	opacity: 0.8;
+	text-align: center;
+	text-decoration: none;
+	color: white;
 }
 
 /* Round buttons */
 
 .scl-crcl {
-    border-radius: 50%;
+	border-radius: 50%;
 }
 
 /* Round Corners */
 
 .scl-rnd {
-    border-radius: 5px;
+	border-radius: 5px;
 }
 
 /* Brand Colors */
 
 .btn-facebook-f {
-    background: #3b5998;
+	background: #3b5998;
 }
 
 .btn-twitter-f {
-    background: #55acee;
+	background: #55acee;
 }
 
 .authorr:hover {
-    color: #097ce7;
-    text-decoration: underline;
+	color: #097ce7;
+	text-decoration: underline;
 }

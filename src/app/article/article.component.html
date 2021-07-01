@@ -1,206 +1,113 @@
 <body id="body">
-    <div *ngIf="article !== undefined" class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div id="head">
-                    <h1 id="titre">{{ article.title }}</h1>
-                    <button
-                        id="deleteButton"
-                        (click)="deleteArticle()"
-                        *ngIf="adminStatus === 'ROLE_ADMIN'"
-                        class="btn btn-danger"
-                        type="button"
-                    >
-                        DELETE
-                    </button>
-                    <br />
-                    <label
-                        >Publié le
-                        {{ article.created_at | date: "dd/MM/yyyy" }}</label
-                    >
-                    <img
-                        loading="lazy"
-                        *ngIf="article.cover !== undefined"
-                        src="{{ imagePath + article.cover.id }}"
-                        alt="article image"
-                    />
-                </div>
-                <div
-                    id="mainContent"
-                    [innerHTML]="article.body | safeHtml"
-                ></div>
-                <div id="author">
-                    <img
-                        loading="lazy"
-                        *ngIf="article.cover !== undefined"
-                        class="rounded-circle d-inline"
-                        src="{{ imagePath + article.author.image.id }}"
-                        alt="article image"
-                    />
-                    <a
-                        class="authorr"
-                        [routerLink]="['/user', article.author.id]"
-                    >
-                        <p class="d-inline p-2">
-                            Par {{ article.author.username }}, Rédacteur
-                            onlyweebs.com
-                        </p>
-                    </a>
-                    <a
-                        href="#"
-                        target="popup"
-                        (click)="share('twitter')"
-                        class="
-                            scl-btn scl-crcl
-                            shadow
-                            btn-twitter-f
-                            fa fa-twitter
-                        "
-                    >
-                    </a>
-                    <a
-                        href="#"
-                        target="popup"
-                        (click)="share('facebook')"
-                        class="
-                            scl-btn scl-crcl
-                            shadow
-                            btn-facebook-f
-                            fa fa-facebook
-                        "
-                    >
-                    </a>
-                </div>
-                <div class="row d-flex justify-content-center">
-                    <div
-                        [ngClass]="
-                            isConnected
-                                ? 'col-sm-6 col-md-6 col-6 pb-6'
-                                : 'col-sm-8 col-md-8 col-8 pb-8'
-                        "
-                    >
-                        <h1>Comments</h1>
-                        <p
-                            *ngIf="
-                                comments === undefined || comments.length === 0
-                            "
-                        >
-                            There are no comments yet ...
-                            <a routerLink="/login" *ngIf="!isConnected"
-                                >Login to write a comment</a
-                            >
-                        </p>
-                        <div
-                            *ngFor="let comment of comments; let index = index"
-                            class="mt-4 text-justify float-left comment"
-                        >
-                            <img
-                                src="data:image/webp;base64,{{
-                                    comment.user.imageDto.content
-                                }}"
-                                alt="profile image"
-                                class="rounded-circle"
-                                width="80"
-                                height="80"
-                            />
-                            <a
-                                class="authorr"
-                                [routerLink]="['/user', comment.user.id]"
-                            >
-                                <h4>{{ comment.user.username }}</h4>
-                            </a>
-                            <span
-                                >-{{ comment.date | date: "dd/MM/yyyy" }}</span
-                            >
-                            <button
-                                (click)="deleteArticleComment(comment.user.id)"
-                                *ngIf="adminStatus === 'ROLE_ADMIN'"
-                                class="btn btn-danger"
-                                type="button"
-                            >
-                                KILL
-                            </button>
-                            <br />
-                            <p>{{ comment.body }}</p>
-                        </div>
-                    </div>
+	<div *ngIf="article !== undefined" class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<div id="head">
+					<h1 id="titre">{{ article.title }}</h1>
+					<button id="deleteButton" (click)="deleteArticle()" *ngIf="adminStatus === 'ROLE_ADMIN'" class="btn btn-danger" type="button">
+						DELETE
+					</button>
+					<br />
+					<label>Publié le {{ article.created_at | date: 'dd/MM/yyyy' }}</label>
+					<img loading="lazy" *ngIf="article.cover !== undefined" src="{{ imagePath + article.cover.id }}" alt="article image" />
+				</div>
+				<div id="mainContent" [innerHTML]="article.body | safeHtml"></div>
+				<div id="author">
+					<img
+						loading="lazy"
+						*ngIf="article.cover !== undefined"
+						class="rounded-circle d-inline"
+						src="{{ imagePath + article.author.image.id }}"
+						alt="article image"
+					/>
+					<a class="authorr" [routerLink]="['/user', article.author.id]">
+						<p class="d-inline p-2">Par {{ article.author.username }}, Rédacteur onlyweebs.com</p>
+					</a>
+					<a href="#" target="popup" (click)="share('twitter')" class="scl-btn scl-crcl shadow btn-twitter-f fa fa-twitter"> </a>
+					<a href="#" target="popup" (click)="share('facebook')" class="scl-btn scl-crcl shadow btn-facebook-f fa fa-facebook"> </a>
+				</div>
+				<div class="row d-flex justify-content-center">
+					<div [ngClass]="isConnected ? 'col-sm-6 col-md-6 col-6 pb-6' : 'col-sm-8 col-md-8 col-8 pb-8'">
+						<h1>Comments</h1>
+						<p *ngIf="comments === undefined || comments.length === 0">
+							There are no comments yet ...
+							<a routerLink="/login" *ngIf="!isConnected">Login to write a comment</a>
+						</p>
+						<div *ngFor="let comment of comments; let index = index" class="mt-4 text-justify float-left comment">
+							<img
+								src="data:image/webp;base64,{{ comment.user.imageDto.content }}"
+								alt="profile image"
+								class="rounded-circle"
+								width="80"
+								height="80"
+							/>
+							<a class="authorr" [routerLink]="['/user', comment.user.id]">
+								<h4>{{ comment.user.username }}</h4>
+							</a>
+							<span>-{{ comment.date | date: 'dd/MM/yyyy' }}</span>
+							<button
+								(click)="deleteArticleComment(comment.user.id)"
+								*ngIf="adminStatus === 'ROLE_ADMIN'"
+								class="btn btn-danger"
+								type="button"
+							>
+								KILL
+							</button>
+							<br />
+							<p>{{ comment.body }}</p>
+						</div>
+					</div>
 
-                    <div
-                        *ngIf="isConnected"
-                        class="
-                            col-lg-4 col-md-5 col-sm-4
-                            offset-md-1 offset-sm-1
-                            col-12
-                            mt-4
-                        "
-                    >
-                        <form
-                            id="align-form"
-                            (ngSubmit)="sendArticleComment()"
-                            [formGroup]="commentForm"
-                        >
-                            <div class="form-group">
-                                <h1>Leave a comment</h1>
-                                <label for="message">Message</label>
-                                <textarea
-                                    name="msg"
-                                    id="message"
-                                    cols="30"
-                                    rows="5"
-                                    class="form-control"
-                                    formControlName="comment"
-                                    style="background-color: black"
-                                ></textarea>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">
-                                    {{
-                                        userHasComment
-                                            ? "Edit Comment"
-                                            : "Post Comment"
-                                    }}
-                                </button>
-                                <button
-                                    *ngIf="userHasComment"
-                                    id="delete-button"
-                                    type="button"
-                                    class="btn btn-danger"
-                                    (click)="deleteArticleComment(-667)"
-                                >
-                                    Delete your comment
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <h2>A lire aussi</h2>
-                <div
-                    class="articleBox rounded"
-                    *ngFor="let similarArticle of similarArticles"
-                >
-                    <a routerLink="/articles/{{ similarArticle.id }}">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <img
-                                    loading="lazy"
-                                    class="rounded-left"
-                                    src="{{
-                                        imagePath + similarArticle.cover.id
-                                    }}"
-                                    alt=""
-                                />
-                            </div>
-                            <div class="col-md-6">
-                                <p>
-                                    {{ similarArticle.title }}
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+					<div *ngIf="isConnected" class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+						<form id="align-form" (ngSubmit)="sendArticleComment()" [formGroup]="commentForm">
+							<div class="form-group">
+								<h1>Leave a comment</h1>
+								<label for="message">Message</label>
+								<textarea
+									name="msg"
+									id="message"
+									cols="30"
+									rows="5"
+									class="form-control"
+									formControlName="comment"
+									style="background-color: black"
+								></textarea>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary">
+									{{ userHasComment ? 'Edit Comment' : 'Post Comment' }}
+								</button>
+								<button
+									*ngIf="userHasComment"
+									id="delete-button"
+									type="button"
+									class="btn btn-danger"
+									(click)="deleteArticleComment(-667)"
+								>
+									Delete your comment
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<h2>A lire aussi</h2>
+				<div class="articleBox rounded" *ngFor="let similarArticle of similarArticles">
+					<a routerLink="/articles/{{ similarArticle.id }}">
+						<div class="row">
+							<div class="col-md-6">
+								<img loading="lazy" class="rounded-left" src="{{ imagePath + similarArticle.cover.id }}" alt="" />
+							</div>
+							<div class="col-md-6">
+								<p>
+									{{ similarArticle.title }}
+								</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>

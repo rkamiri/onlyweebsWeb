@@ -1,5 +1,5 @@
 export interface ImageDto {
-    id?: number;
-    content: Uint8Array;
-    name: string;
+	id?: number
+	content: Uint8Array
+	name: string
 }

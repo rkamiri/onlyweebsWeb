@@ -1,108 +1,82 @@
-<body
-    *ngIf="
-        generalStats !== undefined &&
-        animeStats !== undefined &&
-        averageStats !== undefined
-    "
-    height="1000"
->
-    <div id="titleDiv">
-        <h1 id="title">Stats of Onlyweebs</h1>
-    </div>
-    <div class="boba text-light">
-        <div id="generalStats" class="row">
-            <h2>General Onlyweebs stats</h2>
-            <div id="animes" class="block">
-                <h2>Animes : {{ generalStats.animes }}</h2>
-            </div>
-            <div id="comments" class="block">
-                <h2>Comments : {{ generalStats.comments }}</h2>
-            </div>
-            <div id="lists" class="block">
-                <h2>Lists : {{ generalStats.lists }}</h2>
-            </div>
-            <div id="users" class="block">
-                <h2>Users : {{ generalStats.users }}</h2>
-            </div>
-        </div>
-        <div id="otherStats">
-            <h2>Most popular animes on the website</h2>
-            <p>
-                This is the list of all animes that are present in our users'
-                lists. They are ordered by most present in the lists.
-            </p>
-            <div class="center" id="animeStats">
-                <table
-                    class="
-                        table
-                        table-responsive
-                        table-striped
-                        table-dark
-                        table-hover
-                    "
-                >
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th class="w25" scope="col">Image</th>
-                            <th class="w25" scope="col">Title</th>
-                            <th class="w25" scope="col">Popularity</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr
-                            id="rowInTable"
-                            *ngFor="let anime of animeStats; index as i"
-                            routerLink="/animes/{{ anime.animeDTO.id }}"
-                        >
-                            <th scope="row">{{ i + 1 }}</th>
-                            <td>
-                                <img
-                                    class="img-fluid"
-                                    loading="lazy"
-                                    [src]="anime.animeDTO.imgUrl"
-                                    width="61"
-                                    height="87"
-                                />
-                            </td>
-                            <td>{{ anime.animeDTO.title }}</td>
-                            <td>{{ anime.numberOfTimesListed | number }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div id="commentStats">
-            <div class="stack">
-                <h2>How many times did our users comment ?</h2>
-                <p>On average, our users commented :</p>
-                <h3>{{ averageStats.commentsByUser }} times.</h3>
-            </div>
-            <div class="stack">
-                <h2>How many lists does our users have ?</h2>
-                <p>On average, our users have :</p>
-                <h3>{{ averageStats.listsByUser }} lists.</h3>
-            </div>
-            <div class="stack">
-                <h2>How many times do our users rate animes ?</h2>
-                <p>On average, our users rate animes :</p>
-                <h3>{{ averageStats.ratingByUser }} times.</h3>
-            </div>
-            <div class="stack">
-                <h2>How many animes have been watched by our users ?</h2>
-                <p>On average, our users have watched:</p>
-                <h3>{{ averageStats.watchedByUser }} animes.</h3>
-            </div>
-            <div class="stack">
-                <h2>How many animes are being watched by our users ?</h2>
-                <p>On average, our users are watching:</p>
-                <h3>{{ averageStats.watchingByUser }} animes.</h3>
-            </div>
-            <div class="stack">
-                <h2>How many animes do our users plan to watch ?</h2>
-                <p>On average, our users plan to watch:</p>
-                <h3>{{ averageStats.planToWatchByUser }} animes.</h3>
-            </div>
-        </div>
-    </div>
+<body *ngIf="generalStats !== undefined && animeStats !== undefined && averageStats !== undefined" height="1000">
+	<div class="container">
+		<div id="titleDiv">
+			<h1 id="title">Stats of Onlyweebs</h1>
+		</div>
+		<div class="boba text-light">
+			<div id="generalStats" class="row">
+				<h2>General Onlyweebs stats</h2>
+				<div id="animes" class="block">
+					<h2>{{ generalStats.animes }} Animes</h2>
+				</div>
+				<div id="comments" class="block">
+					<h2>{{ generalStats.comments }} Comments</h2>
+				</div>
+				<div id="lists" class="block">
+					<h2>{{ generalStats.lists }} Lists</h2>
+				</div>
+				<div id="users" class="block">
+					<h2>{{ generalStats.users }} Users</h2>
+				</div>
+			</div>
+			<div id="otherStats">
+				<h2>Most popular animes on the website</h2>
+				<p>This is the list of all animes that are present in our users' lists. They are ordered by most present in the lists.</p>
+				<div class="center" id="animeStats">
+					<table class="table table-responsive table-striped table-dark table-hover">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th class="w25" scope="col">Image</th>
+								<th class="w25" scope="col">Title</th>
+								<th class="w25" scope="col">Popularity</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr id="rowInTable" *ngFor="let anime of animeStats; index as i" routerLink="/animes/{{ anime.animeDTO.id }}">
+								<th scope="row">{{ i + 1 }}</th>
+								<td>
+									<img class="img-fluid" loading="lazy" [src]="anime.animeDTO.imgUrl" width="61" height="87" />
+								</td>
+								<td>{{ anime.animeDTO.title }}</td>
+								<td>{{ anime.numberOfTimesListed | number }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div id="commentStats">
+				<div class="stack">
+					<h2>How many times did our users comment ?</h2>
+					<p>On average, our users commented :</p>
+					<h3>{{ averageStats.commentsByUser }} times.</h3>
+				</div>
+				<div class="stack">
+					<h2>How many lists does our users have ?</h2>
+					<p>On average, our users have :</p>
+					<h3>{{ averageStats.listsByUser }} lists.</h3>
+				</div>
+				<div class="stack">
+					<h2>How many times do our users rate animes ?</h2>
+					<p>On average, our users rate animes :</p>
+					<h3>{{ averageStats.ratingByUser }} times.</h3>
+				</div>
+				<div class="stack">
+					<h2>How many animes have been watched by our users ?</h2>
+					<p>On average, our users have watched:</p>
+					<h3>{{ averageStats.watchedByUser }} animes.</h3>
+				</div>
+				<div class="stack">
+					<h2>How many animes are being watched by our users ?</h2>
+					<p>On average, our users are watching:</p>
+					<h3>{{ averageStats.watchingByUser }} animes.</h3>
+				</div>
+				<div class="stack">
+					<h2>How many animes do our users plan to watch ?</h2>
+					<p>On average, our users plan to watch:</p>
+					<h3>{{ averageStats.planToWatchByUser }} animes.</h3>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>

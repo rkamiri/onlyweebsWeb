@@ -1,80 +1,70 @@
-* {
-    color: white;
+body {
+	color: white;
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 #alert-ip {
-    background-color: red;
+	background-color: red;
 }
 
 #alert-success-ip {
-    background-color: green;
+	background-color: green;
 }
 
 .account-settings .user-profile {
-    margin: auto;
-    padding-bottom: 1vh;
-    text-align: center;
-}
-
-.account-settings .user-profile .user-avatar {
-    margin: 0 0 1rem 0;
+	margin: auto;
+	padding-bottom: 1vh;
+	text-align: center;
 }
 
 .account-settings .user-profile .user-avatar img {
-    width: 7vw;
-    height: 7vw;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
-    border-radius: 100px;
-}
-
-.account-settings .user-profile h5.user-name {
-    margin: 0 0 0.5rem 0;
+	width: 7vw;
+	height: 7vw;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	border-radius: 100px;
 }
 
 .account-settings .user-profile h6.user-email {
-    margin: 0;
-    font-size: 0.8rem;
-    font-weight: 400;
+	font-size: 0.8rem;
+	font-weight: 400;
 }
 
 .account-settings .about {
-    margin: 1rem 0 0 0;
-    font-size: 0.8rem;
-    text-align: center;
-    height: 35vh;
-    overflow-y: scroll;
+	font-size: 0.8rem;
+	text-align: center;
+	height: 35vh;
+	overflow-y: scroll;
 }
 
 .card {
-    background-color: rgba(40, 43, 48, 0.75);
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    border: 0;
-    margin-bottom: 1rem;
+	background-color: #212223;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 0;
 }
 
 .form-control {
-    background: transparent;
-    border: none;
-    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15);
-    padding: 15px 0;
-    box-sizing: border-box;
-    color: #fff;
-    width: 100%;
-    transition: 0.2s ease;
-    margin-bottom: 2vh;
+	background: transparent;
+	border: none;
+	box-shadow: inset 0 -1px 0 #2e3032;
+	padding: 15px 0;
+	box-sizing: border-box;
+	color: #fff;
+	width: 100%;
+	transition: 0.2s ease;
 }
 
 textarea {
-    min-width: 38.5vw;
+	min-width: 45vw;
 }
 
 #uploadImage {
-    display: none;
+	display: none;
 }
 
 .user-avatar:hover {
-    cursor: pointer;
+	cursor: pointer;
 }

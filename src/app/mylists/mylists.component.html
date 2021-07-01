@@ -1,19 +1,11 @@
 <div class="col text-center">
-    <button class="btn btn-primary" [routerLink]="['/list-create']">
-        Create a new list
-    </button>
+	<button class="btn btn-primary" [routerLink]="['/list-create']">Create a new list</button>
 </div>
 
 <div class="lists">
-    <h3 class="listCustom">Your default lists</h3>
-    <app-anime-list-display
-        [lists]="defaultLists"
-        [isDefault]="'user_default'"
-    ></app-anime-list-display>
+	<h3 class="listCustom">Your default lists</h3>
+	<app-anime-list-display [lists]="defaultLists" [isDefault]="'user_default'"></app-anime-list-display>
 
-    <h3 class="listCustom">Your custom lists</h3>
-    <app-anime-list-display
-        [lists]="customLists"
-        [isDefault]="'user_custom'"
-    ></app-anime-list-display>
+	<h3 class="listCustom">Your custom lists</h3>
+	<app-anime-list-display [lists]="customLists" [isDefault]="'user_custom'"></app-anime-list-display>
 </div>

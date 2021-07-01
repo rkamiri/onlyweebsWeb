@@ -1,68 +1,48 @@
 <body>
-    <div *ngIf="deletedUser == false" class="lists">
-        <div class="row gutters">
-            <div class="col-xl-2 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="account-settings">
-                            <div class="user-profile">
-                                <div class="user-avatar">
-                                    <img
-                                        loading="lazy"
-                                        *ngIf="profilePictureUrl !== undefined"
-                                        src="{{ profilePictureUrl }}"
-                                        alt="profile image"
-                                    />
-                                </div>
-                                <h5 class="user-name">{{ user.username }}</h5>
-                                <p id="firstname">
-                                    {{ user.firstname }} {{ user.lastname }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="row gutters">
-                            <div
-                                class="
-                                    col-xl-12
-                                    col-lg-12
-                                    col-md-12
-                                    col-sm-12
-                                    col-12
-                                "
-                            >
-                                <div class="about">
-                                    <h5 class="mb-2 text-primary">About</h5>
-                                    <p id="bioo">{{ user.bio }}</p>
-                                    <h5 class="mb-2 text-primary">Lists</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div *ngIf="userLists !== undefined" class="custom">
-                            <app-anime-list-display
-                                [lists]="userLists"
-                                [isDefault]="'all_custom'"
-                                [userId]="user.id"
-                            >
-                            </app-anime-list-display>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="deleted" *ngIf="deletedUser == true">
-        <div class="error-page">
-            <div id="container">
-                <h1 data-h1="Nope">Nope</h1>
-                <p data-p="User was deleted">User was deleted</p>
-            </div>
-        </div>
-        <div id="particles-js"></div>
-    </div>
+	<div *ngIf="deletedUser == false" class="lists">
+		<div class="row gutters">
+			<div class="col-xl-2 col-lg-12 col-md-12 col-sm-12 col-12">
+				<div class="card h-100">
+					<div class="card-body">
+						<div class="account-settings">
+							<div class="user-profile">
+								<div class="user-avatar">
+									<img loading="lazy" *ngIf="profilePictureUrl !== undefined" src="{{ profilePictureUrl }}" alt="profile image" />
+								</div>
+								<h5 class="user-name">{{ user.username }}</h5>
+								<p id="firstname">{{ user.firstname }} {{ user.lastname }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12">
+				<div class="card h-100">
+					<div class="card-body">
+						<div class="row gutters">
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="about">
+									<h5 class="mb-2 text-primary">About</h5>
+									<p id="bioo">{{ user.bio }}</p>
+									<h5 class="mb-2 text-primary">Lists</h5>
+								</div>
+							</div>
+						</div>
+						<div *ngIf="userLists !== undefined" class="custom">
+							<app-anime-list-display [lists]="userLists" [isDefault]="'all_custom'" [userId]="user.id"> </app-anime-list-display>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="deleted" *ngIf="deletedUser == true">
+		<div class="error-page">
+			<div id="container">
+				<h1 data-h1="Nope">Nope</h1>
+				<p data-p="User was deleted">User was deleted</p>
+			</div>
+		</div>
+		<div id="particles-js"></div>
+	</div>
 </body>

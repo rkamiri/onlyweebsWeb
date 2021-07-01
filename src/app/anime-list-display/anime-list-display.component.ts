@@ -1,55 +1,49 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Lists } from '../shared/model/lists';
-import { ListsService } from '../shared/service/lists.service';
-import { UserService } from '../shared/service/user.service';
-import { User } from '../shared/model/user';
+import { Component, Input, OnInit } from '@angular/core'
+import { Lists } from '../shared/model/lists'
+import { ListsService } from '../shared/service/lists.service'
+import { UserService } from '../shared/service/user.service'
+import { User } from '../shared/model/user'
+import { RefreshService } from '../shared/service/refresh.service'
+import { Router } from '@angular/router'
 
 @Component({
-    selector: 'app-anime-list-display',
-    templateUrl: './anime-list-display.component.html',
-    styleUrls: ['./anime-list-display.component.css'],
+	selector: 'app-anime-list-display',
+	templateUrl: './anime-list-display.component.html',
+	styleUrls: ['./anime-list-display.component.css'],
 })
 export class AnimeListDisplayComponent implements OnInit {
-    @Input()
-    lists: Lists[];
-    @Input()
-    isDefault: string;
-    @Input()
-    userId: number;
-    listsImages: [[]];
-    connectedUser: User;
+	@Input()
+	lists: Lists[]
+	@Input()
+	isDefault: string
+	@Input()
+	userId: number
+	listsImages: [[]]
+	connectedUser: User
 
-    constructor(
-        private listService: ListsService,
-        private userService: UserService
-    ) {}
+	constructor(
+		private listService: ListsService,
+		private userService: UserService,
+		private refreshService: RefreshService,
+		private router: Router
+	) {}
 
-    ngOnInit(): void {
-        this.userService
-            .getCurrentUser()
-            .subscribe((data) => (this.connectedUser = data));
-        if (this.userId) {
-            this.listService
-                .getImagesOfUserCustomListByUserId(this.userId)
-                .subscribe((data) => (this.listsImages = data));
-        } else if (this.isDefault === 'user_default') {
-            this.listService
-                .getImagesOfUserDefaultList()
-                .subscribe((data) => (this.listsImages = data));
-        } else if (this.isDefault === 'user_custom') {
-            this.listService
-                .getImagesOfUserCustomList()
-                .subscribe((data) => (this.listsImages = data));
-        } else {
-            this.listService
-                .getImagesOfCustomLists()
-                .subscribe((data) => (this.listsImages = data));
-        }
-    }
+	ngOnInit(): void {
+		this.userService.getCurrentUser().subscribe((data) => (this.connectedUser = data))
+		if (this.userId) {
+			this.listService.getImagesOfUserCustomListByUserId(this.userId).subscribe((data) => (this.listsImages = data))
+		} else if (this.isDefault === 'user_default') {
+			this.listService.getImagesOfUserDefaultList().subscribe((data) => (this.listsImages = data))
+		} else if (this.isDefault === 'user_custom') {
+			this.listService.getImagesOfUserCustomList().subscribe((data) => (this.listsImages = data))
+		} else {
+			this.listService.getImagesOfCustomLists().subscribe((data) => (this.listsImages = data))
+		}
+	}
 
-    delete(id: number): void {
-        if (confirm('Are you sure you want to delete this custom list ?')) {
-            this.listService.deleteList(id).subscribe(() => location.reload());
-        }
-    }
+	delete(id: number): void {
+		if (confirm('Are you sure you want to delete this custom list ?')) {
+			this.listService.deleteList(id).subscribe(() => this.refreshService.refresh(this.router.url))
+		}
+	}
 }
