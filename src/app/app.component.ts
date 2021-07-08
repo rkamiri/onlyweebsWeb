@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core'
-import { UserService } from './shared/service/user.service'
+import { Component, OnInit } from '@angular/core';
+import { UserService } from './shared/service/user.service';
 
 @Component({
 	selector: 'app-root',
@@ -7,18 +7,18 @@ import { UserService } from './shared/service/user.service'
 	styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-	title = 'onlyWeebs'
-	showFooter = false
+	title = 'onlyWeebs';
+	showFooter = false;
 
 	constructor(private userService: UserService) {
-		this.userService.emitAuthStatus(false)
+		this.userService.emitAuthStatus(false);
 	}
 
 	ngOnInit(): void {
-		this.setTimeOutForFooter()
+		this.setTimeOutForFooter();
 	}
 
 	setTimeOutForFooter(): void {
-		setTimeout(() => (this.showFooter = true), 1000)
+		setTimeout(() => (this.showFooter = true), 1000);
 	}
 }

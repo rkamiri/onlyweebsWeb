@@ -1,4 +1,4 @@
 export interface Studios {
-	id: number
-	name: string
+	id: number;
+	name: string;
 }

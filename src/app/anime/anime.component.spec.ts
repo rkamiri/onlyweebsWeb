@@ -1,24 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AnimeComponent } from './anime.component'
+import { AnimeComponent } from './anime.component';
 
 describe('AnimeComponent', () => {
-	let component: AnimeComponent
-	let fixture: ComponentFixture<AnimeComponent>
+	let component: AnimeComponent;
+	let fixture: ComponentFixture<AnimeComponent>;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			declarations: [AnimeComponent],
-		}).compileComponents()
-	})
+		}).compileComponents();
+	});
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(AnimeComponent)
-		component = fixture.componentInstance
-		fixture.detectChanges()
-	})
+		fixture = TestBed.createComponent(AnimeComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
 	it('should create', () => {
-		expect(component).toBeTruthy()
-	})
-})
+		expect(component).toBeTruthy();
+	});
+});
