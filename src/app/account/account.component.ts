@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { FormControl, FormGroup } from '@angular/forms'
 import { UserService } from '../shared/service/user.service'
 import { environment } from '../../environments/environment'
-import { HttpClient } from '@angular/common/http'
 import { ISpinnerConfig, SPINNER_ANIMATIONS, SPINNER_PLACEMENT } from '@hardpool/ngx-spinner'
 import { ImageService } from '../shared/service/image.service'
 import { ToastrService } from 'ngx-toastr'
@@ -127,7 +126,7 @@ export class AccountComponent implements OnInit {
 		})
 	}
 
-	fileChange(event): void {
+	fileChange(event: { target: { files: FileList } }): void {
 		this.showSpinner()
 		const fileList: FileList = event.target.files
 		const file: File = fileList[0]

@@ -132,15 +132,9 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="container card" *ngIf="userIsAuthenticated && adminStatus === 'ROLE_ADMIN'">
-		<div class="card-body">
-			<p>
-				<a [routerLink]="['/stats']">Stats</a>
-			</p>
-			<p>
-				<a [routerLink]="['/editor']">Editor</a>
-			</p>
+		<div id="admin" class="card card-body" *ngIf="userIsAuthenticated && adminStatus === 'ROLE_ADMIN'">
+			<a [routerLink]="['/stats']"><div class="link" id="stats">Stats</div></a>
+			<a [routerLink]="['/editor']"><div class="link" id="editor">Editor</div></a>
 		</div>
 	</div>
 </body>

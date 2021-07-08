@@ -68,3 +68,21 @@ textarea {
 .user-avatar:hover {
 	cursor: pointer;
 }
+
+#admin {
+	margin-top: 1vh;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	text-align: center;
+	font-size: 1.5vw;
+}
+
+.link {
+	width: 7vw;
+	color: white;
+	background-color: #097ce7;
+	margin-left: 2.5vw;
+	margin-right: 2.5vw;
+}
