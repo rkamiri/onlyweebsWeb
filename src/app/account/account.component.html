@@ -135,6 +135,7 @@
 		<div id="admin" class="card card-body" *ngIf="userIsAuthenticated && adminStatus === 'ROLE_ADMIN'">
 			<a [routerLink]="['/stats']"><div class="link" id="stats">Stats</div></a>
 			<a [routerLink]="['/editor']"><div class="link" id="editor">Editor</div></a>
+			<a [routerLink]="['/admin-users']"><div class="link" id="users">Users</div></a>
 		</div>
 	</div>
 </body>

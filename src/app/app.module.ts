@@ -45,6 +45,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { UserComponent } from './user/user.component';
 import { StatsComponent } from './stats/stats.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
 
 @NgModule({
 	declarations: [
@@ -76,6 +77,7 @@ import { StatsComponent } from './stats/stats.component';
 		AboutUsComponent,
 		UserComponent,
 		StatsComponent,
+		AdminUsersComponent,
 	],
 	imports: [
 		BrowserModule,

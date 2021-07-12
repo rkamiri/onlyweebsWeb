@@ -13,6 +13,10 @@ export class UserService {
 
 	constructor(private httpclient: HttpClient) {}
 
+	getUsers(): Observable<User[]> {
+		return this.httpclient.get<User[]>(environment.backend + '/users');
+	}
+
 	login(value: object): Observable<string> {
 		return this.httpclient.post<string>(environment.backend + '/login', value);
 	}

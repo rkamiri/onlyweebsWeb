@@ -34,6 +34,8 @@ import { UserResolver } from './shared/resolver/user.resolver';
 import { StatsComponent } from './stats/stats.component';
 import { GeneralStatsResolver } from './shared/resolver/stats/general.stats.resolver';
 import { AverageStatsResolver } from './shared/resolver/stats/average.stats.resolver';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { UsersResolver } from './shared/resolver/users.resolver';
 
 const routes: Routes = [
 	{ path: 'not-found', component: NotFoundErrorComponent },
@@ -68,6 +70,12 @@ const routes: Routes = [
 		path: 'user/:id',
 		component: UserComponent,
 		resolve: { user: UserResolver },
+	},
+	{
+		path: 'admin-users',
+		component: AdminUsersComponent,
+		resolve: { users: UsersResolver },
+		runGuardsAndResolvers: 'always',
 	},
 	{ path: 'login', component: SigninComponent },
 	{ path: 'help', component: HelpComponent },

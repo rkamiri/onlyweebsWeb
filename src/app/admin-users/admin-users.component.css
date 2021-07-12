@@ -1,0 +1,59 @@
+body {
+	color: white;
+	padding-top: 1vh;
+	padding-bottom: 1vh;
+}
+
+.container {
+	background-color: #212223;
+	text-align: center;
+	border-radius: 10px;
+}
+
+#titles {
+	display: flex;
+	padding-bottom: 2vh;
+	padding-top: 2vh;
+	font-weight: bold;
+	font-size: 2.5vh;
+}
+
+#group {
+	display: block;
+}
+
+#user {
+	display: table;
+	height: 100px;
+	width: 100%;
+}
+
+#user:hover {
+	background-color: gray;
+	cursor: pointer;
+}
+
+.id {
+	width: 13%;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.image {
+	width: 13%;
+	display: table-cell;
+}
+
+.cell {
+	width: 37%;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.even {
+	background-color: #262626;
+}
+
+.odd {
+	background-color: #333333;
+}

@@ -1,0 +1,47 @@
+<body *ngIf="users !== undefined">
+	<div class="container">
+		<form class="form-inline my-2 my-lg-0" (ngSubmit)="onSearchSubmit()">
+			<div class="input-group mb-3" id="searchBlock" width="220">
+				<ng-template #rt let-r="result" let-t="term">
+					<img loading="lazy" [src]="profilePictureUrl + r.imageDto.id" class="mr-1" width="16" />
+					<ngb-highlight [result]="r.username" [term]="t"></ngb-highlight>
+				</ng-template>
+				<input
+					id="typeahead-template"
+					type="text"
+					class="form-control"
+					[(ngModel)]="searchInputValue"
+					[ngbTypeahead]="search"
+					[resultTemplate]="rt"
+					[inputFormatter]="formatter"
+					(selectItem)="onSearchItemSelected($event)"
+					name="searchInputValue"
+					role="textbox"
+					contenteditable="true"
+					aria-placeholder="a username"
+					aria-label="textbox"
+				/>
+				<div class="input-group-append">
+					<button class="btn btn-outline-primary btn-primary" type="submit" aria-label="search button">
+						<i style="color: #e4e4e4" class="fa fa-search"></i>
+					</button>
+				</div>
+			</div>
+		</form>
+
+		<div id="titles">
+			<div class="id">ID</div>
+			<div class="image">Image</div>
+			<div class="cell">Username</div>
+			<div class="cell">Email</div>
+		</div>
+		<div id="group" *ngFor="let user of users; index as i" routerLink="/user/{{ user.id }}">
+			<div id="user" [ngClass]="(i + 1) % 2 === 0 ? 'even' : 'odd'">
+				<div class="id">{{ user.id }}</div>
+				<div class="image"><img class="img-fluid" loading="lazy" [src]="profilePictureUrl + user.imageDto.id" width="100" /></div>
+				<div class="cell">{{ user.username }}</div>
+				<div class="cell">{{ user.email }}</div>
+			</div>
+		</div>
+	</div>
+</body>
