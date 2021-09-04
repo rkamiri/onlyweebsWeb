@@ -17,6 +17,10 @@ export class UserService {
 		return this.httpclient.get<User[]>(environment.backend + '/users');
 	}
 
+	getActiveUsers(): Observable<User[]> {
+    		return this.httpclient.get<User[]>(environment.backend + '/users/active');
+    	}
+
 	login(value: object): Observable<string> {
 		return this.httpclient.post<string>(environment.backend + '/login', value);
 	}
